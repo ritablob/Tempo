@@ -2969,7 +2969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 943ab398b123fcb4ba3bd99c29865094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beathLength: 0.4688
+  beatsPerMinute: 128
   beatsPerBar: 4
   spawnLeft: {fileID: 1622805611}
   spawnRight: {fileID: 257292268}

@@ -14,7 +14,8 @@ public class ArrowMover : MonoBehaviour
     public void Initialize(Transform _center, float _lerpSpeed)
     {
         center = _center;
-        lerpSpeed = _lerpSpeed * 4;
+        lerpSpeed = _lerpSpeed * 2;
+        Debug.Log(_lerpSpeed);
 
         transform.parent = GameObject.FindObjectOfType<Canvas>().transform;
 
@@ -26,8 +27,7 @@ public class ArrowMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float timeProgress = (Time.time - startTime) * lerpSpeed;
-        if (timeProgress / 1.98 >= lerpSpeed) { Destroy(gameObject); }
+        float timeProgress = (Time.time - startTime) / lerpSpeed;
 
         float lerpProgress = timeProgress / lerpDistance;
 

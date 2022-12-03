@@ -5,7 +5,7 @@ using UnityEngine;
 public class RhythmKeeper : MonoBehaviour
 {
     [Header("Music Related Vars")]
-    [SerializeField] float beathLength;
+    [SerializeField] float beatsPerMinute;
     [SerializeField] float beatsPerBar;
 
     [Header("Display Related Vars")]
@@ -14,18 +14,23 @@ public class RhythmKeeper : MonoBehaviour
     [SerializeField] Transform center;
     [SerializeField] GameObject arrowToSpawn;
 
+    private float beatLength;
+
     void Start()
     {
-        StartCoroutine(WaitForBeat((beathLength * 4) / beatsPerBar));
+        beatLength = 60 / beatsPerMinute;
+        StartCoroutine(WaitForBeat((beatLength * 4) / beatsPerBar));
     }
 
     IEnumerator WaitForBeat(float waitTime)
     {
         yield return new WaitForSeconds(waitTime); //After waiting, spawn and set up 2 arrow objects
         GameObject arrow = Instantiate(arrowToSpawn, spawnLeft.position, spawnLeft.rotation);
-        arrow.GetComponent<ArrowMover>().Initialize(center, beathLength);
+        arrow.GetComponent<ArrowMover>().Initialize(center, beatLength);
+
         arrow = Instantiate(arrowToSpawn, spawnRight.position, spawnRight.rotation);
-        arrow.GetComponent<ArrowMover>().Initialize(center, beathLength);
-        StartCoroutine(WaitForBeat((beathLength * 4) / beatsPerBar));
+        arrow.GetComponent<ArrowMover>().Initialize(center, beatLength);
+        beatLength = 60 / beatsPerMinute;
+        StartCoroutine(WaitForBeat((beatLength * 4) / beatsPerBar));
     }
 }
