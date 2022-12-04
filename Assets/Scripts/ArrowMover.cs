@@ -8,8 +8,6 @@ public class ArrowMover : MonoBehaviour
     private Transform startPosition;
 
     public float lerpSpeed; //Based off of song beats per second
-    private float startTime;
-    private float lerpDistance;
 
     public void Initialize(Transform _center, float _lerpSpeed)
     {
@@ -17,20 +15,14 @@ public class ArrowMover : MonoBehaviour
         lerpSpeed = _lerpSpeed * 2;
         Debug.Log(_lerpSpeed);
 
-        transform.parent = GameObject.FindObjectOfType<Canvas>().transform;
+        transform.SetParent(GameObject.FindObjectOfType<Canvas>().transform);
 
         startPosition = gameObject.transform;
-        lerpDistance = Vector3.Distance(startPosition.position, center.position);
-        startTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float timeProgress = (Time.time - startTime) / lerpSpeed;
-
-        float lerpProgress = timeProgress / lerpDistance;
-
-        transform.position = Vector3.Lerp(startPosition.position, center.position, lerpProgress);
+        transform.position = Vector3.MoveTowards(startPosition.position, center.position, lerpSpeed);
     }
 }
