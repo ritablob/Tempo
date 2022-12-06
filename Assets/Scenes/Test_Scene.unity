@@ -3907,7 +3907,7 @@ MonoBehaviour:
   maximumZoom: 5
   minimumZoom: 2
   cameraSpeed: 3
-  zoomPower: 0.5
+  zoomPower: 4
 --- !u!1 &979084992
 GameObject:
   m_ObjectHideFlags: 0
