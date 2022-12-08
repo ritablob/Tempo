@@ -31,7 +31,7 @@ public class RhythmKeeper : MonoBehaviour
         beatLength = 60 / beatsPerMinute;
         validInputTimer = ((beatLength * 4) / beatsPerBar) *-1;
         validInputTimer += normalLeeway;
-        StartCoroutine(WaitForBeat((beatLength * 4) / beatsPerBar));
+        StartCoroutine(StartDelay((beatLength * 4) / beatsPerBar));
     }
 
     private void Update()
@@ -48,6 +48,12 @@ public class RhythmKeeper : MonoBehaviour
             validInputTimer += normalLeeway;
             timingKey = "Miss";
         }
+    }
+
+    IEnumerator StartDelay(float waitTime)
+    {
+        yield return new WaitForSeconds(2);
+        StartCoroutine(WaitForBeat(waitTime));
     }
 
     IEnumerator WaitForBeat(float waitTime)
