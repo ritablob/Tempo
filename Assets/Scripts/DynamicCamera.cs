@@ -9,6 +9,7 @@ public class DynamicCamera : MonoBehaviour
     [SerializeField] Transform player2;
 
     [Header("Camera Parameters")]
+    [SerializeField] float startBlendDistance;
     [SerializeField] float maxBlendDistance;
     [SerializeField] float cameraZoomGrowth;
     [SerializeField] float cameraHeightGrowth;
@@ -30,7 +31,7 @@ public class DynamicCamera : MonoBehaviour
         //Calculate & set the wide position for the camera
         float distance = Vector3.Distance(player1.position, player2.position);
 
-        if(distance > 8) //If distance is less than 8, start blending positions
+        if(distance > startBlendDistance) //If distance is less than 8, start blending positions
         {
             Vector3 directionToCenter = gameObject.transform.position - centerPoint; //Get axis to zoom out on, normalize it
             directionToCenter.Normalize();

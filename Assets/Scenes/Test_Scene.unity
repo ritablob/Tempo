@@ -6410,9 +6410,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 2009659078}
   player2: {fileID: 518095156}
-  maxBlendDistance: 20
-  cameraZoomGrowth: 0.8
-  cameraHeightGrowth: 0.7
+  startBlendDistance: 5
+  maxBlendDistance: 15
+  cameraZoomGrowth: 1
+  cameraHeightGrowth: 0.9
   cameraSpeed: 10
   cameraRotateSpeed: 7
 --- !u!114 &1537968302
