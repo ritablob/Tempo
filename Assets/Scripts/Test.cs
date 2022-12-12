@@ -17,9 +17,6 @@ public class Test : MonoBehaviour
         scaleConst = Mathf.Clamp(scaleConst, 1, 999);
 
         gameObject.transform.localScale = new Vector3(scaleConst, scaleConst, scaleConst);
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.M))
-        {
             switch (keeper.timingKey)
             {
                 case "Miss":
@@ -35,6 +32,5 @@ public class Test : MonoBehaviour
                     gameObject.transform.localScale = new Vector3(5, 5, 5);
                     break;
             }
-        }
     }
 }

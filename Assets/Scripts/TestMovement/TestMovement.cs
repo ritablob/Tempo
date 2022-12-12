@@ -20,6 +20,11 @@ public class TestMovement : MonoBehaviour
     [Header("Attacks")]
     [SerializeField] Animator anim;
 
+    [Header("Other")]
+    [SerializeField] RhythmKeeper rhythmKeeper;
+
+    public string lastBeat;
+
     private Vector2 movement;
     private Vector3 aim;
     private float hitStunRemaining = 0;
@@ -81,15 +86,16 @@ public class TestMovement : MonoBehaviour
 
     void HandleAction()
     {
-
         if (playerControls.Player.Attack_1.IsPressed())
         {
             anim.SetTrigger("Light");
+            lastBeat = rhythmKeeper.timingKey; //Get timing of input
             return;
         }
         else if (playerControls.Player.Attack_2.IsPressed())
         {
             anim.SetTrigger("Heavy");
+            lastBeat = rhythmKeeper.timingKey; //Get timing of input
             return;
         }
         else if (playerControls.Player.Parry.WasPressedThisFrame() && canParry)
@@ -129,27 +135,20 @@ public class TestMovement : MonoBehaviour
 
 
     //Taking Damage
-    private void OnTriggerEnter(Collider other)
+    public void TakeDamage(int damage, float hitStun, float knockBack, Transform hitBoxTransform)
     {
-        if(other.tag == "Enemy")
+        if (!isParrying)
         {
-            if (!isParrying)
-            {
-                TakeDamage(other.GetComponent<Damage>().damage, other.GetComponent<Damage>().hitStun, other.GetComponent<Damage>().knockBack, other.transform);
-            }
+            anim.Play("Base Layer.Test_Idle");
+            isLaunching = false;
+            isAttacking = false;
+            hitStunRemaining = hitStun;
+            HP -= damage;
+            Vector3 launchDir = gameObject.transform.position - hitBoxTransform.position;
+            launchDir.y = 0;
+            launchDir.Normalize();
+            charController.Move(launchDir * knockBack);
         }
-    }
-    void TakeDamage(int damage, float hitStun, float knockBack, Transform hitBoxTransform)
-    {
-        anim.Play("Base Layer.Test_Idle");
-        isLaunching = false;
-        isAttacking = false;
-        hitStunRemaining = hitStun;
-        HP -= damage;
-        Vector3 launchDir = gameObject.transform.position - hitBoxTransform.position;
-        launchDir.y = 0;
-        launchDir.Normalize();
-        charController.Move(launchDir * knockBack);
     }
 
 
