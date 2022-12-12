@@ -9,22 +9,25 @@ public class TestMovement : MonoBehaviour
 {
     [Header("Visuals")]
     [SerializeField] GameObject attackIndicator;
+    [SerializeField] GameObject parryShield;
 
     [Header("Character Stats")]
+    [SerializeField] int HP = 10;
     [SerializeField] float speed = 1f;
     [SerializeField] CharacterController charController;
     [SerializeField] float controllerDeadZone = 0.1f;
-    [SerializeField] float gamePadSmoothingRate = 1000f;
 
     [Header("Attacks")]
     [SerializeField] Animator anim;
-    [SerializeField] Animation[] attackList;
 
     private Vector2 movement;
     private Vector3 aim;
+    private float hitStunRemaining = 0;
     private PlayerControls playerControls;
     private bool isAttacking; //Prevents the player from acting during an attack
     private bool isLaunching;
+    private bool isParrying;
+    private bool canParry = true;
 
     void Awake()
     {
@@ -44,7 +47,13 @@ public class TestMovement : MonoBehaviour
 
     void Update()
     {
-        if (!isAttacking)
+        if(hitStunRemaining > 0)
+        {
+            hitStunRemaining -= Time.deltaTime;
+            return;
+        }
+
+        if (!isAttacking && !isParrying)
         {
             HandleInput();
             HandleAction();
@@ -72,6 +81,7 @@ public class TestMovement : MonoBehaviour
 
     void HandleAction()
     {
+
         if (playerControls.Player.Attack_1.IsPressed())
         {
             anim.SetTrigger("Light");
@@ -81,6 +91,13 @@ public class TestMovement : MonoBehaviour
         {
             anim.SetTrigger("Heavy");
             return;
+        }
+        else if (playerControls.Player.Parry.WasPressedThisFrame() && canParry)
+        {
+            isParrying = true;
+            StartCoroutine(parryTiming());
+            parryShield.SetActive(true);
+            canParry = false;
         }
     }
 
@@ -105,8 +122,44 @@ public class TestMovement : MonoBehaviour
             if(playerDirection.sqrMagnitude > 0.0f)
             {
                 Quaternion newRotation = Quaternion.LookRotation(playerDirection, Vector3.up);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, gamePadSmoothingRate * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
             }
         }
+    }
+
+
+    //Taking Damage
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy")
+        {
+            if (!isParrying)
+            {
+                TakeDamage(other.GetComponent<Damage>().damage, other.GetComponent<Damage>().hitStun, other.GetComponent<Damage>().knockBack, other.transform);
+            }
+        }
+    }
+    void TakeDamage(int damage, float hitStun, float knockBack, Transform hitBoxTransform)
+    {
+        anim.Play("Base Layer.Test_Idle");
+        isLaunching = false;
+        isAttacking = false;
+        hitStunRemaining = hitStun;
+        HP -= damage;
+        Vector3 launchDir = gameObject.transform.position - hitBoxTransform.position;
+        launchDir.y = 0;
+        launchDir.Normalize();
+        charController.Move(launchDir * knockBack);
+    }
+
+
+    //Coroutines
+    IEnumerator parryTiming()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isParrying = false;
+        parryShield.SetActive(false);
+        yield return new WaitForSeconds(0.7f);
+        canParry = true;
     }
 }
