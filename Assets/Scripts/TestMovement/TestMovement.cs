@@ -7,26 +7,29 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class TestMovement : MonoBehaviour
 {
+    [Header("Visuals")]
     [SerializeField] GameObject attackIndicator;
 
-    public float speed = 1f;
-    public CharacterController charController;
-    public float controllerDeadZone = 0.1f;
-    public float gamePadSmoothingRate = 1000f;
+    [Header("Character Stats")]
+    [SerializeField] float speed = 1f;
+    [SerializeField] CharacterController charController;
+    [SerializeField] float controllerDeadZone = 0.1f;
+    [SerializeField] float gamePadSmoothingRate = 1000f;
+
+    [Header("Attacks")]
+    [SerializeField] Animator anim;
+    [SerializeField] Animation[] attackList;
 
     private Vector2 movement;
     private Vector3 aim;
-    private Vector3 playerVelocity;
-
-
     private PlayerControls playerControls;
-    private PlayerInput playerInput;
+    private bool isAttacking; //Prevents the player from acting during an attack
+    private bool isLaunching;
 
     void Awake()
     {
         playerControls = new PlayerControls();
         charController = GetComponent<CharacterController>();
-        playerInput = GetComponent<PlayerInput>();
     }
 
     private void OnEnable()
@@ -41,9 +44,44 @@ public class TestMovement : MonoBehaviour
 
     void Update()
     {
-        HandleInput();
-        HandleMovement();
-        HandleRotation();
+        if (!isAttacking)
+        {
+            HandleInput();
+            HandleAction();
+            HandleMovement();
+            HandleRotation();
+        }
+        else if (isLaunching)
+        {
+            charController.Move(aim * Time.deltaTime);
+        }
+    }
+
+    public void StartAttack() { isAttacking = true; }
+    public void EndAttack() { isAttacking = false; isLaunching = false; }
+    public void LaunchPlayer(float units)
+    {
+        isLaunching = transform;
+        Vector3 launchDirection = gameObject.transform.forward * -units;
+        aim = launchDirection;
+    }
+    public void EndLaunch()
+    {
+        isLaunching = false;
+    }
+
+    void HandleAction()
+    {
+        if (playerControls.Player.Attack_1.IsPressed())
+        {
+            anim.SetTrigger("Light");
+            return;
+        }
+        else if (playerControls.Player.Attack_2.IsPressed())
+        {
+            anim.SetTrigger("Heavy");
+            return;
+        }
     }
 
     void HandleInput()
