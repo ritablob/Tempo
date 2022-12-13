@@ -15,6 +15,7 @@ public class DynamicCamera : MonoBehaviour
     [SerializeField] float cameraHeightGrowth;
     [SerializeField] float cameraSpeed;
     [SerializeField] float cameraRotateSpeed;
+    [SerializeField] float minStepDistance;
 
     private Vector3 velocity = Vector3.zero;
 
