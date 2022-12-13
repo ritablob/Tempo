@@ -11,8 +11,6 @@ public class Damage : MonoBehaviour
     [SerializeField] float hitStun;
     [SerializeField] float knockBack;
 
-    [SerializeField] bool isTest = false;
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player" && !gameObject.transform.IsChildOf(other.transform))
@@ -21,6 +19,7 @@ public class Damage : MonoBehaviour
             {
                 case "Early":
                     other.GetComponent<TestMovement>().TakeDamage(damage, hitStun, knockBack * 0.8f, gameObject.transform);
+                    
                     break;
                 case "Perfect":
                     int newDamage = Mathf.RoundToInt(damage * 1.5f);

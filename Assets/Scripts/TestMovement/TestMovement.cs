@@ -22,6 +22,7 @@ public class TestMovement : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] RhythmKeeper rhythmKeeper;
+    [SerializeField] Transform rayCastStart;
 
     public string lastBeat;
 
@@ -30,6 +31,7 @@ public class TestMovement : MonoBehaviour
     private float hitStunRemaining = 0;
     private PlayerControls playerControls;
     private bool isAttacking; //Prevents the player from acting during an attack
+    private bool canMove;
     private bool isLaunching;
     private bool isParrying;
     private bool canParry = true;
@@ -69,10 +71,16 @@ public class TestMovement : MonoBehaviour
         {
             charController.Move(aim * Time.deltaTime);
         }
+        else if (canMove)
+        {
+            HandleInput();
+            HandleMovement();
+        }
     }
 
-    public void StartAttack() { isAttacking = true; }
-    public void EndAttack() { isAttacking = false; isLaunching = false; }
+    public void StartAttack() { isAttacking = true; canMove = false; }
+    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; }
+    public void CanMove() { canMove = true; }
     public void LaunchPlayer(float units)
     {
         isLaunching = transform;
@@ -130,6 +138,12 @@ public class TestMovement : MonoBehaviour
                 Quaternion newRotation = Quaternion.LookRotation(playerDirection, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
             }
+        }
+        else if(movement.x != 0 && movement.y != 0)
+        { 
+            Vector3 newMovement = new Vector3(movement.x, 0, movement.y);
+            Quaternion newRotation = Quaternion.LookRotation(-newMovement, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
         }
     }
 
