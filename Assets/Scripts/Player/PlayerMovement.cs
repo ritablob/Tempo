@@ -36,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isParrying;
     private bool canParry = true;
 
-    [SerializeField] private Vector3 offset;
+    private Vector3 offset;
+    //private bool isNotMoving; // we update the rotation of movement when the character has stopped moving
 
     void Awake()
     {
@@ -67,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
             HandleInput();
             HandleAction();
             HandleMovement();
+            UpdateRotation();
             HandleRotation();
         }
         else if (isLaunching)
@@ -119,7 +121,6 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleMovement()
     {
-        UpdateRotation();
         Vector3 move = new Vector3(movement.x, 0, movement.y);
         charController.Move(move  * Time.deltaTime * speed);
     }
@@ -146,31 +147,34 @@ public class PlayerMovement : MonoBehaviour
          */
 
         //float cameraAngleY = Quaternion.Angle(sceneCamera.transform.rotation);
-        float coefficient = sceneCamera.transform.rotation.y / 360.00f; // camera rotation coefficient (0.0-1.0)
+        //if (isNotMoving)
+        //{
+            float coefficient = sceneCamera.transform.localEulerAngles.y / 360.00f; // camera rotation coefficient (0.0-1.0)
 
-        if (coefficient < 0.25f)
-        {
-            offset.x = -coefficient * 4.0f;
-            offset.z = coefficient * 4.0f;
-        }
-        else if (coefficient < 0.5f)
-        {
-            offset.x = -coefficient * 4.0f;
-            offset.z = -(coefficient - 0.25f) * 4.0f;
-        }
-        else if (coefficient < 0.75f)
-        {
-            offset.x = ((coefficient - 0.5f) * 4.0f) - 1.0f;
-            offset.z = -(coefficient - 0.5f) * 4.0f;
-        }
-        else
-        {
-            offset.x = (coefficient - 0.75f) * 4.0f;
-            offset.z = (coefficient - 0.75f)*4.0f -1.0f;
-        }
-        //Debug.Log($"camera up x - " + cameraVector.x + ", camera up y - " + cameraVector.z) ;
-        Debug.LogError(sceneCamera.transform.rotation.y);
-        Debug.LogWarning("offset = " + offset.x + ", " + offset.z);
+            if (coefficient < 0.25f)
+            {
+                offset.x = -coefficient * 4.0f;
+                offset.z = coefficient * 4.0f;
+            }
+            else if (coefficient < 0.5f)
+            {
+                offset.x = -coefficient * 4.0f;
+                offset.z = -(coefficient - 0.25f) * 4.0f;
+            }
+            else if (coefficient < 0.75f)
+            {
+                offset.x = ((coefficient - 0.5f) * 4.0f) - 1.0f;
+                offset.z = -(coefficient - 0.5f) * 4.0f;
+            }
+            else
+            {
+                offset.x = (coefficient - 0.75f) * 4.0f;
+                offset.z = (coefficient - 0.75f) * 4.0f - 1.0f;
+            }
+
+            Debug.LogError(sceneCamera.transform.localEulerAngles.y);
+            Debug.LogWarning("offset = " + offset.x + ", " + offset.z);
+        //}
     }
 
 
