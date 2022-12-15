@@ -32,6 +32,7 @@ public class RhythmKeeper : MonoBehaviour
 
     void Start()
     {
+        //Calculate beat rate
         beatLength = 60 / beatsPerMinute;
         maxValidInputTime = (beatLength * 4) / beatsPerBar;
         StartCoroutine(StartDelay((beatLength * 4) / beatsPerBar));
@@ -39,9 +40,10 @@ public class RhythmKeeper : MonoBehaviour
 
     private void Update()
     {
-        validInputTimer += Time.deltaTime;
-        float beatPerc = validInputTimer / maxValidInputTime * 100;
+        validInputTimer += Time.deltaTime; //Count elapsed time in beat
+        float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
 
+        //Apply timing key (for easy access)
         if(beatPerc < normalLeewayPerc) { timingKey = "Miss"; }
         else if(beatPerc >= normalLeewayPerc && beatPerc < perfectLeewayPerc) { timingKey = "Early"; }
         else if(beatPerc >= perfectLeewayPerc && beatPerc < 100) { timingKey = "Perfect"; }
