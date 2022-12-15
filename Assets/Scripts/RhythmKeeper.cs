@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RhythmKeeper : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class RhythmKeeper : MonoBehaviour
     [SerializeField] float beatsPerBar;
 
     [Header("Display Related Vars")]
+    [SerializeField] TextMeshProUGUI txt;
     [SerializeField] Transform spawnLeft;
     [SerializeField] Transform spawnRight;
     [SerializeField] Transform leftArrow;
@@ -17,53 +19,59 @@ public class RhythmKeeper : MonoBehaviour
     [SerializeField] AudioSource audioSource;
 
     [Header("Gameplay Related Vars")]
-    [SerializeField] float perfectLeeway; //Leeway time for scoring a perfect
-    [SerializeField] float normalLeeway; //Leeway time for scoring a normal
+    [SerializeField] float perfectLeewayPerc; //Leeway time for scoring a perfect
+    [SerializeField] float normalLeewayPerc; //Leeway time for scoring a normal
 
-    //[HideInInspector]
+    [HideInInspector]
     public string timingKey; //Used to test when actions occur in relation to the beat
+    public string timingKeyCombo;
 
     private float beatLength;
-    private float validInputTimer; //Keeps track of time
+    private float maxValidInputTime; //Keeps track of time
+    private float validInputTimer; //Keeps track of beat percentage
 
     void Start()
     {
         beatLength = 60 / beatsPerMinute;
-        validInputTimer = ((beatLength * 4) / beatsPerBar) *-1;
-        validInputTimer += normalLeeway;
+        maxValidInputTime = (beatLength * 4) / beatsPerBar;
         StartCoroutine(StartDelay((beatLength * 4) / beatsPerBar));
     }
 
     private void Update()
     {
         validInputTimer += Time.deltaTime;
+        float beatPerc = validInputTimer / maxValidInputTime * 100;
 
-        if(validInputTimer < normalLeeway * -1) { timingKey = "Miss"; } //If beat is before the normal timing, count as miss
-        else if(validInputTimer >= normalLeeway * -1 && validInputTimer < perfectLeeway * -1) { timingKey = "Early"; } //If beat is on normal timing, count as hit
-        else if(validInputTimer >= perfectLeeway * -1 && validInputTimer <= perfectLeeway) { timingKey = "Perfect"; } //If beat is between perfect leewats, count as perfect
-        else if (validInputTimer > perfectLeeway && validInputTimer <= normalLeeway) { timingKey = "Late"; } //If beat is between perfect leewats, count as perfect
-        else //If the player misses the beat, reset timer
-        {
-            validInputTimer = ((beatLength * 4) / beatsPerBar) * -1;
-            validInputTimer += normalLeeway;
-            timingKey = "Miss";
-        }
+        if(beatPerc < normalLeewayPerc) { timingKey = "Miss"; }
+        else if(beatPerc >= normalLeewayPerc && beatPerc < perfectLeewayPerc) { timingKey = "Early"; }
+        else if(beatPerc >= perfectLeewayPerc && beatPerc < 100) { timingKey = "Perfect"; }
+        else { timingKey = "Miss"; }
+    }
+
+    private void FixedUpdate()
+    {
+        txt.text = timingKey;
     }
 
     IEnumerator StartDelay(float waitTime)
     {
         yield return new WaitForSeconds(2);
         StartCoroutine(WaitForBeat(waitTime));
+        validInputTimer = 0;
     }
 
     IEnumerator WaitForBeat(float waitTime)
     {
         yield return new WaitForSeconds(waitTime); //After waiting, spawn and set up 2 arrow objects
+
+        validInputTimer = 0;
+
         GameObject arrow = Instantiate(arrowToSpawn, spawnLeft.position, spawnLeft.rotation);
         arrow.GetComponent<ArrowMover>().Initialize(leftArrow, beatLength);
 
         arrow = Instantiate(arrowToSpawn, spawnRight.position, spawnRight.rotation);
         arrow.GetComponent<ArrowMover>().Initialize(rightArrow, beatLength);
+
         StartCoroutine(WaitForBeat((beatLength * 4) / beatsPerBar));
     }
 }

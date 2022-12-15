@@ -17,8 +17,6 @@ public class DynamicCamera : MonoBehaviour
     [SerializeField] float cameraRotateSpeed;
     [SerializeField] float minStepDistance;
 
-    private Vector3 velocity = Vector3.zero;
-
     private void LateUpdate()
     {
         //Calculate & set the close position for the camera
@@ -31,7 +29,6 @@ public class DynamicCamera : MonoBehaviour
 
         //Calculate & set the wide position for the camera
         float distance = Vector3.Distance(player1.position, player2.position);
-
         if(distance > startBlendDistance) //If distance is less than 8, start blending positions
         {
             Vector3 directionToCenter = gameObject.transform.position - centerPoint; //Get axis to zoom out on, normalize it
@@ -43,7 +40,7 @@ public class DynamicCamera : MonoBehaviour
             Vector3 blendedVector = GetBlendedVector(distance, newPosition, zoomPosition);
 
             gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, blendedVector, cameraSpeed * Time.deltaTime);
-
+            
             Debug.DrawRay(centerPoint, directionToCenter, Color.blue);
             Debug.DrawLine(centerPoint, zoomPosition, Color.green);
         }

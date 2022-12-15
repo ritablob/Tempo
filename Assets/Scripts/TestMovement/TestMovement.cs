@@ -135,11 +135,11 @@ public class TestMovement : MonoBehaviour
 
             if(playerDirection.sqrMagnitude > 0.0f)
             {
-                Quaternion newRotation = Quaternion.LookRotation(playerDirection, Vector3.up);
+                Quaternion newRotation = Quaternion.LookRotation(-playerDirection, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
             }
         }
-        else if(movement.x != 0 && movement.y != 0)
+        else if(movement.x != 0 && movement.y != 0 && aim.x < controllerDeadZone && aim.y < controllerDeadZone)
         { 
             Vector3 newMovement = new Vector3(movement.x, 0, movement.y);
             Quaternion newRotation = Quaternion.LookRotation(-newMovement, Vector3.up);
@@ -172,7 +172,7 @@ public class TestMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         isParrying = false;
         parryShield.SetActive(false);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.9f);
         canParry = true;
     }
 }
