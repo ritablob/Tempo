@@ -3109,15 +3109,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beatsPerMinute: 128
   beatsPerBar: 2
+  txt: {fileID: 0}
   spawnLeft: {fileID: 1622805611}
   spawnRight: {fileID: 257292268}
   leftArrow: {fileID: 1657018666}
   rightArrow: {fileID: 1108235309}
   arrowToSpawn: {fileID: 5715228588011641994, guid: 7d3e14bfbbad36646896c582a1c2bb7f, type: 3}
   audioSource: {fileID: 1500431274}
-  perfectLeeway: 0.1
-  normalLeeway: 0.2
+  perfectLeewayPerc: 0
+  normalLeewayPerc: 0
   timingKey: 
+  timingKeyCombo: 
 --- !u!1 &842487007
 GameObject:
   m_ObjectHideFlags: 0
@@ -6461,7 +6463,7 @@ GameObject:
   - component: {fileID: 1537968301}
   m_Layer: 0
   m_Name: --- Dynamic Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7734,7 +7736,6 @@ MonoBehaviour:
   rhythmKeeper: {fileID: 802290223}
   sceneCamera: {fileID: 1537968304}
   lastBeat: 
-  offset: {x: 0, y: 0, z: 0}
 --- !u!4 &1915244832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8821734678660833231, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}

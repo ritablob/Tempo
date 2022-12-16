@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canParry = true;
 
     private Vector3 offset;
+    private bool hasOffset = false;
     //private bool isNotMoving; // we update the rotation of movement when the character has stopped moving
 
     void Awake()
@@ -68,7 +69,6 @@ public class PlayerMovement : MonoBehaviour
             HandleInput();
             HandleAction();
             HandleMovement();
-            UpdateRotation();
             HandleRotation();
         }
         else if (isLaunching)
@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleMovement()
     {
-        Vector3 move = new Vector3(movement.x, 0, movement.y);
+        Vector3 move = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * new Vector3(movement.x, 0, movement.y);
         charController.Move(move  * Time.deltaTime * speed);
     }
 
@@ -137,44 +137,6 @@ public class PlayerMovement : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
             }
         }
-    }
-
-    void UpdateRotation()
-    {
-        /* - camera rotation on y
-         * - player x + z offset calculation based on camera rotation
-         * - change player movement based on offset 
-         */
-
-        //float cameraAngleY = Quaternion.Angle(sceneCamera.transform.rotation);
-        //if (isNotMoving)
-        //{
-            float coefficient = sceneCamera.transform.localEulerAngles.y / 360.00f; // camera rotation coefficient (0.0-1.0)
-
-            if (coefficient < 0.25f)
-            {
-                offset.x = -coefficient * 4.0f;
-                offset.z = coefficient * 4.0f;
-            }
-            else if (coefficient < 0.5f)
-            {
-                offset.x = -coefficient * 4.0f;
-                offset.z = -(coefficient - 0.25f) * 4.0f;
-            }
-            else if (coefficient < 0.75f)
-            {
-                offset.x = ((coefficient - 0.5f) * 4.0f) - 1.0f;
-                offset.z = -(coefficient - 0.5f) * 4.0f;
-            }
-            else
-            {
-                offset.x = (coefficient - 0.75f) * 4.0f;
-                offset.z = (coefficient - 0.75f) * 4.0f - 1.0f;
-            }
-
-            Debug.LogError(sceneCamera.transform.localEulerAngles.y);
-            Debug.LogWarning("offset = " + offset.x + ", " + offset.z);
-        //}
     }
 
 
@@ -195,6 +157,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void Dodge()
+    {
+        /* - dodge animation
+         * - if did timing right, opponent attack is missed
+         * - 
+         */
+        anim.Play("Dodge"); // edit when it exists
+    }
 
     //Coroutines
     IEnumerator parryTiming()
