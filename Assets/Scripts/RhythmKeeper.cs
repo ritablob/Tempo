@@ -19,14 +19,13 @@ public class RhythmKeeper : MonoBehaviour
     [SerializeField] AudioSource audioSource;
 
     [Header("Gameplay Related Vars")]
-    [SerializeField] float perfectLeewayPerc; //Leeway time for scoring a perfect
-    [SerializeField] float normalLeewayPerc; //Leeway time for scoring a normal
+    public float perfectLeewayPerc; //Leeway time for scoring a perfect
+    public float normalLeewayPerc; //Leeway time for scoring a normal
 
     [HideInInspector]
     public string timingKey; //Used to test when actions occur in relation to the beat
-    public string timingKeyCombo;
+    public float beatLength;
 
-    private float beatLength;
     private float maxValidInputTime; //Keeps track of time
     private float validInputTimer; //Keeps track of beat percentage
 

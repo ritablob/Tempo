@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PlayerInput))]
@@ -23,12 +24,15 @@ public class TestMovement : MonoBehaviour
     [Header("Other")]
     [SerializeField] RhythmKeeper rhythmKeeper;
     [SerializeField] Transform rayCastStart;
+    [SerializeField] TextMeshProUGUI text;
 
     public string lastBeat;
 
     private Vector2 movement;
     private Vector3 aim;
     private float hitStunRemaining = 0;
+    private float maxValidInputTime; //Used to see if the next move falls under the correct combo timing
+    private float validInputTimer; //Tracks the elapsed time of the current beat
     private PlayerControls playerControls;
     private bool isAttacking; //Prevents the player from acting during an attack
     private bool canMove;
@@ -60,6 +64,8 @@ public class TestMovement : MonoBehaviour
             return;
         }
 
+        if(maxValidInputTime != 0) { validInputTimer += Time.deltaTime; }
+
         if (!isAttacking && !isParrying)
         {
             HandleInput();
@@ -78,8 +84,10 @@ public class TestMovement : MonoBehaviour
         }
     }
 
-    public void StartAttack() { isAttacking = true; canMove = false; }
-    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; }
+    //Combat-related functions
+    public void StartAttack() { isAttacking = true; canMove = false; validInputTimer = 0; maxValidInputTime = 0; }
+    public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
+    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; maxValidInputTime = 0; }
     public void CanMove() { canMove = true; }
     public void LaunchPlayer(float units)
     {
@@ -91,19 +99,38 @@ public class TestMovement : MonoBehaviour
     {
         isLaunching = false;
     }
+    public void BeatsForNextAttack(int numOfBeats) //Use eighth notes for calculations
+    {
+        maxValidInputTime = rhythmKeeper.beatLength / 2; //Get time of eighth notes
+        maxValidInputTime *= numOfBeats; //Set maxValidInputTime to x eighth notes
+    }
+
+
 
     void HandleAction()
     {
+        float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
+
         if (playerControls.Player.Attack_1.IsPressed())
         {
             anim.SetTrigger("Light");
-            lastBeat = rhythmKeeper.timingKey; //Get timing of input
+            if(maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
+            else if(beatPerc < rhythmKeeper.normalLeewayPerc) { lastBeat = "Miss"; }
+            else if(beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
+            else if(beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
+            else { lastBeat = "Miss"; }
+            text.text = $"{beatPerc} / {lastBeat}";
             return;
         }
         else if (playerControls.Player.Attack_2.IsPressed())
         {
             anim.SetTrigger("Heavy");
-            lastBeat = rhythmKeeper.timingKey; //Get timing of input
+            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
+            else if (beatPerc < rhythmKeeper.normalLeewayPerc) { lastBeat = "Miss"; }
+            else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
+            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
+            else { lastBeat = "Miss"; }
+            text.text = $"{beatPerc} / {lastBeat}";
             return;
         }
         else if (playerControls.Player.Parry.WasPressedThisFrame() && canParry)
