@@ -90,4 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {fileID: 0}
-  lerpSpeed: 0
+  p1: {r: 0, g: 0.9900923, b: 1, a: 0}
+  p2: {r: 1, g: 0.30440074, b: 0.19245279, a: 0}
+  speed: 0

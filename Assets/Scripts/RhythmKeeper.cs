@@ -56,7 +56,7 @@ public class RhythmKeeper : MonoBehaviour
 
     IEnumerator StartDelay(float waitTime)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(waitTime * 4);
         StartCoroutine(WaitForBeat(waitTime));
         validInputTimer = 0;
     }
@@ -68,11 +68,23 @@ public class RhythmKeeper : MonoBehaviour
         validInputTimer = 0;
 
         GameObject arrow = Instantiate(arrowToSpawn, spawnLeft.position, spawnLeft.rotation);
-        arrow.GetComponent<ArrowMover>().Initialize(leftArrow, beatLength);
+        arrow.GetComponent<ArrowMover>().Initialize(leftArrow, beatLength * 2, true);
 
         arrow = Instantiate(arrowToSpawn, spawnRight.position, spawnRight.rotation);
-        arrow.GetComponent<ArrowMover>().Initialize(rightArrow, beatLength);
+        arrow.GetComponent<ArrowMover>().Initialize(rightArrow, beatLength * 2, true);
 
         StartCoroutine(WaitForBeat((beatLength * 4) / beatsPerBar));
+    }
+
+    public void SpawnArrow(float lerpSpeed)
+    {
+        //Convert time in seconds to lerp speed
+
+        //Spawn two arrows
+        GameObject arrow = Instantiate(arrowToSpawn, spawnLeft.position, spawnLeft.rotation);
+        arrow.GetComponent<ArrowMover>().Initialize(leftArrow, lerpSpeed, false);
+
+        arrow = Instantiate(arrowToSpawn, spawnRight.position, spawnRight.rotation);
+        arrow.GetComponent<ArrowMover>().Initialize(rightArrow, lerpSpeed, false);
     }
 }

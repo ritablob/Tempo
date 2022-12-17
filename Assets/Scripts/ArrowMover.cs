@@ -1,28 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArrowMover : MonoBehaviour
 {
     public Transform center; //Object to lerp to
-    private Transform startPosition;
+    public Color p1, p2;
 
-    public float lerpSpeed; //Based off of song beats per second
+    private Image arrow;
+    private Vector3 startPosition;
+    private float lerpProg;
 
-    public void Initialize(Transform _center, float _lerpSpeed)
+    public float speed; //Based off of song beats per second
+
+    public void Initialize(Transform _center, float _lerpSpeed, bool _songBeat)
     {
+        arrow = GetComponent<Image>();
         center = _center;
-        lerpSpeed = _lerpSpeed * 2;
-        Debug.Log(_lerpSpeed);
-
+        speed = _lerpSpeed;
+       
         transform.SetParent(GameObject.FindObjectOfType<Canvas>().transform);
 
-        startPosition = gameObject.transform;
+        startPosition = gameObject.transform.position;
+
+        if(!_songBeat) { ComboArrow(); }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(startPosition.position, center.position, lerpSpeed);
+        lerpProg += Time.deltaTime / speed;
+
+        transform.position = Vector3.Lerp(startPosition, center.position, lerpProg + 0.1f);
+
+        if(lerpProg >= 0.9f) { Destroy(gameObject); }
+    }
+
+    void ComboArrow()
+    {
+        Vector3 newScale = new Vector3(1.2f, 1.2f, 1.2f);
+        transform.localScale = newScale;
+        //arrow.color = p1;
     }
 }
