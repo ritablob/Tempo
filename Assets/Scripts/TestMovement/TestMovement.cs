@@ -87,7 +87,7 @@ public class TestMovement : MonoBehaviour
     //Combat-related functions
     public void StartAttack() { isAttacking = true; canMove = false; validInputTimer = 0; maxValidInputTime = 0; }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
-    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; maxValidInputTime = 0; }
+    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; validInputTimer = 0; maxValidInputTime = 0; }
     public void CanMove() { canMove = true; }
     public void LaunchPlayer(float units)
     {
@@ -113,23 +113,32 @@ public class TestMovement : MonoBehaviour
 
         if (playerControls.Player.Attack_1.IsPressed())
         {
+            if (rhythmKeeper.timingKey == "Miss" && maxValidInputTime == 0) { anim.SetTrigger("Missed"); return; }
+
             anim.SetTrigger("Light");
+
             if(maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
-            else if(beatPerc < rhythmKeeper.normalLeewayPerc) { lastBeat = "Miss"; }
+            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
             else if(beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
             else if(beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
-            else { lastBeat = "Miss"; }
+            else { lastBeat = "Early"; }
+
             text.text = $"{beatPerc} / {lastBeat}";
             return;
         }
         else if (playerControls.Player.Attack_2.IsPressed())
         {
+            if (rhythmKeeper.timingKey == "Miss" && maxValidInputTime == 0) { anim.SetTrigger("Missed"); return; }
+
             anim.SetTrigger("Heavy");
+
             if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
-            else if (beatPerc < rhythmKeeper.normalLeewayPerc) { lastBeat = "Miss"; }
+
+            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
             else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
             else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
-            else { lastBeat = "Miss"; }
+            else { lastBeat = "Early"; }
+
             text.text = $"{beatPerc} / {lastBeat}";
             return;
         }

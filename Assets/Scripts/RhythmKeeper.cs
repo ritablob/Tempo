@@ -78,7 +78,12 @@ public class RhythmKeeper : MonoBehaviour
 
     public void SpawnArrow(float lerpSpeed)
     {
-        //Convert time in seconds to lerp speed
+        if(timingKey != "Perfect") //If not perfect, add an offset to the next combo beat to make it fit the new timing
+        {
+            float beatPerc = validInputTimer / maxValidInputTime * 100;
+            float offset = (perfectLeewayPerc - beatPerc) / 100;
+            lerpSpeed += offset; 
+        } 
 
         //Spawn two arrows
         GameObject arrow = Instantiate(arrowToSpawn, spawnLeft.position, spawnLeft.rotation);
