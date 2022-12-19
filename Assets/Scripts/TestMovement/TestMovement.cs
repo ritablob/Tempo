@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PlayerInput))]
@@ -11,6 +10,7 @@ public class TestMovement : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] GameObject attackIndicator;
     [SerializeField] GameObject parryShield;
+    [SerializeField] Animator anim;
 
     [Header("Character Stats")]
     [SerializeField] int HP = 10;
@@ -18,15 +18,12 @@ public class TestMovement : MonoBehaviour
     [SerializeField] CharacterController charController;
     [SerializeField] float controllerDeadZone = 0.1f;
 
-    [Header("Attacks")]
-    [SerializeField] Animator anim;
-
     [Header("Other")]
     [SerializeField] RhythmKeeper rhythmKeeper;
     [SerializeField] Transform rayCastStart;
-    [SerializeField] TextMeshProUGUI text;
 
     public string lastBeat;
+    public int playerID;
 
     private Vector2 movement;
     private Vector3 aim;
@@ -44,6 +41,7 @@ public class TestMovement : MonoBehaviour
     {
         playerControls = new PlayerControls();
         charController = GetComponent<CharacterController>();
+        rhythmKeeper = GameObject.FindObjectOfType<RhythmKeeper>();
     }
 
     private void OnEnable()
@@ -56,31 +54,41 @@ public class TestMovement : MonoBehaviour
         playerControls.Disable();
     }
 
+    public void OnMove(InputAction.CallbackContext ctx)
+    {
+        movement = ctx.ReadValue<Vector2>();
+        HandleMovement();
+    }
+    public void OnLook(InputAction.CallbackContext ctx)
+    {
+        aim = ctx.ReadValue<Vector2>();
+        HandleRotation();
+    }
+
     void Update()
     {
-        if(hitStunRemaining > 0)
+        if (hitStunRemaining > 0)
         {
             hitStunRemaining -= Time.deltaTime;
             return;
         }
 
-        if(maxValidInputTime != 0) { validInputTimer += Time.deltaTime; }
-
+        if (maxValidInputTime != 0) { validInputTimer += Time.deltaTime; }
         if (!isAttacking && !isParrying)
         {
-            HandleInput();
-            HandleAction();
-            HandleMovement();
-            HandleRotation();
+            //HandleInput();
+            //HandleMovement();
+            //HandleRotation();
+            //HandleAction();
+        }
+        else if (canMove)
+        {
+            //HandleInput();
+            //HandleMovement();
         }
         else if (isLaunching)
         {
             charController.Move(aim * Time.deltaTime);
-        }
-        else if (canMove)
-        {
-            HandleInput();
-            HandleMovement();
         }
     }
 
@@ -107,7 +115,7 @@ public class TestMovement : MonoBehaviour
     }
 
 
-    void HandleAction()
+    public void HandleAction()
     {
         float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
 
@@ -117,13 +125,12 @@ public class TestMovement : MonoBehaviour
 
             anim.SetTrigger("Light");
 
-            if(maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
+            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
             if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
-            else if(beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
-            else if(beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
+            else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
+            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
             else { lastBeat = "Early"; }
 
-            text.text = $"{beatPerc} / {lastBeat}";
             return;
         }
         else if (playerControls.Player.Attack_2.IsPressed())
@@ -139,7 +146,6 @@ public class TestMovement : MonoBehaviour
             else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
             else { lastBeat = "Early"; }
 
-            text.text = $"{beatPerc} / {lastBeat}";
             return;
         }
         else if (playerControls.Player.Parry.WasPressedThisFrame() && canParry)
@@ -151,32 +157,32 @@ public class TestMovement : MonoBehaviour
         }
     }
 
-    void HandleInput()
+    public void HandleInput()
     {
         movement = playerControls.Player.Move.ReadValue<Vector2>();
         aim = playerControls.Player.Look.ReadValue<Vector2>();
     }
 
-    void HandleMovement()
+    public void HandleMovement()
     {
         Vector3 move = new Vector3(movement.x, 0, movement.y);
         charController.Move(move * Time.deltaTime * speed);
     }
 
-    void HandleRotation()
+    public void HandleRotation()
     {
         if (Mathf.Abs(aim.x) > controllerDeadZone || Mathf.Abs(aim.y) > controllerDeadZone)
         {
             Vector3 playerDirection = Vector3.right * aim.x + Vector3.forward * aim.y;
 
-            if(playerDirection.sqrMagnitude > 0.0f)
+            if (playerDirection.sqrMagnitude > 0.0f)
             {
                 Quaternion newRotation = Quaternion.LookRotation(-playerDirection, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
             }
         }
-        else if(movement.x != 0 && movement.y != 0 && aim.x < controllerDeadZone && aim.y < controllerDeadZone)
-        { 
+        else if (movement.x != 0 && movement.y != 0 && aim.x < controllerDeadZone && aim.y < controllerDeadZone)
+        {
             Vector3 newMovement = new Vector3(movement.x, 0, movement.y);
             Quaternion newRotation = Quaternion.LookRotation(-newMovement, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);

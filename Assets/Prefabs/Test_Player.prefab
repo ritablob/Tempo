@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 2cffa33a693245645a58c1bd13a221ee, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -477,12 +477,12 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8821734678660833218}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+        m_TargetAssemblyTypeName: TestMovement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -491,7 +491,19 @@ MonoBehaviour:
     m_ActionId: ae099681-666f-4cf4-9eaa-973e34bb8b7b
     m_ActionName: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8821734678660833218}
+        m_TargetAssemblyTypeName: TestMovement, Assembly-CSharp
+        m_MethodName: OnLook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6941d5ad-3da3-4b1f-9955-0958994a992a
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
@@ -550,7 +562,11 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0e6e02c0-1c08-4e2a-a35d-59075a0d64e0
     m_ActionName: UI/TrackedDeviceOrientation
-  m_NeverAutoSwitchControlSchemes: 0
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c45fb9dc-583d-49fb-bf80-3880d2dd33c8
+    m_ActionName: Player/Join[/XInputControllerWindows/start,/Keyboard/enter]
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -569,16 +585,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackIndicator: {fileID: 8821734677890407838}
   parryShield: {fileID: 8821734678471933210}
-  perfectGlint: {fileID: 0}
+  anim: {fileID: 8821734678660833223}
   HP: 10
   speed: 8
   charController: {fileID: 0}
   controllerDeadZone: 0.5
-  anim: {fileID: 8821734678660833223}
   rhythmKeeper: {fileID: 0}
   rayCastStart: {fileID: 2839919429092438255}
-  text: {fileID: 0}
   lastBeat: 
+  playerID: 0
 --- !u!95 &8821734678660833223
 Animator:
   serializedVersion: 4
