@@ -7,22 +7,26 @@ public class Damage : MonoBehaviour
     [SerializeField] PlayerMovement playerRef;
 
     [Header("Hit Values")]
-    [SerializeField] int damage;
+    [SerializeField] float damage;
     [SerializeField] float hitStun;
     [SerializeField] float knockBack;
+    [SerializeField] bool dealtDamage;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && !gameObject.transform.IsChildOf(other.transform))
+        if(other.tag == "Player" && !gameObject.transform.IsChildOf(other.transform) && !dealtDamage)
         {
+            dealtDamage = true;
+
             switch (playerRef.lastBeat)
             {
                 case "Early":
                     other.GetComponent<PlayerMovement>().TakeDamage(damage, hitStun, knockBack, gameObject.transform);
-                    
+                    Debug.Log("Early");
                     break;
                 case "Perfect":
-                    int newDamage = Mathf.RoundToInt(damage * 1.5f);
+                    float newDamage = damage * 1.5f;
+                    Debug.Log("Perfect");
                     other.GetComponent<PlayerMovement>().TakeDamage(newDamage, hitStun, knockBack, gameObject.transform);
                     break;
             }

@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Animator anim;
 
     [Header("Character Stats")]
-    public int HP = 10;
+    public float HP = 10;
     [SerializeField] float speed = 1f;
     [SerializeField] CharacterController charController;
     [SerializeField] float controllerDeadZone = 0.1f;
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Other")]
     [SerializeField] RhythmKeeper rhythmKeeper;
 
-    [HideInInspector]
+    //[HideInInspector]
     public string lastBeat;
 
     private Vector2 movement;
@@ -76,11 +76,11 @@ public class PlayerMovement : MonoBehaviour
 
             anim.SetTrigger("Light");
 
-            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
+            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; return; } //Get timing of input
             if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
             else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
             else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
-            else { lastBeat = "Early"; }
+            else { anim.SetTrigger("Missed"); }
 
             return;
         }
@@ -95,11 +95,11 @@ public class PlayerMovement : MonoBehaviour
 
             anim.SetTrigger("Heavy");
 
-            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
+            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; return; } //Get timing of input
             if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
             else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
             else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
-            else { lastBeat = "Early"; }
+            else { anim.SetTrigger("Missed"); }
 
             return;
         }
@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
     //Combat-related functions
     public void StartAttack() { isAttacking = true; canMove = false; validInputTimer = 0; maxValidInputTime = 0; }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
-    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; validInputTimer = 0; maxValidInputTime = 0; aim = new Vector2(0, 0); }
+    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; validInputTimer = 0; maxValidInputTime = 0; aim = new Vector2(0, 0); anim.StopPlayback(); }
     public void CanMove() { canMove = true; }
     public void LaunchPlayer(float units)
     {
@@ -230,7 +230,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     //Taking Damage
-    public void TakeDamage(int damage, float hitStun, float knockBack, Transform hitBoxTransform)
+    public void TakeDamage(float damage, float hitStun, float knockBack, Transform hitBoxTransform)
     {
         if (!isParrying)
         {
