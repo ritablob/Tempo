@@ -36,6 +36,7 @@ public class TestMovement : MonoBehaviour
     private bool isLaunching;
     private bool isParrying;
     private bool canParry = true;
+    public bool isGamepad;
 
     void Awake()
     {
@@ -57,12 +58,63 @@ public class TestMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movement = ctx.ReadValue<Vector2>();
-        HandleMovement();
     }
     public void OnLook(InputAction.CallbackContext ctx)
     {
         aim = ctx.ReadValue<Vector2>();
-        HandleRotation();
+    }
+    public void OnDeviceChange(PlayerInput pi)
+    {
+        isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
+    }
+    public void Attack1(InputAction.CallbackContext ctx)
+    {
+        float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
+
+        if (ctx.performed)
+        {
+            if (rhythmKeeper.timingKey == "Miss" && maxValidInputTime == 0) { anim.SetTrigger("Missed"); return; }
+
+            anim.SetTrigger("Light");
+
+            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
+            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
+            else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
+            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
+            else { lastBeat = "Early"; }
+
+            return;
+        }
+    }
+    public void Attack2(InputAction.CallbackContext ctx)
+    {
+        float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
+
+        if (ctx.performed)
+        {
+            if (rhythmKeeper.timingKey == "Miss" && maxValidInputTime == 0) { anim.SetTrigger("Missed"); return; }
+
+            anim.SetTrigger("Heavy");
+
+            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
+
+            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
+            else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
+            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
+            else { lastBeat = "Early"; }
+
+            return;
+        }
+    }
+    public void Parry(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && canParry)
+        {
+            isParrying = true;
+            StartCoroutine(parryTiming());
+            parryShield.SetActive(true);
+            canParry = false;
+        }
     }
 
     void Update()
@@ -74,17 +126,15 @@ public class TestMovement : MonoBehaviour
         }
 
         if (maxValidInputTime != 0) { validInputTimer += Time.deltaTime; }
+
         if (!isAttacking && !isParrying)
         {
-            //HandleInput();
-            //HandleMovement();
-            //HandleRotation();
-            //HandleAction();
+            HandleMovement();
+            HandleRotation();
         }
         else if (canMove)
         {
-            //HandleInput();
-            //HandleMovement();
+            HandleMovement();
         }
         else if (isLaunching)
         {
@@ -95,7 +145,7 @@ public class TestMovement : MonoBehaviour
     //Combat-related functions
     public void StartAttack() { isAttacking = true; canMove = false; validInputTimer = 0; maxValidInputTime = 0; }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
-    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; validInputTimer = 0; maxValidInputTime = 0; }
+    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; validInputTimer = 0; maxValidInputTime = 0; aim = new Vector2(0, 0); }
     public void CanMove() { canMove = true; }
     public void LaunchPlayer(float units)
     {
@@ -114,55 +164,6 @@ public class TestMovement : MonoBehaviour
         rhythmKeeper.SpawnArrow(maxValidInputTime);
     }
 
-
-    public void HandleAction()
-    {
-        float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
-
-        if (playerControls.Player.Attack_1.IsPressed())
-        {
-            if (rhythmKeeper.timingKey == "Miss" && maxValidInputTime == 0) { anim.SetTrigger("Missed"); return; }
-
-            anim.SetTrigger("Light");
-
-            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
-            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
-            else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
-            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
-            else { lastBeat = "Early"; }
-
-            return;
-        }
-        else if (playerControls.Player.Attack_2.IsPressed())
-        {
-            if (rhythmKeeper.timingKey == "Miss" && maxValidInputTime == 0) { anim.SetTrigger("Missed"); return; }
-
-            anim.SetTrigger("Heavy");
-
-            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; } //Get timing of input
-
-            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
-            else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
-            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
-            else { lastBeat = "Early"; }
-
-            return;
-        }
-        else if (playerControls.Player.Parry.WasPressedThisFrame() && canParry)
-        {
-            isParrying = true;
-            StartCoroutine(parryTiming());
-            parryShield.SetActive(true);
-            canParry = false;
-        }
-    }
-
-    public void HandleInput()
-    {
-        movement = playerControls.Player.Move.ReadValue<Vector2>();
-        aim = playerControls.Player.Look.ReadValue<Vector2>();
-    }
-
     public void HandleMovement()
     {
         Vector3 move = new Vector3(movement.x, 0, movement.y);
@@ -171,21 +172,36 @@ public class TestMovement : MonoBehaviour
 
     public void HandleRotation()
     {
-        if (Mathf.Abs(aim.x) > controllerDeadZone || Mathf.Abs(aim.y) > controllerDeadZone)
+        if (isGamepad)
         {
-            Vector3 playerDirection = Vector3.right * aim.x + Vector3.forward * aim.y;
-
-            if (playerDirection.sqrMagnitude > 0.0f)
+            if (Mathf.Abs(aim.x) > controllerDeadZone || Mathf.Abs(aim.y) > controllerDeadZone)
             {
-                Quaternion newRotation = Quaternion.LookRotation(-playerDirection, Vector3.up);
+                Vector3 playerDirection = Vector3.right * aim.x + Vector3.forward * aim.y;
+
+                if (playerDirection.sqrMagnitude > 0.0f)
+                {
+                    Quaternion newRotation = Quaternion.LookRotation(-playerDirection, Vector3.up);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
+                }
+            }
+            else if (movement.x != 0 || movement.y != 0)
+            {
+                Vector3 newMovement = new Vector3(movement.x, 0, movement.y);
+                Quaternion newRotation = Quaternion.LookRotation(-newMovement, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
             }
         }
-        else if (movement.x != 0 && movement.y != 0 && aim.x < controllerDeadZone && aim.y < controllerDeadZone)
+        else
         {
-            Vector3 newMovement = new Vector3(movement.x, 0, movement.y);
-            Quaternion newRotation = Quaternion.LookRotation(-newMovement, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
+            foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                if(obj != this.gameObject) 
+                {
+                    Vector3 away = gameObject.transform.position - obj.transform.position;
+                    Quaternion awayRot = Quaternion.LookRotation(away);
+                    transform.rotation = awayRot;
+                }
+            }
         }
     }
 
@@ -204,6 +220,7 @@ public class TestMovement : MonoBehaviour
             launchDir.y = 0;
             launchDir.Normalize();
             charController.Move(launchDir * knockBack);
+            aim = new Vector2(0, 0);
         }
     }
 

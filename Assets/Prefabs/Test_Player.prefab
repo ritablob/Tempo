@@ -472,7 +472,19 @@ MonoBehaviour:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8821734678660833218}
+        m_TargetAssemblyTypeName: TestMovement, Assembly-CSharp
+        m_MethodName: OnDeviceChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -511,15 +523,51 @@ MonoBehaviour:
     m_ActionId: 6714722d-8040-457f-9175-44b914033bee
     m_ActionName: Player/Dodge[/XInputControllerWindows/rightTrigger,/Mouse/leftButton,/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8821734678660833218}
+        m_TargetAssemblyTypeName: TestMovement, Assembly-CSharp
+        m_MethodName: Attack1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f6226873-9f79-45c8-9229-d267f6a215a6
     m_ActionName: Player/Attack_1[/XInputControllerWindows/buttonNorth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8821734678660833218}
+        m_TargetAssemblyTypeName: TestMovement, Assembly-CSharp
+        m_MethodName: Attack2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 77c322fd-e483-495e-8883-379667e1b6a5
     m_ActionName: Player/Attack_2[/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8821734678660833218}
+        m_TargetAssemblyTypeName: TestMovement, Assembly-CSharp
+        m_MethodName: Parry
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: aa742b02-31d0-4ebb-9ca0-9dd25a105432
     m_ActionName: Player/Parry[/XInputControllerWindows/leftTrigger,/XInputControllerWindows/leftShoulder]
   - m_PersistentCalls:

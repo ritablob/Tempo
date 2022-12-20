@@ -6443,7 +6443,7 @@ GameObject:
   - component: {fileID: 1527162047}
   - component: {fileID: 1527162046}
   m_Layer: 0
-  m_Name: Shit-ass-fucker
+  m_Name: PlayerInputManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
