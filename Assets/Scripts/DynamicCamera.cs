@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DynamicCamera : MonoBehaviour
 {
     [Header("Objects to Follow")]
     [SerializeField] Transform player1;
     [SerializeField] Transform player2;
+    [SerializeField] TextMeshProUGUI textP1, textP2;
 
     [Header("Camera Parameters")]
     [SerializeField] float startBlendDistance;
@@ -56,7 +58,8 @@ public class DynamicCamera : MonoBehaviour
 
             gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, Quaternion.LookRotation(lookDirection), cameraRotateSpeed * Time.deltaTime);
 
-            Debug.DrawLine(player1.position, player2.position);
+            textP1.text = $"P1 - {player1.GetComponent<PlayerMovement>().HP}hp";
+            textP2.text = $"P2 - {player2.GetComponent<PlayerMovement>().HP}hp";
         }
     }
 
