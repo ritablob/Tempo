@@ -10,6 +10,7 @@ public class TestMovement : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] GameObject attackIndicator;
     [SerializeField] GameObject parryShield;
+    [SerializeField] GameObject shadowClone;
     [SerializeField] Animator anim;
 
     [Header("Character Stats")]
@@ -34,6 +35,7 @@ public class TestMovement : MonoBehaviour
     private bool isAttacking; //Prevents the player from acting during an attack
     private bool canMove;
     private bool isLaunching;
+    private bool isDodging;
     private bool isParrying;
     private bool canParry = true;
     public bool isGamepad;
@@ -66,6 +68,15 @@ public class TestMovement : MonoBehaviour
     public void OnDeviceChange(PlayerInput pi)
     {
         isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
+    }
+
+    public void Dodge(InputAction.CallbackContext ctx)
+    {
+        if (!isDodging)
+        {
+            anim.SetTrigger("Dodge");
+            //isDodging = true;
+        }
     }
     public void Attack1(InputAction.CallbackContext ctx)
     {
@@ -222,6 +233,13 @@ public class TestMovement : MonoBehaviour
             charController.Move(launchDir * knockBack);
             aim = new Vector2(0, 0);
         }
+    }
+
+    public void SpawnShadowClone(float _fadeSpeed)
+    {
+        GameObject _shadowClone = Instantiate(shadowClone, transform.position, transform.rotation);
+        _shadowClone.AddComponent<FadeObject>();
+        _shadowClone.GetComponent<FadeObject>().fadeSpeed = _fadeSpeed;
     }
 
 

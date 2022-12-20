@@ -519,7 +519,19 @@ MonoBehaviour:
     m_ActionId: 6941d5ad-3da3-4b1f-9955-0958994a992a
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8821734678660833218}
+        m_TargetAssemblyTypeName: TestMovement, Assembly-CSharp
+        m_MethodName: Dodge
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6714722d-8040-457f-9175-44b914033bee
     m_ActionName: Player/Dodge[/XInputControllerWindows/rightTrigger,/Mouse/leftButton,/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
@@ -633,6 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackIndicator: {fileID: 8821734677890407838}
   parryShield: {fileID: 8821734678471933210}
+  shadowClone: {fileID: 5009415602612110765, guid: ab7da914e6d48274d85f8fb8f78dc26a, type: 3}
   anim: {fileID: 8821734678660833223}
   HP: 10
   speed: 8
@@ -642,6 +655,7 @@ MonoBehaviour:
   rayCastStart: {fileID: 2839919429092438255}
   lastBeat: 
   playerID: 0
+  isGamepad: 0
 --- !u!95 &8821734678660833223
 Animator:
   serializedVersion: 4
