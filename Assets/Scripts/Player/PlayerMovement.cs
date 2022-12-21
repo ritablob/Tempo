@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
     //Combat-related functions
     public void StartAttack() { isAttacking = true; canMove = false; validInputTimer = 0; maxValidInputTime = 0; }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
-    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; validInputTimer = 0; maxValidInputTime = 0; aim = new Vector2(0, 0); anim.StopPlayback(); }
+    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; validInputTimer = 0; maxValidInputTime = 0; anim.StopPlayback(); }
     public void CanMove() { canMove = true; }
     public void LaunchPlayer(float units)
     {
