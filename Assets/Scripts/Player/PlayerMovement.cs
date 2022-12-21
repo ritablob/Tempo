@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackLight(InputAction.CallbackContext ctx)
     {
-        if (!isAttacking && !isParrying) //If not attacking, do attack logic
+        if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
         {
             float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
 
@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
     {
-        if (!isAttacking && !isParrying) //If not attacking, do attack logic
+        if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
         {
             float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
 
@@ -187,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L)) { HP = 100; }
         if (hitStunRemaining > 0) //If in hitstun, skip rest of update
         {
             hitStunRemaining -= Time.deltaTime;
