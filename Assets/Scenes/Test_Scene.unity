@@ -6678,6 +6678,7 @@ GameObject:
   - component: {fileID: 1537968303}
   - component: {fileID: 1537968302}
   - component: {fileID: 1537968301}
+  - component: {fileID: 1537968306}
   m_Layer: 0
   m_Name: --- Dynamic Camera
   m_TagString: Untagged
@@ -6731,7 +6732,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -6807,6 +6808,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 23.935, y: 66.304, z: 0}
+--- !u!114 &1537968306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537968300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 9b5ea61031c7fc54790d9e5d4c91f875, type: 2}
 --- !u!1 &1575445827
 GameObject:
   m_ObjectHideFlags: 0
