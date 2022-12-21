@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject parryShield;
     [SerializeField] GameObject shadowClone;
     [SerializeField] Animator anim;
+    [SerializeField] Material normal, hit;
 
     [Header("Character Stats")]
     public float HP = 10;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] RhythmKeeper rhythmKeeper;
+    [SerializeField] AudioSource sfx;
 
     //[HideInInspector]
     public string lastBeat;
@@ -34,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
     private Camera sceneCamera;
     private bool isGamepad; 
     private bool isAttacking; //Prevents the player from acting during an attack
-    private bool isDodging;
     private bool canMove;
     private bool isLaunching;
     private bool isParrying;
@@ -68,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackLight(InputAction.CallbackContext ctx)
     {
-        if (!isAttacking && !isDodging) //If not attacking, do attack logic
+        if (!isAttacking && !isParrying) //If not attacking, do attack logic
         {
             float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
 
@@ -79,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
             if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; return; } //Get timing of input
             if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
             else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
-            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
+            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; sfx.Play(); }
             else { anim.SetTrigger("Missed"); }
 
             return;
@@ -87,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
     {
-        if (!isAttacking && !isDodging) //If not attacking, do attack logic
+        if (!isAttacking && !isParrying) //If not attacking, do attack logic
         {
             float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
 
@@ -98,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
             if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; return; } //Get timing of input
             if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
             else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
-            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; }
+            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; sfx.Play(); }
             else { anim.SetTrigger("Missed"); }
 
             return;
@@ -109,8 +110,8 @@ public class PlayerMovement : MonoBehaviour
         if (canDodge && ctx.performed)
         {
             anim.SetTrigger("Dodge");
-            EndAttack();
             StartCoroutine(dodgeTiming());
+            EndAttack();
         }
     }
     public void Parry(InputAction.CallbackContext ctx)
@@ -134,8 +135,30 @@ public class PlayerMovement : MonoBehaviour
     //Combat-related functions
     public void StartAttack() { isAttacking = true; canMove = false; validInputTimer = 0; maxValidInputTime = 0; }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
-    public void EndAttack() { isAttacking = false; isLaunching = false; canMove = false; validInputTimer = 0; maxValidInputTime = 0; anim.StopPlayback(); }
+    public void EndAttack() 
+    { 
+        isAttacking = false; 
+        isLaunching = false; 
+        canMove = false; 
+        validInputTimer = 0; 
+        maxValidInputTime = 0; 
+        anim.ResetTrigger("Light"); 
+        anim.ResetTrigger("Heavy"); 
+        aim.x = 0; aim.y = 0; 
+    }
     public void CanMove() { canMove = true; }
+    public void SnapToOpponent()
+    {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (obj != this.gameObject)
+            {
+                Vector3 away = gameObject.transform.position - obj.transform.position;
+                Quaternion awayRot = Quaternion.LookRotation(away);
+                transform.rotation = awayRot;
+            }
+        }
+    }
     public void LaunchPlayer(float units)
     {
         isLaunching = transform;
@@ -151,6 +174,7 @@ public class PlayerMovement : MonoBehaviour
         maxValidInputTime = rhythmKeeper.beatLength / 2; //Get time of eighth notes
         maxValidInputTime *= numOfBeats; //Set maxValidInputTime to x eighth notes
         rhythmKeeper.SpawnArrow(maxValidInputTime);
+        Debug.Log("Called");
     }
     public void SpawnShadowClone(float _fadeSpeed)
     {
@@ -166,8 +190,10 @@ public class PlayerMovement : MonoBehaviour
         if (hitStunRemaining > 0) //If in hitstun, skip rest of update
         {
             hitStunRemaining -= Time.deltaTime;
+            GetComponent<Renderer>().material = hit;
             return;
         }
+        else if (GetComponent<Renderer>().material != normal) { GetComponent<Renderer>().material = normal; }
 
         if (maxValidInputTime != 0) { validInputTimer += Time.deltaTime; } //Add time to the combo counter
 
@@ -261,13 +287,8 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator dodgeTiming()
     {
-        speed *= 4;
         canDodge = false;
-        isDodging = true;
-        yield return new WaitForSeconds(0.33f);
-        speed /= 4;
-        isDodging = false;
-        yield return new WaitForSeconds(1.17f);
+        yield return new WaitForSeconds(1.5f);
         canDodge = true;
     }
 }

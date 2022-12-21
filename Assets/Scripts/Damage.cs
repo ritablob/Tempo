@@ -10,7 +10,13 @@ public class Damage : MonoBehaviour
     [SerializeField] float damage;
     [SerializeField] float hitStun;
     [SerializeField] float knockBack;
-    [SerializeField] bool dealtDamage;
+
+    private bool dealtDamage;
+
+    private void OnEnable()
+    {
+        dealtDamage = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
