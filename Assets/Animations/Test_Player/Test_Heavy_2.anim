@@ -1063,7 +1063,21 @@ AnimationClip:
     floatParameter: 20
     intParameter: 4
     messageOptions: 0
-  - time: 0.5833333
+  - time: 0.2
+    functionName: LaunchPlayer
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 20
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.41666666
+    functionName: EndLaunch
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.75
     functionName: CanCancelAttack
     data: 
     objectReferenceParameter: {fileID: 0}

@@ -140,11 +140,14 @@ public class TestMovement : MonoBehaviour
 
         if (!isAttacking && !isParrying)
         {
+            HandleInput();
             HandleMovement();
             HandleRotation();
+            HandleAction();
         }
         else if (canMove)
         {
+            HandleInput();
             HandleMovement();
         }
         else if (isLaunching)
@@ -175,6 +178,8 @@ public class TestMovement : MonoBehaviour
         rhythmKeeper.SpawnArrow(maxValidInputTime);
     }
 
+    void HandleInput() { }
+    void HandleAction() { }
     public void HandleMovement()
     {
         Vector3 move = new Vector3(movement.x, 0, movement.y);

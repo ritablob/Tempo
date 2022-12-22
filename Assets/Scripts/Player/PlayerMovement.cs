@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 movement;
     private Vector3 aim;
+    private Vector3 launchDirection;
     private float hitStunRemaining = 0;
     private float maxValidInputTime; //Used to see if the next move falls under the correct combo timing
     private float validInputTimer; //Tracks the elapsed time of the current beat
@@ -162,8 +163,7 @@ public class PlayerMovement : MonoBehaviour
     public void LaunchPlayer(float units)
     {
         isLaunching = transform;
-        Vector3 launchDirection = gameObject.transform.forward * -units;
-        aim = launchDirection;
+        launchDirection = gameObject.transform.forward * -units;
     }
     public void EndLaunch()
     {
@@ -202,15 +202,14 @@ public class PlayerMovement : MonoBehaviour
         {
             HandleMovement();
             HandleRotation();
-            return;
         }
-        else if (canMove) //If the player is attacking but can move during the attack, do a movement checl
+        else if (canMove && isAttacking) //If the player is attacking but can move during the attack, do a movement checl
         {
             HandleMovement();
         }
         else if (isLaunching) //If the player needs to be launched, move them
         {
-            charController.Move(aim * Time.deltaTime);
+            charController.Move(launchDirection * Time.deltaTime);
         }
     }
 
