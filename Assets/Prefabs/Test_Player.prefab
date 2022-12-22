@@ -1214,10 +1214,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parryShield: {fileID: 8821734678471933210}
-  shadowClone: {fileID: 459952649051730960, guid: ab7da914e6d48274d85f8fb8f78dc26a, type: 3}
+  shadowClone: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
+  shadowCloneSpawn: {fileID: 7803301422372101559}
   anim: {fileID: 8821734678660833223}
-  normal: {fileID: 2100000, guid: ed0e103d66f0ab94da355401ee2d0604, type: 2}
+  normal: {fileID: 2100000, guid: 757ce8e66c93dd2409509d63e31b3de8, type: 2}
   hit: {fileID: 2100000, guid: 504cf9e84c125dd4abb0c4bca2e83231, type: 2}
+  modelRenderer: {fileID: 8935644757734319832}
+  matIndex: 1
   HP: 100
   speed: 8
   charController: {fileID: 8821734678660833220}
@@ -1404,6 +1407,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5e6936b42e047da4cb4913dad5b87545, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -7848952084472943420, guid: 5e6936b42e047da4cb4913dad5b87545, type: 3}
     - target: {fileID: 919132149155446097, guid: 5e6936b42e047da4cb4913dad5b87545, type: 3}
       propertyPath: m_Name
       value: poeldancer_test
@@ -1413,5 +1420,10 @@ PrefabInstance:
 --- !u!4 &7803301422372101559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5e6936b42e047da4cb4913dad5b87545, type: 3}
+  m_PrefabInstance: {fileID: 7764307126154394204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8935644757734319832 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 5e6936b42e047da4cb4913dad5b87545, type: 3}
   m_PrefabInstance: {fileID: 7764307126154394204}
   m_PrefabAsset: {fileID: 0}

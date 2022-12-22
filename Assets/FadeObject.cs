@@ -18,7 +18,10 @@ public class FadeObject : MonoBehaviour
         {
             Color objectColor = mat.color;
 
-            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, objectColor.a - (fadeSpeed * Time.deltaTime));
+            float constant = fadeSpeed * Time.deltaTime;
+            objectColor = new Color(objectColor.r - constant, objectColor.g - constant, objectColor.b + constant, objectColor.a - constant);
+
+            if(objectColor.a <= 0) { Destroy(gameObject); }
 
             mat.color = objectColor;
         }

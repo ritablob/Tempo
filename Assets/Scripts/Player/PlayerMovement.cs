@@ -11,8 +11,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] GameObject parryShield;
     [SerializeField] GameObject shadowClone;
+    [SerializeField] Transform shadowCloneSpawn;
     [SerializeField] Animator anim;
     [SerializeField] Material normal, hit;
+    [SerializeField] Renderer modelRenderer;
+    [SerializeField] int matIndex;
 
     [Header("Character Stats")]
     public float HP = 10;
@@ -178,23 +181,30 @@ public class PlayerMovement : MonoBehaviour
     }
     public void SpawnShadowClone(float _fadeSpeed)
     {
-        GameObject _shadowClone = Instantiate(shadowClone, transform.position, transform.rotation);
+        GameObject _shadowClone = Instantiate(shadowClone, shadowCloneSpawn.position, shadowCloneSpawn.rotation);
         _shadowClone.AddComponent<FadeObject>();
         _shadowClone.GetComponent<FadeObject>().fadeSpeed = _fadeSpeed;
     }
     //Combat-related functions end
 
 
+
+    //Update Function
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L)) { HP = 100; }
+        if (Input.GetKeyDown(KeyCode.L)) { HP = 100; } //Debug code
         if (hitStunRemaining > 0) //If in hitstun, skip rest of update
         {
             hitStunRemaining -= Time.deltaTime;
             GetComponent<Renderer>().material = hit;
             return;
         }
-        else if (GetComponent<Renderer>().material != normal) { GetComponent<Renderer>().material = normal; }
+        else if (GetComponent<Renderer>().material != normal) 
+        {
+            Material[] mats = modelRenderer.materials;
+            mats[matIndex] = normal;
+            modelRenderer.materials = mats;
+        }
 
         if (maxValidInputTime != 0) { validInputTimer += Time.deltaTime; } //Add time to the combo counter
 
@@ -212,6 +222,9 @@ public class PlayerMovement : MonoBehaviour
             charController.Move(launchDirection * Time.deltaTime);
         }
     }
+    //End of update
+
+
 
     void HandleMovement()
     {
@@ -265,6 +278,9 @@ public class PlayerMovement : MonoBehaviour
             isAttacking = false;
             hitStunRemaining = hitStun;
             HP -= damage;
+            Material[] mats = modelRenderer.materials;
+            mats[matIndex] = hit;
+            modelRenderer.materials = mats;
             Vector3 launchDir = gameObject.transform.position - hitBoxTransform.position;
             launchDir.y = 0;
             launchDir.Normalize();
@@ -288,6 +304,9 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator dodgeTiming()
     {
         canDodge = false;
+        speed *= 3;
+        yield return new WaitForSeconds(0.33f);
+        speed /= 3;
         yield return new WaitForSeconds(1.5f);
         canDodge = true;
     }
