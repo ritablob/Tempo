@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parryShield: {fileID: 8821734678471933210}
   shadowClone: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-  shadowCloneSpawn: {fileID: 0}
+  shadowCloneSpawn: {fileID: 867577173125963052}
   anim: {fileID: 8821734678660833223}
   normal: {fileID: 2100000, guid: 4508aa184e8c95749b8e1ba0577d056c, type: 2}
   hit: {fileID: 2100000, guid: 504cf9e84c125dd4abb0c4bca2e83231, type: 2}

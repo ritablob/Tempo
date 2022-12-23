@@ -27,8 +27,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] RhythmKeeper rhythmKeeper;
     [SerializeField] AudioSource sfx;
 
-    //[HideInInspector]
+    [HideInInspector]
     public string lastBeat;
+    public PlayerControls playerControls;
 
     private Vector2 movement;
     private Vector3 aim;
@@ -36,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     private float hitStunRemaining = 0;
     private float maxValidInputTime; //Used to see if the next move falls under the correct combo timing
     private float validInputTimer; //Tracks the elapsed time of the current beat
-    private PlayerControls playerControls;
     private Camera sceneCamera;
     private bool isGamepad; 
     private bool isAttacking; //Prevents the player from acting during an attack
