@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8616232032638043798}
   - component: {fileID: 8616232032638043797}
+  - component: {fileID: 4022481278088892811}
   m_Layer: 0
   m_Name: PlayerConfiguration
   m_TagString: Untagged
@@ -45,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 2cffa33a693245645a58c1bd13a221ee, type: 3}
-  m_NotificationBehavior: 3
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -56,9 +57,116 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ae099681-666f-4cf4-9eaa-973e34bb8b7b
+    m_ActionName: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6941d5ad-3da3-4b1f-9955-0958994a992a
+    m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta,/Pen/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6714722d-8040-457f-9175-44b914033bee
+    m_ActionName: Player/Dodge[/XInputControllerWindows/rightTrigger,/XInputControllerWindows/rightShoulder,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f6226873-9f79-45c8-9229-d267f6a215a6
+    m_ActionName: Player/Attack_1[/XInputControllerWindows/buttonNorth,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 77c322fd-e483-495e-8883-379667e1b6a5
+    m_ActionName: Player/Attack_2[/XInputControllerWindows/buttonWest,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aa742b02-31d0-4ebb-9ca0-9dd25a105432
+    m_ActionName: Player/Parry[/XInputControllerWindows/leftTrigger,/Keyboard/leftShift,/XInputControllerWindows/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c45fb9dc-583d-49fb-bf80-3880d2dd33c8
+    m_ActionName: Player/Join[/XInputControllerWindows/start,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4022481278088892811}
+        m_TargetAssemblyTypeName: Player_Menu, Assembly-CSharp
+        m_MethodName: Ready
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2403eeb0-156d-4c9f-be17-6369d1dd6c94
+    m_ActionName: UI/Submit[/XInputControllerWindows/buttonEast,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4022481278088892811}
+        m_TargetAssemblyTypeName: Player_Menu, Assembly-CSharp
+        m_MethodName: Left
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b19cef6e-7054-4836-9dc9-1f991032f5da
+    m_ActionName: UI/Left[/Keyboard/a,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/dpad/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4022481278088892811}
+        m_TargetAssemblyTypeName: Player_Menu, Assembly-CSharp
+        m_MethodName: Right
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4d821b48-aa2b-4ce8-a1dc-665b65e274b8
+    m_ActionName: UI/Right[/Keyboard/d,/XInputControllerWindows/dpad/right,/XInputControllerWindows/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4022481278088892811}
+        m_TargetAssemblyTypeName: Player_Menu, Assembly-CSharp
+        m_MethodName: UnReady
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f824b047-3824-49e1-9ab0-c7c1dcde53a1
+    m_ActionName: UI/Back[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4022481278088892811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616232032638043796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa7e84a74367684b9a802f41d3056b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  playerIcon: {fileID: 0}
+  preview: {fileID: 0}

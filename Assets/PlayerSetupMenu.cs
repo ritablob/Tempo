@@ -17,11 +17,6 @@ public class PlayerSetupMenu : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        
-    }
-
     public void SetCharacter(GameObject playerCharacter)
     {
         PlayerConfigManager.Instance.SetPlayerCharacter(playerIndex, playerCharacter);
