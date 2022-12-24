@@ -7,10 +7,11 @@ using UnityEngine.UI;
 
 public class PlayerConfigManager : MonoBehaviour
 {
-    private List<PlayerConfig> playerConfigs;
+    [SerializeField] private List<PlayerConfig> playerConfigs;
 
     [SerializeField] private int maxPlayers = 2;
     [SerializeField] GameObject menuSelectIconP1, menuSelectIconP2;
+    [SerializeField] private GameObject[] playerCharacers;
     [SerializeField] Image p1CharPreview, p2CharPreview;
     [SerializeField] Animator anim;
 
@@ -30,9 +31,13 @@ public class PlayerConfigManager : MonoBehaviour
         }
     }
 
-    public void SetPlayerCharacter(int index, GameObject playerObject)
+    public List<PlayerConfig> GetPlayerConfigs()
     {
-        playerConfigs[index].playerObject = playerObject;
+        return playerConfigs;
+    }
+    public void SetPlayerCharacter(int selectedPlayer, int index)
+    {
+        playerConfigs[index].playerObject = playerCharacers[selectedPlayer];
     }
     public void ReadyPlayer(int index)
     {

@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(PlayerInput))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Visuals")]
@@ -29,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector]
     public string lastBeat;
-    public PlayerControls playerControls;
 
     private Vector2 movement;
     private Vector3 aim;
@@ -38,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private float maxValidInputTime; //Used to see if the next move falls under the correct combo timing
     private float validInputTimer; //Tracks the elapsed time of the current beat
     private Camera sceneCamera;
-    private bool isGamepad; 
+    public bool isGamepad; 
     private bool isAttacking; //Prevents the player from acting during an attack
     private bool canMove;
     private bool isLaunching;
@@ -52,17 +50,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        playerControls = new PlayerControls();
         charController = GetComponent<CharacterController>();
         rhythmKeeper = GameObject.FindObjectOfType<RhythmKeeper>();
         sceneCamera = GameObject.FindObjectOfType<Camera>();
     }
 
     //Input system related functions
-    public void OnDeviceChange(PlayerInput pi)
-    {
-        isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
-    }
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movement = ctx.ReadValue<Vector2>();
@@ -124,14 +117,6 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(parryTiming());
         }
-    }
-    private void OnEnable()
-    {
-        playerControls.Enable();
-    }
-    private void OnDisable()
-    {
-        playerControls.Disable();
     }
     //Input related functions end
 
@@ -230,7 +215,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 move = Quaternion.Euler(0, sceneCamera.transform.eulerAngles.y, 0) * new Vector3(movement.x, 0, movement.y);
         move.y = -2;
-        charController.Move(move  * Time.deltaTime * speed);
+        charController.Move(move * Time.deltaTime *speed);
+        Debug.Log(move);
     }
 
     void HandleRotation()

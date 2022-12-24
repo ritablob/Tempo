@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player_Menu : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class Player_Menu : MonoBehaviour
 
     public void Ready()
     {
-        Debug.Log("sdsd");
         if(!isReady) 
         { 
             isReady = true; 
@@ -49,6 +49,7 @@ public class Player_Menu : MonoBehaviour
         {
             ignoreInputTime = Time.time + ignoreInputTime;
             charSelected--;
+            manager.SetPlayerCharacter(charSelected, playerID);
             playerIcon.transform.parent = manager.charSelectPositions[charSelected].transform;
             preview.sprite = manager.charSelectPositions[charSelected].GetComponent<Image>().sprite;
             preview.color = manager.charSelectPositions[charSelected].GetComponent<Image>().color;
@@ -60,6 +61,7 @@ public class Player_Menu : MonoBehaviour
         {
             ignoreInputTime = Time.time + ignoreInputTime;
             charSelected++;
+            manager.SetPlayerCharacter(charSelected, playerID);
             playerIcon.transform.parent = manager.charSelectPositions[charSelected].transform;
             preview.sprite = manager.charSelectPositions[charSelected].GetComponent<Image>().sprite;
             preview.color = manager.charSelectPositions[charSelected].GetComponent<Image>().color;

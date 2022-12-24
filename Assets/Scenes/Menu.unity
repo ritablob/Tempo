@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 184210571}
   - component: {fileID: 184210570}
   - component: {fileID: 184210569}
+  - component: {fileID: 184210572}
   m_Layer: 5
   m_Name: Transition
   m_TagString: Untagged
@@ -325,6 +326,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184210567}
   m_CullTransparentMesh: 1
+--- !u!114 &184210572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184210567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32181df27f547747ae66f4a98746d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &572313545
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa759b726ff88d4e88914b9e573972b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIndex: 0
   titleText: {fileID: 1249050702}
 --- !u!1 &906243790
 GameObject:
@@ -1025,6 +1039,11 @@ MonoBehaviour:
   maxPlayers: 2
   menuSelectIconP1: {fileID: 1361574561857505272, guid: 2e263a39e0f83344895c755d99d79987, type: 3}
   menuSelectIconP2: {fileID: 1513689151658010669, guid: ab7a50000108d3842998738af1c08a8f, type: 3}
+  playerCharacers:
+  - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
+  - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
+  - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
+  - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
   p1CharPreview: {fileID: 1522061860}
   p2CharPreview: {fileID: 572313547}
   anim: {fileID: 184210569}
