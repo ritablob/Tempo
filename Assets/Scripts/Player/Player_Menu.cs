@@ -21,6 +21,7 @@ public class Player_Menu : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<PlayerConfigManager>();
         manager.SpawnPlayerIcon(this);
         ignoreInputTime = Time.time + ignoreInputTime;
+        manager.SetPlayerCharacter(charSelected, playerID);
         preview.sprite = manager.charSelectPositions[charSelected].GetComponent<Image>().sprite;
         preview.color = manager.charSelectPositions[charSelected].GetComponent<Image>().color;
     }

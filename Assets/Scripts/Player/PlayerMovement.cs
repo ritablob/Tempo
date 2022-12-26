@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     private float maxValidInputTime; //Used to see if the next move falls under the correct combo timing
     private float validInputTimer; //Tracks the elapsed time of the current beat
     private Camera sceneCamera;
+    private PlayerControls playerControls;
+    private PlayerInput playerInput;
     public bool isGamepad; 
     private bool isAttacking; //Prevents the player from acting during an attack
     private bool canMove;
@@ -50,12 +52,27 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        playerControls = new PlayerControls();
+        playerInput = GetComponent<PlayerInput>();
         charController = GetComponent<CharacterController>();
         rhythmKeeper = GameObject.FindObjectOfType<RhythmKeeper>();
         sceneCamera = GameObject.FindObjectOfType<Camera>();
     }
 
+    private void OnEnable()
+    {
+        playerControls.Enable();
+    }
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
+
     //Input system related functions
+    public void ControllerType(PlayerInput _playerInput)
+    {
+        //isGamepad = _playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
+    }
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movement = ctx.ReadValue<Vector2>();
@@ -216,7 +233,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = Quaternion.Euler(0, sceneCamera.transform.eulerAngles.y, 0) * new Vector3(movement.x, 0, movement.y);
         move.y = -2;
         charController.Move(move * Time.deltaTime *speed);
-        Debug.Log(move);
     }
 
     void HandleRotation()

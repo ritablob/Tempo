@@ -89,9 +89,11 @@ public class PlayerConfig
     {
         playerIndex = pi.playerIndex;
         input = pi;
+        device = input.user.pairedDevices[0];
     }
 
     public PlayerInput input { get; set; }
+    public InputDevice device { get; set; }
     public int playerIndex { get; set; }
     public bool isReady { get; set; }
     public GameObject playerObject { get; set; }
