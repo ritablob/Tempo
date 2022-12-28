@@ -7,6 +7,7 @@ public class InitializeLevel : MonoBehaviour
 {
     [SerializeField] private Transform[] playerSpawns;
     [SerializeField] private GameObject playerToSpawn;
+    [SerializeField] DynamicCamera camScript;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class InitializeLevel : MonoBehaviour
             player.gameObject.GetComponent<CharacterController>().enabled = false;
             player.transform.position = playerSpawns[i].position;
             player.gameObject.GetComponent<CharacterController>().enabled = true;
+            camScript.AddPlayer();
         }
     }
 

@@ -1343,6 +1343,7 @@ MonoBehaviour:
   - {fileID: 1204175597}
   - {fileID: 1240907973}
   playerToSpawn: {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
+  camScript: {fileID: 1537968301}
 --- !u!1 &162542621
 GameObject:
   m_ObjectHideFlags: 0

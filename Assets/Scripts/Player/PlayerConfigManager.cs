@@ -14,6 +14,7 @@ public class PlayerConfigManager : MonoBehaviour
     [SerializeField] GameObject menuSelectIconP1, menuSelectIconP2;
     [SerializeField] private GameObject[] playerCharacers;
     [SerializeField] private GameObject[] playerCharacterIcons;
+    [SerializeField] private string[] characterNames;
     public GameObject[] charSelectPositions;
 
     [SerializeField] Image p1CharPreview, p2CharPreview;
@@ -50,7 +51,9 @@ public class PlayerConfigManager : MonoBehaviour
         if (playerConfigs.Count == maxPlayers && playerConfigs.All(p => p.isReady == true))
         {
             loadScript.char1 = playerCharacterIcons[playerConfigs[0].objectIndex];
+            loadScript.text1 = characterNames[playerConfigs[0].objectIndex];
             loadScript.char2 = playerCharacterIcons[playerConfigs[1].objectIndex];
+            loadScript.text2 = characterNames[playerConfigs[1].objectIndex];
             anim.SetTrigger("Ready");
         }
         
