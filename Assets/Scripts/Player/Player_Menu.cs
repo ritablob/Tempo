@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class Player_Menu : MonoBehaviour
@@ -14,6 +15,7 @@ public class Player_Menu : MonoBehaviour
     public PlayerConfigManager manager;
     public GameObject playerIcon;
     public Image preview;
+    public TextMeshProUGUI charName;
     public int playerID;
 
     private void Awake()
@@ -23,7 +25,8 @@ public class Player_Menu : MonoBehaviour
         ignoreInputTime = Time.time + ignoreInputTime;
         manager.SetPlayerCharacter(charSelected, playerID);
         preview.sprite = manager.charSelectPositions[charSelected].GetComponent<Image>().sprite;
-        preview.color = manager.charSelectPositions[charSelected].GetComponent<Image>().color;
+        preview.color = new Color(255, 255, 255, 255);
+        charName.text = manager.charSelectPositions[charSelected].name;
     }
 
     public void Ready()
@@ -51,9 +54,9 @@ public class Player_Menu : MonoBehaviour
             ignoreInputTime = Time.time + ignoreInputTime;
             charSelected--;
             manager.SetPlayerCharacter(charSelected, playerID);
-            playerIcon.transform.parent = manager.charSelectPositions[charSelected].transform;
+            playerIcon.transform.SetParent(manager.charSelectPositions[charSelected].transform);
             preview.sprite = manager.charSelectPositions[charSelected].GetComponent<Image>().sprite;
-            preview.color = manager.charSelectPositions[charSelected].GetComponent<Image>().color;
+            charName.text = manager.charSelectPositions[charSelected].name;
         }
     }
     public void Right(InputAction.CallbackContext ctx)
@@ -63,9 +66,9 @@ public class Player_Menu : MonoBehaviour
             ignoreInputTime = Time.time + ignoreInputTime;
             charSelected++;
             manager.SetPlayerCharacter(charSelected, playerID);
-            playerIcon.transform.parent = manager.charSelectPositions[charSelected].transform;
+            playerIcon.transform.SetParent(manager.charSelectPositions[charSelected].transform);
             preview.sprite = manager.charSelectPositions[charSelected].GetComponent<Image>().sprite;
-            preview.color = manager.charSelectPositions[charSelected].GetComponent<Image>().color;
+            charName.text = manager.charSelectPositions[charSelected].name;
         }
     }
 }

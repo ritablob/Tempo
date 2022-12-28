@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 using UnityEngine.UI;
 
 public class PlayerConfigManager : MonoBehaviour
@@ -12,10 +13,13 @@ public class PlayerConfigManager : MonoBehaviour
     [SerializeField] private int maxPlayers = 2;
     [SerializeField] GameObject menuSelectIconP1, menuSelectIconP2;
     [SerializeField] private GameObject[] playerCharacers;
-    [SerializeField] Image p1CharPreview, p2CharPreview;
-    [SerializeField] Animator anim;
-
+    [SerializeField] private GameObject[] playerCharacterIcons;
     public GameObject[] charSelectPositions;
+
+    [SerializeField] Image p1CharPreview, p2CharPreview;
+    [SerializeField] TextMeshProUGUI p1Title, p2Title;
+    [SerializeField] Animator anim;
+    [SerializeField] LoadLevel loadScript;
 
     private GameObject icon1, icon2;
 
@@ -38,12 +42,15 @@ public class PlayerConfigManager : MonoBehaviour
     public void SetPlayerCharacter(int selectedPlayer, int index)
     {
         playerConfigs[index].playerObject = playerCharacers[selectedPlayer];
+        playerConfigs[index].objectIndex = selectedPlayer;
     }
     public void ReadyPlayer(int index)
     {
         playerConfigs[index].isReady = true;
         if (playerConfigs.Count == maxPlayers && playerConfigs.All(p => p.isReady == true))
         {
+            loadScript.char1 = playerCharacterIcons[playerConfigs[0].objectIndex];
+            loadScript.char2 = playerCharacterIcons[playerConfigs[1].objectIndex];
             anim.SetTrigger("Ready");
         }
         
@@ -67,17 +74,19 @@ public class PlayerConfigManager : MonoBehaviour
         if(playerConfigs.Count == 1)
         {
             icon1 = Instantiate(menuSelectIconP1, charSelectPositions[0].transform.position, charSelectPositions[0].transform.rotation);
-            icon1.transform.parent = charSelectPositions[0].transform;
+            icon1.transform.SetParent(charSelectPositions[0].transform);
             _playerMenuObject.playerIcon = icon1;
             _playerMenuObject.preview = p1CharPreview;
+            _playerMenuObject.charName = p1Title;
             _playerMenuObject.playerID = 0;
         }
         else
         {
             icon2 = Instantiate(menuSelectIconP2, charSelectPositions[0].transform.position, charSelectPositions[0].transform.rotation);
-            icon2.transform.parent = charSelectPositions[0].transform;
+            icon2.transform.SetParent(charSelectPositions[0].transform);
             _playerMenuObject.playerIcon = icon2;
             _playerMenuObject.preview = p2CharPreview;
+            _playerMenuObject.charName = p2Title;
             _playerMenuObject.playerID = 1;
         }
     }
@@ -97,4 +106,5 @@ public class PlayerConfig
     public int playerIndex { get; set; }
     public bool isReady { get; set; }
     public GameObject playerObject { get; set; }
+    public int objectIndex { get; set; }
 }
