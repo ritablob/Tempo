@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     //Input system related functions
     public void ControllerType(PlayerInput _playerInput)
     {
-        //isGamepad = _playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
+        isGamepad = _playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
     }
     public void OnMove(InputAction.CallbackContext ctx)
     {
@@ -213,6 +213,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isAttacking && !isParrying) //If the player is not attacking or parrying, run general movement check
         {
             HandleMovement();
+            Debug.Log(movement.x + "   " + movement.y);
             HandleRotation();
         }
         else if (canMove && isAttacking) //If the player is attacking but can move during the attack, do a movement checl
