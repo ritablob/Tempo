@@ -179,7 +179,6 @@ public class PlayerMovement : MonoBehaviour
         maxValidInputTime = rhythmKeeper.beatLength / 2; //Get time of eighth notes
         maxValidInputTime *= numOfBeats; //Set maxValidInputTime to x eighth notes
         rhythmKeeper.SpawnArrow(maxValidInputTime);
-        Debug.Log("Called");
     }
     public void SpawnShadowClone(float _fadeSpeed)
     {
@@ -213,7 +212,6 @@ public class PlayerMovement : MonoBehaviour
         if (!isAttacking && !isParrying) //If the player is not attacking or parrying, run general movement check
         {
             HandleMovement();
-            Debug.Log(movement.x + "   " + movement.y);
             HandleRotation();
         }
         else if (canMove && isAttacking) //If the player is attacking but can move during the attack, do a movement checl

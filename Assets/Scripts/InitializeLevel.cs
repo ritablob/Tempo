@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class InitializeLevel : MonoBehaviour
 {
     [SerializeField] private Transform[] playerSpawns;
-    [SerializeField] private GameObject playerToSpawn;
     [SerializeField] DynamicCamera camScript;
 
     void Start()
