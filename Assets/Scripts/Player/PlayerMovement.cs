@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Parry(InputAction.CallbackContext ctx)
     {
-        if (canParry)
+        if (canParry && ctx.performed && !isAttacking)
         {
             StartCoroutine(parryTiming());
         }
@@ -197,6 +197,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L)) { HP = 100; } //Debug code
+        if(HP < 0) { Destroy(gameObject); }
 
         if (hitStunRemaining > 0) //If in hitstun, skip rest of update
         {
@@ -294,6 +295,11 @@ public class PlayerMovement : MonoBehaviour
             launchDir.y = 0;
             launchDir.Normalize(); //knockback determines intensity of launch
             launchDirection = launchDir * knockBack;
+        }
+        else
+        {
+            canParry = true;
+            parryShield.SetActive(false);
         }
     }
 

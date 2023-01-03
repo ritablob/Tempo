@@ -1335,7 +1335,7 @@ GameObject:
   - component: {fileID: 1342427057}
   - component: {fileID: 1342427059}
   m_Layer: 5
-  m_Name: Brawler
+  m_Name: Gunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1518,7 +1518,7 @@ MonoBehaviour:
   - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
   - {fileID: 6952883153280969238, guid: 829b1c7212283734cb10a4ebe70f2586, type: 3}
   - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
-  - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
+  - {fileID: 6952883153280969238, guid: 829b1c7212283734cb10a4ebe70f2586, type: 3}
   playerCharacterIcons:
   - {fileID: 1185823714947805660, guid: 7e9289c2fccc1e346a3cb254983a1d95, type: 3}
   - {fileID: 8194934910831405078, guid: 65044781283a5da41b964ca7c04fae6d, type: 3}
@@ -1763,7 +1763,7 @@ GameObject:
   - component: {fileID: 1858297712}
   - component: {fileID: 1858297714}
   m_Layer: 5
-  m_Name: Gunner
+  m_Name: Brawler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

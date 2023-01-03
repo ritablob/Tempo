@@ -289,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 8830829037360620669}
   damage: 2
-  hitStun: 0.6
+  hitStun: 0.75
   knockBack: 10
 --- !u!1 &2319686159918317698
 GameObject:
@@ -572,7 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 8830829037360620669}
   damage: 4
-  hitStun: 0.75
+  hitStun: 1
   knockBack: 20
 --- !u!1 &5830861089878915074
 GameObject:
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 8830829037360620669}
   damage: 5
-  hitStun: 0.75
+  hitStun: 1
   knockBack: 20
 --- !u!1 &5837307878015408158
 GameObject:
@@ -803,7 +803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 8830829037360620669}
   damage: 2
-  hitStun: 0.66
+  hitStun: 1
   knockBack: 15
 --- !u!1 &8821734678078370521
 GameObject:

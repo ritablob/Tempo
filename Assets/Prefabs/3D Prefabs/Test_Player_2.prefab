@@ -802,7 +802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 6961978608145093025}
   damage: 9
-  hitStun: 1.6
+  hitStun: 1.25
   knockBack: 35
 --- !u!1 &6952883153280969238
 GameObject:
@@ -1161,8 +1161,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6952883153503422662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2828, y: 1.2828, z: 1.2827998}
+  m_LocalPosition: {x: 0, y: 0.327, z: 0}
+  m_LocalScale: {x: 1.2828, y: 2.198719, z: 1.2827998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6952883153280969235}
@@ -1386,7 +1386,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.67214435, y: 1.0771866, z: 3.080269}
+  m_Size: {x: 1.3, y: 2, z: 3.5}
   m_Center: {x: -0.011530917, y: -0.23249406, z: -1.0401348}
 --- !u!114 &6753968342810723798
 MonoBehaviour:
