@@ -228,7 +228,7 @@ MonoBehaviour:
   playerRef: {fileID: 8830829037360620669}
   damage: 1
   hitStun: 0.2
-  knockBack: 0.5
+  knockBack: 10
 --- !u!1 &2301106748903741481
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
   playerRef: {fileID: 8830829037360620669}
   damage: 2
   hitStun: 0.6
-  knockBack: 1
+  knockBack: 10
 --- !u!1 &2319686159918317698
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +352,7 @@ MonoBehaviour:
   playerRef: {fileID: 8830829037360620669}
   damage: 2
   hitStun: 0.75
-  knockBack: 3
+  knockBack: 30
 --- !u!1 &2655981231607663153
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
   playerRef: {fileID: 8830829037360620669}
   damage: 3
   hitStun: 0.75
-  knockBack: 2.75
+  knockBack: 17
 --- !u!1 &3892703046737486450
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +573,7 @@ MonoBehaviour:
   playerRef: {fileID: 8830829037360620669}
   damage: 4
   hitStun: 0.75
-  knockBack: 4
+  knockBack: 20
 --- !u!1 &5830861089878915074
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +635,7 @@ MonoBehaviour:
   playerRef: {fileID: 8830829037360620669}
   damage: 5
   hitStun: 0.75
-  knockBack: 2
+  knockBack: 20
 --- !u!1 &5837307878015408158
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +685,7 @@ MonoBehaviour:
   playerRef: {fileID: 8830829037360620669}
   damage: 5
   hitStun: 1
-  knockBack: 2
+  knockBack: 30
 --- !u!65 &3128345316301695424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -804,7 +804,7 @@ MonoBehaviour:
   playerRef: {fileID: 8830829037360620669}
   damage: 2
   hitStun: 0.66
-  knockBack: 1
+  knockBack: 15
 --- !u!1 &8821734678078370521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,12 +1295,13 @@ MonoBehaviour:
   modelRenderer: {fileID: 8732886701092536408}
   matIndex: 0
   HP: 100
-  speed: 7
+  speed: 8
   charController: {fileID: 8821734678660833220}
   controllerDeadZone: 0.1
   rhythmKeeper: {fileID: 0}
   sfx: {fileID: 3556801480223625629}
   lastBeat: 
+  playerIndex: 0
   isGamepad: 0
 --- !u!1 &8821734678690435693
 GameObject:

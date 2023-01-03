@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class RhythmKeeper : MonoBehaviour
 {
@@ -76,13 +77,18 @@ public class RhythmKeeper : MonoBehaviour
         StartCoroutine(WaitForBeat((beatLength * 4) / beatsPerBar));
     }
 
-    public void SpawnArrow(float lerpSpeed)
+    public void SpawnArrow(float lerpSpeed, int playerIndex)
     {
+        Color newTint = new Color(0, 0, 255);
+        if(playerIndex == 1) { newTint = new Color(255, 0, 0); }
+
         //Spawn two arrows
         GameObject arrow = Instantiate(arrowToSpawn, spawnLeft.position, spawnLeft.rotation);
         arrow.GetComponent<ArrowMover>().Initialize(leftArrow, lerpSpeed, false);
+        arrow.GetComponent<Image>().color = newTint;
 
         arrow = Instantiate(arrowToSpawn, spawnRight.position, spawnRight.rotation);
         arrow.GetComponent<ArrowMover>().Initialize(rightArrow, lerpSpeed, false);
+        arrow.GetComponent<Image>().color = newTint;
     }
 }

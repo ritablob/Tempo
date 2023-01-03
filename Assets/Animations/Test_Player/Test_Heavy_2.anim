@@ -1061,7 +1061,7 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 20
-    intParameter: 4
+    intParameter: 3
     messageOptions: 0
   - time: 0.2
     functionName: LaunchPlayer

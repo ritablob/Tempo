@@ -1515,7 +1515,7 @@ MonoBehaviour:
   menuSelectIconP1: {fileID: 1361574561857505272, guid: 2e263a39e0f83344895c755d99d79987, type: 3}
   menuSelectIconP2: {fileID: 1513689151658010669, guid: ab7a50000108d3842998738af1c08a8f, type: 3}
   playerCharacers:
-  - {fileID: 6952883153280969238, guid: 829b1c7212283734cb10a4ebe70f2586, type: 3}
+  - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
   - {fileID: 6952883153280969238, guid: 829b1c7212283734cb10a4ebe70f2586, type: 3}
   - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
   - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}

@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector]
     public string lastBeat;
+    public int playerIndex;
 
     private Vector2 movement;
     private Vector3 aim;
@@ -38,7 +39,8 @@ public class PlayerMovement : MonoBehaviour
     private Camera sceneCamera;
     private PlayerControls playerControls;
     private PlayerInput playerInput;
-    public bool isGamepad; 
+    public bool isGamepad;
+    private bool takeKnockBack;
     private bool isAttacking; //Prevents the player from acting during an attack
     private bool canMove;
     private bool isLaunching;
@@ -47,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canDodge = true;
 
     private Vector3 offset;
-    private bool hasOffset = false;
+    //private bool hasOffset = false;
     //private bool isNotMoving; // we update the rotation of movement when the character has stopped moving
 
     void Awake()
@@ -178,7 +180,8 @@ public class PlayerMovement : MonoBehaviour
     {
         maxValidInputTime = rhythmKeeper.beatLength / 2; //Get time of eighth notes
         maxValidInputTime *= numOfBeats; //Set maxValidInputTime to x eighth notes
-        rhythmKeeper.SpawnArrow(maxValidInputTime);
+        validInputTimer = 0;
+        rhythmKeeper.SpawnArrow(maxValidInputTime, playerIndex);
     }
     public void SpawnShadowClone(float _fadeSpeed)
     {
@@ -194,10 +197,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L)) { HP = 100; } //Debug code
+
         if (hitStunRemaining > 0) //If in hitstun, skip rest of update
         {
             hitStunRemaining -= Time.deltaTime;
             GetComponent<Renderer>().material = hit;
+            if (takeKnockBack) { charController.Move(launchDirection * Time.deltaTime); } //Launch player over time if they are being knocked back
             return;
         }
         else if (GetComponent<Renderer>().material != normal) 
@@ -275,6 +280,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isParrying)
         {
+            takeKnockBack = true;
+            StartCoroutine(TakeKnockBack());
             anim.Play("Base Layer.Test_Idle");
             isLaunching = false;
             isAttacking = false;
@@ -285,8 +292,8 @@ public class PlayerMovement : MonoBehaviour
             modelRenderer.materials = mats;
             Vector3 launchDir = gameObject.transform.position - hitBoxTransform.position;
             launchDir.y = 0;
-            launchDir.Normalize();
-            charController.Move(launchDir * knockBack);
+            launchDir.Normalize(); //knockback determines intensity of launch
+            launchDirection = launchDir * knockBack;
         }
     }
 
@@ -311,5 +318,12 @@ public class PlayerMovement : MonoBehaviour
         speed /= 3;
         yield return new WaitForSeconds(1.5f);
         canDodge = true;
+    }
+    IEnumerator TakeKnockBack()
+    {
+        isLaunching = true;
+        yield return new WaitForSeconds(0.1f);
+        takeKnockBack = false;
+        isLaunching = false;
     }
 }

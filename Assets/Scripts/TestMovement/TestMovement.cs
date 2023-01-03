@@ -175,7 +175,7 @@ public class TestMovement : MonoBehaviour
     {
         maxValidInputTime = rhythmKeeper.beatLength / 2; //Get time of eighth notes
         maxValidInputTime *= numOfBeats; //Set maxValidInputTime to x eighth notes
-        rhythmKeeper.SpawnArrow(maxValidInputTime);
+        rhythmKeeper.SpawnArrow(maxValidInputTime, 0);
     }
 
     void HandleInput() { }

@@ -17,6 +17,7 @@ public class InitializeLevel : MonoBehaviour
             var player = PlayerInput.Instantiate(playerConfigs[i].playerObject, i, controlScheme: playerConfigs[i].input.currentControlScheme, -1, pairWithDevice: playerConfigs[i].device);
             player.gameObject.GetComponent<CharacterController>().enabled = false;
             player.transform.position = playerSpawns[i].position;
+            player.GetComponent<PlayerMovement>().playerIndex = i;
             player.gameObject.GetComponent<CharacterController>().enabled = true;
             camScript.AddPlayer();
         }
