@@ -1540,7 +1540,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34014
+  m_Name: pb_Mesh60806
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2552,7 +2552,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.07760769, g: 0.079152316, b: 0.1509434, a: 1}
+  m_Color: {r: 0.24318263, g: 0.3437225, b: 0.4339623, a: 1}
   m_Intensity: 390.5
   m_Range: 16
   m_SpotAngle: 51.94658
@@ -2945,7 +2945,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33940
+  m_Name: pb_Mesh60734
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5716,7 +5716,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33444
+  m_Name: pb_Mesh60204
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6044,7 +6044,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34028
+  m_Name: pb_Mesh60820
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6937,7 +6937,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.07760769, g: 0.079152316, b: 0.1509434, a: 1}
+  m_Color: {r: 0.24318263, g: 0.3437225, b: 0.4339623, a: 1}
   m_Intensity: 390.5
   m_Range: 16
   m_SpotAngle: 51.94658
@@ -8378,7 +8378,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.07760769, g: 0.079152316, b: 0.1509434, a: 1}
+  m_Color: {r: 0.24318263, g: 0.3437225, b: 0.4339623, a: 1}
   m_Intensity: 390.5
   m_Range: 16
   m_SpotAngle: 51.94658
@@ -11038,7 +11038,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34290
+  m_Name: pb_Mesh61098
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13197,6 +13197,10 @@ PrefabInstance:
     - target: {fileID: 6726990926387014044, guid: d7d567eb68730bc4d9aba84affe460f0, type: 3}
       propertyPath: m_Name
       value: Spot Light (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726990926387014044, guid: d7d567eb68730bc4d9aba84affe460f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7502384000416745705, guid: d7d567eb68730bc4d9aba84affe460f0, type: 3}
       propertyPath: m_Enabled
@@ -21385,6 +21389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spot Light
       objectReference: {fileID: 0}
+    - target: {fileID: 6726990926387014044, guid: d7d567eb68730bc4d9aba84affe460f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7502384000416745705, guid: d7d567eb68730bc4d9aba84affe460f0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -22486,7 +22494,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.07760769, g: 0.079152316, b: 0.1509434, a: 1}
+  m_Color: {r: 0.24318263, g: 0.3437225, b: 0.4339623, a: 1}
   m_Intensity: 390.5
   m_Range: 16
   m_SpotAngle: 51.94658

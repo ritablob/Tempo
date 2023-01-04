@@ -35,7 +35,8 @@ public class RhythmKeeper : MonoBehaviour
         //Calculate beat rate
         beatLength = 60 / beatsPerMinute;
         maxValidInputTime = (beatLength * 4) / beatsPerBar;
-        StartCoroutine(StartDelay((beatLength * 4) / beatsPerBar));
+        //StartCoroutine(StartDelay(beatLength * 4));
+        StartCoroutine(WaitForBeat((beatLength * 4) / beatsPerBar));
     }
 
     private void Update()
@@ -65,7 +66,7 @@ public class RhythmKeeper : MonoBehaviour
     IEnumerator WaitForBeat(float waitTime)
     {
         yield return new WaitForSeconds(waitTime); //After waiting, spawn and set up 2 arrow objects
-
+        Debug.Log("jsbnjdfb");
         validInputTimer = 0;
 
         GameObject arrow = Instantiate(arrowToSpawn, spawnLeft.position, spawnLeft.rotation);

@@ -1295,7 +1295,7 @@ MonoBehaviour:
   modelRenderer: {fileID: 8732886701092536408}
   matIndex: 0
   HP: 100
-  speed: 8
+  speed: 7
   charController: {fileID: 8821734678660833220}
   controllerDeadZone: 0.1
   rhythmKeeper: {fileID: 0}
