@@ -13,7 +13,7 @@ public class DynamicCamera : MonoBehaviour
     [Header("Camera Parameters")]
     [SerializeField] float cameraRotateSpeed;
     [SerializeField] float cameraSpeed;
-    [SerializeField] float distanceFromPlayers;
+    [SerializeField] float distanceModifier;
     [SerializeField] Vector2 horizontalBounds;
     [SerializeField] Vector2 forwardBounds;
 
@@ -23,14 +23,21 @@ public class DynamicCamera : MonoBehaviour
         {
             //Calculate & set the close position for the camera
             Vector3 centerPoint = GetCenterPoint();
+            float distance = GetDistance();
             Vector3 normalizedCenterpoint = new Vector3(centerPoint.x, transform.position.y, centerPoint.z);
 
             //Restrict cam movement to specified bounds
             normalizedCenterpoint.x = Mathf.Clamp(normalizedCenterpoint.x, horizontalBounds.x, horizontalBounds.y);
-            normalizedCenterpoint.z = Mathf.Clamp(centerPoint.z - distanceFromPlayers, forwardBounds.x, forwardBounds.y);
+            normalizedCenterpoint.z = Mathf.Clamp(centerPoint.z - distanceModifier, forwardBounds.x, forwardBounds.y);
+
+
+            if(distance >= distanceModifier)
+            {
+                float distanceGrowthModifier = (distance - distanceModifier) / 1.75f;
+                normalizedCenterpoint.z = Mathf.Clamp(centerPoint.z - (distanceModifier + distanceGrowthModifier), forwardBounds.x, forwardBounds.y);
+            }
 
             transform.position = Vector3.Lerp(transform.position, normalizedCenterpoint, cameraSpeed * Time.deltaTime);
-
 
             Vector3 lookDirection = centerPoint - gameObject.transform.position;
             lookDirection.Normalize();
@@ -45,8 +52,13 @@ public class DynamicCamera : MonoBehaviour
     Vector3 GetCenterPoint()
     {
         Vector3 center = Vector3.Lerp(player1.position, player2.position, 0.5f);
-
         return center;
+    }
+
+    float GetDistance()
+    {
+        float dist = Vector3.Distance(player1.position, player2.position);
+        return dist;
     }
 
     public void AddPlayer()

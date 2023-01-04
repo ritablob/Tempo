@@ -319,9 +319,9 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator dodgeTiming()
     {
         canDodge = false;
-        speed *= 3;
-        yield return new WaitForSeconds(0.33f);
-        speed /= 3;
+        speed *= 4.5f;
+        yield return new WaitForSeconds(0.2f);
+        speed /= 4.5f;
         yield return new WaitForSeconds(1.5f);
         canDodge = true;
     }
