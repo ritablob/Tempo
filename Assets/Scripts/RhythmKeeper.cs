@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class RhythmKeeper : MonoBehaviour
 {
     [Header("Music Related Vars")]
+    [SerializeField] AudioSource music;
     [SerializeField] float beatsPerMinute;
     [SerializeField] float beatsPerBar;
 
@@ -35,8 +36,7 @@ public class RhythmKeeper : MonoBehaviour
         //Calculate beat rate
         beatLength = 60 / beatsPerMinute;
         maxValidInputTime = (beatLength * 4) / beatsPerBar;
-        //StartCoroutine(StartDelay(beatLength * 4));
-        StartCoroutine(WaitForBeat((beatLength * 4) / beatsPerBar));
+        StartCoroutine(StartDelay(beatLength * 4 / beatsPerBar));
     }
 
     private void Update() //Calculate the current timing key
@@ -59,6 +59,7 @@ public class RhythmKeeper : MonoBehaviour
     IEnumerator StartDelay(float waitTime) //Delay music & beats for a bit
     {
         yield return new WaitForSeconds(waitTime * 4);
+        music.Play();
         StartCoroutine(WaitForBeat(waitTime));
         validInputTimer = 0;
     }
