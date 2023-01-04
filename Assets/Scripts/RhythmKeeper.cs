@@ -39,7 +39,7 @@ public class RhythmKeeper : MonoBehaviour
         StartCoroutine(WaitForBeat((beatLength * 4) / beatsPerBar));
     }
 
-    private void Update()
+    private void Update() //Calculate the current timing key
     {
         validInputTimer += Time.deltaTime; //Count elapsed time in beat
         float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
@@ -56,14 +56,14 @@ public class RhythmKeeper : MonoBehaviour
         txt.text = timingKey;
     }
 
-    IEnumerator StartDelay(float waitTime)
+    IEnumerator StartDelay(float waitTime) //Delay music & beats for a bit
     {
         yield return new WaitForSeconds(waitTime * 4);
         StartCoroutine(WaitForBeat(waitTime));
         validInputTimer = 0;
     }
 
-    IEnumerator WaitForBeat(float waitTime)
+    IEnumerator WaitForBeat(float waitTime) //Wait for a bit before spawning the next 2 arrows
     {
         yield return new WaitForSeconds(waitTime); //After waiting, spawn and set up 2 arrow objects
         Debug.Log("jsbnjdfb");
@@ -78,7 +78,7 @@ public class RhythmKeeper : MonoBehaviour
         StartCoroutine(WaitForBeat((beatLength * 4) / beatsPerBar));
     }
 
-    public void SpawnArrow(float lerpSpeed, int playerIndex)
+    public void SpawnArrow(float lerpSpeed, int playerIndex) //Spawns an arrow. Called from player movement
     {
         Color newTint = new Color(0, 0, 255);
         if(playerIndex == 1) { newTint = new Color(255, 0, 0); }
