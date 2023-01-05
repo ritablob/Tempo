@@ -29,13 +29,13 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public string lastBeat;
     public int playerIndex;
+    public float maxValidInputTime; //Used to see if the next move falls under the correct combo timing
+    public float validInputTimer; //Tracks the elapsed time of the current beat
 
     private Vector2 movement;
     private Vector3 aim;
     private Vector3 launchDirection;
     private float hitStunRemaining = 0;
-    private float maxValidInputTime; //Used to see if the next move falls under the correct combo timing
-    private float validInputTimer; //Tracks the elapsed time of the current beat
     private Camera sceneCamera;
     private PlayerControls playerControls;
     private PlayerInput playerInput;
@@ -93,12 +93,11 @@ public class PlayerMovement : MonoBehaviour
 
             anim.SetTrigger("Light");
 
-            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; return; } //Get timing of input
-            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
+            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; return; } //Get timing of input if not in combo
+            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); } //If in combo, check timing of input
             else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
             else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; sfx.Play(); }
             else { anim.SetTrigger("Missed"); }
-
             return;
         }
     }
@@ -112,12 +111,11 @@ public class PlayerMovement : MonoBehaviour
 
             anim.SetTrigger("Heavy");
 
-            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; return; } //Get timing of input
-            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); }
+            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; return; } //Get timing of input if not in combo
+            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); } //If in combo, check timing of input
             else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
             else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; sfx.Play(); }
             else { anim.SetTrigger("Missed"); }
-
             return;
         }
     }

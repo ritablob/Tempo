@@ -2677,11 +2677,25 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.2
+    functionName: SnapToOpponent
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.21666667
     functionName: LaunchPlayer
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 6
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.36666667
+    functionName: EndLaunch
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.38333333
@@ -2691,11 +2705,46 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.38333333
+    functionName: LaunchPlayer
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 6
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.56666666
+    functionName: EndLaunch
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5833333
+    functionName: LaunchPlayer
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 6
+    intParameter: 0
+    messageOptions: 0
   - time: 0.5833333
     functionName: SnapToOpponent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.73333335
+    functionName: EndLaunch
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.75
+    functionName: LaunchPlayer
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 6
     intParameter: 0
     messageOptions: 0
   - time: 0.75
@@ -2705,8 +2754,29 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.9166667
+    functionName: EndLaunch
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.93333334
+    functionName: LaunchPlayer
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 6
+    intParameter: 0
+    messageOptions: 0
   - time: 0.93333334
     functionName: SnapToOpponent
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.0833334
+    functionName: EndLaunch
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -2717,6 +2787,13 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1
+    functionName: LaunchPlayer
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 6
     intParameter: 0
     messageOptions: 0
   - time: 1.2166667

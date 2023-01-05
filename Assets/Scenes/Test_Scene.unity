@@ -607,7 +607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &36405893
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1852,7 +1852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &151974009
 Transform:
   m_ObjectHideFlags: 0
@@ -3480,7 +3480,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29252
+  m_Name: pb_Mesh30544
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9862,7 +9862,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29490
+  m_Name: pb_Mesh30782
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20022,7 +20022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1527162046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22491,7 +22491,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28656
+  m_Name: pb_Mesh29948
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27381,7 +27381,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28408
+  m_Name: pb_Mesh29700
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
