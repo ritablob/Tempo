@@ -36,7 +36,7 @@ public class RhythmKeeper : MonoBehaviour
         //Calculate beat rate
         beatLength = 60 / beatsPerMinute;
         maxValidInputTime = (beatLength * 4) / beatsPerBar;
-        StartCoroutine(StartDelay((beatLength * 4 / beatsPerBar) - beatLength));
+        StartCoroutine(StartDelay((beatLength * 4 / beatsPerBar)));
     }
 
     private void Update() //Calculate the current timing key
