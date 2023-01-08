@@ -6,27 +6,24 @@ using UnityEngine.Events;
 public class RhythmBlinkingLights : MonoBehaviour
 {
     public RhythmKeeper rhythmKeeper;
-    public GameObject spotlightParent;
+    public GameObject spotlightGroupOne;
+    public GameObject spotlightGroupTwo;
 
     public UnityEvent onBeat;
-    public UnityEvent offBeat;
+    //public UnityEvent offBeat;
 
-    private bool lightsOff;
+    private bool lightModeOne;
     private bool doOnce; // in case we want to do something once
 
     void Update()
     {
         if (rhythmKeeper.timingKey == "Perfect") // im not sure if checking when its "perfect" is ideal but i didnt wanna mess too much with rhythm keeper script
         {
-            //InvokeOnce(onBeat);
-
-            onBeat.Invoke();
+            InvokeOnce(onBeat);
         }
         else
         {
-            //doOnce = false;
-
-            offBeat.Invoke();
+            doOnce = false;
         }
     }
     void InvokeOnce(UnityEvent uevent) // in case we want to do something once pt. 2
@@ -37,25 +34,17 @@ public class RhythmBlinkingLights : MonoBehaviour
             doOnce = true;
         }
     }
-    public void LightsOn()
+    public void LightSwitch() // switches one group of lights off, the other switches on
     {
-        if (lightsOff)
+        if (!lightModeOne)
         {
-            lightsOff = false;
-            spotlightParent.SetActive(true);
+            lightModeOne = true;
         }
-    }
-    public void LightsOff()
-    {
-        if (!lightsOff)
+        else
         {
-            lightsOff = true;
-            spotlightParent.SetActive(false);
+            lightModeOne = false;
         }
-    }
-    public void ToggleLight() // toggling light between states without on/off separation :)
-    {
-        lightsOff = !lightsOff;
-        spotlightParent.SetActive(!spotlightParent.activeSelf);
+        spotlightGroupOne.SetActive(lightModeOne);
+        spotlightGroupTwo.SetActive(!lightModeOne);
     }
 }

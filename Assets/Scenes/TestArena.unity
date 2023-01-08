@@ -1271,7 +1271,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 768553092}
+    m_TransformParent: {fileID: 1722765642}
     m_Modifications:
     - target: {fileID: 416376379447696020, guid: d7d567eb68730bc4d9aba84affe460f0, type: 3}
       propertyPath: m_RootOrder
@@ -4484,7 +4484,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91450
+  m_Name: pb_Mesh36108
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9833,8 +9833,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 561386235}
-  m_Father: {fileID: 768553092}
-  m_RootOrder: 5
+  m_Father: {fileID: 1722765642}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 59.288, y: 27.24, z: 33.078}
 --- !u!114 &628889881
 MonoBehaviour:
@@ -10675,13 +10675,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1049777043}
-  - {fileID: 90303450}
-  - {fileID: 2070839192}
-  - {fileID: 804974485}
-  - {fileID: 2070254420}
-  - {fileID: 628889880}
-  - {fileID: 1009589674}
+  - {fileID: 1194023846}
+  - {fileID: 1722765642}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11375,8 +11370,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 533170233}
-  m_Father: {fileID: 768553092}
-  m_RootOrder: 3
+  m_Father: {fileID: 1194023846}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 67.792, y: -129.332, z: -126.582}
 --- !u!114 &804974486
 MonoBehaviour:
@@ -14816,14 +14811,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009589673}
-  m_LocalRotation: {x: 0.77050215, y: 0.28560695, z: 0.27965298, w: 0.4965374}
-  m_LocalPosition: {x: -3.445, y: 3.777, z: 0.602}
+  m_LocalRotation: {x: 0.77050215, y: 0.28560695, z: 0.279653, w: 0.49653736}
+  m_LocalPosition: {x: -3.4449997, y: 3.777, z: 0.60200006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1752986688}
-  m_Father: {fileID: 768553092}
-  m_RootOrder: 6
+  m_Father: {fileID: 1722765642}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 142.741, y: -63.872986, z: -64.41101}
 --- !u!114 &1009589675
 MonoBehaviour:
@@ -15190,7 +15185,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 768553092}
+    m_TransformParent: {fileID: 1194023846}
     m_Modifications:
     - target: {fileID: 416376379447696020, guid: d7d567eb68730bc4d9aba84affe460f0, type: 3}
       propertyPath: m_RootOrder
@@ -15640,7 +15635,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91756
+  m_Name: pb_Mesh36414
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17143,6 +17138,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c49cfb05e0a53a468d31aed6b8ad49b, type: 3}
   m_PrefabInstance: {fileID: 1190913785}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1194023845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1194023846}
+  m_Layer: 0
+  m_Name: Spotlights1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1194023846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194023845}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1049777043}
+  - {fileID: 2070839192}
+  - {fileID: 804974485}
+  - {fileID: 2070254420}
+  m_Father: {fileID: 768553092}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1200570966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17768,7 +17798,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92328
+  m_Name: pb_Mesh36986
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19525,7 +19555,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91232
+  m_Name: pb_Mesh35890
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22410,28 +22440,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rhythmKeeper: {fileID: 1621864198}
-  spotlightParent: {fileID: 768553091}
+  spotlightGroupOne: {fileID: 1194023845}
+  spotlightGroupTwo: {fileID: 1722765641}
   onBeat:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1715829128}
         m_TargetAssemblyTypeName: RhythmBlinkingLights, Assembly-CSharp
-        m_MethodName: LightsOff
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  offBeat:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1715829128}
-        m_TargetAssemblyTypeName: RhythmBlinkingLights, Assembly-CSharp
-        m_MethodName: LightsOn
+        m_MethodName: LightSwitch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22540,6 +22556,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717219257}
   m_Mesh: {fileID: -8116138440861595531, guid: 51e59b941eb2ae442be605caa035b59d, type: 3}
+--- !u!1 &1722765641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1722765642}
+  m_Layer: 0
+  m_Name: Spotlights2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1722765642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722765641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 628889880}
+  - {fileID: 90303450}
+  - {fileID: 1009589674}
+  m_Father: {fileID: 768553092}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1734097895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26731,7 +26781,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91940
+  m_Name: pb_Mesh36598
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27745,8 +27795,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2030585880}
-  m_Father: {fileID: 768553092}
-  m_RootOrder: 4
+  m_Father: {fileID: 1194023846}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 58.21, y: 71.343, z: 62.825}
 --- !u!114 &2070254421
 MonoBehaviour:
@@ -27861,8 +27911,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 345098868}
-  m_Father: {fileID: 768553092}
-  m_RootOrder: 2
+  m_Father: {fileID: 1194023846}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 53.096, y: 94.073, z: 101.489}
 --- !u!114 &2070839193
 MonoBehaviour:
