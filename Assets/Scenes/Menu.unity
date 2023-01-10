@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7395729e1a160e24cbd4e4ebd144ad7e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57a5c6b025169204f88ebd0dd403663b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: af02e2b3b2b341f409b97d552d83eef2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc76643dd96ac9846921f98a9dadb956, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1525,9 +1525,9 @@ MonoBehaviour:
   - {fileID: 5904752224072821952, guid: c2ef9035f226e834bb82097007c141b7, type: 3}
   - {fileID: 2015688943772077485, guid: bc3226b5befae03429fbbc61a355ebb3, type: 3}
   characterNames:
-  - Gundorb
+  - Crypto-bro
   - Annie
-  - Ibrahim
+  - Epic Eddie
   - Daniel
   charSelectPositions:
   - {fileID: 1342427055}

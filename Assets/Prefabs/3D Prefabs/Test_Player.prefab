@@ -787,7 +787,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4508aa184e8c95749b8e1ba0577d056c, type: 2}
+  - {fileID: 2100000, guid: f2817a8e6058dfc49aa5ccdd04bc9f71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1437,7 +1437,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed0e103d66f0ab94da355401ee2d0604, type: 2}
+  - {fileID: 2100000, guid: f2817a8e6058dfc49aa5ccdd04bc9f71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   shadowClone: {fileID: 3895223628278622570, guid: c7e060c23aae8074c94fe62218e7b215, type: 3}
   shadowCloneSpawn: {fileID: 867577173125963052}
   anim: {fileID: 8821734678660833223}
-  normal: {fileID: 2100000, guid: 4508aa184e8c95749b8e1ba0577d056c, type: 2}
+  normal: {fileID: 2100000, guid: f2817a8e6058dfc49aa5ccdd04bc9f71, type: 2}
   hit: {fileID: 2100000, guid: 504cf9e84c125dd4abb0c4bca2e83231, type: 2}
   modelRenderer: {fileID: 8732886701092536408}
   matIndex: 0
