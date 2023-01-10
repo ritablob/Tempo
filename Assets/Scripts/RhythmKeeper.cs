@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class RhythmKeeper : MonoBehaviour
 {
     [Header("Music Related Vars")]
-    [SerializeField] AudioSource[] audioSources;
+    [SerializeField] AudioSource music;
     [SerializeField] float beatsPerMinute;
     [SerializeField] float beatsPerBar;
 
@@ -18,6 +18,7 @@ public class RhythmKeeper : MonoBehaviour
     [SerializeField] Transform leftArrow;
     [SerializeField] Transform rightArrow;
     [SerializeField] GameObject arrowToSpawn;
+    [SerializeField] AudioSource audioSource;
 
     [Header("Gameplay Related Vars")]
     public float perfectLeewayPerc; //Leeway time for scoring a perfect
@@ -58,10 +59,7 @@ public class RhythmKeeper : MonoBehaviour
     IEnumerator StartDelay(float waitTime) //Delay music & beats for a bit
     {
         yield return new WaitForSeconds(waitTime * 4);
-        foreach(AudioSource audiosource in audioSources)
-        {
-            audiosource.Play();
-        }
+        music.Play();
         StartCoroutine(WaitForBeat(waitTime));
         validInputTimer = 0;
     }
