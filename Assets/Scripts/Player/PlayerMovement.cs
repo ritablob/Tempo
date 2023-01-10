@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -194,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
     //Update Function
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L)) { HP = 100; } //Debug code
+        if (Input.GetKeyDown(KeyCode.L)) { StartCoroutine(Delay()); } //Debug code
         if(HP < 0) { Destroy(gameObject); }
 
         if (hitStunRemaining > 0) //If in hitstun, skip rest of update
@@ -329,5 +330,11 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         takeKnockBack = false;
         isLaunching = false;
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 }
