@@ -8,6 +8,10 @@ public class DynamicCamera : MonoBehaviour
     [Header("Objects to Follow")]
     [SerializeField] Transform player1;
     [SerializeField] Transform player2;
+
+    [Header("Other")]
+    [SerializeField] AudioSource player1Music;
+    [SerializeField] AudioSource player2Music;
     [SerializeField] TextMeshProUGUI textP1, textP2;
 
     [Header("Camera Parameters")]
@@ -31,7 +35,7 @@ public class DynamicCamera : MonoBehaviour
             normalizedCenterpoint.z = Mathf.Clamp(centerPoint.z - distanceModifier, forwardBounds.x, forwardBounds.y);
 
 
-            if(distance >= distanceModifier)
+            if (distance >= distanceModifier)
             {
                 float distanceGrowthModifier = (distance - distanceModifier) / 1.75f;
                 normalizedCenterpoint.z = Mathf.Clamp(centerPoint.z - (distanceModifier + distanceGrowthModifier), forwardBounds.x, forwardBounds.y);
@@ -44,8 +48,7 @@ public class DynamicCamera : MonoBehaviour
 
             gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, Quaternion.LookRotation(lookDirection), cameraRotateSpeed * Time.deltaTime);
 
-            textP1.text = $"P1 - {player1.GetComponent<PlayerMovement>().HP}hp";
-            textP2.text = $"P2 - {player2.GetComponent<PlayerMovement>().HP}hp";
+            CheckCurrentPlayer();
         }
     }
 
@@ -59,6 +62,28 @@ public class DynamicCamera : MonoBehaviour
     {
         float dist = Vector3.Distance(player1.position, player2.position);
         return dist;
+    }
+
+    private void CheckCurrentPlayer()
+    {
+        textP1.text = $"P1 - {player1.GetComponent<PlayerMovement>().HP}hp";
+        textP2.text = $"P2 - {player2.GetComponent<PlayerMovement>().HP}hp";
+
+        if (player1.GetComponent<PlayerMovement>().HP > player2.GetComponent<PlayerMovement>().HP)
+            BlendMusic(player1Music, player2Music);
+        else if (player1.GetComponent<PlayerMovement>().HP < player2.GetComponent<PlayerMovement>().HP)
+            BlendMusic(player2Music, player1Music);
+        else
+            BlendMusic(null, null);
+    }
+
+    private void BlendMusic(AudioSource newLead, AudioSource oldLead)
+    {
+        if (newLead != null && oldLead != null)
+        {
+            newLead.volume += Time.deltaTime;
+            oldLead.volume -= Time.deltaTime;
+        }
     }
 
     public void AddPlayer()
