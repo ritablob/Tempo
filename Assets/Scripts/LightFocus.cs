@@ -17,6 +17,6 @@ public class LightFocus : MonoBehaviour
         float beatPerc = playerRef.validInputTimer / playerRef.maxValidInputTime * 100;
 
         lightComponent.spotAngle = 60 - (beatPerc / 2);
-        lightComponent.intensity = 10 * beatPerc;
+        lightComponent.intensity = 20 * beatPerc;
     }
 }

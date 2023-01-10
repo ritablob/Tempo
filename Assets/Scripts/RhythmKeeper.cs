@@ -26,9 +26,8 @@ public class RhythmKeeper : MonoBehaviour
     [HideInInspector]
     public string timingKey; //Used to test when actions occur in relation to the beat
     public float beatLength;
-
-    private float maxValidInputTime; //Keeps track of time
-    private float validInputTimer; //Keeps track of beat percentage
+    public float maxValidInputTime; //Keeps track of time
+    public float validInputTimer; //Keeps track of beat percentage
 
     void Start()
     {
@@ -87,7 +86,6 @@ public class RhythmKeeper : MonoBehaviour
         if(playerIndex == 1) { newTint = new Color(255, 0, 0); }
 
         //Spawn two arrows
-        /*
         GameObject arrow = Instantiate(arrowToSpawn, spawnLeft.position, spawnLeft.rotation);
         arrow.GetComponent<ArrowMover>().Initialize(leftArrow, lerpSpeed, false);
         arrow.GetComponent<Image>().color = newTint;
@@ -95,6 +93,5 @@ public class RhythmKeeper : MonoBehaviour
         arrow = Instantiate(arrowToSpawn, spawnRight.position, spawnRight.rotation);
         arrow.GetComponent<ArrowMover>().Initialize(rightArrow, lerpSpeed, false);
         arrow.GetComponent<Image>().color = newTint;
-        */
     }
 }

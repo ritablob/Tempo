@@ -16,6 +16,7 @@ public class ArrowMover : MonoBehaviour
 
     public void Initialize(Transform _center, float _lerpSpeed, bool _songBeat)
     {
+        Destroy(gameObject);
         arrow = GetComponent<Image>();
         center = _center;
         speed = _lerpSpeed;

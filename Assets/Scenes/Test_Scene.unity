@@ -653,7 +653,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 81b344da77bbd70479ed2f2ae14120c3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -9736,7 +9736,7 @@ MonoBehaviour:
   - {fileID: 36405893}
   - {fileID: 590593562}
   - {fileID: 1546694815}
-  beatsPerMinute: 86
+  beatsPerMinute: 120
   beatsPerBar: 4
   txt: {fileID: 1328722294}
   spawnLeft: {fileID: 1622805611}
@@ -9744,10 +9744,12 @@ MonoBehaviour:
   leftArrow: {fileID: 1657018666}
   rightArrow: {fileID: 1108235309}
   arrowToSpawn: {fileID: 5715228588011641994, guid: 7d3e14bfbbad36646896c582a1c2bb7f, type: 3}
-  perfectLeewayPerc: 80
-  normalLeewayPerc: 50
+  perfectLeewayPerc: 85
+  normalLeewayPerc: 20
   timingKey: 
   beatLength: 0
+  maxValidInputTime: 0
+  validInputTimer: 0
 --- !u!1001 &803539379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18286,7 +18288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1328722293
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19200,7 +19202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1387106376
 RectTransform:
   m_ObjectHideFlags: 0

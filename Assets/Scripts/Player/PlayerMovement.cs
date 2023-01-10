@@ -196,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L)) { StartCoroutine(Delay()); } //Debug code
-        if(HP < 0) { Destroy(gameObject); }
+        if(HP < 0) { StartCoroutine(Delay()); }
 
         if (hitStunRemaining > 0) //If in hitstun, skip rest of update
         {
