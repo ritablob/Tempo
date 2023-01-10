@@ -87,6 +87,7 @@ public class RhythmKeeper : MonoBehaviour
         if(playerIndex == 1) { newTint = new Color(255, 0, 0); }
 
         //Spawn two arrows
+        /*
         GameObject arrow = Instantiate(arrowToSpawn, spawnLeft.position, spawnLeft.rotation);
         arrow.GetComponent<ArrowMover>().Initialize(leftArrow, lerpSpeed, false);
         arrow.GetComponent<Image>().color = newTint;
@@ -94,5 +95,6 @@ public class RhythmKeeper : MonoBehaviour
         arrow = Instantiate(arrowToSpawn, spawnRight.position, spawnRight.rotation);
         arrow.GetComponent<ArrowMover>().Initialize(rightArrow, lerpSpeed, false);
         arrow.GetComponent<Image>().color = newTint;
+        */
     }
 }

@@ -1488,7 +1488,7 @@ MonoBehaviour:
   hit: {fileID: 2100000, guid: 504cf9e84c125dd4abb0c4bca2e83231, type: 2}
   modelRenderer: {fileID: 5411310355846911407}
   matIndex: 1
-  HP: 135
+  HP: 100
   speed: 9
   charController: {fileID: 6952883153280969240}
   controllerDeadZone: 0.1
