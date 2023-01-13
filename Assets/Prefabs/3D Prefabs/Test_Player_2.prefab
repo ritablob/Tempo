@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 6961978608145093025}
-  damage: 3
+  baseDamage: 10
   hitStun: 0.75
   knockBack: 25
 --- !u!1 &1899135649221145394
@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 6961978608145093025}
-  damage: 4
+  baseDamage: 10
   hitStun: 1.3
   knockBack: 21
 --- !u!1 &2720732884566309097
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 6961978608145093025}
-  damage: 3
+  baseDamage: 10
   hitStun: 0.5
   knockBack: 9
 --- !u!1 &5012263043274859295
@@ -1140,7 +1140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8119713820021186504
 Transform:
   m_ObjectHideFlags: 0
@@ -1182,7 +1182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 6961978608145093025}
-  damage: 9
+  baseDamage: 10
   hitStun: 1.25
   knockBack: 35
 --- !u!1 &6952883153280969238
@@ -1494,7 +1494,7 @@ MonoBehaviour:
   controllerDeadZone: 0.1
   rhythmKeeper: {fileID: 0}
   sfx: {fileID: 3120095730893513793}
-  lastBeat: 
+  lastBeatPercentage: 0
   playerIndex: 0
   maxValidInputTime: 0
   validInputTimer: 0
@@ -1745,7 +1745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 6961978608145093025}
-  damage: 4
+  baseDamage: 10
   hitStun: 1
   knockBack: 20
 --- !u!1 &7313165258377295673
@@ -1807,7 +1807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 6961978608145093025}
-  damage: 1
+  baseDamage: 10
   hitStun: 0.5
   knockBack: 7
 --- !u!1 &7485355642536190490
@@ -1869,7 +1869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 6961978608145093025}
-  damage: 4
+  baseDamage: 10
   hitStun: 0.66
   knockBack: 40
 --- !u!1 &7928448989448137402

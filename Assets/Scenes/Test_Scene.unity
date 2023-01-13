@@ -2001,7 +2001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &151974009
 Transform:
   m_ObjectHideFlags: 0
@@ -3745,7 +3745,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36534
+  m_Name: pb_Mesh32210
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8839,9 +8839,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712125397}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 3.38, y: -2.38, z: -11.73}
-  m_LocalScale: {x: 1, y: 34.070587, z: 14.1432295}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 3.380005, y: -2.38, z: -11.73}
+  m_LocalScale: {x: 1.0000002, y: 34.070595, z: 14.1432295}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -9738,15 +9738,6 @@ MonoBehaviour:
   - {fileID: 1546694815}
   beatsPerMinute: 120
   beatsPerBar: 4
-  txt: {fileID: 1328722294}
-  spawnLeft: {fileID: 1622805611}
-  spawnRight: {fileID: 257292268}
-  leftArrow: {fileID: 1657018666}
-  rightArrow: {fileID: 1108235309}
-  arrowToSpawn: {fileID: 5715228588011641994, guid: 7d3e14bfbbad36646896c582a1c2bb7f, type: 3}
-  perfectLeewayPerc: 85
-  normalLeewayPerc: 20
-  timingKey: 
   beatLength: 0
   maxValidInputTime: 0
   validInputTimer: 0
@@ -10961,7 +10952,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36774
+  m_Name: pb_Mesh32454
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19677,7 +19668,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35916
+  m_Name: pb_Mesh31536
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21496,8 +21487,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517355088}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.13, y: 0.35, z: -13.28}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.129997, y: 0.35, z: -13.28}
   m_LocalScale: {x: 1, y: 34.070587, z: 14.1432295}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21737,7 +21728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1527162046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27570,8 +27561,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932570749}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.33, y: 0.35, z: -13.28}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.330002, y: 0.35, z: -13.28}
   m_LocalScale: {x: 1, y: 34.070587, z: 14.1432295}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29577,7 +29568,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35668
+  m_Name: pb_Mesh31280
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

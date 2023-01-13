@@ -17,7 +17,9 @@ public class RhythmBlinkingLights : MonoBehaviour
 
     void Update()
     {
-        if (rhythmKeeper.timingKey == "Perfect") // im not sure if checking when its "perfect" is ideal but i didnt wanna mess too much with rhythm keeper script
+        float beatPerc = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime; //Calculate percentage of beat
+
+        if (beatPerc > 0.8f) // im not sure if checking when its "perfect" is ideal but i didnt wanna mess too much with rhythm keeper script
         {
             InvokeOnce(onBeat);
         }

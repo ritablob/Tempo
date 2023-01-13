@@ -7,7 +7,7 @@ public class Damage : MonoBehaviour
     [SerializeField] PlayerMovement playerRef;
 
     [Header("Hit Values")]
-    [SerializeField] float damage;
+    [SerializeField] float baseDamage;
     [SerializeField] float hitStun;
     [SerializeField] float knockBack;
 
@@ -30,18 +30,14 @@ public class Damage : MonoBehaviour
             //Set which player's position should be launched away from
             if (gameObject.transform.IsChildOf(players[1].transform)) { launchPoint = players[1].transform; }
 
-            switch (playerRef.lastBeat)
-            {
-                case "Early":
-                    other.GetComponent<PlayerMovement>().TakeDamage(damage, hitStun, knockBack, launchPoint);
-                    Debug.Log("Early");
-                    break;
-                case "Perfect":
-                    float newDamage = damage * 1.5f;
-                    Debug.Log("Perfect");
-                    other.GetComponent<PlayerMovement>().TakeDamage(newDamage, hitStun, knockBack, launchPoint);
-                    break;
-            }
+            //Apply damage modifier based on timing
+            float modifier = playerRef.lastBeatPercentage * (playerRef.lastBeatPercentage / 2);
+            modifier *= 2.5f;
+            float newDamage = baseDamage * modifier;
+
+            Debug.Log($"{playerRef.lastBeatPercentage}%, {newDamage} damage, {modifier} modifier");
+
+            other.GetComponent<PlayerMovement>().TakeDamage(newDamage, hitStun, knockBack, launchPoint);
         }
     }
 }

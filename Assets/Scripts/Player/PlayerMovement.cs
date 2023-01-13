@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource sfx;
 
     [HideInInspector]
-    public string lastBeat;
+    public float lastBeatPercentage;
     public int playerIndex;
     public float maxValidInputTime; //Used to see if the next move falls under the correct combo timing
     public float validInputTimer; //Tracks the elapsed time of the current beat
@@ -88,36 +88,28 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
         {
-            float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
-
-            if (rhythmKeeper.timingKey == "Miss" && maxValidInputTime == 0) { anim.SetTrigger("Missed"); return; }
-
             anim.SetTrigger("Light");
 
-            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; return; } //Get timing of input if not in combo
-            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); } //If in combo, check timing of input
-            else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
-            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; sfx.Play(); }
-            else { anim.SetTrigger("Missed"); }
-            return;
+            if (maxValidInputTime == 0) //Get timing of input if not in combo
+            { 
+                lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime; 
+                return; 
+            }
+            else{ lastBeatPercentage = validInputTimer / maxValidInputTime; }
         }
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
     {
         if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
         {
-            float beatPerc = validInputTimer / maxValidInputTime * 100; //Calculate percentage of beat
-
-            if (rhythmKeeper.timingKey == "Miss" && maxValidInputTime == 0) { anim.SetTrigger("Missed"); return; }
-
             anim.SetTrigger("Heavy");
 
-            if (maxValidInputTime == 0) { lastBeat = rhythmKeeper.timingKey; return; } //Get timing of input if not in combo
-            if (beatPerc < rhythmKeeper.normalLeewayPerc) { anim.SetTrigger("Missed"); } //If in combo, check timing of input
-            else if (beatPerc >= rhythmKeeper.normalLeewayPerc && beatPerc < rhythmKeeper.perfectLeewayPerc) { lastBeat = "Early"; }
-            else if (beatPerc >= rhythmKeeper.perfectLeewayPerc && beatPerc < 100) { lastBeat = "Perfect"; sfx.Play(); }
-            else { anim.SetTrigger("Missed"); }
-            return;
+            if (maxValidInputTime == 0) //Get timing of input if not in combo
+            {
+                lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
+                return;
+            }
+            else { lastBeatPercentage = validInputTimer / maxValidInputTime; }
         }
     }
     public void Dodge(InputAction.CallbackContext ctx)
@@ -180,7 +172,6 @@ public class PlayerMovement : MonoBehaviour
         maxValidInputTime = rhythmKeeper.beatLength / 2; //Get time of eighth notes
         maxValidInputTime *= numOfBeats; //Set maxValidInputTime to x eighth notes
         validInputTimer = 0;
-        rhythmKeeper.SpawnArrow(maxValidInputTime, playerIndex);
     }
     public void SpawnShadowClone(float _fadeSpeed)
     {
