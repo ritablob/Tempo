@@ -192,11 +192,11 @@ public class PlayerMovement : MonoBehaviour
         if (hitStunRemaining > 0) //If in hitstun, skip rest of update
         {
             hitStunRemaining -= Time.deltaTime;
-            GetComponent<Renderer>().material = hit;
+            modelRenderer.material = hit;
             if (takeKnockBack) { charController.Move(launchDirection * Time.deltaTime); } //Launch player over time if they are being knocked back
             return;
         }
-        else if (GetComponent<Renderer>().material != normal) 
+        else if (modelRenderer.material != normal) 
         {
             Material[] mats = modelRenderer.materials;
             mats[matIndex] = normal;
