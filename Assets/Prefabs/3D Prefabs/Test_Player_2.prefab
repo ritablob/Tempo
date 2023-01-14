@@ -1489,6 +1489,7 @@ MonoBehaviour:
   modelRenderer: {fileID: 5411310355846911407}
   matIndex: 1
   HP: 100
+  doubleTime: 1
   speed: 7
   charController: {fileID: 6952883153280969240}
   controllerDeadZone: 0.1

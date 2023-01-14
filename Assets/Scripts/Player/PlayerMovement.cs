@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int matIndex;
 
     [Header("Character Stats")]
-    public float HP = 10;
+    public float HP = 100;
+    public bool doubleTime;
     [SerializeField] float speed = 1f;
     [SerializeField] CharacterController charController;
     [SerializeField] float controllerDeadZone = 0.1f;
@@ -91,11 +92,15 @@ public class PlayerMovement : MonoBehaviour
             anim.SetTrigger("Light");
 
             if (maxValidInputTime == 0) //Get timing of input if not in combo
-            { 
-                lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime; 
-                return; 
+            {
+                lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
+                if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
-            else{ lastBeatPercentage = validInputTimer / maxValidInputTime; }
+            else //If in combo, calculate based on internal rhythm tracking
+            { 
+                lastBeatPercentage = validInputTimer / maxValidInputTime;
+                if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
+            }
         }
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
@@ -107,9 +112,13 @@ public class PlayerMovement : MonoBehaviour
             if (maxValidInputTime == 0) //Get timing of input if not in combo
             {
                 lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
-                return;
+                if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
-            else { lastBeatPercentage = validInputTimer / maxValidInputTime; }
+            else 
+            { 
+                lastBeatPercentage = validInputTimer / maxValidInputTime;
+                if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
+            }
         }
     }
     public void Dodge(InputAction.CallbackContext ctx)
@@ -186,7 +195,6 @@ public class PlayerMovement : MonoBehaviour
     //Update Function
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L)) { StartCoroutine(Delay()); } //Debug code
         if(HP < 0) { StartCoroutine(Delay()); }
 
         if (hitStunRemaining > 0) //If in hitstun, skip rest of update
@@ -220,7 +228,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     //End of update
-
 
 
     void HandleMovement()
