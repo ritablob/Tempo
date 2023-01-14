@@ -22,7 +22,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event SpawnShadowClone has a time (1.984795) outside
+      the clip's valid range (0.000000..1.866667). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -60,46 +61,18 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: SpawnShadowClone
+      - time: 0.090301
+        functionName: SetSpeed
         data: 
         objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 1
+        floatParameter: 20
         intParameter: 0
         messageOptions: 0
-      - time: 0.18506128
-        functionName: SpawnShadowClone
+      - time: 0.33732134
+        functionName: SetSpeed
         data: 
         objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 1
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.4303232
-        functionName: SpawnShadowClone
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 1
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.6867334
-        functionName: SpawnShadowClone
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 1
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.9761287
-        functionName: SpawnShadowClone
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 1
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.9933108
-        functionName: ResetModelTransform
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 0
+        floatParameter: 7
         intParameter: 0
         messageOptions: 0
       transformMask: []

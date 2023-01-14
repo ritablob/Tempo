@@ -188,6 +188,10 @@ public class PlayerMovement : MonoBehaviour
         _shadowClone.AddComponent<FadeObject>();
         _shadowClone.GetComponent<FadeObject>().fadeSpeed = _fadeSpeed;
     }
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
     //Combat-related functions end
 
 
@@ -200,7 +204,9 @@ public class PlayerMovement : MonoBehaviour
         if (hitStunRemaining > 0) //If in hitstun, skip rest of update
         {
             hitStunRemaining -= Time.deltaTime;
-            modelRenderer.material = hit;
+            Material[] mats = modelRenderer.materials;
+            mats[matIndex] = hit;
+            modelRenderer.materials = mats;
             if (takeKnockBack) { charController.Move(launchDirection * Time.deltaTime); } //Launch player over time if they are being knocked back
             return;
         }
@@ -235,6 +241,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = Quaternion.Euler(0, sceneCamera.transform.eulerAngles.y, 0) * new Vector3(movement.x, 0, movement.y);
         move.y = -2;
         charController.Move(move * Time.deltaTime *speed);
+        if(move.x == 0 && move.z == 0) { anim.SetBool("Running", false); }
+        else { anim.SetBool("Running", true); }
     }
 
     void HandleRotation()
@@ -280,7 +288,7 @@ public class PlayerMovement : MonoBehaviour
         {
             takeKnockBack = true;
             StartCoroutine(TakeKnockBack());
-            anim.Play("Base Layer.Test_Idle");
+            anim.SetTrigger("Hit");
             isLaunching = false;
             isAttacking = false;
             hitStunRemaining = hitStun;
@@ -305,6 +313,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator parryTiming()
     {
         isParrying = true;
+        anim.SetTrigger("Parry");
         parryShield.SetActive(true);
         canParry = false;
         yield return new WaitForSeconds(0.2f);
@@ -316,10 +325,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator dodgeTiming()
     {
         canDodge = false;
-        speed *= 4.5f;
-        yield return new WaitForSeconds(0.2f);
-        speed /= 4.5f;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.75f);
         canDodge = true;
     }
     IEnumerator TakeKnockBack()
