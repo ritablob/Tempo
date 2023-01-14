@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Manager
+  - PoleDancer
   layers:
   - Default
   - TransparentFX

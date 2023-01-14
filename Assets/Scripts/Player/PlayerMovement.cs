@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
         {
-            anim.SetTrigger("Light");
+            anim.SetTrigger("Attack_1");
 
             if (maxValidInputTime == 0) //Get timing of input if not in combo
             {
@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
         {
-            anim.SetTrigger("Heavy");
+            anim.SetTrigger("Attack_2");
 
             if (maxValidInputTime == 0) //Get timing of input if not in combo
             {
@@ -119,6 +119,13 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
+        }
+    }
+    public void Special(InputAction.CallbackContext ctx)
+    {
+        if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
+        {
+            anim.SetTrigger("Special");
         }
     }
     public void Dodge(InputAction.CallbackContext ctx)

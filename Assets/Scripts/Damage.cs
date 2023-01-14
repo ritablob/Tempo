@@ -20,7 +20,7 @@ public class Damage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && !gameObject.transform.IsChildOf(other.transform) && !dealtDamage)
+        if(other.tag == "Player" && other.gameObject.GetComponent<PlayerMovement>() != playerRef && !dealtDamage)
         {
             dealtDamage = true;
 

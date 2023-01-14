@@ -73,6 +73,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Special_Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""7bad8e89-b28f-417c-8166-14be01d66be4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Parry"",
                     ""type"": ""Button"",
                     ""id"": ""aa742b02-31d0-4ebb-9ca0-9dd25a105432"",
@@ -399,6 +408,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Join"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15bf424b-4fb3-405f-8006-d0f55c5264b8"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Special_Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -627,6 +647,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
         m_Player_Attack_1 = m_Player.FindAction("Attack_1", throwIfNotFound: true);
         m_Player_Attack_2 = m_Player.FindAction("Attack_2", throwIfNotFound: true);
+        m_Player_Special_Attack = m_Player.FindAction("Special_Attack", throwIfNotFound: true);
         m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
         m_Player_Join = m_Player.FindAction("Join", throwIfNotFound: true);
         // UI
@@ -699,6 +720,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dodge;
     private readonly InputAction m_Player_Attack_1;
     private readonly InputAction m_Player_Attack_2;
+    private readonly InputAction m_Player_Special_Attack;
     private readonly InputAction m_Player_Parry;
     private readonly InputAction m_Player_Join;
     public struct PlayerActions
@@ -710,6 +732,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
         public InputAction @Attack_1 => m_Wrapper.m_Player_Attack_1;
         public InputAction @Attack_2 => m_Wrapper.m_Player_Attack_2;
+        public InputAction @Special_Attack => m_Wrapper.m_Player_Special_Attack;
         public InputAction @Parry => m_Wrapper.m_Player_Parry;
         public InputAction @Join => m_Wrapper.m_Player_Join;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -736,6 +759,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Attack_2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack_2;
                 @Attack_2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack_2;
                 @Attack_2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack_2;
+                @Special_Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial_Attack;
+                @Special_Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial_Attack;
+                @Special_Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial_Attack;
                 @Parry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
                 @Parry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
                 @Parry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
@@ -761,6 +787,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Attack_2.started += instance.OnAttack_2;
                 @Attack_2.performed += instance.OnAttack_2;
                 @Attack_2.canceled += instance.OnAttack_2;
+                @Special_Attack.started += instance.OnSpecial_Attack;
+                @Special_Attack.performed += instance.OnSpecial_Attack;
+                @Special_Attack.canceled += instance.OnSpecial_Attack;
                 @Parry.started += instance.OnParry;
                 @Parry.performed += instance.OnParry;
                 @Parry.canceled += instance.OnParry;
@@ -880,6 +909,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnDodge(InputAction.CallbackContext context);
         void OnAttack_1(InputAction.CallbackContext context);
         void OnAttack_2(InputAction.CallbackContext context);
+        void OnSpecial_Attack(InputAction.CallbackContext context);
         void OnParry(InputAction.CallbackContext context);
         void OnJoin(InputAction.CallbackContext context);
     }
