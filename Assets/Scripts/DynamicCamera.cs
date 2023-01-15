@@ -6,8 +6,8 @@ using TMPro;
 public class DynamicCamera : MonoBehaviour
 {
     [Header("Objects to Follow")]
-    [SerializeField] Transform player1;
-    [SerializeField] Transform player2;
+    public Transform player1;
+    public Transform player2;
 
     [Header("Other")]
     [SerializeField] AudioSource player1Music;

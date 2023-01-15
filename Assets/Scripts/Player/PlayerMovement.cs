@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speed = 1f;
     [SerializeField] CharacterController charController;
     [SerializeField] float controllerDeadZone = 0.1f;
+    [SerializeField] Color playerColor;
 
     [Header("Other")]
     [SerializeField] RhythmKeeper rhythmKeeper;
