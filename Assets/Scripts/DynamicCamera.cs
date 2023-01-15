@@ -12,7 +12,6 @@ public class DynamicCamera : MonoBehaviour
     [Header("Other")]
     [SerializeField] AudioSource player1Music;
     [SerializeField] AudioSource player2Music;
-    [SerializeField] TextMeshProUGUI textP1, textP2;
 
     [Header("Camera Parameters")]
     [SerializeField] float cameraRotateSpeed;
@@ -66,8 +65,6 @@ public class DynamicCamera : MonoBehaviour
 
     private void CheckCurrentPlayer()
     {
-        textP1.text = $"P1 - {player1.GetComponent<PlayerMovement>().HP}hp";
-        textP2.text = $"P2 - {player2.GetComponent<PlayerMovement>().HP}hp";
 
         if (player1.GetComponent<PlayerMovement>().HP > player2.GetComponent<PlayerMovement>().HP)
             BlendMusic(player1Music, player2Music);
