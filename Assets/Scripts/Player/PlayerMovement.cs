@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Other")]
     [SerializeField] RhythmKeeper rhythmKeeper;
     [SerializeField] AudioSource sfx;
+    [SerializeField] float gamepadRumble1 = 0.5f;
+    [SerializeField] float gamepadRumble2 = 0.5f;
 
     [HideInInspector]
     public float lastBeatPercentage;
@@ -308,6 +310,10 @@ public class PlayerMovement : MonoBehaviour
             launchDir.y = 0;
             launchDir.Normalize(); //knockback determines intensity of launch
             launchDirection = launchDir * knockBack;
+            if (isGamepad)
+            {
+                StartCoroutine(Rumble());
+            }
         }
         else
         {
@@ -348,5 +354,11 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+    }
+    IEnumerator Rumble()
+    {
+        Gamepad.current.SetMotorSpeeds(gamepadRumble1, gamepadRumble2);
+        yield return new WaitForSeconds(0.3f);
+        Gamepad.current.SetMotorSpeeds(0f,0f);
     }
 }
