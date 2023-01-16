@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 6b87eb4231875da4cbd47cd38d48937c
+guid: 849c8b72832ebfa4ba3064dae6a7d588
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Throw
+    second: HitWPole1
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Throw
+      name: HitWPole1
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
