@@ -7,7 +7,10 @@ using UnityEngine;
 /// </summary>
 public class SoundEffects : MonoBehaviour
 {
-    public List<Sound> SoundEffectsList;
+    [Header("Please make sure both poledancer and breakdancer \nsound effects have the same names, i.e.\n 'dodge', 'hit_grunt', etc.")]
+    [Space]
+    public List<Sound> SoundEffectsPoledancer;
+    public List<Sound> SoundEffectsBreakdancer;
     public float soundDestroyDelay = 0.3f;
     private static SoundEffects instance;
     public static SoundEffects Instance
@@ -91,7 +94,7 @@ public static class SoundPlayer
     /// <returns></returns>
     public static Sound GetSound(string soundName)
     {
-        foreach (Sound sound in SoundEffects.Instance.SoundEffectsList)
+        foreach (Sound sound in SoundEffects.Instance.SoundEffectsPoledancer)
         {
             if (sound.soundName == soundName)
             {
