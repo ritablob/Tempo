@@ -32,14 +32,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gamepadRumble2 = 0.5f;
 
     [HideInInspector]
-    public float lastBeatPercentage;
+    public int heldDown;
     public int playerIndex;
+    public float lastBeatPercentage;
     public float maxValidInputTime; //Used to see if the next move falls under the correct combo timing
     public float validInputTimer; //Tracks the elapsed time of the current beat
 
     private Vector2 movement;
     private Vector3 aim;
     private Vector3 launchDirection;
+    private int ultimateCharge;
     private float hitStunRemaining = 0;
     private Camera sceneCamera;
     private PlayerControls playerControls;
@@ -76,6 +78,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Input system related functions
+    public void LeftShoulder(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) { heldDown++; }
+        if (ctx.canceled) { heldDown--; }
+        if (heldDown == 2 && ultimateCharge >= 50) { Debug.Log("ULTIMATE!"); ultimateCharge = 0; }
+    }
+    public void RightShoulder(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) { heldDown++; }
+        if (ctx.canceled) { heldDown--; }
+        if (heldDown == 2 && ultimateCharge >= 50) { Debug.Log("ULTIMATE!"); ultimateCharge = 0; }
+    }
     public void ControllerType(PlayerInput _playerInput)
     {
         isGamepad = _playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
@@ -201,6 +215,11 @@ public class PlayerMovement : MonoBehaviour
     public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
+    }
+    public void AddUltimateCharge(int amnt)
+    {
+        ultimateCharge += amnt;
+        Debug.Log(ultimateCharge);
     }
     //Combat-related functions end
 

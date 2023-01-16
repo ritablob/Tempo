@@ -230,22 +230,6 @@ MonoBehaviour:
     m_ActionId: 77c322fd-e483-495e-8883-379667e1b6a5
     m_ActionName: Player/Attack_2[/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1207356900211838078}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: Parry
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: aa742b02-31d0-4ebb-9ca0-9dd25a105432
-    m_ActionName: Player/Parry[/XInputControllerWindows/leftTrigger,/XInputControllerWindows/leftShoulder]
-  - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 2403eeb0-156d-4c9f-be17-6369d1dd6c94
     m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
@@ -281,6 +265,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7bad8e89-b28f-417c-8166-14be01d66be4
     m_ActionName: Player/Special_Attack[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1207356900211838078}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: LeftShoulder
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 24579115-03db-4994-93d9-632d166bd666
+    m_ActionName: Player/Ultimate[/XInputControllerWindows/leftShoulder,/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1207356900211838078}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: RightShoulder
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3b45ad5e-dcfb-4d06-8bb5-15d09ad577fa
+    m_ActionName: Player/Ultimate_R[/XInputControllerWindows/rightShoulder]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -314,6 +330,9 @@ MonoBehaviour:
   playerColor: {r: 0, g: 0, b: 0, a: 0}
   rhythmKeeper: {fileID: 0}
   sfx: {fileID: 6561815665965791646}
+  gamepadRumble1: 0.5
+  gamepadRumble2: 0.5
+  heldDown: 0
   lastBeatPercentage: 0
   playerIndex: 0
   maxValidInputTime: 0

@@ -38,6 +38,7 @@ public class Damage : MonoBehaviour
             Debug.Log($"{playerRef.lastBeatPercentage}%, {newDamage} damage, {modifier} modifier");
 
             other.GetComponent<PlayerMovement>().TakeDamage(newDamage, hitStun, knockBack, launchPoint);
+            playerRef.AddUltimateCharge(Mathf.RoundToInt(newDamage));
         }
     }
 }
