@@ -118,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
+            SoundPlayer.PlaySound("glint");
         }
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
@@ -136,6 +137,7 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
+            SoundPlayer.PlaySound("glint");
         }
     }
     public void Special(InputAction.CallbackContext ctx)
@@ -150,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
         if (canDodge && ctx.performed)
         {
             anim.SetTrigger("Dodge");
+            SoundPlayer.PlaySound("glint");
             StartCoroutine(dodgeTiming());
             EndAttack();
         }
@@ -158,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canParry && ctx.performed && !isAttacking)
         {
+            SoundPlayer.PlaySound("glint");
             StartCoroutine(parryTiming());
         }
     }

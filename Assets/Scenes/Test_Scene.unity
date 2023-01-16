@@ -5236,7 +5236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoundEffectsList:
   - soundName: glint
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 9a33e89763c62b5459129de73074c175, type: 3}
     loop: 0
     volume: 1
   soundDestroyDelay: 0.3
