@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isParrying;
     private bool canParry = true;
     private bool canDodge = true;
+    private StatusEffects statusEffects;
 
     private Vector3 offset;
     //private bool hasOffset = false;
@@ -66,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         charController = GetComponent<CharacterController>();
         rhythmKeeper = GameObject.FindObjectOfType<RhythmKeeper>();
         sceneCamera = GameObject.FindObjectOfType<Camera>();
+        statusEffects = GetComponent<StatusEffects>();
     }
 
     private void OnEnable()
@@ -310,7 +312,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    //Taking Damage
+    //Taking Damage & Status Effects
     public void TakeDamage(float damage, float hitStun, float knockBack, Transform hitBoxTransform)
     {
         if (!isParrying)
@@ -321,7 +323,7 @@ public class PlayerMovement : MonoBehaviour
             isLaunching = false;
             isAttacking = false;
             hitStunRemaining = hitStun;
-            HP -= damage;
+            HP -= damage * statusEffects.exposeStacks;
             Material[] mats = modelRenderer.materials;
             mats[matIndex] = hit;
             modelRenderer.materials = mats;
@@ -340,6 +342,7 @@ public class PlayerMovement : MonoBehaviour
             parryShield.SetActive(false);
         }
     }
+
 
 
     //Coroutines
