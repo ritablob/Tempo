@@ -60,18 +60,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Parry",
+                    "name": "Join",
                     "type": "Button",
-                    "id": "aa742b02-31d0-4ebb-9ca0-9dd25a105432",
+                    "id": "c45fb9dc-583d-49fb-bf80-3880d2dd33c8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Join",
+                    "name": "Ultimate_L",
                     "type": "Button",
-                    "id": "c45fb9dc-583d-49fb-bf80-3880d2dd33c8",
+                    "id": "24579115-03db-4994-93d9-632d166bd666",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ultimate_R",
+                    "type": "Button",
+                    "id": "3b45ad5e-dcfb-4d06-8bb5-15d09ad577fa",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -258,21 +267,10 @@
                 {
                     "name": "",
                     "id": "143bb1cd-cc10-4eca-a2f0-a3664166fe91",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Dodge",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "88aba5ef-7c46-4525-9ae6-bf95998d5299",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
                     "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -334,39 +332,6 @@
                 },
                 {
                     "name": "",
-                    "id": "51138d57-54a2-4937-bc79-8b7154c97003",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Parry",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b036de5b-7daf-4e36-878b-f84be84c04d2",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Parry",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5ee3ee26-c6f0-403f-a47f-b1cfca486179",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Parry",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1db8bd6a-c6fb-4727-8b27-58bcda1b3272",
                     "path": "<Gamepad>/start",
                     "interactions": "",
@@ -395,6 +360,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Special_Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf9c842c-143f-44a6-bdbf-242998f126b9",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Ultimate_L",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df731fb0-4d88-4044-8865-083ba12e8365",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Ultimate_R",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

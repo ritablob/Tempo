@@ -32,14 +32,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gamepadRumble2 = 0.5f;
 
     [HideInInspector]
-    public float lastBeatPercentage;
+    public int heldDown;
     public int playerIndex;
+    public float lastBeatPercentage;
     public float maxValidInputTime; //Used to see if the next move falls under the correct combo timing
     public float validInputTimer; //Tracks the elapsed time of the current beat
 
     private Vector2 movement;
     private Vector3 aim;
     private Vector3 launchDirection;
+    private int ultimateCharge;
     private float hitStunRemaining = 0;
     private Camera sceneCamera;
     private PlayerControls playerControls;
@@ -52,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isParrying;
     private bool canParry = true;
     private bool canDodge = true;
+    private StatusEffects statusEffects;
 
     private Vector3 offset;
     //private bool hasOffset = false;
@@ -64,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         charController = GetComponent<CharacterController>();
         rhythmKeeper = GameObject.FindObjectOfType<RhythmKeeper>();
         sceneCamera = GameObject.FindObjectOfType<Camera>();
+        statusEffects = GetComponent<StatusEffects>();
     }
 
     private void OnEnable()
@@ -76,6 +80,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Input system related functions
+    public void LeftShoulder(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) { heldDown++; }
+        if (ctx.canceled) { heldDown--; }
+        if (heldDown == 2 && ultimateCharge >= 50) { Debug.Log("ULTIMATE!"); ultimateCharge = 0; }
+    }
+    public void RightShoulder(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) { heldDown++; }
+        if (ctx.canceled) { heldDown--; }
+        if (heldDown == 2 && ultimateCharge >= 50) { Debug.Log("ULTIMATE!"); ultimateCharge = 0; }
+    }
     public void ControllerType(PlayerInput _playerInput)
     {
         isGamepad = _playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
@@ -104,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
+            SoundPlayer.PlaySound("glint");
         }
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
@@ -122,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
+            SoundPlayer.PlaySound("glint");
         }
     }
     public void Special(InputAction.CallbackContext ctx)
@@ -136,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
         if (canDodge && ctx.performed)
         {
             anim.SetTrigger("Dodge");
+            SoundPlayer.PlaySound("glint");
             StartCoroutine(dodgeTiming());
             EndAttack();
         }
@@ -144,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canParry && ctx.performed && !isAttacking)
         {
+            SoundPlayer.PlaySound("glint");
             StartCoroutine(parryTiming());
         }
     }
@@ -201,6 +221,11 @@ public class PlayerMovement : MonoBehaviour
     public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
+    }
+    public void AddUltimateCharge(int amnt)
+    {
+        ultimateCharge += amnt;
+        Debug.Log(ultimateCharge);
     }
     //Combat-related functions end
 
@@ -291,7 +316,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    //Taking Damage
+    //Taking Damage & Status Effects
     public void TakeDamage(float damage, float hitStun, float knockBack, Transform hitBoxTransform)
     {
         if (!isParrying)
@@ -302,7 +327,7 @@ public class PlayerMovement : MonoBehaviour
             isLaunching = false;
             isAttacking = false;
             hitStunRemaining = hitStun;
-            HP -= damage;
+            HP -= damage * statusEffects.exposeStacks;
             Material[] mats = modelRenderer.materials;
             mats[matIndex] = hit;
             modelRenderer.materials = mats;
@@ -321,6 +346,7 @@ public class PlayerMovement : MonoBehaviour
             parryShield.SetActive(false);
         }
     }
+
 
 
     //Coroutines

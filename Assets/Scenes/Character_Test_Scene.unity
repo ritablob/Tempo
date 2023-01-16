@@ -21952,8 +21952,6 @@ MonoBehaviour:
   player2: {fileID: 0}
   player1Music: {fileID: 590593562}
   player2Music: {fileID: 1546694815}
-  textP1: {fileID: 2072155879}
-  textP2: {fileID: 694546346}
   cameraRotateSpeed: 7
   cameraSpeed: 3
   distanceModifier: 8

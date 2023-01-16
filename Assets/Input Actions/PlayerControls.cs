@@ -82,18 +82,27 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Parry"",
+                    ""name"": ""Join"",
                     ""type"": ""Button"",
-                    ""id"": ""aa742b02-31d0-4ebb-9ca0-9dd25a105432"",
+                    ""id"": ""c45fb9dc-583d-49fb-bf80-3880d2dd33c8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Join"",
+                    ""name"": ""Ultimate_L"",
                     ""type"": ""Button"",
-                    ""id"": ""c45fb9dc-583d-49fb-bf80-3880d2dd33c8"",
+                    ""id"": ""24579115-03db-4994-93d9-632d166bd666"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ultimate_R"",
+                    ""type"": ""Button"",
+                    ""id"": ""3b45ad5e-dcfb-4d06-8bb5-15d09ad577fa"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -280,21 +289,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Dodge"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""88aba5ef-7c46-4525-9ae6-bf95998d5299"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
                     ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -356,39 +354,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""51138d57-54a2-4937-bc79-8b7154c97003"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Parry"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b036de5b-7daf-4e36-878b-f84be84c04d2"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Parry"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5ee3ee26-c6f0-403f-a47f-b1cfca486179"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Parry"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1db8bd6a-c6fb-4727-8b27-58bcda1b3272"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
@@ -417,6 +382,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Special_Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf9c842c-143f-44a6-bdbf-242998f126b9"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Ultimate_L"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df731fb0-4d88-4044-8865-083ba12e8365"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Ultimate_R"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -648,8 +635,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Attack_1 = m_Player.FindAction("Attack_1", throwIfNotFound: true);
         m_Player_Attack_2 = m_Player.FindAction("Attack_2", throwIfNotFound: true);
         m_Player_Special_Attack = m_Player.FindAction("Special_Attack", throwIfNotFound: true);
-        m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
         m_Player_Join = m_Player.FindAction("Join", throwIfNotFound: true);
+        m_Player_Ultimate_L = m_Player.FindAction("Ultimate_L", throwIfNotFound: true);
+        m_Player_Ultimate_R = m_Player.FindAction("Ultimate_R", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
@@ -721,8 +709,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack_1;
     private readonly InputAction m_Player_Attack_2;
     private readonly InputAction m_Player_Special_Attack;
-    private readonly InputAction m_Player_Parry;
     private readonly InputAction m_Player_Join;
+    private readonly InputAction m_Player_Ultimate_L;
+    private readonly InputAction m_Player_Ultimate_R;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -733,8 +722,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Attack_1 => m_Wrapper.m_Player_Attack_1;
         public InputAction @Attack_2 => m_Wrapper.m_Player_Attack_2;
         public InputAction @Special_Attack => m_Wrapper.m_Player_Special_Attack;
-        public InputAction @Parry => m_Wrapper.m_Player_Parry;
         public InputAction @Join => m_Wrapper.m_Player_Join;
+        public InputAction @Ultimate_L => m_Wrapper.m_Player_Ultimate_L;
+        public InputAction @Ultimate_R => m_Wrapper.m_Player_Ultimate_R;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -762,12 +752,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Special_Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial_Attack;
                 @Special_Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial_Attack;
                 @Special_Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial_Attack;
-                @Parry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
-                @Parry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
-                @Parry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
                 @Join.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
                 @Join.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
                 @Join.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJoin;
+                @Ultimate_L.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUltimate_L;
+                @Ultimate_L.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUltimate_L;
+                @Ultimate_L.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUltimate_L;
+                @Ultimate_R.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUltimate_R;
+                @Ultimate_R.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUltimate_R;
+                @Ultimate_R.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUltimate_R;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -790,12 +783,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Special_Attack.started += instance.OnSpecial_Attack;
                 @Special_Attack.performed += instance.OnSpecial_Attack;
                 @Special_Attack.canceled += instance.OnSpecial_Attack;
-                @Parry.started += instance.OnParry;
-                @Parry.performed += instance.OnParry;
-                @Parry.canceled += instance.OnParry;
                 @Join.started += instance.OnJoin;
                 @Join.performed += instance.OnJoin;
                 @Join.canceled += instance.OnJoin;
+                @Ultimate_L.started += instance.OnUltimate_L;
+                @Ultimate_L.performed += instance.OnUltimate_L;
+                @Ultimate_L.canceled += instance.OnUltimate_L;
+                @Ultimate_R.started += instance.OnUltimate_R;
+                @Ultimate_R.performed += instance.OnUltimate_R;
+                @Ultimate_R.canceled += instance.OnUltimate_R;
             }
         }
     }
@@ -910,8 +906,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnAttack_1(InputAction.CallbackContext context);
         void OnAttack_2(InputAction.CallbackContext context);
         void OnSpecial_Attack(InputAction.CallbackContext context);
-        void OnParry(InputAction.CallbackContext context);
         void OnJoin(InputAction.CallbackContext context);
+        void OnUltimate_L(InputAction.CallbackContext context);
+        void OnUltimate_R(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -11,6 +11,10 @@ public class Damage : MonoBehaviour
     [SerializeField] float hitStun;
     [SerializeField] float knockBack;
 
+    [Header("Hit Effects")]
+    [SerializeField] bool exposing;
+    [SerializeField] bool stunning;
+
     private bool dealtDamage;
 
     private void OnEnable()
@@ -35,9 +39,12 @@ public class Damage : MonoBehaviour
             modifier *= 2.5f;
             float newDamage = baseDamage * modifier;
 
-            Debug.Log($"{playerRef.lastBeatPercentage}%, {newDamage} damage, {modifier} modifier");
+            //Apply attack effects
+            if (exposing) { other.GetComponent<StatusEffects>().AddExpose(); }
+            if(stunning) { other.GetComponent<StatusEffects>().AddStun(); }
 
             other.GetComponent<PlayerMovement>().TakeDamage(newDamage, hitStun, knockBack, launchPoint);
+            playerRef.AddUltimateCharge(Mathf.RoundToInt(newDamage));
         }
     }
 }
