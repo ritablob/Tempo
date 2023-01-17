@@ -94,13 +94,17 @@ public static class SoundPlayer
     /// <returns></returns>
     public static Sound GetSound(string soundName)
     {
-        foreach (Sound sound in SoundEffects.Instance.SoundEffectsPoledancer)
+        // XAVI: if its poledancer, do this vvvvvv
+        foreach (Sound sound in SoundEffects.Instance.SoundEffectsPoledancer) 
         {
             if (sound.soundName == soundName)
             {
                 return sound;
             }
         }
+        // XAVI: if its breakdancer, do with SoundEffectsBreakdancer
+
+
         Debug.LogError($"Sound '{soundName}' doesn't exist in the SoundsList!");
         return null;
     }
