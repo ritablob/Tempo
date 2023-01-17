@@ -44,6 +44,7 @@ public class PlayerConfigManager : MonoBehaviour
     {
         playerConfigs[index].playerObject = playerCharacers[selectedPlayer];
         playerConfigs[index].objectIndex = selectedPlayer;
+        playerConfigs[index].objectName = playerCharacers[index].name;
     }
     public void ReadyPlayer(int index)
     {
@@ -54,6 +55,7 @@ public class PlayerConfigManager : MonoBehaviour
             loadScript.text1 = characterNames[playerConfigs[0].objectIndex];
             loadScript.char2 = playerCharacterIcons[playerConfigs[1].objectIndex];
             loadScript.text2 = characterNames[playerConfigs[1].objectIndex];
+            
             anim.SetTrigger("Ready");
         }
         
@@ -110,4 +112,5 @@ public class PlayerConfig
     public bool isReady { get; set; }
     public GameObject playerObject { get; set; }
     public int objectIndex { get; set; }
+    public string objectName { get; set; }
 }

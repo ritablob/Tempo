@@ -56,6 +56,9 @@ public static class SoundPlayer
     /// <param name="steroPan"></param>
     public static void PlaySound(string soundName, float volume = 1, float steroPan = 0)
     {
+        var playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray(); //Get an array of players from player config (0 = player 1, 1 = player 2)
+        Debug.Log(playerConfigs[0].objectName); //print the character name of player 1 gameobject. 
+
         if (SoundEffects.Instance)
         {
             Sound sound = GetSound(soundName);
