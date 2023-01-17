@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EventCommunicator : MonoBehaviour
 {
@@ -17,7 +18,15 @@ public class EventCommunicator : MonoBehaviour
     public void LaunchPlayer(float units) { playerScriptRef.LaunchPlayer(units); }
     public void EndLaunch() { playerScriptRef.EndLaunch(); }
     public void BeatsForNextAttack(int numOfBeats) { playerScriptRef.BeatsForNextAttack(numOfBeats); } //Use eighth notes for calculations
-    public void SpawnShadowClone(float _fadeSpeed) { playerScriptRef.SpawnShadowClone(_fadeSpeed); }
+    public void SpawnShadowClone(int _index) 
+    {
+        //Copy bone transforms
+        Transform[] sourceBones = GetComponentsInChildren<Transform>();
+
+        GameObject _shadowClone = Instantiate(characterSpecificObjects[_index], transform.localPosition, transform.localRotation);
+
+        _shadowClone.GetComponent<ShadowCloneInitializer>().InitializeBones(sourceBones);
+    }
     public void SetSpeed(float newSpeed) { playerScriptRef.SetSpeed(newSpeed); }
     public void EnableHitbox(int hitBoxID) { hitBoxes[hitBoxID].SetActive(true); }
     public void DisableHitbox(int hitBoxID) { hitBoxes[hitBoxID].SetActive(false); }

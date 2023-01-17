@@ -351,6 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8225c72118557408437801253cfff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exposeStacks: 0
+  stunStacks: 0
 --- !u!1 &1162232717270291737
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +530,8 @@ MonoBehaviour:
   baseDamage: 10
   hitStun: 1
   knockBack: 3
+  exposing: 0
+  stunning: 0
 --- !u!1 &6169212653624976694
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +948,7 @@ MonoBehaviour:
   characterSpecificObjects:
   - {fileID: 9108686428078395730}
   - {fileID: 327796374718437484}
+  - {fileID: 4212309839342293483, guid: 55d622bced988f64c9d94cc974e9a0f9, type: 3}
 --- !u!137 &3510153941041175127 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -5669809844436796647, guid: 9823726637ff0334b968dd81829747ab, type: 3}

@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
-            SoundPlayer.PlaySound("glint");
+            //SoundPlayer.PlaySound("glint");
         }
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
-            SoundPlayer.PlaySound("glint");
+            //SoundPlayer.PlaySound("glint");
         }
     }
     public void Special(InputAction.CallbackContext ctx)
@@ -151,19 +151,16 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Dodge(InputAction.CallbackContext ctx)
     {
-        if (canDodge && ctx.performed)
+        if (canDodge && ctx.performed && anim.GetBool("Running"))
         {
             anim.SetTrigger("Dodge");
-            SoundPlayer.PlaySound("glint");
+            //SoundPlayer.PlaySound("glint");
             StartCoroutine(dodgeTiming());
             EndAttack();
         }
-    }
-    public void Parry(InputAction.CallbackContext ctx)
-    {
-        if (canParry && ctx.performed && !isAttacking)
+        else if (canParry && ctx.performed && !anim.GetBool("Running"))
         {
-            SoundPlayer.PlaySound("glint");
+            //SoundPlayer.PlaySound("glint");
             StartCoroutine(parryTiming());
         }
     }
@@ -211,12 +208,6 @@ public class PlayerMovement : MonoBehaviour
         maxValidInputTime = rhythmKeeper.beatLength / 2; //Get time of eighth notes
         maxValidInputTime *= numOfBeats; //Set maxValidInputTime to x eighth notes
         validInputTimer = 0;
-    }
-    public void SpawnShadowClone(float _fadeSpeed)
-    {
-        GameObject _shadowClone = Instantiate(shadowClone, shadowCloneSpawn.position, shadowCloneSpawn.rotation);
-        _shadowClone.AddComponent<FadeObject>();
-        _shadowClone.GetComponent<FadeObject>().fadeSpeed = _fadeSpeed;
     }
     public void SetSpeed(float newSpeed)
     {
