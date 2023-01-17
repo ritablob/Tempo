@@ -67,35 +67,69 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+<<<<<<< HEAD
       - time: 0.0695652
+=======
+      - time: 0
+        functionName: LaunchPlayer
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+>>>>>>> 44c899ecea5c20f4779de17f7a6d8d84171dc060
         functionName: LaunchPlayer
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 20
         intParameter: 0
         messageOptions: 0
+<<<<<<< HEAD
       - time: 0.1323944
+=======
+      - time: 0.12931995
+>>>>>>> 44c899ecea5c20f4779de17f7a6d8d84171dc060
         functionName: EnableHitbox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+<<<<<<< HEAD
       - time: 0.19154933
+=======
+      - time: 0.17948714
+>>>>>>> 44c899ecea5c20f4779de17f7a6d8d84171dc060
         functionName: EndLaunch
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 20
         intParameter: 0
         messageOptions: 0
+<<<<<<< HEAD
       - time: 0.29295775
+=======
+      - time: 0.29096982
+        functionName: DisableHitbox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.48676568
+>>>>>>> 44c899ecea5c20f4779de17f7a6d8d84171dc060
         functionName: CanCancelAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+<<<<<<< HEAD
       - time: 1
+=======
+      - time: 0.98773676
+>>>>>>> 44c899ecea5c20f4779de17f7a6d8d84171dc060
         functionName: EndAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
