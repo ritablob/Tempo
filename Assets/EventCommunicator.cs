@@ -34,11 +34,15 @@ public class EventCommunicator : MonoBehaviour
 
 
     //Character-specific commands
-    public void PlantSpear(int index) { characterSpecificObjects[index].GetComponent<Pole>().Plant(); }
-    public void PickUpSpear(GameObject _objectToChild, int index)
+    public void PlantSpear() { characterSpecificObjects[0].GetComponent<Pole>().Plant(); }
+    public void PickUpSpear(GameObject _objectToChild)
     {
-        _objectToChild.transform.SetParent(characterSpecificObjects[index].transform);
+        _objectToChild.transform.SetParent(characterSpecificObjects[0].transform);
         _objectToChild.transform.localPosition = new Vector3(0.0089f, 0.0222f, -0.0086f);
         _objectToChild.transform.localEulerAngles = new Vector3(-100, 0, 0);
+    }
+    public void MoveToLocation(int positionIndex)
+    {
+        characterSpecificObjects[0].GetComponent<Pole>().LerpPole(characterSpecificObjects[positionIndex].transform);
     }
 }

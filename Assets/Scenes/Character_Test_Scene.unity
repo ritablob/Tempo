@@ -28942,7 +28942,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d12c64f207bb4d45a468b9dd529ffb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundEffectsPoledancer: []
+  SoundEffectsPoledancer:
+  - soundName: 
+    audioClip: {fileID: 0}
+    loop: 0
+    volume: 0
   SoundEffectsBreakdancer: []
   soundDestroyDelay: 0.3
 --- !u!82 &2029986818
