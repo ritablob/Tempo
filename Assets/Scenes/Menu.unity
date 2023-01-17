@@ -1515,10 +1515,10 @@ MonoBehaviour:
   menuSelectIconP1: {fileID: 1361574561857505272, guid: 2e263a39e0f83344895c755d99d79987, type: 3}
   menuSelectIconP2: {fileID: 1513689151658010669, guid: ab7a50000108d3842998738af1c08a8f, type: 3}
   playerCharacers:
-  - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
-  - {fileID: 6952883153280969238, guid: 829b1c7212283734cb10a4ebe70f2586, type: 3}
-  - {fileID: 8821734678660833226, guid: 71c8bb1495120674e9f84bacdacc9bad, type: 3}
-  - {fileID: 6952883153280969238, guid: 829b1c7212283734cb10a4ebe70f2586, type: 3}
+  - {fileID: 1162232717056227273, guid: 969dba774852eb24e9238e1f6dc6fa07, type: 3}
+  - {fileID: 1162232717056227273, guid: 969dba774852eb24e9238e1f6dc6fa07, type: 3}
+  - {fileID: 1162232717056227273, guid: 969dba774852eb24e9238e1f6dc6fa07, type: 3}
+  - {fileID: 1162232717056227273, guid: 969dba774852eb24e9238e1f6dc6fa07, type: 3}
   playerCharacterIcons:
   - {fileID: 1185823714947805660, guid: 7e9289c2fccc1e346a3cb254983a1d95, type: 3}
   - {fileID: 8194934910831405078, guid: 65044781283a5da41b964ca7c04fae6d, type: 3}

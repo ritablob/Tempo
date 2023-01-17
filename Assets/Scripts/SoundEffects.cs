@@ -48,23 +48,25 @@ public class Sound
 public static class SoundPlayer
 {
     /// <summary>
-    /// Plays any sound, as long as its defined within SoundsList. <br></br>
+    /// Plays any sound, as long as its defined within the Character sound lists. <br></br>
     /// Possible to manipulate volume and panning if one desires.
+    /// Don't forget to add player index when playing a sound!
     /// </summary>
     /// <param name="soundName"></param>
     /// <param name="volume"></param>
     /// <param name="steroPan"></param>
-    public static void PlaySound(string soundName, float volume = 1, float steroPan = 0)
+    public static void PlaySound(int playerIndex, string soundName, float volume = 1, float steroPan = 0)
     {
         var playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray(); //Get an array of players from player config (0 = player 1, 1 = player 2)
         Debug.Log(playerConfigs[0].objectName); //print the character name of player 1 gameobject. 
-
         if (SoundEffects.Instance)
         {
-            Sound sound = GetSound(soundName);
+
+            Sound sound = GetSound(soundName, playerConfigs[playerIndex].objectName);
             if (sound != null)
             {
                 GameObject soundObject = new GameObject(soundName); // creates sound gameobject
+                soundObject.transform.position = playerConfigs[playerIndex].playerObject.transform.position;
                 AudioSource audioSource = soundObject.AddComponent<AudioSource>();
 
                 // sound settings in the SoundsList vvvv
@@ -95,20 +97,30 @@ public static class SoundPlayer
     /// </summary>
     /// <param name="soundName"></param>
     /// <returns></returns>
-    public static Sound GetSound(string soundName)
+    public static Sound GetSound(string soundName, string characterName)
     {
-        // XAVI: if its poledancer, do this vvvvvv
-        foreach (Sound sound in SoundEffects.Instance.SoundEffectsPoledancer) 
+        if (characterName == "PoleDancer")
         {
-            if (sound.soundName == soundName)
+            foreach (Sound sound in SoundEffects.Instance.SoundEffectsPoledancer)
             {
-                return sound;
+                if (sound.soundName == soundName)
+                {
+                    return sound;
+                }
             }
         }
-        // XAVI: if its breakdancer, do with SoundEffectsBreakdancer
+        else
+        {
+            foreach (Sound sound in SoundEffects.Instance.SoundEffectsBreakdancer)
+            {
+                if (sound.soundName == soundName)
+                {
+                    return sound;
+                }
+            }
+        }    // XAVI: if its breakdancer, do with SoundEffectsBreakdancer
 
-
-        Debug.LogError($"Sound '{soundName}' doesn't exist in the SoundsList!");
+        Debug.LogError($"Sound '{soundName}' doesn't exist in the SoundsList, or your character name is set up wrong.");
         return null;
     }
     /// <summary>

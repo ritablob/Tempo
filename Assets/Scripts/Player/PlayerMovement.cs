@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
         {
             anim.SetTrigger("Attack_1");
-
+            SoundPlayer.PlaySound(playerIndex, "deal_damage");
             if (maxValidInputTime == 0) //Get timing of input if not in combo
             {
                 lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
         {
             anim.SetTrigger("Attack_2");
-
+            SoundPlayer.PlaySound(playerIndex, "deal_damage");
             if (maxValidInputTime == 0) //Get timing of input if not in combo
             {
                 lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
@@ -139,7 +139,6 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
-            //SoundPlayer.PlaySound("glint");
         }
     }
     public void Special(InputAction.CallbackContext ctx)
@@ -154,13 +153,13 @@ public class PlayerMovement : MonoBehaviour
         if (canDodge && ctx.performed && anim.GetBool("Running"))
         {
             anim.SetTrigger("Dodge");
-            //SoundPlayer.PlaySound("glint");
+            SoundPlayer.PlaySound(playerIndex, "dodge");
             StartCoroutine(dodgeTiming());
             EndAttack();
         }
         else if (canParry && ctx.performed && !anim.GetBool("Running"))
         {
-            //SoundPlayer.PlaySound("glint");
+            SoundPlayer.PlaySound(playerIndex, "parry");
             StartCoroutine(parryTiming());
         }
     }
@@ -350,6 +349,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         isParrying = false;
         parryShield.SetActive(false);
+        SoundPlayer.StopSound("parry");
         yield return new WaitForSeconds(0.7f);
         canMove = true;
         isAttacking = false;
