@@ -67,27 +67,6 @@ ModelImporter:
         floatParameter: 20
         intParameter: 0
         messageOptions: 0
-      - time: 0.33732134
-        functionName: SetSpeed
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 7
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.1571906
-        functionName: SpawnShadowClone
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 0
-        intParameter: 2
-        messageOptions: 0
-      - time: 0
-        functionName: SpawnShadowClone
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 0
-        intParameter: 2
-        messageOptions: 0
       - time: 0.05685618
         functionName: SpawnShadowClone
         data: 
@@ -95,14 +74,42 @@ ModelImporter:
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.20735781
+      - time: 0.33732134
+        functionName: SetSpeed
+        data: 
+        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
+        floatParameter: 7
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.06800445
         functionName: SpawnShadowClone
         data: 
         objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.42474908
+      - time: 0.11259754
+        functionName: SpawnShadowClone
+        data: 
+        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
+      - time: 0.16276476
+        functionName: SpawnShadowClone
+        data: 
+        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
+      - time: 0.2185061
+        functionName: SpawnShadowClone
+        data: 
+        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
+      - time: 0.25752503
         functionName: SpawnShadowClone
         data: 
         objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}

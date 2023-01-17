@@ -23,7 +23,8 @@ public class EventCommunicator : MonoBehaviour
         //Copy bone transforms
         Transform[] sourceBones = GetComponentsInChildren<Transform>();
 
-        GameObject _shadowClone = Instantiate(characterSpecificObjects[_index], transform.localPosition, transform.localRotation);
+        GameObject _shadowClone = Instantiate(characterSpecificObjects[_index], transform.parent.position, transform.parent.rotation);
+        _shadowClone.transform.parent = transform.parent;
 
         _shadowClone.GetComponent<ShadowCloneInitializer>().InitializeBones(sourceBones);
     }

@@ -16,7 +16,6 @@ public class ShadowCloneInitializer : MonoBehaviour
             shadowBones[i].localScale = sourceBones[i].localScale;
         }
 
-        //gameObject.AddComponent<FadeObject>();
-        //gameObject.GetComponent<FadeObject>().fadeSpeed = 1;
+        transform.parent = null;
     }
 }

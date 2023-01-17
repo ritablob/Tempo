@@ -351,6 +351,8 @@ public class PlayerMovement : MonoBehaviour
         isParrying = false;
         parryShield.SetActive(false);
         yield return new WaitForSeconds(0.7f);
+        canMove = true;
+        isAttacking = false;
         canParry = true;
     }
     IEnumerator dodgeTiming()
