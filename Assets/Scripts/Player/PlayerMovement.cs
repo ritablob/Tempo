@@ -106,10 +106,12 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackLight(InputAction.CallbackContext ctx)
     {
-        if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
+        if (!isAttacking && !isParrying && canDodge && ctx.performed) //If not attacking, do attack logic
         {
             anim.SetTrigger("Attack_1");
-            SoundPlayer.PlaySound(playerIndex, "deal_damage");
+            StartAttack();
+
+            //SoundPlayer.PlaySound(playerIndex, "deal_damage");
             if (maxValidInputTime == 0) //Get timing of input if not in combo
             {
                 lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
@@ -125,10 +127,12 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
     {
-        if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
+        if (!isAttacking && !isParrying && canDodge && ctx.performed) //If not attacking, do attack logic
         {
             anim.SetTrigger("Attack_2");
-            SoundPlayer.PlaySound(playerIndex, "deal_damage");
+            StartAttack();
+
+            //SoundPlayer.PlaySound(playerIndex, "deal_damage");
             if (maxValidInputTime == 0) //Get timing of input if not in combo
             {
                 lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
@@ -143,23 +147,25 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Special(InputAction.CallbackContext ctx)
     {
-        if (!isAttacking && !isParrying && ctx.performed) //If not attacking, do attack logic
+        if (!isAttacking && !isParrying && canDodge && ctx.performed) //If not attacking, do attack logic
         {
             anim.SetTrigger("Special");
         }
     }
     public void Dodge(InputAction.CallbackContext ctx)
     {
-        if (canDodge && ctx.performed && anim.GetBool("Running"))
+        if (canDodge && ctx.performed && anim.GetBool("Running") && !isAttacking)
         {
+            MiscLayer();
             anim.SetTrigger("Dodge");
-            SoundPlayer.PlaySound(playerIndex, "dodge");
+            //SoundPlayer.PlaySound(playerIndex, "dodge");
             StartCoroutine(dodgeTiming());
-            EndAttack();
         }
-        else if (canParry && ctx.performed && !anim.GetBool("Running"))
+        else if (canParry && ctx.performed && !anim.GetBool("Running") && !isAttacking)
         {
-            SoundPlayer.PlaySound(playerIndex, "parry");
+            //SoundPlayer.PlaySound(playerIndex, "parry");
+            MiscLayer();
+            anim.SetTrigger("Parry");
             StartCoroutine(parryTiming());
         }
     }
@@ -167,17 +173,18 @@ public class PlayerMovement : MonoBehaviour
 
 
     //Combat-related functions
-    public void StartAttack() { isAttacking = true; canMove = false; validInputTimer = 0; maxValidInputTime = 0; }
+    public void StartAttack() { isAttacking = true; canMove = false; validInputTimer = 0; maxValidInputTime = 0; AttackLayer(); }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
     public void EndAttack() 
-    { 
+    {
         isAttacking = false; 
         isLaunching = false; 
         canMove = false; 
         validInputTimer = 0; 
         maxValidInputTime = 0; 
         anim.ResetTrigger("Light"); 
-        anim.ResetTrigger("Heavy"); 
+        anim.ResetTrigger("Heavy");
+        ResetLayers();
         aim.x = 0; aim.y = 0; 
     }
     public void CanMove() { canMove = true; }
@@ -193,6 +200,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    public void ResetLayers() { anim.SetLayerWeight(0, 1); anim.SetLayerWeight(1, 0); anim.SetLayerWeight(2, 0); }
+    public void AttackLayer() { anim.SetLayerWeight(0, 0); anim.SetLayerWeight(1, 1); anim.SetLayerWeight(2, 0); }
+    public void MiscLayer() { anim.SetLayerWeight(0, 0); anim.SetLayerWeight(1, 0); anim.SetLayerWeight(2, 1); }
     public void LaunchPlayer(float units)
     {
         isLaunching = transform;
@@ -224,8 +234,6 @@ public class PlayerMovement : MonoBehaviour
     //Update Function
     void Update()
     {
-        if(HP < 0) { StartCoroutine(Delay()); }
-
         if (hitStunRemaining > 0) //If in hitstun, skip rest of update
         {
             hitStunRemaining -= Time.deltaTime;
@@ -314,6 +322,7 @@ public class PlayerMovement : MonoBehaviour
             takeKnockBack = true;
             StartCoroutine(TakeKnockBack());
             anim.SetTrigger("Hit");
+            MiscLayer();
             isLaunching = false;
             isAttacking = false;
             hitStunRemaining = hitStun;
@@ -358,6 +367,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator dodgeTiming()
     {
         canDodge = false;
+        anim.SetTrigger("Dodge");
         yield return new WaitForSeconds(1.75f);
         canDodge = true;
     }
