@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource sfx;
     [SerializeField] float gamepadRumble1 = 0.5f;
     [SerializeField] float gamepadRumble2 = 0.5f;
+    HitCanvasManager hitCanvasManager;
 
     [HideInInspector]
     public int heldDown;
@@ -55,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
     private bool canParry = true;
     private bool canDodge = true;
     private StatusEffects statusEffects;
-
     private Vector3 offset;
     //private bool hasOffset = false;
     //private bool isNotMoving; // we update the rotation of movement when the character has stopped moving
@@ -68,8 +68,8 @@ public class PlayerMovement : MonoBehaviour
         rhythmKeeper = GameObject.FindObjectOfType<RhythmKeeper>();
         sceneCamera = GameObject.FindObjectOfType<Camera>();
         statusEffects = GetComponent<StatusEffects>();
+        hitCanvasManager = FindObjectOfType<HitCanvasManager>();
     }
-
     private void OnEnable()
     {
         playerControls.Enable();
@@ -110,8 +110,8 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetTrigger("Attack_1");
             StartAttack();
-
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
+
             if (maxValidInputTime == 0) //Get timing of input if not in combo
             {
                 lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
-            //SoundPlayer.PlaySound("glint");
+            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
         }
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
@@ -143,6 +143,7 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
+            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage);// message popup spawn
         }
     }
     public void Special(InputAction.CallbackContext ctx)
@@ -322,6 +323,7 @@ public class PlayerMovement : MonoBehaviour
             takeKnockBack = true;
             StartCoroutine(TakeKnockBack());
             anim.SetTrigger("Hit");
+            SoundPlayer.PlaySound(playerIndex, "grunt");
             MiscLayer();
             isLaunching = false;
             isAttacking = false;
