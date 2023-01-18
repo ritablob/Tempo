@@ -6,7 +6,6 @@ using TMPro;
 public class HitCanvasManager : MonoBehaviour
 {
     public HitCanvas hitCanvas;
-    public float popupLength = 2f;
     public float floatUpSpeed = 3f;
     public float floatUpHeight = 2f;
     public float fadeOutSpeed = 5f;
