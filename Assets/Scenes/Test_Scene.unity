@@ -3928,7 +3928,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh32406
+  m_Name: pb_Mesh29486
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8352,7 +8352,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitCanvas: {fileID: 5411210903457282758, guid: 4314b4e7bbf57e940a3f0236f0532575, type: 3}
-  popupLength: 2
+  popupLength: 1.1
+  floatUpSpeed: 5
+  floatUpHeight: 2
 --- !u!1001 &611078111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11250,7 +11252,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh32648
+  m_Name: pb_Mesh29728
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14860,7 +14862,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31722
+  m_Name: pb_Mesh28796
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30275,7 +30277,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31460
+  m_Name: pb_Mesh28534
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
