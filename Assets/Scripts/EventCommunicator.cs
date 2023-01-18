@@ -18,7 +18,7 @@ public class EventCommunicator : MonoBehaviour
     public void LaunchPlayer(float units) { playerScriptRef.LaunchPlayer(units); }
     public void EndLaunch() { playerScriptRef.EndLaunch(); }
     public void BeatsForNextAttack(int numOfBeats) { playerScriptRef.BeatsForNextAttack(numOfBeats); } //Use eighth notes for calculations
-    public void SpawnShadowClone(int _index) 
+    public void SpawnShadowClone(int _index)
     {
         //Copy bone transforms
         Transform[] sourceBones = GetComponentsInChildren<Transform>();

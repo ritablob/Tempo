@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
-            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
+            //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
         }
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
@@ -143,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
                 lastBeatPercentage = validInputTimer / maxValidInputTime;
                 if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             }
-            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage);// message popup spawn
+            //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage);// message popup spawn
         }
     }
     public void Special(InputAction.CallbackContext ctx)
@@ -323,7 +323,7 @@ public class PlayerMovement : MonoBehaviour
             takeKnockBack = true;
             StartCoroutine(TakeKnockBack());
             anim.SetTrigger("Hit");
-            SoundPlayer.PlaySound(playerIndex, "grunt");
+            //SoundPlayer.PlaySound(playerIndex, "grunt");
             MiscLayer();
             isLaunching = false;
             isAttacking = false;
@@ -380,11 +380,9 @@ public class PlayerMovement : MonoBehaviour
         takeKnockBack = false;
         isLaunching = false;
     }
-
-    IEnumerator Delay()
+    IEnumerator ShadowCloneDelay()
     {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        yield return new WaitForSeconds(0.2f);
     }
     IEnumerator Rumble()
     {

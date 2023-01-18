@@ -20,9 +20,11 @@ public class DynamicCamera : MonoBehaviour
     [SerializeField] Vector2 horizontalBounds;
     [SerializeField] Vector2 forwardBounds;
 
+    private bool isShaking;
+
     private void LateUpdate()
     {
-        if (player2 != null)
+        if (player2 != null && !isShaking)
         {
             //Calculate & set the close position for the camera
             Vector3 centerPoint = GetCenterPoint();
@@ -48,6 +50,10 @@ public class DynamicCamera : MonoBehaviour
             gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, Quaternion.LookRotation(lookDirection), cameraRotateSpeed * Time.deltaTime);
 
             CheckCurrentPlayer();
+        }
+        else if (isShaking)
+        {
+
         }
     }
 
@@ -95,5 +101,18 @@ public class DynamicCamera : MonoBehaviour
         {
             player2 = players[1].transform;
         }
+    }
+    public void ShakeCamera(float x, float y)
+    {
+        Debug.Log($"{x}, {y}");
+        StartCoroutine(ShakeDelay());
+        transform.position += new Vector3(x, y, 0);
+        isShaking = true;
+    }
+
+    IEnumerator ShakeDelay()
+    {
+        yield return new WaitForSeconds(0.33f);
+        isShaking = false;
     }
 }

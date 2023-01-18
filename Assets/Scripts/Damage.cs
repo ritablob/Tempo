@@ -5,6 +5,7 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerRef;
+    private DynamicCamera camRef;
 
     [Header("Hit Values")]
     [SerializeField] float baseDamage;
@@ -14,9 +15,12 @@ public class Damage : MonoBehaviour
     [Header("Hit Effects")]
     [SerializeField] bool exposing;
     [SerializeField] bool stunning;
-
     private bool dealtDamage;
 
+    private void Start()
+    {
+        camRef = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<DynamicCamera>();
+    }
     private void OnEnable()
     {
         dealtDamage = false;
@@ -42,6 +46,11 @@ public class Damage : MonoBehaviour
             //Apply attack effects
             if (exposing) { other.GetComponent<StatusEffects>().AddExpose(); }
             if(stunning) { other.GetComponent<StatusEffects>().AddStun(); }
+
+            //Apply camera shake
+            float x = Random.Range(-modifier, modifier);
+            float y = Random.Range(-modifier, modifier);
+            camRef.ShakeCamera(x, y);
 
             other.GetComponent<PlayerMovement>().TakeDamage(newDamage, hitStun, knockBack, launchPoint);
             playerRef.AddUltimateCharge(Mathf.RoundToInt(newDamage));
