@@ -31,6 +31,7 @@ public class EventCommunicator : MonoBehaviour
     public void SetSpeed(float newSpeed) { playerScriptRef.SetSpeed(newSpeed); }
     public void EnableHitbox(int hitBoxID) { hitBoxes[hitBoxID].SetActive(true); }
     public void DisableHitbox(int hitBoxID) { hitBoxes[hitBoxID].SetActive(false); }
+    public void ResetLayers() { playerScriptRef.ResetLayers(); }
 
 
     //Character-specific commands
