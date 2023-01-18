@@ -9969,7 +9969,8 @@ MonoBehaviour:
   - {fileID: 1546694815}
   beatsPerMinute: 120
   beatsPerBar: 4
-  beatLength: 0
+  beatTiming: 
+  beatLengthThird: 0
   maxValidInputTime: 0
   validInputTimer: 0
 --- !u!1001 &803539379

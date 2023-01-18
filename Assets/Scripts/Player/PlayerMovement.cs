@@ -36,8 +36,6 @@ public class PlayerMovement : MonoBehaviour
     public int heldDown;
     public int playerIndex;
     public float lastBeatPercentage;
-    public float maxValidInputTime; //Used to see if the next move falls under the correct combo timing
-    public float validInputTimer; //Tracks the elapsed time of the current beat
 
     private Vector2 movement;
     private Vector3 aim;
@@ -57,11 +55,11 @@ public class PlayerMovement : MonoBehaviour
     private bool canDodge = true;
     private StatusEffects statusEffects;
     private Vector3 offset;
-    //private bool hasOffset = false;
-    //private bool isNotMoving; // we update the rotation of movement when the character has stopped moving
+    private float ourDeadTime;
 
     void Awake()
     {
+        EventSystem.Instance.AddEventListener("DeadTime", SetOurDeadTime);
         playerControls = new PlayerControls();
         playerInput = GetComponent<PlayerInput>();
         charController = GetComponent<CharacterController>();
@@ -106,43 +104,29 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackLight(InputAction.CallbackContext ctx)
     {
-        if (!isAttacking && !isParrying && canDodge && ctx.performed) //If not attacking, do attack logic
+        if (!isAttacking && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
             anim.SetTrigger("Attack_1");
+            Debug.Log(rhythmKeeper.beatTiming);
+
             StartAttack();
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
-
-            if (maxValidInputTime == 0) //Get timing of input if not in combo
-            {
-                lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
-                if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
-            }
-            else //If in combo, calculate based on internal rhythm tracking
-            { 
-                lastBeatPercentage = validInputTimer / maxValidInputTime;
-                if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
-            }
+            lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
+            if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
         }
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
     {
-        if (!isAttacking && !isParrying && canDodge && ctx.performed) //If not attacking, do attack logic
+        if (!isAttacking && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
             anim.SetTrigger("Attack_2");
+            Debug.Log(rhythmKeeper.beatTiming);
             StartAttack();
 
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
-            if (maxValidInputTime == 0) //Get timing of input if not in combo
-            {
-                lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
-                if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
-            }
-            else 
-            { 
-                lastBeatPercentage = validInputTimer / maxValidInputTime;
-                if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
-            }
+            lastBeatPercentage = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime;
+            if (doubleTime && lastBeatPercentage < 0.5f) lastBeatPercentage *= 2;
             //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage);// message popup spawn
         }
     }
@@ -174,15 +158,13 @@ public class PlayerMovement : MonoBehaviour
 
 
     //Combat-related functions
-    public void StartAttack() { isAttacking = true; canMove = false; validInputTimer = 0; maxValidInputTime = 0; AttackLayer(); }
+    public void StartAttack() { isAttacking = true; canMove = false; AttackLayer(); }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
     public void EndAttack() 
     {
         isAttacking = false; 
         isLaunching = false; 
         canMove = false; 
-        validInputTimer = 0; 
-        maxValidInputTime = 0; 
         anim.ResetTrigger("Light"); 
         anim.ResetTrigger("Heavy");
         ResetLayers();
@@ -212,12 +194,6 @@ public class PlayerMovement : MonoBehaviour
     public void EndLaunch()
     {
         isLaunching = false;
-    }
-    public void BeatsForNextAttack(int numOfBeats) //Use eighth notes for calculations
-    {
-        maxValidInputTime = rhythmKeeper.beatLength / 2; //Get time of eighth notes
-        maxValidInputTime *= numOfBeats; //Set maxValidInputTime to x eighth notes
-        validInputTimer = 0;
     }
     public void SetSpeed(float newSpeed)
     {
@@ -250,8 +226,6 @@ public class PlayerMovement : MonoBehaviour
             mats[matIndex] = normal;
             modelRenderer.materials = mats;
         }
-
-        if (maxValidInputTime != 0) { validInputTimer += Time.deltaTime; } //Add time to the combo counter
 
         if (!isAttacking && !isParrying) //If the player is not attacking or parrying, run general movement check
         {
@@ -349,6 +323,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    private void SetOurDeadTime(string eventName, object param)
+    {
+        if (param.GetType() == typeof(float))
+            ourDeadTime = Convert.ToSingle(param);
+    }
+
 
     //Coroutines
     IEnumerator parryTiming()
@@ -379,10 +359,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         takeKnockBack = false;
         isLaunching = false;
-    }
-    IEnumerator ShadowCloneDelay()
-    {
-        yield return new WaitForSeconds(0.2f);
     }
     IEnumerator Rumble()
     {

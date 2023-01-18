@@ -17,9 +17,9 @@ public class RhythmBlinkingLights : MonoBehaviour
 
     void Update()
     {
-        float beatPerc = rhythmKeeper.validInputTimer / rhythmKeeper.maxValidInputTime; //Calculate percentage of beat
+        float difference = Mathf.Abs(rhythmKeeper.validInputTimer);
 
-        if (beatPerc > 0.8f) // im not sure if checking when its "perfect" is ideal but i didnt wanna mess too much with rhythm keeper script
+        if (difference < 0.095f) // im not sure if checking when its "perfect" is ideal but i didnt wanna mess too much with rhythm keeper script
         {
             InvokeOnce(onBeat);
         }
