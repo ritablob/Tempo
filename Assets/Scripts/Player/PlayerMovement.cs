@@ -125,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
         else if (ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
         {
             triggerName = "Attack_1";
+            lastBeatTiming = rhythmKeeper.beatTiming;
         }
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
@@ -151,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
         else if(ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
         {
             triggerName = "Attack_2";
+            lastBeatTiming = rhythmKeeper.beatTiming;
         }
     }
     public void Special(InputAction.CallbackContext ctx)
@@ -242,7 +244,6 @@ public class PlayerMovement : MonoBehaviour
             triggerName = null;
             StartAttack();
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
-            lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
             //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage);// message popup spawn
         }
 
