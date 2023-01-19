@@ -111,6 +111,16 @@ public class PlayerMovement : MonoBehaviour
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
             lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
             //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
+            return;
+        }
+        else if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1"))
+        {
+            anim.SetTrigger("Attack_1_Released");
+            StartAttack();
+            //SoundPlayer.PlaySound(playerIndex, "deal_damage");
+            lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
+            //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
+            return;
         }
         else if (ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
         {
@@ -127,6 +137,16 @@ public class PlayerMovement : MonoBehaviour
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
             lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
             //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage);// message popup spawn
+            return;
+        }
+        else if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2"))
+        {
+            anim.SetTrigger("Attack_2_Released");
+            StartAttack();
+            //SoundPlayer.PlaySound(playerIndex, "deal_damage");
+            lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
+            //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
+            return;
         }
         else if(ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
         {
