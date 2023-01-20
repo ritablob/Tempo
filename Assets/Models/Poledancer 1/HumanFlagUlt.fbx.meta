@@ -1,0 +1,341 @@
+fileFormatVersion: 2
+guid: 57a32581d86caea45aed91879c19c1da
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  - first:
+      74: -4976350379833429960
+    second: HumanFlagUlt
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: HumanFlagUlt
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 14.8
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: PoldancerModel(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerModel
+      parentName: PoldancerModel(Clone)
+      position: {x: -0.000029834364, y: 0.11855464, z: 0.000016773825}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.1, y: 0.1, z: 0.1}
+    - name: PoledancerRig_Hips
+      parentName: PoldancerModel(Clone)
+      position: {x: 0.00051969703, y: 0.1277228, z: -0.0007099595}
+      rotation: {x: 0.5566736, y: -0.43602124, z: -0.5566736, w: 0.43602124}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftUpLeg
+      parentName: PoledancerRig_Hips
+      position: {x: 0.0029217391, y: 0.0016543244, z: 0.014253285}
+      rotation: {x: -0.0028477018, y: 0.000015608874, z: 0.9930671, w: -0.11751471}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftLeg
+      parentName: PoledancerRig_LeftUpLeg
+      position: {x: -0.058246568, y: -0.00024739446, z: -0.0000005792169}
+      rotation: {x: -0.04258499, y: -0.0043184888, z: 0.0010233629, w: 0.99908304}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftFoot
+      parentName: PoledancerRig_LeftLeg
+      position: {x: -0.053424843, y: 0.00000019965172, z: -0.00000017575923}
+      rotation: {x: 0.13193338, y: 0.113418825, z: 0.4327595, w: 0.8845615}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftToeBase
+      parentName: PoledancerRig_LeftFoot
+      position: {x: -0.018063225, y: -0.00034531284, z: -0.0013493185}
+      rotation: {x: -0.00000009846316, y: 0.0033275222, z: 0.02976626, w: 0.99955136}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightUpLeg
+      parentName: PoledancerRig_Hips
+      position: {x: 0.0029217391, y: 0.0016543244, z: -0.014253282}
+      rotation: {x: -0.0039511654, y: 0.017419847, z: 0.119534895, w: 0.9926693}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightLeg
+      parentName: PoledancerRig_RightUpLeg
+      position: {x: 0.058247168, y: 0.000002005248, z: -0.00000009164487}
+      rotation: {x: 0.0186118, y: -0.03475804, z: 0.00023405418, w: 0.99922246}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightFoot
+      parentName: PoledancerRig_RightLeg
+      position: {x: 0.053424876, y: -0.00000016867297, z: -0.000000027012877}
+      rotation: {x: 0.05670164, y: 0.09079378, z: 0.41739607, w: 0.9023979}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightToeBase
+      parentName: PoledancerRig_RightFoot
+      position: {x: 0.018083619, y: 7.418406e-11, z: -0.0000000052391473}
+      rotation: {x: 0.000025478617, y: -0.000000002021073, z: 5.1494148e-14, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_Spine
+      parentName: PoledancerRig_Hips
+      position: {x: -0.011507897, y: -1.301906e-10, z: 0}
+      rotation: {x: 0, y: 0, z: 0.025560059, w: 0.9996733}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_Spine1
+      parentName: PoledancerRig_Spine
+      position: {x: -0.011198892, y: 2.422393e-10, z: 0}
+      rotation: {x: 0, y: 0, z: 0.1297544, w: 0.99154615}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_Spine2
+      parentName: PoledancerRig_Spine1
+      position: {x: -0.010748366, y: 1.3175203e-11, z: 6.938894e-20}
+      rotation: {x: 0, y: 0, z: 0.103918895, w: 0.9945858}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftShoulder
+      parentName: PoledancerRig_Spine2
+      position: {x: -0.032279056, y: -0.0037097586, z: 0.0064321146}
+      rotation: {x: -0.3435432, y: 0.6180437, z: 0.50019115, w: 0.49980882}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftArm
+      parentName: PoledancerRig_LeftShoulder
+      position: {x: -0.015974464, y: 0.0000000021993383, z: 2.220446e-18}
+      rotation: {x: 0.6928108, y: -0.09025358, z: -0.07971116, w: 0.7109949}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftForeArm
+      parentName: PoledancerRig_LeftArm
+      position: {x: -0.035648633, y: 0.000001841079, z: 0.0000005765665}
+      rotation: {x: 0.0011755842, y: -0.0038116795, z: -0.038536586, w: 0.9992493}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftHand
+      parentName: PoledancerRig_LeftForeArm
+      position: {x: -0.03122379, y: 0.00016761805, z: -0.0016209909}
+      rotation: {x: -0.000022994482, y: 0.000030247673, z: -0.062213387, w: 0.9980629}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftThumb1
+      parentName: PoledancerRig_LeftHand
+      position: {x: -0.0054033273, y: 0.00248387, z: 0.0012506763}
+      rotation: {x: -0.69687957, y: 0.21744058, z: -0.14364706, w: 0.66816473}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftThumb2
+      parentName: PoledancerRig_LeftThumb1
+      position: {x: -0.0034343456, y: -0.000085785905, z: -0.00004528004}
+      rotation: {x: -0.055871293, y: -0.09787917, z: 0.021610612, w: 0.9933938}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftThumb3
+      parentName: PoledancerRig_LeftThumb2
+      position: {x: -0.0026957165, y: -0.00003116877, z: 0.0002932316}
+      rotation: {x: 0.007494501, y: 0.0035834813, z: -0.0037899748, w: 0.9999584}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftThumb4
+      parentName: PoledancerRig_LeftThumb3
+      position: {x: -0.0022559783, y: 0.00013959693, z: 0.00023577324}
+      rotation: {x: -0.011295322, y: -0.049376078, z: -0.22271422, w: 0.97356707}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftFingers1
+      parentName: PoledancerRig_LeftHand
+      position: {x: -0.011364619, y: -0.0016222551, z: 0.000512478}
+      rotation: {x: -0.70185494, y: 0.06892479, z: 0.1566449, w: 0.6914561}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftFingers2
+      parentName: PoledancerRig_LeftFingers1
+      position: {x: -0.0024982488, y: 0.00048002592, z: -0.00007660032}
+      rotation: {x: -0.006411283, y: 0.014308985, z: -0.07820459, w: 0.9968141}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftFingers3
+      parentName: PoledancerRig_LeftFingers2
+      position: {x: -0.004430477, y: -0.00017452064, z: -0.0002906123}
+      rotation: {x: 0.05921912, y: 0.03583567, z: -0.07676285, w: 0.9946439}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_LeftFingers4
+      parentName: PoledancerRig_LeftFingers3
+      position: {x: -0.0048101647, y: -0.0013317026, z: -0.00039983148}
+      rotation: {x: -0.019478172, y: -0.045466363, z: -0.3933107, w: 0.91807413}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightShoulder
+      parentName: PoledancerRig_Spine2
+      position: {x: -0.032279056, y: -0.0037097586, z: -0.006432116}
+      rotation: {x: 0.6262312, y: 0.3283816, z: -0.48747247, w: 0.5122212}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightArm
+      parentName: PoledancerRig_RightShoulder
+      position: {x: 0.013662385, y: -0.0000000012439983, z: -2.220446e-18}
+      rotation: {x: 0.71307373, y: -0.10586803, z: -0.09553674, w: 0.6864332}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightForeArm
+      parentName: PoledancerRig_RightArm
+      position: {x: 0.032302916, y: -0.000001408493, z: -0.00000072645383}
+      rotation: {x: 0.05462412, y: -0.043977324, z: -0.030108714, w: 0.9970836}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightHand
+      parentName: PoledancerRig_RightForeArm
+      position: {x: 0.034626354, y: -0.000022891762, z: 0.0002836912}
+      rotation: {x: 0.006532808, y: -0.003038159, z: 0.006681682, w: 0.9999517}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightFingers1
+      parentName: PoledancerRig_RightHand
+      position: {x: 0.012514304, y: -0.000021646925, z: -0.000049029186}
+      rotation: {x: -0.72383416, y: 0.008390545, z: 0.01637674, w: 0.6897286}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightFingers2
+      parentName: PoledancerRig_RightFingers1
+      position: {x: 0.0041070837, y: 0.00070024387, z: -0.000028590477}
+      rotation: {x: -0.017439066, y: 0.0022062433, z: 0.067375325, w: 0.99757284}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightFingers3
+      parentName: PoledancerRig_RightFingers2
+      position: {x: 0.0033372536, y: 0.0003507157, z: 0.0000905347}
+      rotation: {x: 0.060050562, y: 0.024583027, z: 0.037562344, w: 0.9971854}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightFingers4
+      parentName: PoledancerRig_RightFingers3
+      position: {x: 0.0057176747, y: 0.00046894315, z: 0.000025512725}
+      rotation: {x: -0.019478172, y: -0.045466363, z: -0.3933107, w: 0.91807413}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightThumb1
+      parentName: PoledancerRig_RightHand
+      position: {x: 0.004010659, y: -0.0029767011, z: 0.00050689507}
+      rotation: {x: -0.76182544, y: 0.2082262, z: -0.21753989, w: 0.5735331}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightThumb2
+      parentName: PoledancerRig_RightThumb1
+      position: {x: 0.004815495, y: 0.00078108406, z: -0.00007467288}
+      rotation: {x: -0.06859215, y: -0.16031198, z: 0.058413293, w: 0.98294616}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightThumb3
+      parentName: PoledancerRig_RightThumb2
+      position: {x: 0.0025474366, y: 0.00017159207, z: -0.0008911666}
+      rotation: {x: -0.0041178684, y: 0.040977195, z: -0.05549659, w: 0.99760926}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_RightThumb4
+      parentName: PoledancerRig_RightThumb3
+      position: {x: 0.0041759894, y: 0.0008362921, z: -0.0007586008}
+      rotation: {x: -0.011295322, y: -0.049376078, z: -0.22271422, w: 0.97356707}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_Neck
+      parentName: PoledancerRig_Spine2
+      position: {x: -0.038978823, y: 0.000000003129094, z: -6.938894e-20}
+      rotation: {x: 0, y: 0, z: -0.2986432, w: 0.95436484}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PoledancerRig_Head
+      parentName: PoledancerRig_Neck
+      position: {x: -0.013524839, y: -0.000000046541732, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 9823726637ff0334b968dd81829747ab, type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
