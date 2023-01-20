@@ -493,7 +493,6 @@ MonoBehaviour:
   modelRenderer: {fileID: 3510153941041175127}
   matIndex: 5
   HP: 100
-  doubleTime: 0
   speed: 7
   charController: {fileID: 1162232717056227271}
   controllerDeadZone: 0.1
@@ -504,9 +503,7 @@ MonoBehaviour:
   gamepadRumble2: 0.5
   heldDown: 0
   playerIndex: 0
-  lastBeatPercentage: 0
-  maxValidInputTime: 0
-  validInputTimer: 0
+  lastBeatTiming: 
   isGamepad: 0
 --- !u!114 &6044556107354192595
 MonoBehaviour:
@@ -522,6 +519,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exposeStacks: 0
   stunStacks: 0
+  bleedStacks: 0
+  weaknessStacks: 0
 --- !u!1 &1162232717270291737
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +850,8 @@ MonoBehaviour:
   knockBack: 3
   exposing: 0
   stunning: 0
+  bleeding: 1
+  weaken: 0
 --- !u!1 &6169212653624976694
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +863,6 @@ GameObject:
   - component: {fileID: 3923734457911919992}
   - component: {fileID: 4971878978246117144}
   - component: {fileID: 792883000966564214}
-  - component: {fileID: 7373044110795062347}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -967,19 +967,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!114 &7373044110795062347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6169212653624976694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c793c640c7bd36d4293610a5c13d6937, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRef: {fileID: 1207356900211838078}
 --- !u!1 &8692068056522663229
 GameObject:
   m_ObjectHideFlags: 0

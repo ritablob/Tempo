@@ -17,6 +17,7 @@ public class EventCommunicator : MonoBehaviour
     public void SnapToOpponent() { playerScriptRef.SnapToOpponent(); }
     public void LaunchPlayer(float units) { playerScriptRef.LaunchPlayer(units); }
     public void EndLaunch() { playerScriptRef.EndLaunch(); }
+    public void LongAttack() { playerScriptRef.InLongCombo(); }
     public void SpawnShadowClone(int _index)
     {
         //Copy bone transforms

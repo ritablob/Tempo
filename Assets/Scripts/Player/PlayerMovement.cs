@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 offset;
     private float ourDeadTime;
     private string triggerName;
+    private bool longCombo;
 
     void Awake()
     {
@@ -106,6 +107,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
+            longCombo = false;
+            Debug.Log(ourDeadTime);
             anim.SetTrigger("Attack_1");
             StartAttack();
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
@@ -115,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1"))
         {
+            longCombo = false;
             anim.SetTrigger("Attack_1_Released");
             StartAttack();
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
@@ -132,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
+            longCombo = false;
             anim.SetTrigger("Attack_2");
             StartAttack();
 
@@ -142,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2"))
         {
+            longCombo = false;
             anim.SetTrigger("Attack_2_Released");
             StartAttack();
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
@@ -183,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     //Combat-related functions
-    public void StartAttack() { isAttacking = true; canMove = false; AttackLayer(); ourDeadTime = rhythmKeeper.beatLengthThird; }
+    public void StartAttack() { isAttacking = true; canMove = false; AttackLayer(); ourDeadTime = 0.333f; }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
     public void EndAttack() 
     {
@@ -228,6 +234,11 @@ public class PlayerMovement : MonoBehaviour
     {
         ultimateCharge += amnt;
     }
+    public void InLongCombo()
+    {
+        longCombo = true;
+        ourDeadTime += 0.5f; 
+    }
     //Combat-related functions end
 
 
@@ -239,7 +250,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (ourDeadTime < 0 && rhythmKeeper.beatTiming != "DeadZone" && triggerName != null) //If there is a buffered move, execute the move
         {
-            Debug.Log("Buffer Used");
+            Debug.Log("BUFFERED");
+            longCombo = false;
             anim.SetTrigger(triggerName);
             triggerName = null;
             StartAttack();

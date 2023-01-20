@@ -15,6 +15,8 @@ public class Damage : MonoBehaviour
     [Header("Hit Effects")]
     [SerializeField] bool exposing;
     [SerializeField] bool stunning;
+    [SerializeField] bool bleeding;
+    [SerializeField] bool weaken;
     private bool dealtDamage;
 
     private void Start()
@@ -45,11 +47,15 @@ public class Damage : MonoBehaviour
             {
                 case "Near":
                     modifier = 0.5f;
+                    modifier += other.GetComponent<StatusEffects>().exposeStacks / 2;
                     newDamage = baseDamage * modifier;
+                    newDamage -= playerRef.gameObject.GetComponent<StatusEffects>().weaknessStacks;
                     break;
                 case "Perfect":
                     modifier = 1;
+                    modifier += other.GetComponent<StatusEffects>().exposeStacks / 2;
                     newDamage = baseDamage * modifier;
+                    newDamage -= playerRef.gameObject.GetComponent<StatusEffects>().weaknessStacks;
                     break;
             }
 
@@ -58,6 +64,8 @@ public class Damage : MonoBehaviour
             //Apply attack effects
             if (exposing) { other.GetComponent<StatusEffects>().AddExpose(); }
             if(stunning) { other.GetComponent<StatusEffects>().AddStun(); }
+            if(bleeding) { other.GetComponent<StatusEffects>().AddBleed(); }
+            if(weaken) { other.GetComponent<StatusEffects>().AddWeakness(); }
 
             //Apply camera shake
             float x = Random.Range(-modifier, modifier);
