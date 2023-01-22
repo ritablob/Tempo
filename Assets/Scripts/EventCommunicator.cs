@@ -33,15 +33,15 @@ public class EventCommunicator : MonoBehaviour
 
 
     //Character-specific commands
-    public void PickUpSpear()
+    public void PickUpSpear(float lerpSpeed)
     {
+        lerpSpeed = Mathf.Clamp(lerpSpeed, 0.5f, 999);
         characterSpecificObjects[0].transform.SetParent(characterSpecificObjects[1].transform);
-        characterSpecificObjects[0].transform.localPosition = new Vector3(0.0089f, 0.0222f, -0.0086f);
-        characterSpecificObjects[0].transform.localEulerAngles = new Vector3(-100, 0, 0);
+        characterSpecificObjects[0].GetComponent<Pole>().LerpPole(characterSpecificObjects[1].transform, lerpSpeed);
     }
     public void MoveToLocation(int positionIndex)
     {
         characterSpecificObjects[0].transform.SetParent(characterSpecificObjects[positionIndex].transform);
-        characterSpecificObjects[0].GetComponent<Pole>().LerpPole(characterSpecificObjects[positionIndex].transform);
+        characterSpecificObjects[0].GetComponent<Pole>().LerpPole(characterSpecificObjects[positionIndex].transform, 10);
     }
 }

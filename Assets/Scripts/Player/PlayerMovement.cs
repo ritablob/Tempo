@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isGamepad;
     private bool takeKnockBack;
     private bool isAttacking; //Prevents the player from acting during an attack
-    private bool canMove;
+    private bool canMove = true;
     private bool isLaunching;
     private bool isParrying;
     private bool canParry = true;
@@ -172,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Dodge(InputAction.CallbackContext ctx)
     {
-        if (canDodge && ctx.performed && anim.GetBool("Running") && !isAttacking)
+        if (canDodge && ctx.performed && anim.GetBool("Running") && !isAttacking && canMove)
         {
             MiscLayer();
             anim.SetTrigger("Dodge");
@@ -194,21 +194,21 @@ public class PlayerMovement : MonoBehaviour
     public void StartAttack() 
     { 
         isAttacking = true; canMove = false; AttackLayer(); ourDeadTime = 0.333f;
-        if (isPoleDancer) { eventCommunicator.PickUpSpear(); }
+        if (isPoleDancer) { eventCommunicator.PickUpSpear(10); }
     }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
     public void EndAttack() 
     {
         isAttacking = false; 
         isLaunching = false; 
-        canMove = false; 
+        canMove = true; 
         anim.ResetTrigger("Attack_1"); 
         anim.ResetTrigger("Attack_1_Released");
         anim.ResetTrigger("Attack_2");
         anim.ResetTrigger("Attack_2_Released");
         ResetLayers();
         aim.x = 0; aim.y = 0;
-        if (isPoleDancer) { eventCommunicator.PickUpSpear(); }
+        if (isPoleDancer) { eventCommunicator.PickUpSpear(10); }
     }
     public void CanMove() { canMove = true; }
     public void SnapToOpponent()
@@ -284,7 +284,7 @@ public class PlayerMovement : MonoBehaviour
             modelRenderer.materials = mats;
         }
 
-        if (!isAttacking && !isParrying) //If the player is not attacking or parrying, run general movement check
+        if (!isAttacking && !isParrying && canMove) //If the player is not attacking or parrying, run general movement check
         {
             HandleMovement();
             HandleRotation();
@@ -405,10 +405,12 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator dodgeTiming()
     {
+        eventCommunicator.PickUpSpear(10);
         canDodge = false;
         anim.SetTrigger("Dodge");
         yield return new WaitForSeconds(1.75f);
         canDodge = true;
+        canMove = true;
     }
     IEnumerator TakeKnockBack()
     {
