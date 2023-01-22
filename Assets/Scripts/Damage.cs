@@ -45,25 +45,12 @@ public class Damage : MonoBehaviour
             if (gameObject.transform.IsChildOf(players[1].transform)) { launchPoint = players[1].transform; }
 
             //Apply damage modifier based on timing
-            float modifier = 0;
-            float newDamage = 0;
-            switch (playerRef.lastBeatTiming)
-            {
-                case "Near":
-                    modifier = 0.5f;
-                    modifier += other.GetComponent<StatusEffects>().exposeStacks / 2;
-                    newDamage = baseDamage * modifier;
-                    newDamage -= playerRef.gameObject.GetComponent<StatusEffects>().weaknessStacks;
-                    break;
-                case "Perfect":
-                    modifier = 1;
-                    modifier += other.GetComponent<StatusEffects>().exposeStacks / 2;
-                    newDamage = baseDamage * modifier;
-                    newDamage -= playerRef.gameObject.GetComponent<StatusEffects>().weaknessStacks;
-                    break;
-            }
+            float modifier = Mathf.Clamp(1 - (playerRef.lastBeatTimingPerc * 10), 0.2f, 1);
+            modifier += other.GetComponent<StatusEffects>().exposeStacks / 2;
+            float newDamage = baseDamage * modifier;
+            newDamage -= playerRef.gameObject.GetComponent<StatusEffects>().weaknessStacks;
 
-            Debug.Log(newDamage + " DAMAGE");
+            Debug.Log($"{newDamage} --- {modifier} --- {playerRef.lastBeatTiming}");
 
             //Apply attack effects
             if (exposing) { other.GetComponent<StatusEffects>().AddExpose(); }

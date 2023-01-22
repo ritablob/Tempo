@@ -104,7 +104,6 @@ public class DynamicCamera : MonoBehaviour
     }
     public void ShakeCamera(float x, float y)
     {
-        Debug.Log($"{x}, {y}");
         StartCoroutine(ShakeDelay());
         transform.position += new Vector3(x, y, 0);
         isShaking = true;
