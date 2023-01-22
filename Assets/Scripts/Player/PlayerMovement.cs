@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int matIndex;
 
     [Header("Character Stats")]
+    public bool isPoleDancer = false;
     public float HP = 100;
     [SerializeField] float speed = 1f;
     [SerializeField] CharacterController charController;
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource sfx;
     [SerializeField] float gamepadRumble1 = 0.5f;
     [SerializeField] float gamepadRumble2 = 0.5f;
+    [SerializeField] EventCommunicator eventCommunicator;
     HitCanvasManager hitCanvasManager;
 
     [HideInInspector]
@@ -189,17 +191,24 @@ public class PlayerMovement : MonoBehaviour
 
 
     //Combat-related functions
-    public void StartAttack() { isAttacking = true; canMove = false; AttackLayer(); ourDeadTime = 0.333f; }
+    public void StartAttack() 
+    { 
+        isAttacking = true; canMove = false; AttackLayer(); ourDeadTime = 0.333f;
+        if (isPoleDancer) { eventCommunicator.PickUpSpear(); }
+    }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
     public void EndAttack() 
     {
         isAttacking = false; 
         isLaunching = false; 
         canMove = false; 
-        anim.ResetTrigger("Light"); 
-        anim.ResetTrigger("Heavy");
+        anim.ResetTrigger("Attack_1"); 
+        anim.ResetTrigger("Attack_1_Released");
+        anim.ResetTrigger("Attack_2");
+        anim.ResetTrigger("Attack_2_Released");
         ResetLayers();
-        aim.x = 0; aim.y = 0; 
+        aim.x = 0; aim.y = 0;
+        if (isPoleDancer) { eventCommunicator.PickUpSpear(); }
     }
     public void CanMove() { canMove = true; }
     public void SnapToOpponent()
@@ -250,7 +259,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (ourDeadTime < 0 && rhythmKeeper.beatTiming != "DeadZone" && triggerName != null) //If there is a buffered move, execute the move
         {
-            Debug.Log("BUFFERED");
             longCombo = false;
             anim.SetTrigger(triggerName);
             triggerName = null;

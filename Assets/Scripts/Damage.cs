@@ -27,6 +27,10 @@ public class Damage : MonoBehaviour
     {
         dealtDamage = false;
     }
+    private void OnDisable()
+    {
+        playerRef.CanCancelAttack();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

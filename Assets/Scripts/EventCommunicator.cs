@@ -10,8 +10,6 @@ public class EventCommunicator : MonoBehaviour
     [SerializeField] GameObject[] characterSpecificObjects;
 
     //General commands
-    public void StartAttack() { playerScriptRef.StartAttack(); }
-    public void CanCancelAttack() { playerScriptRef.CanCancelAttack(); }
     public void EndAttack() { playerScriptRef.EndAttack(); }
     public void CanMove() { playerScriptRef.CanMove(); }
     public void SnapToOpponent() { playerScriptRef.SnapToOpponent(); }
@@ -35,15 +33,15 @@ public class EventCommunicator : MonoBehaviour
 
 
     //Character-specific commands
-    public void PlantSpear() { characterSpecificObjects[0].GetComponent<Pole>().Plant(); }
-    public void PickUpSpear(GameObject _objectToChild)
+    public void PickUpSpear()
     {
-        _objectToChild.transform.SetParent(characterSpecificObjects[0].transform);
-        _objectToChild.transform.localPosition = new Vector3(0.0089f, 0.0222f, -0.0086f);
-        _objectToChild.transform.localEulerAngles = new Vector3(-100, 0, 0);
+        characterSpecificObjects[0].transform.SetParent(characterSpecificObjects[1].transform);
+        characterSpecificObjects[0].transform.localPosition = new Vector3(0.0089f, 0.0222f, -0.0086f);
+        characterSpecificObjects[0].transform.localEulerAngles = new Vector3(-100, 0, 0);
     }
     public void MoveToLocation(int positionIndex)
     {
+        characterSpecificObjects[0].transform.SetParent(characterSpecificObjects[positionIndex].transform);
         characterSpecificObjects[0].GetComponent<Pole>().LerpPole(characterSpecificObjects[positionIndex].transform);
     }
 }
