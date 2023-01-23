@@ -34,7 +34,7 @@ public class EventCommunicator : MonoBehaviour
     public void Projectile(GameObject projectile) 
     { 
         GameObject _projectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
-        _projectile.GetComponent<Projectile>().SetEndPosition();
+        _projectile.GetComponent<Projectile>().SetEndPosition(playerScriptRef);
     }
 
 

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    [SerializeField] PlayerMovement playerRef;
+    public PlayerMovement playerRef;
     private DynamicCamera camRef;
+    public bool dealtDamage;
 
     [Header("Hit Values")]
     [SerializeField] float baseDamage;
@@ -17,7 +18,6 @@ public class Damage : MonoBehaviour
     [SerializeField] bool stunning;
     [SerializeField] bool bleeding;
     [SerializeField] bool weaken;
-    private bool dealtDamage;
 
     private void Start()
     {
