@@ -119,13 +119,13 @@ public class PlayerMovement : MonoBehaviour
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
             longCombo = false;
-            Debug.Log(ourDeadTime);
+            //Debug.Log(ourDeadTime);
             anim.SetTrigger("Attack_1");
             StartAttack();
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
             lastBeatTiming = rhythmKeeper.beatTiming; //Get string value
-            //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
+            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming); // message popup spawn
             return;
         }
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1"))
@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
             lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
-            //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
+            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming); // message popup spawn
             return;
         }
         if (ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
@@ -157,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
             lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
-            //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage);// message popup spawn
+            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
             return;
         }
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2"))
@@ -168,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
             //SoundPlayer.PlaySound(playerIndex, "deal_damage");
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
             lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
-            //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
+            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming); // message popup spawn
             return;
         }
         if (ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer

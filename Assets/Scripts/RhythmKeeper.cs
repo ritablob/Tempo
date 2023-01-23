@@ -15,6 +15,8 @@ public class RhythmKeeper : MonoBehaviour
     public float maxValidInputTime; //Keeps track of max input time
     public float validInputTimer; //Keeps track of beat percentage
 
+    [HideInInspector] public bool isEarly;
+
     void Start()
     {
         //Calculate beat rate
@@ -30,11 +32,28 @@ public class RhythmKeeper : MonoBehaviour
         float difference = Mathf.Abs(validInputTimer);
 
         if (difference < 0.0855f)
+        {
+            isEarly = false;
             beatTiming = "Perfect";
+        }
         else if (difference > 0.09f && difference < 0.1777f)
+        {
+            if (validInputTimer < 0)
+            {
+                isEarly = true;
+            }
+            else
+            {
+                isEarly = false;
+            }
             beatTiming = "Near";
+        }
         else
+        {
             beatTiming = "DeadZone";
+            //Debug.LogError("deadzone");
+        }
+
     }
 
     IEnumerator StartDelay(float waitTime) //Delay music & beats for a bit

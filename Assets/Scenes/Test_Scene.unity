@@ -8351,6 +8351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e514fd32c9bcf434cbfe091afe3dc31e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rk: {fileID: 802290223}
   hitCanvas: {fileID: 5411210903457282758, guid: 4314b4e7bbf57e940a3f0236f0532575, type: 3}
   floatUpSpeed: 5
   floatUpHeight: 2
@@ -10038,9 +10039,11 @@ MonoBehaviour:
   - {fileID: 1546694815}
   beatsPerMinute: 120
   beatsPerBar: 4
-  beatLength: 0
+  beatTiming: 
+  beatLengthThird: 0
   maxValidInputTime: 0
   validInputTimer: 0
+  isEarly: 0
 --- !u!1001 &803539379
 PrefabInstance:
   m_ObjectHideFlags: 0
