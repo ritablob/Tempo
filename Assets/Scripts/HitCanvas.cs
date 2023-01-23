@@ -7,4 +7,5 @@ public class HitCanvas : MonoBehaviour
     public GameObject perfectChild;
     public GameObject earlyChild;
     public GameObject lateChild;
+    public GameObject missChild;
 }

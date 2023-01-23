@@ -5,13 +5,13 @@ using TMPro;
 
 public class HitCanvasManager : MonoBehaviour
 {
+    public RhythmKeeper rk;
     public HitCanvas hitCanvas;
     public float floatUpSpeed = 3f;
     public float floatUpHeight = 2f;
     public float fadeOutSpeed = 5f;
 
-
-    public void SpawnHitCanvas(Vector3 position, float beatPercentage)
+    public void SpawnHitCanvas(Vector3 position, string beatTiming)
     {
         GameObject instance = Instantiate(hitCanvas.gameObject, position, Quaternion.identity);
         //Debug.Log("INstance parent " + instance.transform.parent + ", position "+ instance.transform.position);
@@ -22,21 +22,29 @@ public class HitCanvasManager : MonoBehaviour
         hcanvas.lateChild.SetActive(false);
         hcanvas.perfectChild.SetActive(false);
         hcanvas.earlyChild.SetActive(false);
+        hcanvas.missChild.SetActive(false);
         GameObject child;
-        if (beatPercentage < 0.4f)
-        {
-            hcanvas.lateChild.SetActive(true);
-            child = hcanvas.lateChild;
-        }
-        else if (beatPercentage < 0.8f)
+        if (beatTiming == "Near" && rk.isEarly)
         {
             hcanvas.earlyChild.SetActive(true);
             child = hcanvas.earlyChild;
         }
-        else
+        else if (beatTiming == "Near" && !rk.isEarly)
+        {
+            hcanvas.lateChild.SetActive(true);
+            child = hcanvas.lateChild;
+        }
+        else if (beatTiming == "Perfect")
         {
             hcanvas.perfectChild.SetActive(true);
             child = hcanvas.perfectChild;
+        }
+        else
+        {
+            Debug.LogError("miss is spawned");
+            hcanvas.missChild.SetActive(true);
+            child = hcanvas.missChild;
+
         }
         StartCoroutine(MoveUp(hcanvas, child, instance));
     }
