@@ -3,7 +3,57 @@ guid: 41e554362e11da64db4c280bc6c64843
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Belt
+    second: {fileID: 2100000, guid: 783e048ad8eb3f744a406b1d4a251ea5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blades_2
+    second: {fileID: 2100000, guid: 5d2a75acd959bf043a20e5f9bd18a93a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boots_1
+    second: {fileID: 2100000, guid: d6702612d4e1d8748a5785f4f0d637e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Globes
+    second: {fileID: 2100000, guid: 9f661c7b503295b4db4df32432689ed9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glow_2
+    second: {fileID: 2100000, guid: 774327ee7b35a0f4ebe45ad57361ea4d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Helmet_1
+    second: {fileID: 2100000, guid: d565739aef0496e46ad841a8811d56a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Helmet_2
+    second: {fileID: 2100000, guid: d565739aef0496e46ad841a8811d56a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pants
+    second: {fileID: 2100000, guid: 934c9b29bfd686541847a058f12a6858, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirt
+    second: {fileID: 2100000, guid: 3a578ec6a824bb041be07641a5de75c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin
+    second: {fileID: 2100000, guid: 794ebfc63a8c2d3469f99ff281855e65, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
