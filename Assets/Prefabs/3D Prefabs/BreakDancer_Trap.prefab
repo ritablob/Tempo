@@ -50,7 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallSpeed: 7.5
   speed: 30
-  trail: {fileID: 0}
 --- !u!95 &3400335744590048248
 Animator:
   serializedVersion: 4
@@ -101,6 +100,7 @@ MonoBehaviour:
   baseDamage: 10
   hitStun: 0.5
   knockBack: 2
+  isTrap: 1
   exposing: 0
   stunning: 0
   bleeding: 0

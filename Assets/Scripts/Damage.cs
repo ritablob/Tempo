@@ -14,6 +14,7 @@ public class Damage : MonoBehaviour
     [SerializeField] float knockBack;
 
     [Header("Hit Effects")]
+    [SerializeField] bool isTrap;
     [SerializeField] bool exposing;
     [SerializeField] bool stunning;
     [SerializeField] bool bleeding;
@@ -29,7 +30,8 @@ public class Damage : MonoBehaviour
     }
     private void OnDisable()
     {
-        playerRef.CanCancelAttack();
+        if(!isTrap)
+            playerRef.CanCancelAttack();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,9 +56,9 @@ public class Damage : MonoBehaviour
 
             //Apply attack effects
             if (exposing) { other.GetComponent<StatusEffects>().AddExpose(); }
-            if(stunning) { other.GetComponent<StatusEffects>().AddStun(); }
-            if(bleeding) { other.GetComponent<StatusEffects>().AddBleed(); }
-            if(weaken) { other.GetComponent<StatusEffects>().AddWeakness(); }
+            if (stunning) { other.GetComponent<StatusEffects>().AddStun(); }
+            if (bleeding) { other.GetComponent<StatusEffects>().AddBleed(); }
+            if (weaken) { other.GetComponent<StatusEffects>().AddWeakness(); }
 
             //Apply camera shake
             float x = Random.Range(-modifier, modifier);

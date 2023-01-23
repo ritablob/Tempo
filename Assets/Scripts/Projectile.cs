@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y <= 0)
+        if (transform.position.y < 0)
         {
             isTrap = true;
             SnapToGrid();
@@ -29,6 +29,12 @@ public class Projectile : MonoBehaviour
     {
         if(other.gameObject != GetComponent<Damage>().playerRef.gameObject && other.tag == "Player" && isTrap)
         {
+            GetComponent<Animator>().SetTrigger("Used");
+            return;
+        }
+        if(other.gameObject == GetComponent<Damage>().playerRef.gameObject && other.tag == "Player" && isTrap)
+        {
+            GetComponent<Damage>().playerRef.GainSpecial(this.gameObject);
             GetComponent<Animator>().SetTrigger("Used");
         }
     }

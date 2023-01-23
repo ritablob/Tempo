@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CharacterController charController;
     [SerializeField] float controllerDeadZone = 0.1f;
     [SerializeField] Color playerColor;
+    [SerializeField] int specialCharges;
 
     [Header("Other")]
     [SerializeField] RhythmKeeper rhythmKeeper;
@@ -58,7 +59,6 @@ public class PlayerMovement : MonoBehaviour
     private bool canParry = true;
     private bool canDodge = true;
     private bool longCombo;
-    private bool canSpecial = true;
     private StatusEffects statusEffects;
     private Vector3 offset;
     private float ourDeadTime;
@@ -180,9 +180,9 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Special(InputAction.CallbackContext ctx)
     {
-        if (!isAttacking && !isParrying && canDodge && ctx.performed) //If not attacking, do attack logic
+        if (!isAttacking && !isParrying && canDodge && ctx.performed && specialCharges > 0) //If not attacking, do attack logic
         {
-            canSpecial = false;
+            specialCharges--;
             StartAttack();
             anim.SetTrigger("Special");
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
@@ -270,6 +270,12 @@ public class PlayerMovement : MonoBehaviour
     {
         longCombo = true;
         ourDeadTime += 0.5f;
+    }
+    public void GainSpecial(GameObject objectToKill)
+    {
+        specialCharges++;
+        objectToKill.GetComponent<Damage>().playerRef = null;
+        Destroy(objectToKill);
     }
     #endregion
     //Combat-related functions end
