@@ -59,7 +59,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.17866665
+        functionName: Projectile
+        data: 
+        objectReferenceParameter: {fileID: 5456105016083905498, guid: 7d6eb20ac7417d24baf675b7a81318f9, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7964444
+        functionName: EndAttack
+        data: 
+        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    //Vars
+    #region
     [Header("Visuals")]
     [SerializeField] GameObject parryShield;
     [SerializeField] GameObject shadowClone;
@@ -55,12 +57,16 @@ public class PlayerMovement : MonoBehaviour
     private bool isParrying;
     private bool canParry = true;
     private bool canDodge = true;
+    private bool longCombo;
+    private bool canSpecial = true;
     private StatusEffects statusEffects;
     private Vector3 offset;
     private float ourDeadTime;
     private string triggerName;
-    private bool longCombo;
+    #endregion
 
+    //Start functions
+    #region
     void Awake()
     {
         EventSystem.Instance.AddEventListener("DeadTime", SetOurDeadTime);
@@ -80,8 +86,10 @@ public class PlayerMovement : MonoBehaviour
     {
         playerControls.Disable();
     }
+    #endregion
 
     //Input system related functions
+    #region
     public void LeftShoulder(InputAction.CallbackContext ctx)
     {
         if (ctx.performed) { heldDown++; }
@@ -120,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
             //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
             return;
         }
-        else if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1"))
+        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1"))
         {
             longCombo = false;
             anim.SetTrigger("Attack_1_Released");
@@ -131,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
             //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
             return;
         }
-        else if (ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
+        if (ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
         {
             triggerName = "Attack_1";
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
@@ -152,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
             //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage);// message popup spawn
             return;
         }
-        else if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2"))
+        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2"))
         {
             longCombo = false;
             anim.SetTrigger("Attack_2_Released");
@@ -163,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
             //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage); // message popup spawn
             return;
         }
-        else if(ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
+        if (ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
         {
             triggerName = "Attack_2";
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
@@ -174,7 +182,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAttacking && !isParrying && canDodge && ctx.performed) //If not attacking, do attack logic
         {
+            canSpecial = false;
+            StartAttack();
             anim.SetTrigger("Special");
+            lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
+            lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
         }
     }
     public void Dodge(InputAction.CallbackContext ctx)
@@ -185,8 +197,9 @@ public class PlayerMovement : MonoBehaviour
             anim.SetTrigger("Dodge");
             //SoundPlayer.PlaySound(playerIndex, "dodge");
             StartCoroutine(dodgeTiming());
+            return;
         }
-        else if (canParry && ctx.performed && !anim.GetBool("Running") && !isAttacking)
+        if (canParry && ctx.performed && !anim.GetBool("Running") && !isAttacking)
         {
             //SoundPlayer.PlaySound(playerIndex, "parry");
             MiscLayer();
@@ -194,25 +207,28 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(parryTiming());
         }
     }
+    #endregion
     //Input related functions end
 
 
     //Combat-related functions
-    public void StartAttack() 
-    { 
+    #region
+    public void StartAttack()
+    {
         isAttacking = true; canMove = false; AttackLayer(); ourDeadTime = 0.333f;
         if (isPoleDancer) { eventCommunicator.PickUpSpear(10); }
     }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
-    public void EndAttack() 
+    public void EndAttack()
     {
-        isAttacking = false; 
-        isLaunching = false; 
-        canMove = true; 
-        anim.ResetTrigger("Attack_1"); 
+        isAttacking = false;
+        isLaunching = false;
+        canMove = true;
+        anim.ResetTrigger("Attack_1");
         anim.ResetTrigger("Attack_1_Released");
         anim.ResetTrigger("Attack_2");
         anim.ResetTrigger("Attack_2_Released");
+        anim.ResetTrigger("Special");
         ResetLayers();
         aim.x = 0; aim.y = 0;
         if (isPoleDancer) { eventCommunicator.PickUpSpear(10); }
@@ -253,13 +269,15 @@ public class PlayerMovement : MonoBehaviour
     public void InLongCombo()
     {
         longCombo = true;
-        ourDeadTime += 0.5f; 
+        ourDeadTime += 0.5f;
     }
+    #endregion
     //Combat-related functions end
 
 
 
-    //Update Function
+    //Start of update-related functions
+    #region
     void Update()
     {
         ourDeadTime -= Time.deltaTime;
@@ -284,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
             if (takeKnockBack) { charController.Move(launchDirection * Time.deltaTime); } //Launch player over time if they are being knocked back
             return;
         }
-        else if (modelRenderer.material != normal) 
+        else if (modelRenderer.material != normal)
         {
             Material[] mats = modelRenderer.materials;
             mats[matIndex] = normal;
@@ -305,15 +323,13 @@ public class PlayerMovement : MonoBehaviour
             charController.Move(launchDirection * Time.deltaTime);
         }
     }
-    //End of update
-
 
     void HandleMovement()
     {
         Vector3 move = Quaternion.Euler(0, sceneCamera.transform.eulerAngles.y, 0) * new Vector3(movement.x, 0, movement.y);
         move.y = -2;
-        charController.Move(move * Time.deltaTime *speed);
-        if(move.x == 0 && move.z == 0) { anim.SetBool("Running", false); }
+        charController.Move(move * Time.deltaTime * speed);
+        if (move.x == 0 && move.z == 0) { anim.SetBool("Running", false); }
         else { anim.SetBool("Running", true); }
     }
 
@@ -351,9 +367,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
+    #endregion
+    //End of update-related functions
 
     //Taking Damage & Status Effects
+    #region
     public void TakeDamage(float damage, float hitStun, float knockBack, Transform hitBoxTransform)
     {
         if (!isParrying)
@@ -385,16 +403,18 @@ public class PlayerMovement : MonoBehaviour
             parryShield.SetActive(false);
         }
     }
+    #endregion
 
 
+
+    //Misc & Coroutines
+    #region
     private void SetOurDeadTime(string eventName, object param)
     {
         if (param.GetType() == typeof(float))
             ourDeadTime = Convert.ToSingle(param);
     }
 
-
-    //Coroutines
     IEnumerator parryTiming()
     {
         isParrying = true;
@@ -430,6 +450,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Gamepad.current.SetMotorSpeeds(gamepadRumble1, gamepadRumble2);
         yield return new WaitForSeconds(0.3f);
-        Gamepad.current.SetMotorSpeeds(0f,0f);
+        Gamepad.current.SetMotorSpeeds(0f, 0f);
     }
+    #endregion
 }

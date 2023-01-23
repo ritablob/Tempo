@@ -6,6 +6,7 @@ using System;
 public class EventCommunicator : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerScriptRef;
+    [SerializeField] Transform projectileSpawn;
     [SerializeField] GameObject[] hitBoxes;
     [SerializeField] GameObject[] characterSpecificObjects;
 
@@ -30,6 +31,11 @@ public class EventCommunicator : MonoBehaviour
     public void EnableHitbox(int hitBoxID) { hitBoxes[hitBoxID].SetActive(true); }
     public void DisableHitbox(int hitBoxID) { hitBoxes[hitBoxID].SetActive(false); }
     public void ResetLayers() { playerScriptRef.ResetLayers(); }
+    public void Projectile(GameObject projectile) 
+    { 
+        GameObject _projectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
+        _projectile.GetComponent<Projectile>().SetEndPosition();
+    }
 
 
     //Character-specific commands
