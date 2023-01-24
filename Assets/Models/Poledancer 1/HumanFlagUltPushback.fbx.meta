@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: 397f19b34808b4c4bba485d2edc6e9ff
+guid: 9be4e88206fe6714daf518715b84502f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: HitFloor
+    second: Take 001
+  - first:
+      74: -4976350379833429960
+    second: HumanFlagUlt
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +39,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HitFloor
+      name: HumanFlagUlt
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 56
+      lastFrame: 14.8
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -60,54 +63,26 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.0695652
-        functionName: LaunchPlayer
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 20
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.072234765
+      - time: 0
         functionName: MoveToLocation
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 4
+        intParameter: 3
         messageOptions: 0
-      - time: 0.1323944
+      - time: 0.12650917
         functionName: EnableHitbox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 6
         messageOptions: 0
-      - time: 0.19154933
-        functionName: EndLaunch
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 20
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.29295775
-        functionName: DisableHitbox
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.9791667
+      - time: 0.9939288
         functionName: EndAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.6053333
-        functionName: PickUpSpear
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
+        intParameter: 4
         messageOptions: 0
       transformMask: []
       maskType: 3

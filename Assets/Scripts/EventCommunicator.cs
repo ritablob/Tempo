@@ -11,6 +11,13 @@ public class EventCommunicator : MonoBehaviour
     [SerializeField] GameObject[] characterSpecificObjects;
 
     //General commands
+    public void ResetHitboxes()
+    {
+        foreach(GameObject box in hitBoxes)
+        {
+            box.SetActive(false);
+        }
+    }
     public void EndAttack() { playerScriptRef.EndAttack(); }
     public void CanMove() { playerScriptRef.CanMove(); }
     public void SnapToOpponent() { playerScriptRef.SnapToOpponent(); }

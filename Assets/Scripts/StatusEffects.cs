@@ -29,7 +29,7 @@ public class StatusEffects : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
 
-        if(stunStacks > 0) { GetComponent<PlayerMovement>().TakeDamage(0, 1, 0, gameObject.transform); }
+        if(stunStacks > 0) { GetComponent<PlayerMovement>().TakeDamage(0, 1, 0, gameObject.transform.position); }
 
         exposeStacks = Mathf.Clamp(exposeStacks - 1, 1, 999);
         stunStacks = Mathf.Clamp(stunStacks - 1, 0, 999);

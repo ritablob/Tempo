@@ -30,8 +30,7 @@ public class Damage : MonoBehaviour
     }
     private void OnDisable()
     {
-        if(!isTrap)
-            playerRef.CanCancelAttack();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,11 +39,7 @@ public class Damage : MonoBehaviour
         {
             dealtDamage = true;
 
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            Transform launchPoint = players[0].transform;
-
-            //Set which player's position should be launched away from
-            if (gameObject.transform.IsChildOf(players[1].transform)) { launchPoint = players[1].transform; }
+            Vector3 launchPoint = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z);
 
             //Apply damage modifier based on timing
             float modifier = Mathf.Clamp(1 - (playerRef.lastBeatTimingPerc * 10), 0.2f, 1);
