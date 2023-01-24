@@ -221,6 +221,7 @@ public class PlayerMovement : MonoBehaviour
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
     public void EndAttack()
     {
+        eventCommunicator.ResetHitboxes();
         isAttacking = false;
         isLaunching = false;
         canMove = true;
@@ -305,11 +306,12 @@ public class PlayerMovement : MonoBehaviour
             Material[] mats = modelRenderer.materials;
             mats[matIndex] = hit;
             modelRenderer.materials = mats;
-            if (takeKnockBack) { charController.Move(launchDirection * Time.deltaTime); } //Launch player over time if they are being knocked back
+            if (takeKnockBack) { charController.Move(launchDirection * Time.deltaTime); Debug.Log("sdsdsd"); } //Launch player over time if they are being knocked back
             return;
         }
-        else if (modelRenderer.material != normal)
+        if (modelRenderer.material != normal)
         {
+            takeKnockBack = false;
             Material[] mats = modelRenderer.materials;
             mats[matIndex] = normal;
             modelRenderer.materials = mats;
@@ -378,13 +380,12 @@ public class PlayerMovement : MonoBehaviour
 
     //Taking Damage & Status Effects
     #region
-    public void TakeDamage(float damage, float hitStun, float knockBack, Transform hitBoxTransform)
+    public void TakeDamage(float damage, float hitStun, float knockBack, Vector3 hitBoxPos)
     {
         if (!isParrying)
         {
-            takeKnockBack = true;
-            StartCoroutine(TakeKnockBack());
             anim.SetTrigger("Hit");
+            takeKnockBack = true;
             //SoundPlayer.PlaySound(playerIndex, "grunt");
             MiscLayer();
             isLaunching = false;
@@ -394,7 +395,7 @@ public class PlayerMovement : MonoBehaviour
             Material[] mats = modelRenderer.materials;
             mats[matIndex] = hit;
             modelRenderer.materials = mats;
-            Vector3 launchDir = gameObject.transform.position - hitBoxTransform.position;
+            Vector3 launchDir = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z) - hitBoxPos;
             launchDir.y = 0;
             launchDir.Normalize(); //knockback determines intensity of launch
             launchDirection = launchDir * knockBack;
@@ -444,13 +445,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(1.75f);
         canDodge = true;
         canMove = true;
-    }
-    IEnumerator TakeKnockBack()
-    {
-        isLaunching = true;
-        yield return new WaitForSeconds(0.1f);
-        takeKnockBack = false;
-        isLaunching = false;
     }
     IEnumerator Rumble()
     {

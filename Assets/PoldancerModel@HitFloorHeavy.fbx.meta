@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: ac72c9096d5394c4a82b174950e5bc23
+guid: 390591af64da4d145a538711e932c69b
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: HumanFlag
+    second: HitFloor
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HumanFlag
+      name: HitFloor
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 53
+      lastFrame: 56
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -60,33 +60,33 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: MoveToLocation
+      - time: 0.24034517
+        functionName: EnableHitbox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 3
+        intParameter: 5
         messageOptions: 0
-      - time: 0.12650917
-        functionName: EnableHitox
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 4
-        messageOptions: 0
-      - time: 0.51496065
+      - time: 0.4963539
         functionName: DisableHitbox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 4
+        intParameter: 5
         messageOptions: 0
-      - time: 0.97224635
-        functionName: EndAttack
+      - time: 0.0503937
+        functionName: MoveToLocation
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 4
+        messageOptions: 0
+      - time: 0.71443576
+        functionName: PickUpSpear
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
         messageOptions: 0
       transformMask: []
       maskType: 3
