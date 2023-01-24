@@ -31,10 +31,10 @@ public class StatusEffects : MonoBehaviour
 
         if(stunStacks > 0) { GetComponent<PlayerMovement>().TakeDamage(0, 1, 0, gameObject.transform.position); }
 
-        exposeStacks = Mathf.Clamp(exposeStacks - 1, 1, 999);
-        stunStacks = Mathf.Clamp(stunStacks - 1, 0, 999);
-        bleedStacks = Mathf.Clamp(bleedStacks - 1, 0, 999);
-        weaknessStacks = Mathf.Clamp(weaknessStacks - 1, 0, 999);
+        exposeStacks = Mathf.Clamp(exposeStacks - 1, 1, 5);
+        stunStacks = Mathf.Clamp(stunStacks - 1, 0, 5);
+        bleedStacks = Mathf.Clamp(bleedStacks - 1, 0, 5);
+        weaknessStacks = Mathf.Clamp(weaknessStacks - 1, 0, 5);
 
         StartCoroutine(StatusEffectTick());
     }
