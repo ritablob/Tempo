@@ -123,6 +123,58 @@ public static class SoundPlayer
         Debug.LogError($"Sound '{soundName}' doesn't exist in the SoundsList, or your character name is set up wrong.");
         return null;
     }
+    // ----------------- Menu player --------------------------
+    public static void PlaySoundMenu(string soundName, float volume = 1, float steroPan = 0)
+    {
+        if (SoundEffects.Instance)
+        {
+
+            Sound sound = GetSoundMenu(soundName);
+            if (sound != null)
+            {
+                GameObject soundObject = new GameObject(soundName); // creates sound gameobject
+                AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+
+                // sound settings in the SoundsList vvvv
+                audioSource.volume = sound.volume;
+                audioSource.loop = sound.loop;
+
+                // special sound settings vvvv
+                if (volume != 1)
+                {
+                    audioSource.volume = sound.volume * volume;
+                }
+                if (steroPan != 0)
+                {
+                    audioSource.panStereo = steroPan;
+                }
+                audioSource.clip = sound.audioClip;
+                audioSource.Play(); // playing
+
+                if (!audioSource.loop)
+                {
+                    Object.Destroy(soundObject, sound.audioClip.length + SoundEffectsMenu.Instance.soundDestroyDelay); // as long as its not looping, destroys once the sound is finished + delay
+                }
+            }
+            else
+            {
+                Debug.Log("null sound");
+            }
+        }
+    }
+    public static Sound GetSoundMenu(string soundName)
+    {
+        foreach (Sound sound in SoundEffectsMenu.Instance.menuSounds)
+        {
+            if (sound.soundName == soundName)
+            {
+                return sound;
+            }
+        }  // XAVI: if its breakdancer, do with SoundEffectsBreakdancer
+
+        Debug.LogError($"Sound '{soundName}' doesn't exist in the SoundsList, or your character name is set up wrong.");
+        return null;
+    }
     /// <summary>
     /// Just destroys the sound object you want.
     /// </summary>
