@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: e9d90320bb7e97345b4785c1b43612d7
+=======
+guid: b375576b115fee24595c45ef3fef4101
+>>>>>>> a7dd0c07afab1df7ab6fcbee0c9348ec292d4139
 VisualEffectImporter:
   externalObjects: {}
   userData: 
