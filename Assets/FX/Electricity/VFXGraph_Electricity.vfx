@@ -6367,9 +6367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac39bd03fca81b849929b9c966f1836a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
---- !u!114 &8926484042661614591
-=======
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 8926484042661614842}
   m_Children:
@@ -6395,7 +6392,6 @@ MonoBehaviour:
   m_Direction: 0
   m_LinkedSlots: []
 --- !u!114 &8926484042661614852
->>>>>>> bc088945b28be78fd6bfd1febf7ad61fc021e141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
