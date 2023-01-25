@@ -74,7 +74,6 @@ public class RhythmKeeper : MonoBehaviour
         validInputTimer = beatLengthThird * -1.5f; //Set the input timer to count early
 
         float beatLength = Mathf.Abs(60 / beatsPerMinute);
-        //StartCoroutine(WaitForBeat(Mathf.Abs((beatLength * 4) / beatsPerBar) - 0.005f));
-        StartCoroutine(WaitForBeat(Mathf.Abs((beatLength * 4) / beatsPerBar)));
+        StartCoroutine(WaitForBeat(Mathf.Abs((beatLength * 4) / beatsPerBar) - 0.005f));
     }
 }

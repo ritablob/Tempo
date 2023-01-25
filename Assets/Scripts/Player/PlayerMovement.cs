@@ -119,10 +119,9 @@ public class PlayerMovement : MonoBehaviour
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
             longCombo = false;
-            //Debug.Log(ourDeadTime);
             anim.SetTrigger("Attack_1");
             StartAttack();
-            //SoundPlayer.PlaySound(playerIndex, "deal_damage");
+            SoundPlayer.PlaySound(playerIndex, "deal_damage");
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
             lastBeatTiming = rhythmKeeper.beatTiming; //Get string value
             hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming); // message popup spawn
@@ -133,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
             longCombo = false;
             anim.SetTrigger("Attack_1_Released");
             StartAttack();
-            //SoundPlayer.PlaySound(playerIndex, "deal_damage");
+            SoundPlayer.PlaySound(playerIndex, "deal_damage");
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
             lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
             hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming); // message popup spawn
@@ -154,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetTrigger("Attack_2");
             StartAttack();
 
-            //SoundPlayer.PlaySound(playerIndex, "deal_damage");
+            SoundPlayer.PlaySound(playerIndex, "deal_damage");
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
             lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
             hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
@@ -165,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
             longCombo = false;
             anim.SetTrigger("Attack_2_Released");
             StartAttack();
-            //SoundPlayer.PlaySound(playerIndex, "deal_damage");
+            SoundPlayer.PlaySound(playerIndex, "deal_damage");
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
             lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
             hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming); // message popup spawn
@@ -195,13 +194,13 @@ public class PlayerMovement : MonoBehaviour
         {
             MiscLayer();
             anim.SetTrigger("Dodge");
-            //SoundPlayer.PlaySound(playerIndex, "dodge");
+            SoundPlayer.PlaySound(playerIndex, "dodge");
             StartCoroutine(dodgeTiming());
             return;
         }
         if (canParry && ctx.performed && !anim.GetBool("Running") && !isAttacking)
         {
-            //SoundPlayer.PlaySound(playerIndex, "parry");
+            SoundPlayer.PlaySound(playerIndex, "parry");
             MiscLayer();
             anim.SetTrigger("Parry");
             StartCoroutine(parryTiming());
@@ -295,8 +294,8 @@ public class PlayerMovement : MonoBehaviour
             anim.SetTrigger(triggerName);
             triggerName = null;
             StartAttack();
-            //SoundPlayer.PlaySound(playerIndex, "deal_damage");
-            //hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatPercentage);// message popup spawn
+            SoundPlayer.PlaySound(playerIndex, "deal_damage");
+            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
         }
 
 
@@ -386,7 +385,7 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetTrigger("Hit");
             takeKnockBack = true;
-            //SoundPlayer.PlaySound(playerIndex, "grunt");
+            SoundPlayer.PlaySound(playerIndex, "grunt");
             MiscLayer();
             isLaunching = false;
             isAttacking = false;
