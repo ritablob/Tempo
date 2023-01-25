@@ -51,7 +51,6 @@ public class RhythmKeeper : MonoBehaviour
         else
         {
             beatTiming = "DeadZone";
-            //Debug.LogError("deadzone");
         }
 
     }
@@ -70,7 +69,8 @@ public class RhythmKeeper : MonoBehaviour
 
     IEnumerator WaitForBeat(float waitTime) //Wait for a bit before spawning the next 2 arrows
     {
-        yield return new WaitForSeconds(waitTime); //After waiting, spawn and set up 2 arrow objects
+        yield return new WaitForSeconds(waitTime);
+        EventSystem.Instance.Fire("New Beat", "", null);
         validInputTimer = beatLengthThird * -1.5f; //Set the input timer to count early
 
         float beatLength = Mathf.Abs(60 / beatsPerMinute);

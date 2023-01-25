@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canParry = true;
     private bool canDodge = true;
     private bool longCombo;
+    private float comboTimer;
     private StatusEffects statusEffects;
     private Vector3 offset;
     private float ourDeadTime;
@@ -70,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         EventSystem.Instance.AddEventListener("DeadTime", SetOurDeadTime);
+        EventSystem.Instance.AddEventListener("New Beat", NewBeat);
         playerControls = new PlayerControls();
         playerInput = GetComponent<PlayerInput>();
         charController = GetComponent<CharacterController>();
@@ -116,26 +118,19 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackLight(InputAction.CallbackContext ctx)
     {
-        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
+        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && comboTimer < 0) //If not attacking, do attack logic
         {
             longCombo = false;
+            Debug.Log(comboTimer);
             anim.SetTrigger("Attack_1");
-            StartAttack();
-            SoundPlayer.PlaySound(playerIndex, "deal_damage");
-            lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
-            lastBeatTiming = rhythmKeeper.beatTiming; //Get string value
-            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming); // message popup spawn
+            StartAttack(false);
             return;
         }
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1"))
         {
             longCombo = false;
             anim.SetTrigger("Attack_1_Released");
-            StartAttack();
-            SoundPlayer.PlaySound(playerIndex, "deal_damage");
-            lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
-            lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
-            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming); // message popup spawn
+            StartAttack(false);
             return;
         }
         if (ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
@@ -151,23 +146,14 @@ public class PlayerMovement : MonoBehaviour
         {
             longCombo = false;
             anim.SetTrigger("Attack_2");
-            StartAttack();
-
-            SoundPlayer.PlaySound(playerIndex, "deal_damage");
-            lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
-            lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
-            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
+            StartAttack(false);
             return;
         }
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2"))
         {
             longCombo = false;
             anim.SetTrigger("Attack_2_Released");
-            StartAttack();
-            SoundPlayer.PlaySound(playerIndex, "deal_damage");
-            lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
-            lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
-            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming); // message popup spawn
+            StartAttack(false);
             return;
         }
         if (ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
@@ -182,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isAttacking && !isParrying && canDodge && ctx.performed && specialCharges > 0) //If not attacking, do attack logic
         {
             specialCharges--;
-            StartAttack();
+            StartAttack(false);
             anim.SetTrigger("Special");
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
             lastBeatTiming = rhythmKeeper.beatTiming; //Get absolute difference value
@@ -209,11 +195,15 @@ public class PlayerMovement : MonoBehaviour
     #endregion
     //Input related functions end
 
-
     //Combat-related functions
     #region
-    public void StartAttack()
+    public void StartAttack(bool wasBuffered)
     {
+        if (!wasBuffered) { lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); lastBeatTiming = rhythmKeeper.beatTiming;}
+
+        SoundPlayer.PlaySound(playerIndex, "deal_damage");
+        comboTimer = -0.75f;
+        hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
         isAttacking = true; canMove = false; AttackLayer(); ourDeadTime = 0.333f;
         if (isPoleDancer) { eventCommunicator.PickUpSpear(10); }
     }
@@ -269,6 +259,7 @@ public class PlayerMovement : MonoBehaviour
     public void InLongCombo()
     {
         longCombo = true;
+        comboTimer -= 0.5f;
         ourDeadTime += 0.5f;
     }
     public void GainSpecial(GameObject objectToKill)
@@ -279,22 +270,19 @@ public class PlayerMovement : MonoBehaviour
     #endregion
     //Combat-related functions end
 
-
-
     //Start of update-related functions
     #region
     void Update()
     {
         ourDeadTime -= Time.deltaTime;
+        comboTimer += Time.deltaTime;
 
         if (ourDeadTime < 0 && rhythmKeeper.beatTiming != "DeadZone" && triggerName != null) //If there is a buffered move, execute the move
         {
             longCombo = false;
             anim.SetTrigger(triggerName);
             triggerName = null;
-            StartAttack();
-            SoundPlayer.PlaySound(playerIndex, "deal_damage");
-            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
+            StartAttack(true);
         }
 
 
@@ -410,14 +398,17 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-
-
     //Misc & Coroutines
     #region
     private void SetOurDeadTime(string eventName, object param)
     {
         if (param.GetType() == typeof(float))
             ourDeadTime = Convert.ToSingle(param);
+    }
+    private void NewBeat(string eventName, object param)
+    {
+        if(anim.GetCurrentAnimatorStateInfo(1).IsName("Idle") || (isAttacking && comboTimer < 0 && longCombo))
+            comboTimer = -0.5f; Debug.Log("RESET");
     }
 
     IEnumerator parryTiming()
