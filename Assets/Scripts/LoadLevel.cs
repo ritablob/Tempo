@@ -13,7 +13,7 @@ public class LoadLevel : MonoBehaviour
 
     public void _LoadLevel(string levelToLoad)
     {
-        SceneManager.LoadScene(levelToLoad, LoadSceneMode.Single);
+        SceneManager.LoadScene("Arena", LoadSceneMode.Single);
     }
 
     public void SpawnCharacters()
