@@ -127,8 +127,8 @@ MonoBehaviour:
   playerRef: {fileID: 0}
   dealtDamage: 0
   baseDamage: 5
-  hitStun: 0.5
-  knockBack: 1
+  hitStun: 0.25
+  knockBack: 5
   isTrap: 0
   exposing: 1
   stunning: 1
@@ -158,7 +158,6 @@ GameObject:
   - component: {fileID: 3741004589777529982}
   - component: {fileID: 4818242823057537047}
   - component: {fileID: 2547158426566304606}
-  - component: {fileID: 6837462684327635998}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -231,19 +230,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6837462684327635998
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5332432408032134922}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7877074539400476122
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,8 +291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1e87e2f31466d40b603017acc70dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resistance: 7.5
-  speed: 10
+  resistance: 20
+  speed: 15
   dmgScript: {fileID: 3348270031377554813}
 --- !u!95 &3179908148171272066
 Animator:

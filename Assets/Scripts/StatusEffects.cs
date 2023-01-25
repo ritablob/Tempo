@@ -8,6 +8,7 @@ public class StatusEffects : MonoBehaviour
     public int stunStacks;
     public int bleedStacks;
     public int weaknessStacks;
+    [SerializeField] GameObject sparkEffect;
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class StatusEffects : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
 
-        if(stunStacks > 0) { GetComponent<PlayerMovement>().TakeDamage(0, 1, 0, gameObject.transform.position); }
+        if(stunStacks > 0) { GetComponent<PlayerMovement>().TakeDamage(0, 1, 0, gameObject.transform.position); StartCoroutine(Sparks()); }
 
         exposeStacks = Mathf.Clamp(exposeStacks - 1, 1, 5);
         stunStacks = Mathf.Clamp(stunStacks - 1, 0, 5);
@@ -37,5 +38,12 @@ public class StatusEffects : MonoBehaviour
         weaknessStacks = Mathf.Clamp(weaknessStacks - 1, 0, 5);
 
         StartCoroutine(StatusEffectTick());
+    }
+
+    IEnumerator Sparks()
+    {
+        sparkEffect.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        sparkEffect.SetActive(false);
     }
 }

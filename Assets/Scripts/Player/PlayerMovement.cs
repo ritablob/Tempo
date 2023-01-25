@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
             StartAttack(false);
             return;
         }
-        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1"))
+        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1") && comboTimer < 0)
         {
             longCombo = false;
             anim.SetTrigger("Attack_1_Released");
@@ -142,14 +142,14 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
     {
-        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
+        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && comboTimer < 0) //If not attacking, do attack logic
         {
             longCombo = false;
             anim.SetTrigger("Attack_2");
             StartAttack(false);
             return;
         }
-        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2"))
+        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2") && comboTimer < 0)
         {
             longCombo = false;
             anim.SetTrigger("Attack_2_Released");
@@ -292,15 +292,17 @@ public class PlayerMovement : MonoBehaviour
             Material[] mats = modelRenderer.materials;
             mats[matIndex] = hit;
             modelRenderer.materials = mats;
-            if (takeKnockBack) { charController.Move(launchDirection * Time.deltaTime); Debug.Log("sdsdsd"); } //Launch player over time if they are being knocked back
+            if (takeKnockBack) { charController.Move(launchDirection * Time.deltaTime); } //Launch player over time if they are being knocked back
             return;
         }
-        if (modelRenderer.material != normal)
+        if (modelRenderer.materials[matIndex].name != normal.name + " (Instance)")
         {
+            Debug.Log(modelRenderer.materials[matIndex].name);
             takeKnockBack = false;
             Material[] mats = modelRenderer.materials;
             mats[matIndex] = normal;
             modelRenderer.materials = mats;
+            ResetLayers();
         }
 
         if (!isAttacking && !isParrying && canMove) //If the player is not attacking or parrying, run general movement check
