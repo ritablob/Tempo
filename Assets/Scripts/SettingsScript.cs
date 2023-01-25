@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SettingsScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public AudioMixer audioMixer;
+    public Slider slider;
+    private void Start()
     {
-        
+        slider.value = 1f;
+        audioMixer.SetFloat("volume", 0);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void VolumeChange(float sliderValue)
     {
-        
+        audioMixer.SetFloat("volume", Mathf.Log10(sliderValue) * 20);
     }
     public void ExitButton()
     {

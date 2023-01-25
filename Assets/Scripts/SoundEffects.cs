@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 /// <summary>
 /// Main script for playing sound effects listed in the SoundEffectsList. 
@@ -12,6 +13,8 @@ public class SoundEffects : MonoBehaviour
     public List<Sound> SoundEffectsPoledancer;
     public List<Sound> SoundEffectsBreakdancer;
     public float soundDestroyDelay = 0.3f;
+    public AudioMixerGroup audioMixer;
+
     private static SoundEffects instance;
     public static SoundEffects Instance
     {
@@ -55,6 +58,7 @@ public static class SoundPlayer
     /// <param name="soundName"></param>
     /// <param name="volume"></param>
     /// <param name="steroPan"></param>
+    public static float setVolume;
     public static void PlaySound(int playerIndex, string soundName, float volume = 1, float steroPan = 0)
     {
         var playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray(); //Get an array of players from player config (0 = player 1, 1 = player 2)
@@ -65,9 +69,11 @@ public static class SoundPlayer
             Sound sound = GetSound(soundName, playerConfigs[playerIndex].objectName);
             if (sound != null)
             {
+                volume = setVolume;
                 GameObject soundObject = new GameObject(soundName); // creates sound gameobject
                 soundObject.transform.position = playerConfigs[playerIndex].playerObject.transform.position;
                 AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+                audioSource.outputAudioMixerGroup = SoundEffects.Instance.audioMixer;
 
                 // sound settings in the SoundsList vvvv
                 audioSource.volume = sound.volume;
@@ -126,14 +132,16 @@ public static class SoundPlayer
     // ----------------- Menu player --------------------------
     public static void PlaySoundMenu(string soundName, float volume = 1, float steroPan = 0)
     {
-        if (SoundEffects.Instance)
-        {
 
+        if (SoundEffectsMenu.Instance)
+        {
+            Debug.Log("call to playsoundMenu");
             Sound sound = GetSoundMenu(soundName);
             if (sound != null)
             {
                 GameObject soundObject = new GameObject(soundName); // creates sound gameobject
                 AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+                audioSource.outputAudioMixerGroup = SoundEffectsMenu.Instance.audioMixer;
 
                 // sound settings in the SoundsList vvvv
                 audioSource.volume = sound.volume;
@@ -164,10 +172,13 @@ public static class SoundPlayer
     }
     public static Sound GetSoundMenu(string soundName)
     {
+        Debug.Log("found sound");
         foreach (Sound sound in SoundEffectsMenu.Instance.menuSounds)
         {
             if (sound.soundName == soundName)
             {
+
+
                 return sound;
             }
         }  // XAVI: if its breakdancer, do with SoundEffectsBreakdancer
