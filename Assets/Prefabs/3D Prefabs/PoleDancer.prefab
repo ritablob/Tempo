@@ -429,7 +429,7 @@ MonoBehaviour:
   charController: {fileID: 1162232717056227271}
   controllerDeadZone: 0.1
   playerColor: {r: 0, g: 0, b: 0, a: 0}
-  specialCharges: 2
+  specialCharges: 1
   rhythmKeeper: {fileID: 0}
   sfx: {fileID: 6561815665965791646}
   gamepadRumble1: 0.5

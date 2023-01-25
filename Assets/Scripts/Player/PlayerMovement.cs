@@ -274,7 +274,6 @@ public class PlayerMovement : MonoBehaviour
     public void GainSpecial(GameObject objectToKill)
     {
         specialCharges++;
-        objectToKill.GetComponent<Damage>().playerRef = null;
         Destroy(objectToKill);
     }
     #endregion

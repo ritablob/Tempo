@@ -818,7 +818,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40414796}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 89aa499b9fe07eb45a62b886918f2d8f, type: 3}
+  m_Asset: {fileID: 0}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -3316,7 +3316,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30626
+  m_Name: pb_Mesh91392
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14502,7 +14502,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29946
+  m_Name: pb_Mesh90712
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28312,7 +28312,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29690
+  m_Name: pb_Mesh90456
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -29298,7 +29298,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30868
+  m_Name: pb_Mesh91634
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

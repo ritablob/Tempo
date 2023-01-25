@@ -41,7 +41,15 @@ public class EventCommunicator : MonoBehaviour
     public void Projectile(GameObject projectile) 
     { 
         GameObject _projectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
-        _projectile.GetComponent<Projectile>().SetEndPosition(playerScriptRef);
+        if (_projectile.GetComponent<Projectile>() != null)
+        {
+            _projectile.GetComponent<Projectile>().SetEndPosition(playerScriptRef);
+            return;
+        }
+        if (_projectile.GetComponent<SparkProjectile>() != null)
+        {
+            _projectile.GetComponent<SparkProjectile>().SetEndPosition(playerScriptRef);
+        }
     }
 
 
