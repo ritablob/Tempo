@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     public AudioMixer mixer;
     public InGameManager inGameManager;
     public GameObject inGameUI;
+    public PlayerIngameMenu[] playerIngameMenus;
 
     private void Awake()
     {
@@ -27,10 +28,12 @@ public class PauseMenu : MonoBehaviour
         settingPrefab.SetActive(false);
         gameObject.SetActive(false);
 
+
     }
     private void OnEnable()
     {
         inGameUI.SetActive(false);
+        playerIngameMenus = FindObjectsOfType<PlayerIngameMenu>(); 
         settingPrefab.GetComponent<SettingsScript>().slider.gameObject.SetActive(false);
         settingPrefab.GetComponent<SettingsScript>().exitButton.gameObject.SetActive(false);
         mixer.SetFloat("EQgain", 0f);
@@ -49,6 +52,11 @@ public class PauseMenu : MonoBehaviour
     public void ResumeButton()
     {
         SoundPlayer.PlaySoundMenu("click");
+        for (int i = 0; i < playerIngameMenus.Length; i++) // because resuming from the button screen (instead of clicking escape again)
+                                                           // doesnt set the player maps back
+        {
+            playerIngameMenus[i].SetPlayerMapBack();
+        }
         gameObject.SetActive(false);
     }
     public void RestartButton()

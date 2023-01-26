@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     private float hitStunRemaining = 0;
     private Camera sceneCamera;
     private PlayerControls playerControls;
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
     public bool isGamepad;
     private bool takeKnockBack;
     private bool isAttacking; //Prevents the player from acting during an attack
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         playerControls.Enable();
-        inGameMenu.localMap = playerInput.currentActionMap;
+        inGameMenu.playerMap = playerInput.currentActionMap;
         isMoving = true;
     }
     private void OnDisable()

@@ -5,28 +5,39 @@ using UnityEngine.InputSystem;
 
 public class PlayerIngameMenu : MonoBehaviour
 {
-    public InputActionMap localMap;
+    public InputActionMap playerMap;
     private InGameManager inGameManager;
+    PlayerMovement playerMovement;
     private void Start()
     {
         inGameManager = FindObjectOfType<InGameManager>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
     public void ToggleInputActionMaps()
     {
-        if (localMap.enabled)
+        if (playerMap.enabled)
         {
-            localMap.Disable();
+            //localMap.Disable();
+            playerMovement.playerInput.currentActionMap = playerMovement.playerInput.actions.actionMaps[1];
             inGameManager.pauseMenu.SetActive(true);
         }
         else
         {
-            localMap.Enable();
+            //localMap.Enable();
+            playerMovement.playerInput.currentActionMap = playerMovement.playerInput.actions.actionMaps[0];
             inGameManager.pauseMenu.SetActive(false);
         }
         inGameManager.settingMenu.SetActive(false);
     }
+    public void SetPlayerMapBack()
+    {
+        playerMovement.playerInput.currentActionMap = playerMovement.playerInput.actions.actionMaps[0];
+    }
     public void PauseMenuToggle(InputAction.CallbackContext ctx)
     {
-        ToggleInputActionMaps();
+        if (ctx.started)
+        {
+            ToggleInputActionMaps();
+        }
     }
 }

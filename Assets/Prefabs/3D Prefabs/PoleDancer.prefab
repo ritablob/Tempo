@@ -334,9 +334,9 @@ MonoBehaviour:
     m_ActionName: Player/Ultimate_R[/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1207356900211838078}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: PauseMenu
+      - m_Target: {fileID: 1627984781767962105}
+        m_TargetAssemblyTypeName: PlayerIngameMenu, Assembly-CSharp
+        m_MethodName: PauseMenuToggle
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -350,9 +350,9 @@ MonoBehaviour:
     m_ActionName: Player/PauseMenu[/Keyboard/escape,/XInputControllerWindows/select]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1207356900211838078}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: PauseMenu
+      - m_Target: {fileID: 1627984781767962105}
+        m_TargetAssemblyTypeName: PlayerIngameMenu, Assembly-CSharp
+        m_MethodName: PauseMenuToggle
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -409,6 +409,7 @@ MonoBehaviour:
   playerIndex: 0
   lastBeatTiming: 
   lastBeatTimingPerc: 0
+  playerInput: {fileID: 0}
   isGamepad: 0
 --- !u!114 &6044556107354192595
 MonoBehaviour:
@@ -439,9 +440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814181fbbf4b05249ad0de6f50a94f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localMap:
-    m_Name: Local Map
-    m_Id: c22fd51e-117a-4a5f-9ef5-d413aa53f8a8
+  playerMap:
+    m_Name: Player Map
+    m_Id: d0bec9c0-ac2c-4054-9c92-07ee839c66c5
     m_Asset: {fileID: 0}
     m_Actions: []
     m_Bindings: []
