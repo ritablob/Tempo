@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 9be4e88206fe6714daf518715b84502f
+guid: 849c8b72832ebfa4ba3064dae6a7d588
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Take 001
-  - first:
-      74: -4976350379833429960
-    second: HumanFlagUlt
+    second: PoleRightStarter
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -30,7 +27,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -39,18 +36,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HumanFlagUlt
+      name: PoleRightStarter
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 14.8
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -63,21 +60,21 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: MoveToLocation
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 3
-        messageOptions: 0
-      - time: 0.12650917
+      - time: 0.16334465
         functionName: EnableHitbox
         data: 
+        objectReferenceParameter: {fileID: 3253789771637558170, guid: 2fcb69ebb38a2814f921b43d46ad3b92, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.27272725
+        functionName: DisableHitbox
+        data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 6
+        intParameter: 0
         messageOptions: 0
-      - time: 0.9939288
+      - time: 0.95923674
         functionName: EndAttack
         data: 
         objectReferenceParameter: {instanceID: 0}

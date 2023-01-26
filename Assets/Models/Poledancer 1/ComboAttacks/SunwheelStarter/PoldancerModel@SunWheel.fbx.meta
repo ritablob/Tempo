@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 67054c773fcc7ca4e8a1bc9dc4dcee94
+guid: 2a346930c410e4548bc8a3184ab754f0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Butterfly
+    second: SunWheel Starter
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Butterfly
+      name: SunWheel Starter
       takeName: Take 001
       internalID: 0
       firstFrame: 0
@@ -67,26 +67,26 @@ ModelImporter:
         floatParameter: 0
         intParameter: 3
         messageOptions: 0
-      - time: 0.04776903
+      - time: 0.118635155
         functionName: EnableHitbox
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 3077313670587314891, guid: 06f0c7422431b0e4091abde168713c67, type: 3}
         floatParameter: 0
-        intParameter: 3
+        intParameter: 0
         messageOptions: 0
-      - time: 0.6251969
+      - time: 0.4624672
         functionName: DisableHitbox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 3
+        intParameter: 2
         messageOptions: 0
-      - time: 0.99392897
+      - time: 0.9679098
         functionName: EndAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 3
+        intParameter: 2
         messageOptions: 0
       transformMask: []
       maskType: 3

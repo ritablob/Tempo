@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 7912d32e5eb310c4188a9d41a916dc76
+guid: 3a720ceb8299a2a43bf68eab11b152a4
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: HitWPole2
+    second: PoleRight C4 M2
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HitWPole2
+      name: PoleRight C4 M2
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -60,21 +60,21 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.19160798
+      - time: 0.16334465
         functionName: EnableHitbox
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 3253789771637558170, guid: ae16fef7405c4e64b86fd00357f8a816, type: 3}
         floatParameter: 0
-        intParameter: 8
+        intParameter: 0
         messageOptions: 0
-      - time: 0.28488088
+      - time: 0.27272725
         functionName: DisableHitbox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9592367
+      - time: 0.95923674
         functionName: EndAttack
         data: 
         objectReferenceParameter: {instanceID: 0}

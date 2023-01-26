@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 57a32581d86caea45aed91879c19c1da
+guid: 9be4e88206fe6714daf518715b84502f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
@@ -8,7 +8,7 @@ ModelImporter:
     second: Take 001
   - first:
       74: -4976350379833429960
-    second: HumanFlagUlt
+    second: HumanFlag C3 M4
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -39,7 +39,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HumanFlagUlt
+      name: HumanFlag C3 M4
       takeName: Take 001
       internalID: 0
       firstFrame: 0
@@ -71,18 +71,18 @@ ModelImporter:
         intParameter: 3
         messageOptions: 0
       - time: 0.12650917
-        functionName: EnableHitox
+        functionName: EnableHitbox
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 7144457427585212729, guid: b1b099e8358ed6649a09b73d6f22e415, type: 3}
         floatParameter: 0
-        intParameter: 4
+        intParameter: 0
         messageOptions: 0
       - time: 0.9939288
         functionName: EndAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 4
+        intParameter: 0
         messageOptions: 0
       transformMask: []
       maskType: 3

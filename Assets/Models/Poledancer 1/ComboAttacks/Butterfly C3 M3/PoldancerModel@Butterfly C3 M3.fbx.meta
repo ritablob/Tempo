@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: d80a6655d8f55fe4aaf59f3f95c0dcab
+guid: 0f5c544caf41a6f4081f7543366028ac
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: reverseSunWheel
+    second: Butterfly C3 M3
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: reverseSunWheel
+      name: Butterfly C3 M3
       takeName: Take 001
       internalID: 0
       firstFrame: 0
@@ -67,26 +67,26 @@ ModelImporter:
         floatParameter: 0
         intParameter: 3
         messageOptions: 0
-      - time: 0.118635155
+      - time: 0.04776903
         functionName: EnableHitbox
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 7019341552011995651, guid: 840042186bc495c4595fe46f9eb2595b, type: 3}
         floatParameter: 0
-        intParameter: 2
+        intParameter: 0
         messageOptions: 0
-      - time: 0.4624672
+      - time: 0.6251969
         functionName: DisableHitbox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 2
+        intParameter: 3
         messageOptions: 0
-      - time: 0.9679098
+      - time: 0.99392897
         functionName: EndAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 2
+        intParameter: 3
         messageOptions: 0
       transformMask: []
       maskType: 3

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 0fc0def280a7e744cb2cc1a1506fe68b
+guid: 4c348f80524e2b440b1cb4f40b3fb215
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: HitWPole2
+    second: HitFloor C3 M2
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -27,7 +27,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -36,18 +36,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HitWPole2
+      name: HitFloor C3 M2
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 56
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -60,25 +60,39 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.19160798
+      - time: 0.24034517
         functionName: EnableHitbox
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 7100831301953536119, guid: d20737e42998ab64182fa6539f213326, type: 3}
         floatParameter: 0
-        intParameter: 9
+        intParameter: 0
         messageOptions: 0
-      - time: 0.28488088
+      - time: 0.4963539
         functionName: DisableHitbox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 1
         messageOptions: 0
-      - time: 0.9592367
-        functionName: EndAttack
+      - time: 0.0503937
+        functionName: MoveToLocation
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
+        intParameter: 4
+        messageOptions: 0
+      - time: 0.71443576
+        functionName: PickUpSpear
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9765828
+        functionName: EndAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
         intParameter: 0
         messageOptions: 0
       transformMask: []
