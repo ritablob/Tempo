@@ -160,8 +160,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162232717056227273}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
-  m_LocalScale: {x: 1.12, y: 1.12, z: 1.12}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2613463, y: 0.2613463, z: 0.2613463}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8327675749713665007}
@@ -207,7 +207,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.0000001
+  m_Height: 1.63
   m_Radius: 0.50000006
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -426,7 +426,7 @@ MonoBehaviour:
   matIndex: 5
   isPoleDancer: 1
   HP: 100
-  speed: 7
+  speed: 2.5
   charController: {fileID: 1162232717056227271}
   controllerDeadZone: 0.1
   playerColor: {r: 0, g: 0, b: 0, a: 0}
