@@ -100,7 +100,12 @@ public class PlayerMovement : MonoBehaviour
         {
             inGameManager.pauseMenu.SetActive(!inGameManager.pauseMenu.activeInHierarchy);
             inGameManager.settingMenu.SetActive(false);
+            if (playerInput.currentActionMap.enabled)
+                playerInput.DeactivateInput();
+            else
+                playerInput.ActivateInput();
         }
+
     }
     public void LeftShoulder(InputAction.CallbackContext ctx)
     {

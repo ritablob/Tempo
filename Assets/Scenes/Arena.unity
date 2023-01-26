@@ -8963,6 +8963,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1067861937}
     m_Modifications:
+    - target: {fileID: 426200371903897813, guid: 6035ec05307f4d448a30f00ee9b1e229, type: 3}
+      propertyPath: firstButton
+      value: 
+      objectReference: {fileID: 1477173236}
     - target: {fileID: 1806799269462396717, guid: 6035ec05307f4d448a30f00ee9b1e229, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -9231,6 +9235,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8933494153371653159, guid: 4e8808749d4d1c646bea12ef677833c9, type: 3}
+      propertyPath: mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 70ea7328e73964a44a409bbb9ad15456, type: 2}
     - target: {fileID: 8933494153371653159, guid: 4e8808749d4d1c646bea12ef677833c9, type: 3}
       propertyPath: settingPrefab
       value: 
@@ -21089,9 +21097,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 0.122
+  m_MaxValue: 10
+  m_WholeNumbers: 1
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -21359,7 +21367,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 4789095674307924190995c814ad3dd5, type: 3}
-  m_Type: 1
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -31581,6 +31589,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466671458}
   m_Mesh: {fileID: -8116138440861595531, guid: 51e59b941eb2ae442be605caa035b59d, type: 3}
+--- !u!1 &1477173233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8146663674626945095, guid: 4e8808749d4d1c646bea12ef677833c9, type: 3}
+  m_PrefabInstance: {fileID: 478337227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1477173236 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1461719950537967750, guid: 4e8808749d4d1c646bea12ef677833c9, type: 3}
+  m_PrefabInstance: {fileID: 478337227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477173233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1493299200
 GameObject:
   m_ObjectHideFlags: 0
@@ -41605,7 +41629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1477173233}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!1 &2004040738
