@@ -541,6 +541,145 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+<<<<<<< HEAD
+=======
+--- !u!1 &1468074729218702768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6110031714286007070}
+  - component: {fileID: 2442114300472621301}
+  - component: {fileID: 8745928827105419352}
+  m_Layer: 0
+  m_Name: PoleSwipe 15D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6110031714286007070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468074729218702768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.652, z: -0.967}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4822466627634107737}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2442114300472621301
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468074729218702768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4778774, y: 1, z: 1.6772585}
+  m_Center: {x: -0.049086235, y: 0, z: -0.83519155}
+--- !u!114 &8745928827105419352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468074729218702768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249f670a6f0fc564482abac20449c4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRef: {fileID: 1207356900211838078}
+  dealtDamage: 0
+  baseDamage: 15
+  hitStun: 0.75
+  knockBack: 0
+  isTrap: 0
+  exposing: 0
+  stunning: 0
+  bleeding: 0
+  weaken: 0
+--- !u!1 &1738682575774136377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1141906903359852782}
+  - component: {fileID: 3597515684873959472}
+  - component: {fileID: 2595508242423872281}
+  m_Layer: 0
+  m_Name: PoleSwipe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1141906903359852782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738682575774136377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.652, z: -0.967}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4822466627634107737}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3597515684873959472
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738682575774136377}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4778774, y: 1, z: 1.6772585}
+  m_Center: {x: -0.049086235, y: 0, z: -0.83519155}
+--- !u!114 &2595508242423872281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738682575774136377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249f670a6f0fc564482abac20449c4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRef: {fileID: 1207356900211838078}
+  dealtDamage: 0
+  baseDamage: 10
+  hitStun: 0.75
+  knockBack: 0
+  isTrap: 0
+  exposing: 0
+  stunning: 0
+  bleeding: 0
+  weaken: 0
+>>>>>>> 13ad79df73c306c0ee87aff7ab7fc0d60d223bd0
 --- !u!1 &2245631648069373634
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +822,74 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &3025946857409051423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3808032245321392424}
+  - component: {fileID: 6966329455417756466}
+  - component: {fileID: 8135739176762165432}
+  m_Layer: 0
+  m_Name: HitFloor 30D S
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3808032245321392424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025946857409051423}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.652, z: -0.967}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4822466627634107737}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6966329455417756466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025946857409051423}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0472163, y: 1.485684, z: 2.412321}
+  m_Center: {x: -0.048962608, y: -0.4256357, z: -0.4676612}
+--- !u!114 &8135739176762165432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025946857409051423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249f670a6f0fc564482abac20449c4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRef: {fileID: 1207356900211838078}
+  dealtDamage: 0
+  baseDamage: 30
+  hitStun: 0.75
+  knockBack: 0
+  isTrap: 0
+  exposing: 0
+  stunning: 1
+  bleeding: 0
+  weaken: 0
 --- !u!1 &3177144940935139179
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +902,7 @@ GameObject:
   - component: {fileID: 8605367895841526803}
   - component: {fileID: 8890925388521672394}
   m_Layer: 0
-  m_Name: PoleSlam
+  m_Name: HitFloor 10D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -907,11 +1114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 1207356900211838078}
   dealtDamage: 0
-  baseDamage: 10
+  baseDamage: 20
   hitStun: 0.75
   knockBack: 0
   isTrap: 0
-  exposing: 0
+  exposing: 1
   stunning: 0
   bleeding: 0
   weaken: 0
@@ -1173,7 +1380,7 @@ GameObject:
   - component: {fileID: 5228699057124989495}
   - component: {fileID: 4911637073141038480}
   m_Layer: 0
-  m_Name: PoleSlamHeavy
+  m_Name: HitFloorHeavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1423,6 +1630,8 @@ Transform:
   - {fileID: 4718197070554106326}
   - {fileID: 6254481015245163740}
   - {fileID: 7109011222206772338}
+  - {fileID: 6110031714286007070}
+  - {fileID: 3808032245321392424}
   m_Father: {fileID: 1162232717056227276}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1686,8 +1895,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScriptRef: {fileID: 1207356900211838078}
   projectileSpawn: {fileID: 1616296981707202221}
+<<<<<<< HEAD
   hitBoxHolder: {fileID: 8702600838678989467}
   hitboxes: []
+=======
+  hitBoxes:
+  - {fileID: 1738682575774136377}
+  - {fileID: 3177144940935139179}
+  - {fileID: 943612026446479020}
+  - {fileID: 5992679914561008583}
+  - {fileID: 5277487498294942579}
+  - {fileID: 6364169852770560529}
+  - {fileID: 5686258012732345793}
+  - {fileID: 1468074729218702768}
+  - {fileID: 3025946857409051423}
+>>>>>>> 13ad79df73c306c0ee87aff7ab7fc0d60d223bd0
   characterSpecificObjects:
   - {fileID: 9108686428078395730}
   - {fileID: 4312301712392172329}

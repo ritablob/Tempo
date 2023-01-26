@@ -200,7 +200,11 @@ public class PlayerMovement : MonoBehaviour
     public void StartAttack(bool wasBuffered)
     {
         if (!wasBuffered) { lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); lastBeatTiming = rhythmKeeper.beatTiming;}
+<<<<<<< HEAD
         eventCommunicator.ResetHitboxes();
+=======
+
+>>>>>>> 13ad79df73c306c0ee87aff7ab7fc0d60d223bd0
         //SoundPlayer.PlaySound(playerIndex, "deal_damage");
         comboTimer = -0.75f;
         hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
