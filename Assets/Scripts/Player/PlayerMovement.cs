@@ -180,13 +180,13 @@ public class PlayerMovement : MonoBehaviour
         {
             MiscLayer();
             anim.SetTrigger("Dodge");
-            SoundPlayer.PlaySound(playerIndex, "dodge");
+            //SoundPlayer.PlaySound(playerIndex, "dodge");
             StartCoroutine(dodgeTiming());
             return;
         }
         if (canParry && ctx.performed && !anim.GetBool("Running") && !isAttacking)
         {
-            SoundPlayer.PlaySound(playerIndex, "parry");
+            //SoundPlayer.PlaySound(playerIndex, "parry");
             MiscLayer();
             anim.SetTrigger("Parry");
             StartCoroutine(parryTiming());
@@ -200,8 +200,8 @@ public class PlayerMovement : MonoBehaviour
     public void StartAttack(bool wasBuffered)
     {
         if (!wasBuffered) { lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); lastBeatTiming = rhythmKeeper.beatTiming;}
-
-        SoundPlayer.PlaySound(playerIndex, "deal_damage");
+        eventCommunicator.ResetHitboxes();
+        //SoundPlayer.PlaySound(playerIndex, "deal_damage");
         comboTimer = -0.75f;
         hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
         isAttacking = true; canMove = false; AttackLayer(); ourDeadTime = 0.333f;
@@ -374,7 +374,7 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetTrigger("Hit");
             takeKnockBack = true;
-            SoundPlayer.PlaySound(playerIndex, "grunt");
+            //SoundPlayer.PlaySound(playerIndex, "grunt");
             MiscLayer();
             isLaunching = false;
             isAttacking = false;
@@ -422,7 +422,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         isParrying = false;
         parryShield.SetActive(false);
-        SoundPlayer.StopSound("parry");
+        //SoundPlayer.StopSound("parry");
         yield return new WaitForSeconds(0.7f);
         canMove = true;
         isAttacking = false;

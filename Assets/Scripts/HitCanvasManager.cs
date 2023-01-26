@@ -7,8 +7,8 @@ public class HitCanvasManager : MonoBehaviour
 {
     public RhythmKeeper rk;
     public HitCanvas hitCanvas;
-    public float floatUpSpeed = 3f;
-    public float floatUpHeight = 2f;
+    public float floatUpSpeed = 0.2f;
+    public float floatUpHeight = 0.3f;
     public float fadeOutSpeed = 5f;
 
     public void SpawnHitCanvas(Vector3 position, string beatTiming)

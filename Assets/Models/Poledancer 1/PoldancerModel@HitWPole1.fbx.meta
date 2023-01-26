@@ -63,7 +63,7 @@ ModelImporter:
       - time: 0.16334465
         functionName: EnableHitbox
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 8515014156684808025, guid: 6ef8e9e929ee1d741810bc427fcd49a0, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

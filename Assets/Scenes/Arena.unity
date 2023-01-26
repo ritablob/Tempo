@@ -10717,7 +10717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &554175428
 Transform:
   m_ObjectHideFlags: 0
@@ -24881,7 +24881,7 @@ MonoBehaviour:
   player2Music: {fileID: 330479671}
   cameraRotateSpeed: 7
   cameraSpeed: 3
-  distanceModifier: 8
+  distanceModifier: 2
   horizontalBounds: {x: -6, y: 6}
   forwardBounds: {x: -999, y: 999}
 --- !u!114 &1250743006
@@ -25531,8 +25531,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.7263575, y: 0.5040076, z: 5.736298}
-  m_Center: {x: -0.43566886, y: -0.2520038, z: -0.020108217}
+  m_Size: {x: 7.7263575, y: 0.4491102, z: 5.736298}
+  m_Center: {x: -0.43566886, y: -0.27945247, z: -0.020108217}
 --- !u!1001 &1295977362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40802,7 +40802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1971141379
 Transform:
   m_ObjectHideFlags: 0

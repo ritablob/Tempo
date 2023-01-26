@@ -291,8 +291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1e87e2f31466d40b603017acc70dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resistance: 20
-  speed: 15
+  resistance: 4
+  speed: 3
   dmgScript: {fileID: 3348270031377554813}
 --- !u!95 &3179908148171272066
 Animator:
