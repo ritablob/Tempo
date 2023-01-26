@@ -387,6 +387,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""3f4e7548-574d-40c6-913d-9ed2e01766a0"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special_Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""bf9c842c-143f-44a6-bdbf-242998f126b9"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
