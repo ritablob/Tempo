@@ -118,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackLight(InputAction.CallbackContext ctx)
     {
+        SoundPlayer.PlaySound(playerIndex, "hard");
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && comboTimer < 0) //If not attacking, do attack logic
         {
             longCombo = false;
@@ -186,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (canParry && ctx.performed && !anim.GetBool("Running") && !isAttacking)
         {
-            //SoundPlayer.PlaySound(playerIndex, "parry");
+            SoundPlayer.PlaySound(playerIndex, "parry");
             MiscLayer();
             anim.SetTrigger("Parry");
             StartCoroutine(parryTiming());

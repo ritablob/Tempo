@@ -62,14 +62,16 @@ public static class SoundPlayer
     public static void PlaySound(int playerIndex, string soundName, float volume = 1, float steroPan = 0)
     {
         var playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray(); //Get an array of players from player config (0 = player 1, 1 = player 2)
-        Debug.Log(playerConfigs[0].objectName); //print the character name of player 1 gameobject. 
+        //Debug.Log(playerConfigs[0].objectName); //print the character name of player 1 gameobject. 
         if (SoundEffects.Instance)
         {
 
             Sound sound = GetSound(soundName, playerConfigs[playerIndex].objectName);
+            //Debug.Log(playerConfigs[playerIndex].objectName);
             if (sound != null)
             {
                 volume = setVolume;
+                volume = 1;
                 GameObject soundObject = new GameObject(soundName); // creates sound gameobject
                 soundObject.transform.position = playerConfigs[playerIndex].playerObject.transform.position;
                 AudioSource audioSource = soundObject.AddComponent<AudioSource>();
@@ -89,6 +91,7 @@ public static class SoundPlayer
                     audioSource.panStereo = steroPan;
                 }
                 audioSource.clip = sound.audioClip;
+                Debug.Log("Called, sound object " + soundObject);
                 audioSource.Play(); // playing
 
                 if (!audioSource.loop)
@@ -105,7 +108,7 @@ public static class SoundPlayer
     /// <returns></returns>
     public static Sound GetSound(string soundName, string characterName)
     {
-        if (characterName == "PoleDancer")
+        if (characterName == "PoleDancer(Clone)")
         {
             foreach (Sound sound in SoundEffects.Instance.SoundEffectsPoledancer)
             {
