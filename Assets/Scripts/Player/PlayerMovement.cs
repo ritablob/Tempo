@@ -200,7 +200,7 @@ public class PlayerMovement : MonoBehaviour
     public void StartAttack(bool wasBuffered)
     {
         if (!wasBuffered) { lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); lastBeatTiming = rhythmKeeper.beatTiming;}
-
+        eventCommunicator.ResetHitboxes();
         //SoundPlayer.PlaySound(playerIndex, "deal_damage");
         comboTimer = -0.75f;
         hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
@@ -422,7 +422,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         isParrying = false;
         parryShield.SetActive(false);
-        SoundPlayer.StopSound("parry");
+        //SoundPlayer.StopSound("parry");
         yield return new WaitForSeconds(0.7f);
         canMove = true;
         isAttacking = false;

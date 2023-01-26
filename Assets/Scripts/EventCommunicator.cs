@@ -7,16 +7,22 @@ public class EventCommunicator : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerScriptRef;
     [SerializeField] Transform projectileSpawn;
-    [SerializeField] GameObject[] hitBoxes;
+    [SerializeField] GameObject hitBoxHolder;
+    [SerializeField] List<GameObject> hitboxes;
     [SerializeField] GameObject[] characterSpecificObjects;
+
+    private void Start()
+    {
+
+    }
 
     //General commands
     public void ResetHitboxes()
     {
-        foreach(GameObject box in hitBoxes)
-        {
-            box.SetActive(false);
-        }
+        //foreach(GameObject box in hitBoxes)
+        //{
+        //    box.SetActive(false);
+        //}
     }
     public void EndAttack() { playerScriptRef.EndAttack(); }
     public void CanMove() { playerScriptRef.CanMove(); }
@@ -35,12 +41,19 @@ public class EventCommunicator : MonoBehaviour
         _shadowClone.GetComponent<ShadowCloneInitializer>().InitializeBones(sourceBones);
     }
     public void SetSpeed(float newSpeed) { playerScriptRef.SetSpeed(newSpeed); }
-    public void EnableHitbox(int hitBoxID) { hitBoxes[hitBoxID].SetActive(true); }
-    public void DisableHitbox(int hitBoxID) { hitBoxes[hitBoxID].SetActive(false); }
+    public void EnableHitbox(GameObject hitBox) { GameObject hitbox = Instantiate(hitBox, hitBoxHolder.transform); hitbox.GetComponent<Damage>().playerRef = playerScriptRef; }
+    public void DisableHitbox() 
+    {
+        foreach(Transform child in hitBoxHolder.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
     public void ResetLayers() { playerScriptRef.ResetLayers(); }
     public void Projectile(GameObject projectile) 
     { 
         GameObject _projectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
+        _projectile.transform.localScale = projectileSpawn.lossyScale;
         if (_projectile.GetComponent<Projectile>() != null)
         {
             _projectile.GetComponent<Projectile>().SetEndPosition(playerScriptRef);

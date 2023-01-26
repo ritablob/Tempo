@@ -10197,7 +10197,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh45406
+  m_Name: pb_Mesh128480
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24881,7 +24881,7 @@ MonoBehaviour:
   player2Music: {fileID: 330479671}
   cameraRotateSpeed: 7
   cameraSpeed: 3
-  distanceModifier: 0.5
+  distanceModifier: 2
   horizontalBounds: {x: -6, y: 6}
   forwardBounds: {x: -999, y: 999}
 --- !u!114 &1250743006
@@ -25531,8 +25531,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.7263575, y: 0.5040076, z: 5.736298}
-  m_Center: {x: -0.43566886, y: -0.2520038, z: -0.020108217}
+  m_Size: {x: 7.7263575, y: 0.4491102, z: 5.736298}
+  m_Center: {x: -0.43566886, y: -0.27945247, z: -0.020108217}
 --- !u!1001 &1295977362
 PrefabInstance:
   m_ObjectHideFlags: 0
