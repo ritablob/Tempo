@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gamepadRumble2 = 0.5f;
     [SerializeField] EventCommunicator eventCommunicator;
     HitCanvasManager hitCanvasManager;
+    InGameManager inGameManager;
 
     [HideInInspector]
     public int heldDown;
@@ -79,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
         sceneCamera = GameObject.FindObjectOfType<Camera>();
         statusEffects = GetComponent<StatusEffects>();
         hitCanvasManager = FindObjectOfType<HitCanvasManager>();
+        inGameManager = FindObjectOfType<InGameManager>();
     }
     private void OnEnable()
     {
@@ -92,6 +94,14 @@ public class PlayerMovement : MonoBehaviour
 
     //Input system related functions
     #region
+    public void PauseMenu(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            inGameManager.pauseMenu.SetActive(!inGameManager.pauseMenu.activeInHierarchy);
+            inGameManager.settingMenu.SetActive(false);
+        }
+    }
     public void LeftShoulder(InputAction.CallbackContext ctx)
     {
         if (ctx.performed) { heldDown++; }
