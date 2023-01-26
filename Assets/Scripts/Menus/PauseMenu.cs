@@ -7,6 +7,19 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject settingPrefab;
     public Pointer pointer;
+    private void Start()
+    {
+        settingPrefab.SetActive(false);
+        gameObject.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        Time.timeScale = 0f;
+    }
+    private void OnDisable()
+    {
+        Time.timeScale = 1f;
+    }
     public void ResumeButton()
     {
         SoundPlayer.PlaySoundMenu("click");
