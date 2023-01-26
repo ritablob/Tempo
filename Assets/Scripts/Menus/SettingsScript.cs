@@ -8,6 +8,7 @@ public class SettingsScript : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Slider slider;
+    public Button firstButton;
     private void Start()
     {
         slider.value = 1f;
@@ -21,5 +22,15 @@ public class SettingsScript : MonoBehaviour
     {
         SoundPlayer.PlaySoundMenu("click");
         gameObject.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(slider.gameObject);
+    }
+    private void OnDisable()
+    {
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(firstButton.gameObject);
     }
 }
