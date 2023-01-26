@@ -2706,7 +2706,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh129902
+  m_Name: pb_Mesh61898
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5198,7 +5198,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh129736
+  m_Name: pb_Mesh61720
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6759,7 +6759,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh129916
+  m_Name: pb_Mesh61912
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7027,7 +7027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &330479671
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10441,7 +10441,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh128480
+  m_Name: pb_Mesh60382
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10961,7 +10961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &554175428
 Transform:
   m_ObjectHideFlags: 0
@@ -10970,7 +10970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554175427}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.35, z: 0}
+  m_LocalPosition: {x: 0, y: 1.3499999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11622,7 +11622,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn_2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -11634,7 +11634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578905093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100.65, y: -1.31, z: 3.05}
+  m_LocalPosition: {x: 99.127, y: 0.288, z: 0.035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21150,7 +21150,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh130440
+  m_Name: pb_Mesh62466
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -31693,7 +31693,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn_1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -31705,7 +31705,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498095866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 90.43, y: -1.03, z: 3.59}
+  m_LocalPosition: {x: 92.998, y: 0.355, z: -0.061}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31917,7 +31917,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 70ea7328e73964a44a409bbb9ad15456, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 81b344da77bbd70479ed2f2ae14120c3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 84847998a85fa194cb05d494b58a5712, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -35431,7 +35431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1655552178
 Transform:
   m_ObjectHideFlags: 0
@@ -36745,7 +36745,35 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 7685797dc30fa7945bce06e7fa082731, type: 3}
     loop: 1
     volume: 1
-  SoundEffectsBreakdancer: []
+  - soundName: electricity
+    audioClip: {fileID: 8300000, guid: 755677b8d36a24f4080a3225a506e799, type: 3}
+    loop: 1
+    volume: 1
+  - soundName: hard
+    audioClip: {fileID: 8300000, guid: 54d2fef3534f0654796297b34df7c275, type: 3}
+    loop: 0
+    volume: 0.5
+  - soundName: light
+    audioClip: {fileID: 8300000, guid: 5a510c180502b1f4c9bc0e16f52bbd87, type: 3}
+    loop: 1
+    volume: 1
+  - soundName: pole swing
+    audioClip: {fileID: 8300000, guid: 63863f08a25222940996054e9b916e7d, type: 3}
+    loop: 1
+    volume: 1
+  - soundName: riven hit o
+    audioClip: {fileID: 8300000, guid: 39ca5bfdc45b9064f8a8579081f5fb61, type: 3}
+    loop: 1
+    volume: 1
+  - soundName: riven hit m
+    audioClip: {fileID: 8300000, guid: 8e5c07122f270234ca46ea4d5d745301, type: 3}
+    loop: 1
+    volume: 1
+  SoundEffectsBreakdancer:
+  - soundName: hard
+    audioClip: {fileID: 8300000, guid: 5a510c180502b1f4c9bc0e16f52bbd87, type: 3}
+    loop: 0
+    volume: 1
   soundDestroyDelay: 0.3
   audioMixer: {fileID: 24300002, guid: 70ea7328e73964a44a409bbb9ad15456, type: 2}
 --- !u!1001 &1759084621
@@ -41076,7 +41104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1971141379
 Transform:
   m_ObjectHideFlags: 0

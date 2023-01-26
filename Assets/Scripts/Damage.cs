@@ -14,6 +14,7 @@ public class Damage : MonoBehaviour
     [SerializeField] float knockBack;
 
     [Header("Hit Effects")]
+    [SerializeField] string soundName;
     [SerializeField] bool isTrap;
     [SerializeField] bool exposing;
     [SerializeField] bool stunning;
@@ -61,6 +62,7 @@ public class Damage : MonoBehaviour
             camRef.ShakeCamera(x, y);
 
             other.GetComponent<PlayerMovement>().TakeDamage(newDamage, hitStun, knockBack, launchPoint);
+            SoundPlayer.PlaySound(playerRef.playerIndex, soundName);
             playerRef.AddUltimateCharge(Mathf.RoundToInt(newDamage));
         }
     }
