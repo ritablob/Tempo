@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4174885838802082575}
   - component: {fileID: 3890737927552106966}
   m_Layer: 0
-  m_Name: HB HitFloor C1 M3
+  m_Name: HB HitFloor C8 M4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
   dealtDamage: 0
-  baseDamage: 15
+  baseDamage: 30
   hitStun: 0.75
   knockBack: 0
   isTrap: 0

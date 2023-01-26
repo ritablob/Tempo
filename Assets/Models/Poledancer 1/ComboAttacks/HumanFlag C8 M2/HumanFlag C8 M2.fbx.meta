@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 66b468e6e9dbeb242aab897458c743f5
+guid: a92b1a8f860e7064a84cdae5cb9df98f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
@@ -8,7 +8,7 @@ ModelImporter:
     second: Take 001
   - first:
       74: -4976350379833429960
-    second: HumanFlag C2 M4
+    second: HumanFlag C8 M2
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -39,7 +39,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HumanFlag C2 M4
+      name: HumanFlag C8 M2
       takeName: Take 001
       internalID: 0
       firstFrame: 0
@@ -73,7 +73,7 @@ ModelImporter:
       - time: 0.12650917
         functionName: EnableHitbox
         data: 
-        objectReferenceParameter: {fileID: 7144457427585212729, guid: c1be27a68f5b4d54393f16e11bb45228, type: 3}
+        objectReferenceParameter: {fileID: 7144457427585212729, guid: 6f0faac838775b541a05be3de46302b9, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
