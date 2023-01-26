@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 1162232717056227270}
   - component: {fileID: 1207356900211838078}
   - component: {fileID: 6044556107354192595}
+  - component: {fileID: 1627984781767962105}
   m_Layer: 0
   m_Name: PoleDancer
   m_TagString: Player
@@ -347,6 +348,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4de50a89-13bb-47bd-a634-a6d5d10f518d
     m_ActionName: Player/PauseMenu[/Keyboard/escape,/XInputControllerWindows/select]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1207356900211838078}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: PauseMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ec91bc01-5c68-43f4-925e-783c6c7bc52e
+    m_ActionName: UI/PauseMenu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 37f8de56-1d53-425e-b3bb-1966807b982c
+    m_ActionName: UI/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -406,6 +427,24 @@ MonoBehaviour:
   bleedStacks: 0
   weaknessStacks: 0
   sparkEffect: {fileID: 3263256365448599284}
+--- !u!114 &1627984781767962105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162232717056227273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814181fbbf4b05249ad0de6f50a94f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localMap:
+    m_Name: Local Map
+    m_Id: c22fd51e-117a-4a5f-9ef5-d413aa53f8a8
+    m_Asset: {fileID: 0}
+    m_Actions: []
+    m_Bindings: []
 --- !u!1 &1162232717270291737
 GameObject:
   m_ObjectHideFlags: 0

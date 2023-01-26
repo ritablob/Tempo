@@ -3,20 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+    public List<Button> buttonList;
     public GameObject settingPrefab;
     public Pointer pointer;
     public AudioMixer mixer;
+    public InGameManager inGameManager;
+    public GameObject inGameUI;
+
+    private void Awake()
+    {
+        inGameManager.settingMenu = settingPrefab;
+        inGameManager.pauseMenu = gameObject;
+        settingPrefab.GetComponent<SettingsScript>().selectionButtonList = buttonList;
+
+    }
     private void Start()
     {
+
         settingPrefab.SetActive(false);
         gameObject.SetActive(false);
 
     }
     private void OnEnable()
     {
+        inGameUI.SetActive(false);
+        settingPrefab.GetComponent<SettingsScript>().slider.gameObject.SetActive(false);
+        settingPrefab.GetComponent<SettingsScript>().exitButton.gameObject.SetActive(false);
         mixer.SetFloat("EQgain", 0f);
         /* - lights and music continue to flicker 
          * - music muffled
@@ -26,6 +42,7 @@ public class PauseMenu : MonoBehaviour
     }
     private void OnDisable()
     {
+        inGameUI.SetActive(true);
         mixer.SetFloat("EQgain", 1f);
         //Time.timeScale = 1f;
     }

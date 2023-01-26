@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InGameManager : MonoBehaviour
+public class PlayerIngameMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    public GameObject settingMenu;
-
     public InputActionMap localMap;
-
+    private InGameManager inGameManager;
+    private void Start()
+    {
+        inGameManager = FindObjectOfType<InGameManager>();
+    }
     public void ToggleInputActionMaps()
     {
         if (localMap.enabled)
         {
             localMap.Disable();
-            pauseMenu.SetActive(true);
+            inGameManager.pauseMenu.SetActive(true);
         }
         else
         {
             localMap.Enable();
-            pauseMenu.SetActive(false);
+            inGameManager.pauseMenu.SetActive(false);
         }
-        settingMenu.SetActive(false);
+        inGameManager.settingMenu.SetActive(false);
     }
     public void PauseMenuToggle(InputAction.CallbackContext ctx)
     {
