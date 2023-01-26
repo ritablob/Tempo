@@ -10197,7 +10197,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh128480
+  m_Name: pb_Mesh45406
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24881,7 +24881,7 @@ MonoBehaviour:
   player2Music: {fileID: 330479671}
   cameraRotateSpeed: 7
   cameraSpeed: 3
-  distanceModifier: 8
+  distanceModifier: 0.5
   horizontalBounds: {x: -6, y: 6}
   forwardBounds: {x: -999, y: 999}
 --- !u!114 &1250743006

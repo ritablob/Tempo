@@ -1,44 +1,12 @@
 fileFormatVersion: 2
-guid: 9823726637ff0334b968dd81829747ab
+guid: d53b82e8931e1d44aab2fb379a5f962b
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Clothes
-    second: {fileID: 2100000, guid: a666be100440bc843a5769c8ecb0937f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glow
-    second: {fileID: 2100000, guid: 757ce8e66c93dd2409509d63e31b3de8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hair1
-    second: {fileID: 2100000, guid: 5c3ba1485344e0f4cad5595c0ada97d3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hair2
-    second: {fileID: 2100000, guid: 5cfbe6fab62553c479dea32fbe2ac9dc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Legs
-    second: {fileID: 2100000, guid: 3493d811c268db24c9420f6077e5739d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Robotic_Arm
-    second: {fileID: 2100000, guid: 3275005a87743514cba6880455ee2128, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Skin
-    second: {fileID: 2100000, guid: 5c12f5eeee878e84d93e93a13f183981, type: 2}
+      74: 1827226128182048838
+    second: HitFloor
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -66,7 +34,71 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: HitFloor
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 56
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.24034517
+        functionName: EnableHitbox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 7
+        messageOptions: 0
+      - time: 0.4963539
+        functionName: DisableHitbox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.0503937
+        functionName: MoveToLocation
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 4
+        messageOptions: 0
+      - time: 0.71443576
+        functionName: PickUpSpear
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9765828
+        functionName: EndAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -110,15 +142,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 8924df4c89cc2ca45b2a332852061ef0
-  - 9a9284c33167bbe49a1d81d279d0c64e
-  - 9fcd2d8042cb44d43bc88f50ca2c2c24
-  - 8dca0d4892514304e91c92c5654f99fd
-  - b96a34938dce3f24ab26eaa005f07c9b
-  - 6cc561f0b2babb3449d099e66a831566
-  - 7e8d7e721c05620408549991393bf718
-  - 6b87eb4231875da4cbd47cd38d48937c
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -336,11 +360,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 9823726637ff0334b968dd81829747ab, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
