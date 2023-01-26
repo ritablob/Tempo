@@ -36,6 +36,6 @@ public class ButtonMenu : MonoBehaviour
     IEnumerator WaitAndLoad(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(1);
     }
 }
