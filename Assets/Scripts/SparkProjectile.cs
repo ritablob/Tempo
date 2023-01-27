@@ -36,6 +36,7 @@ public class SparkProjectile : MonoBehaviour
         }
         if (other.gameObject == dmgScript.playerRef.gameObject && other.tag == "Player" && isTrap)
         {
+            GetComponent<SoundEffectPlayer>().PlaySound("riven trap pickup");
             dmgScript.playerRef.GainSpecial(this.gameObject);
         }
     }

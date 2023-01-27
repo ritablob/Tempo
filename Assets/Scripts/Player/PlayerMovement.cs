@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gamepadRumble2 = 0.5f;
     [SerializeField] EventCommunicator eventCommunicator;
     HitCanvasManager hitCanvasManager;
-    InGameManager inGameManager;
+    PlayerIngameMenu inGameMenu;
 
     [HideInInspector]
     public int heldDown;
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     private float hitStunRemaining = 0;
     private Camera sceneCamera;
     private PlayerControls playerControls;
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
     public bool isGamepad;
     private bool takeKnockBack;
     private bool isAttacking; //Prevents the player from acting during an attack
@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 offset;
     private float ourDeadTime;
     private string triggerName;
+    private bool isMoving;
     #endregion
 
     //Start functions
@@ -80,11 +81,13 @@ public class PlayerMovement : MonoBehaviour
         sceneCamera = GameObject.FindObjectOfType<Camera>();
         statusEffects = GetComponent<StatusEffects>();
         hitCanvasManager = FindObjectOfType<HitCanvasManager>();
-        inGameManager = FindObjectOfType<InGameManager>();
+        inGameMenu = GetComponent<PlayerIngameMenu>();
     }
     private void OnEnable()
     {
         playerControls.Enable();
+        inGameMenu.playerMap = playerInput.currentActionMap;
+        isMoving = true;
     }
     private void OnDisable()
     {
@@ -94,19 +97,6 @@ public class PlayerMovement : MonoBehaviour
 
     //Input system related functions
     #region
-    public void PauseMenu(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
-        {
-            inGameManager.pauseMenu.SetActive(!inGameManager.pauseMenu.activeInHierarchy);
-            inGameManager.settingMenu.SetActive(false);
-            if (playerInput.currentActionMap.enabled)
-                playerInput.DeactivateInput();
-            else
-                playerInput.ActivateInput();
-        }
-
-    }
     public void LeftShoulder(InputAction.CallbackContext ctx)
     {
         if (ctx.performed) { heldDown++; }
@@ -133,9 +123,9 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackLight(InputAction.CallbackContext ctx)
     {
-        SoundPlayer.PlaySound(playerIndex, "hard");
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && comboTimer < 0) //If not attacking, do attack logic
         {
+            SoundPlayer.PlaySound(playerIndex, "light");
             longCombo = false;
             Debug.Log(comboTimer);
             anim.SetTrigger("Attack_1");
@@ -144,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1") && comboTimer < 0)
         {
+            SoundPlayer.PlaySound(playerIndex, "light");
             longCombo = false;
             anim.SetTrigger("Attack_1_Released");
             StartAttack(false);
@@ -160,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && comboTimer < 0) //If not attacking, do attack logic
         {
+            SoundPlayer.PlaySound(playerIndex, "hard");
             longCombo = false;
             anim.SetTrigger("Attack_2");
             StartAttack(false);
@@ -167,6 +159,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2") && comboTimer < 0)
         {
+            SoundPlayer.PlaySound(playerIndex, "hard");
             longCombo = false;
             anim.SetTrigger("Attack_2_Released");
             StartAttack(false);
