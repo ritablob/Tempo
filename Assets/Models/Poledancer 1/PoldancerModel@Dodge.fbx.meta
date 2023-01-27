@@ -64,52 +64,10 @@ ModelImporter:
         functionName: SetSpeed
         data: 
         objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 6
+        floatParameter: 3
         intParameter: 0
         messageOptions: 0
-      - time: 0.54752845
-        functionName: ResetLayers
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.39553216
-        functionName: SetSpeed
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 2.5
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.047542118
-        functionName: SpawnShadowClone
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 0
-        intParameter: 2
-        messageOptions: 0
-      - time: 0.07869836
-        functionName: SpawnShadowClone
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 0
-        intParameter: 2
-        messageOptions: 0
-      - time: 0.104084924
-        functionName: SpawnShadowClone
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 0
-        intParameter: 2
-        messageOptions: 0
-      - time: 0.124855764
-        functionName: SpawnShadowClone
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 0
-        intParameter: 2
-        messageOptions: 0
-      - time: 0.14793445
+      - time: 0.1738168
         functionName: SpawnShadowClone
         data: 
         objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
@@ -123,33 +81,26 @@ ModelImporter:
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.22409415
+      - time: 0.23249643
+        functionName: SetSpeed
+        data: 
+        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
+        floatParameter: 2.5
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.28688455
         functionName: SpawnShadowClone
         data: 
         objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.2610201
-        functionName: SpawnShadowClone
+      - time: 0.54752845
+        functionName: ResetLayers
         data: 
         objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
         floatParameter: 0
-        intParameter: 2
-        messageOptions: 0
-      - time: 0.28986847
-        functionName: SpawnShadowClone
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 0
-        intParameter: 2
-        messageOptions: 0
-      - time: 0.32217866
-        functionName: SpawnShadowClone
-        data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
-        floatParameter: 0
-        intParameter: 2
+        intParameter: 0
         messageOptions: 0
       transformMask: []
       maskType: 3

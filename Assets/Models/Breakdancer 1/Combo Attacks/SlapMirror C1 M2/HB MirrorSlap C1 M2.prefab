@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9048082896028379271}
   - component: {fileID: 8187472097945481822}
   m_Layer: 0
-  m_Name: NovaSpinny
+  m_Name: HB MirrorSlap C1 M2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3313231, y: 1.4856842, z: 0.7431692}
-  m_Center: {x: 0.1399624, y: -0.4256357, z: 0.36691517}
+  m_Size: {x: 0.40907305, y: 0.6649431, z: 0.1985302}
+  m_Center: {x: 0.0056958795, y: -0.45959526, z: 0.8432276}
 --- !u!114 &8187472097945481822
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 3b2108cbbb3ba1a4b8c999597553b980
+guid: f1048797f34b9cc47882ad6af2c75cc8
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: SlapAtFace C2 M1
+    second: SlapAtFaceMirror C1 M2
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: SlapAtFace C2 M1
+      name: SlapAtFaceMirror C1 M2
       takeName: Take 001
       internalID: 0
       firstFrame: 0
@@ -60,21 +60,21 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.24999999
+      - time: 0.24137926
         functionName: EnableHitbox
         data: 
-        objectReferenceParameter: {fileID: 2804101594017051647, guid: b6c8cd065b16d3f49939be9b169f7aff, type: 3}
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: af4ac92fbe9e79b48a18861c985d7b71, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.39481863
+      - time: 0.5474306
         functionName: DisableHitbox
         data: 
         objectReferenceParameter: {fileID: 2804101594017051647, guid: b6c8cd065b16d3f49939be9b169f7aff, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9845037
+      - time: 0.88923705
         functionName: EndAttack
         data: 
         objectReferenceParameter: {fileID: 2804101594017051647, guid: b6c8cd065b16d3f49939be9b169f7aff, type: 3}

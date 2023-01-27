@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9048082896028379271}
   - component: {fileID: 8187472097945481822}
   m_Layer: 0
-  m_Name: NovaSlapy
+  m_Name: HB SlapAtFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
