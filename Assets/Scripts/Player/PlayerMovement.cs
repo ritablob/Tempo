@@ -253,7 +253,7 @@ public class PlayerMovement : MonoBehaviour
         if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit")) { BlendLayers(); return; }
         anim.SetLayerWeight(0, 1); 
         anim.SetLayerWeight(1, 0); 
-        anim.SetLayerWeight(2, 0); 
+        anim.SetLayerWeight(2, 0);
         anim.SetTrigger("DEFAULT"); 
     }
     public void AttackLayer() { anim.SetLayerWeight(0, 0); anim.SetLayerWeight(1, 1); anim.SetLayerWeight(2, 0); }
@@ -277,7 +277,6 @@ public class PlayerMovement : MonoBehaviour
     }
     public void InLongCombo()
     {
-        Debug.Log("sDsdsd");
         longCombo = true;
         comboTimer -= 0.4f;
         ourDeadTime += 0.4f;
@@ -329,7 +328,6 @@ public class PlayerMovement : MonoBehaviour
         }
         if (modelRenderer.materials[matIndex].name != normal.name + " (Instance)")
         {
-            Debug.Log(modelRenderer.materials[matIndex].name);
             takeKnockBack = false;
             Material[] mats = modelRenderer.materials;
             mats[matIndex] = normal;
