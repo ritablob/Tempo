@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: bf499abaa3375a24f9c7b181da173d6d
+guid: e3b33e8fe2e383f459f8769e3560c813
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Dodge
+    second: Martelo C4 M4
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Dodge
+      name: Martelo C4 M4
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -60,10 +60,24 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.60137457
-        functionName: BlendLayers
+      - time: 0.19191688
+        functionName: EnableHitbox
         data: 
-        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: 5eb1954a6a03da341a810b48b53206b5, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.46612734
+        functionName: DisableHitbox
+        data: 
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: 5eb1954a6a03da341a810b48b53206b5, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9413548
+        functionName: EndAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -132,11 +146,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 41e554362e11da64db4c280bc6c64843, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0

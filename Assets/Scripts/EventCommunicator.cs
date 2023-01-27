@@ -50,6 +50,7 @@ public class EventCommunicator : MonoBehaviour
         }
     }
     public void ResetLayers() { playerScriptRef.ResetLayers(); }
+    public void BlendLayers() { playerScriptRef.BlendLayers(); }
     public void Projectile(GameObject projectile) 
     { 
         GameObject _projectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
