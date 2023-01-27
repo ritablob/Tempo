@@ -62,7 +62,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5008620316433160457}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8592843273972802957
 MonoBehaviour:
@@ -81,6 +81,7 @@ MonoBehaviour:
   baseDamage: 0
   hitStun: 0
   knockBack: 0
+  soundName: 
   isTrap: 0
   exposing: 0
   stunning: 0
@@ -482,6 +483,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3b45ad5e-dcfb-4d06-8bb5-15d09ad577fa
     m_ActionName: Player/Ultimate_R[/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4de50a89-13bb-47bd-a634-a6d5d10f518d
+    m_ActionName: Player/PauseMenu[/XInputControllerWindows/select]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ec91bc01-5c68-43f4-925e-783c6c7bc52e
+    m_ActionName: UI/PauseMenu[/XInputControllerWindows/select]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 37f8de56-1d53-425e-b3bb-1966807b982c
+    m_ActionName: UI/Move[/XInputControllerWindows/leftStick]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -523,6 +536,7 @@ MonoBehaviour:
   playerIndex: 0
   lastBeatTiming: 
   lastBeatTimingPerc: 0
+  playerInput: {fileID: 0}
   isGamepad: 0
 --- !u!114 &6092373854515148419
 MonoBehaviour:
@@ -1028,6 +1042,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5122551890573368639}
   - {fileID: 2274739145851761622}
   m_Father: {fileID: 1679827282492537756}
   m_RootOrder: 3
@@ -1160,6 +1175,68 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &1336735786754569665
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5008620316433160457}
+    m_Modifications:
+    - target: {fileID: 2804101594017051647, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_Name
+      value: HB Headspin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.65199995
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.96700025
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+--- !u!4 &5122551890573368639 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6168805385398348030, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
+  m_PrefabInstance: {fileID: 1336735786754569665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3153251490640815971
 PrefabInstance:
   m_ObjectHideFlags: 0

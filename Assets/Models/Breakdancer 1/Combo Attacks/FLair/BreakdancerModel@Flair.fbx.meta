@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: f093f9f310c547546938a80016f8b95b
+guid: 8913e3476bcacb94d838407fe25003e2
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: 1990
+    second: Flair
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: 1990
+      name: Flair
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 47
+      lastFrame: 70
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -60,24 +60,24 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.1779575
+      - time: 0.16279067
         functionName: EnableHitbox
         data: 
-        objectReferenceParameter: {fileID: 2804101594017051647, guid: 0610a63a3a1b246429fd0704c3960911, type: 3}
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: d11711a76e3fe5a479e81137465ecc11, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6026288
+      - time: 0.35046017
         functionName: DisableHitbox
         data: 
-        objectReferenceParameter: {fileID: 2804101594017051647, guid: 0610a63a3a1b246429fd0704c3960911, type: 3}
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: d11711a76e3fe5a479e81137465ecc11, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.7997977
+      - time: 0.92618793
         functionName: EndAttack
         data: 
-        objectReferenceParameter: {fileID: 2804101594017051647, guid: 0610a63a3a1b246429fd0704c3960911, type: 3}
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: d11711a76e3fe5a479e81137465ecc11, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
