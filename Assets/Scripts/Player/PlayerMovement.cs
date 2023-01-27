@@ -117,17 +117,12 @@ public class PlayerMovement : MonoBehaviour
     {
         movement = ctx.ReadValue<Vector2>();
     }
-    public void OnLook(InputAction.CallbackContext ctx)
-    {
-        aim = ctx.ReadValue<Vector2>();
-    }
     public void AttackLight(InputAction.CallbackContext ctx)
     {
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && comboTimer < 0) //If not attacking, do attack logic
         {
             SoundPlayer.PlaySound(playerIndex, "light");
             longCombo = false;
-            Debug.Log(comboTimer);
             anim.SetTrigger("Attack_1");
             StartAttack(false);
             return;
@@ -208,12 +203,17 @@ public class PlayerMovement : MonoBehaviour
     #region
     public void StartAttack(bool wasBuffered)
     {
-        if (!wasBuffered) { lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); lastBeatTiming = rhythmKeeper.beatTiming;}
+        if (!wasBuffered) { lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); lastBeatTiming = rhythmKeeper.beatTiming; }
         eventCommunicator.ResetHitboxes();
-        //SoundPlayer.PlaySound(playerIndex, "deal_damage");
         comboTimer = -0.75f;
-        hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
-        isAttacking = true; canMove = false; AttackLayer(); ourDeadTime = 0.333f;
+        isAttacking = true;
+        canMove = false;
+        AttackLayer();
+        ourDeadTime = 0.333f;
+
+        if(!anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit"))
+            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
+
         if (isPoleDancer) { eventCommunicator.PickUpSpear(10); }
     }
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
@@ -322,6 +322,7 @@ public class PlayerMovement : MonoBehaviour
         else if (canMove && isAttacking) //If the player is attacking but can move during the attack, do a movement checl
         {
             HandleMovement();
+            HandleRotation();
         }
         else if (isLaunching) //If the player needs to be launched, move them
         {
@@ -340,24 +341,11 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleRotation()
     {
-        if (isGamepad)
+        if (isGamepad && (movement.x != 0 || movement.y != 0))
         {
-            if (Mathf.Abs(aim.x) > controllerDeadZone || Mathf.Abs(aim.y) > controllerDeadZone)
-            {
-                Vector3 playerDirection = Vector3.right * aim.x + Vector3.forward * aim.y;
-
-                if (playerDirection.sqrMagnitude > 0.0f)
-                {
-                    Quaternion newRotation = Quaternion.Euler(0, sceneCamera.transform.eulerAngles.y, 0) * Quaternion.LookRotation(-playerDirection, Vector3.up);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
-                }
-            }
-            else if (movement.x != 0 || movement.y != 0)
-            {
-                Vector3 newMovement = Quaternion.Euler(0, sceneCamera.transform.eulerAngles.y, 0) * new Vector3(movement.x, 0, movement.y);
-                Quaternion newRotation = Quaternion.LookRotation(-newMovement, Vector3.up);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
-            }
+            Vector3 newMovement = Quaternion.Euler(0, sceneCamera.transform.eulerAngles.y, 0) * new Vector3(movement.x, 0, movement.y);
+            Quaternion newRotation = Quaternion.LookRotation(-newMovement, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
 
             //Apply auto-snap
             foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
@@ -370,7 +358,6 @@ public class PlayerMovement : MonoBehaviour
                         transform.rotation = awayRot;
                 }
             }
-
         }
         else
         {
@@ -409,10 +396,6 @@ public class PlayerMovement : MonoBehaviour
             launchDir.y = 0;
             launchDir.Normalize(); //knockback determines intensity of launch
             launchDirection = launchDir * knockBack;
-            if (isGamepad)
-            {
-                StartCoroutine(Rumble());
-            }
         }
         else
         {
@@ -458,12 +441,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(1.75f);
         canDodge = true;
         canMove = true;
-    }
-    IEnumerator Rumble()
-    {
-        Gamepad.current.SetMotorSpeeds(gamepadRumble1, gamepadRumble2);
-        yield return new WaitForSeconds(0.3f);
-        Gamepad.current.SetMotorSpeeds(0f, 0f);
     }
     #endregion
 }
