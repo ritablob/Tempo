@@ -10970,7 +10970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554175427}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3499999, z: 0}
+  m_LocalPosition: {x: 0, y: 0.829, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36741,37 +36741,49 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 1613b839dbb943440a2d14858cf41198, type: 3}
     loop: 0
     volume: 1
-  - soundName: trap_loop
-    audioClip: {fileID: 8300000, guid: 7685797dc30fa7945bce06e7fa082731, type: 3}
-    loop: 1
-    volume: 1
-  - soundName: electricity
-    audioClip: {fileID: 8300000, guid: 755677b8d36a24f4080a3225a506e799, type: 3}
-    loop: 1
-    volume: 1
-  - soundName: hard
-    audioClip: {fileID: 8300000, guid: 54d2fef3534f0654796297b34df7c275, type: 3}
-    loop: 0
-    volume: 0.5
-  - soundName: light
-    audioClip: {fileID: 8300000, guid: 5a510c180502b1f4c9bc0e16f52bbd87, type: 3}
-    loop: 1
-    volume: 1
-  - soundName: pole swing
-    audioClip: {fileID: 8300000, guid: 63863f08a25222940996054e9b916e7d, type: 3}
-    loop: 1
-    volume: 1
-  - soundName: riven hit o
-    audioClip: {fileID: 8300000, guid: 39ca5bfdc45b9064f8a8579081f5fb61, type: 3}
-    loop: 1
-    volume: 1
-  - soundName: riven hit m
-    audioClip: {fileID: 8300000, guid: 8e5c07122f270234ca46ea4d5d745301, type: 3}
-    loop: 1
-    volume: 1
   SoundEffectsBreakdancer:
+  - soundName: nova trap spikes
+    audioClip: {fileID: 8300000, guid: 30188c662272de643afce612f9b8e60a, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: nova trap throw
+    audioClip: {fileID: 8300000, guid: a38f48fd099d6174d96b72c268121536, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: nova trap land
+    audioClip: {fileID: 8300000, guid: 9e9ae9682ba5f724585ac535bc12cea9, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: nova trap pickup
+    audioClip: {fileID: 8300000, guid: 043cd5c556b0be2449bb7d95cdbe3d86, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: nova trap pierce
+    audioClip: {fileID: 8300000, guid: 04a3114240585c242903136dcca78f78, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: riven trap throw
+    audioClip: {fileID: 8300000, guid: d97f773290e04e845a0bdd0bc39325ff, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: riven trap pickup
+    audioClip: {fileID: 8300000, guid: 30004df3c1d263c43b357aac67672e3b, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: riven trap swell
+    audioClip: {fileID: 8300000, guid: 29705777a33ed8a45b0bf5d706fb79c7, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: light
+    audioClip: {fileID: 8300000, guid: c0c1cc6fa3e581e4a86977075a9e1caf, type: 3}
+    loop: 0
+    volume: 1
   - soundName: hard
-    audioClip: {fileID: 8300000, guid: 5a510c180502b1f4c9bc0e16f52bbd87, type: 3}
+    audioClip: {fileID: 8300000, guid: 0185785457afaef4192da3d0307f6a48, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: stunned
+    audioClip: {fileID: 8300000, guid: 3c279c80937c7834bbdc01a680a7786a, type: 3}
     loop: 0
     volume: 1
   soundDestroyDelay: 0.3

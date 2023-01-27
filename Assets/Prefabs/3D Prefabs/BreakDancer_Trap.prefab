@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3400335744590048248}
   - component: {fileID: 5887627924093489332}
   - component: {fileID: 7681683366304162776}
+  - component: {fileID: 6278972665451299874}
   m_Layer: 0
   m_Name: BreakDancer_Trap
   m_TagString: Untagged
@@ -48,8 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e503c1572eff544a813f737312ffad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 7.5
-  speed: 30
+  fallSpeed: 1.875
+  speed: 7.5
 --- !u!95 &3400335744590048248
 Animator:
   serializedVersion: 4
@@ -100,11 +101,24 @@ MonoBehaviour:
   baseDamage: 10
   hitStun: 0.5
   knockBack: 2
+  soundName: nova trap pierce
   isTrap: 1
   exposing: 0
   stunning: 0
   bleeding: 0
   weaken: 0
+--- !u!114 &6278972665451299874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456105016083905498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2679f207394a324e85ef1623570562e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1450802957840032345
 PrefabInstance:
   m_ObjectHideFlags: 0

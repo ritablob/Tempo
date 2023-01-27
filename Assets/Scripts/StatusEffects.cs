@@ -42,6 +42,7 @@ public class StatusEffects : MonoBehaviour
 
     IEnumerator Sparks()
     {
+        SoundPlayer.PlaySound(0, "stunned");
         sparkEffect.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         sparkEffect.SetActive(false);

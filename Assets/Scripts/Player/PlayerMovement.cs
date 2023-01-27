@@ -133,9 +133,9 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackLight(InputAction.CallbackContext ctx)
     {
-        SoundPlayer.PlaySound(playerIndex, "hard");
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && comboTimer < 0) //If not attacking, do attack logic
         {
+            SoundPlayer.PlaySound(playerIndex, "light");
             longCombo = false;
             Debug.Log(comboTimer);
             anim.SetTrigger("Attack_1");
@@ -144,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1") && comboTimer < 0)
         {
+            SoundPlayer.PlaySound(playerIndex, "light");
             longCombo = false;
             anim.SetTrigger("Attack_1_Released");
             StartAttack(false);
@@ -160,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && comboTimer < 0) //If not attacking, do attack logic
         {
+            SoundPlayer.PlaySound(playerIndex, "hard");
             longCombo = false;
             anim.SetTrigger("Attack_2");
             StartAttack(false);
@@ -167,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2") && comboTimer < 0)
         {
+            SoundPlayer.PlaySound(playerIndex, "hard");
             longCombo = false;
             anim.SetTrigger("Attack_2_Released");
             StartAttack(false);
