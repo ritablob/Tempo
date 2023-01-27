@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackLight(InputAction.CallbackContext ctx)
     {
-        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && comboTimer < 0) //If not attacking, do attack logic
+        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
             SoundPlayer.PlaySound(playerIndex, "light");
             longCombo = false;
@@ -144,8 +144,9 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackHeavy(InputAction.CallbackContext ctx)
     {
-        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && comboTimer < 0) //If not attacking, do attack logic
+        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
+            Debug.Log("Called");
             SoundPlayer.PlaySound(playerIndex, "hard");
             longCombo = false;
             anim.SetTrigger("Attack_2");
@@ -269,8 +270,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("sDsdsd");
         longCombo = true;
-        comboTimer -= 0.5f;
-        ourDeadTime += 0.5f;
+        comboTimer -= 0.4f;
+        ourDeadTime += 0.4f;
     }
     public void GainSpecial(GameObject objectToKill)
     {
