@@ -41,7 +41,7 @@ public class EventCommunicator : MonoBehaviour
         _shadowClone.GetComponent<ShadowCloneInitializer>().InitializeBones(sourceBones);
     }
     public void SetSpeed(float newSpeed) { playerScriptRef.SetSpeed(newSpeed); }
-    public void EnableHitbox(GameObject hitBox) { GameObject hitbox = Instantiate(hitBox, hitBoxHolder.transform); hitbox.GetComponent<Damage>().playerRef = playerScriptRef; }
+    public void EnableHitbox(GameObject hitBox) { GameObject hitbox = Instantiate(hitBox, hitBoxHolder.transform); hitbox.GetComponent<Damage>().Initialize(playerScriptRef); }
     public void DisableHitbox() 
     {
         foreach(Transform child in hitBoxHolder.transform)
