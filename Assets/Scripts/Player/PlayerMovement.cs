@@ -358,6 +358,19 @@ public class PlayerMovement : MonoBehaviour
                 Quaternion newRotation = Quaternion.LookRotation(-newMovement, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
             }
+
+            //Apply auto-snap
+            foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                if(player != this.gameObject) 
+                {
+                    Vector3 away = gameObject.transform.position - player.transform.position;
+                    Quaternion awayRot = Quaternion.LookRotation(away);
+                    if (transform.rotation.y > awayRot.y - 0.175f && transform.rotation.y < awayRot.y + 0.175f)
+                        transform.rotation = awayRot;
+                }
+            }
+
         }
         else
         {
@@ -419,7 +432,7 @@ public class PlayerMovement : MonoBehaviour
     private void NewBeat(string eventName, object param)
     {
         if(anim.GetCurrentAnimatorStateInfo(1).IsName("Idle") || (isAttacking && comboTimer < 0 && longCombo))
-            comboTimer = -0.5f; Debug.Log("RESET");
+            comboTimer = -0.5f;
     }
 
     IEnumerator parryTiming()
