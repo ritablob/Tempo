@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9048082896028379271}
   - component: {fileID: 8187472097945481822}
   m_Layer: 0
-  m_Name: HB Headspin
+  m_Name: HB Martelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3006182, y: 1.4856842, z: 1.3596755}
-  m_Center: {x: 0.20912817, y: -0.4256357, z: -0.14530939}
+  m_Size: {x: 1.3746068, y: 1.6929568, z: 0.7649461}
+  m_Center: {x: 0.028511405, y: -0.52927214, z: -0.060484827}
 --- !u!114 &8187472097945481822
 MonoBehaviour:
   m_ObjectHideFlags: 0
