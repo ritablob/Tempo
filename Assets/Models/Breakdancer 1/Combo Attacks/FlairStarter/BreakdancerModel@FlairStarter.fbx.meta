@@ -63,7 +63,7 @@ ModelImporter:
       - time: 0.06472491
         functionName: LongAttack
         data: 
-        objectReferenceParameter: {fileID: 2804101594017051647, guid: d11711a76e3fe5a479e81137465ecc11, type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -77,7 +77,7 @@ ModelImporter:
       - time: 0.35046017
         functionName: DisableHitbox
         data: 
-        objectReferenceParameter: {fileID: 2804101594017051647, guid: d11711a76e3fe5a479e81137465ecc11, type: 3}
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: 22b9ffdad86afc34ebf1f80a6b1d25c1, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
