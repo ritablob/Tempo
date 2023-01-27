@@ -438,7 +438,8 @@ public class PlayerMovement : MonoBehaviour
         eventCommunicator.PickUpSpear(10);
         canDodge = false;
         anim.SetTrigger("Dodge");
-        yield return new WaitForSeconds(1.75f);
+        yield return new WaitForSeconds(0.75f);
+        ResetLayers();
         canDodge = true;
         canMove = true;
     }
