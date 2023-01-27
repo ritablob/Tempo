@@ -6,6 +6,8 @@ public class SparkProjectile : MonoBehaviour
 {
     [SerializeField] float resistance;
     [SerializeField] float speed;
+    [SerializeField] float fallSpeed;
+    [SerializeField] float travelTime;
     [SerializeField] Damage dmgScript;
 
     private Vector3 direction;
@@ -22,8 +24,16 @@ public class SparkProjectile : MonoBehaviour
         if (!isTrap)
         {
             transform.position += direction * Time.deltaTime * speed;
+            transform.position = new Vector3(transform.position.x, transform.position.y - (Time.deltaTime * fallSpeed), transform.position.z);
+
+            if (travelTime > 0)
+            {
+                travelTime -= Time.deltaTime;
+                return;
+            }
+
             speed -= resistance * Time.deltaTime;
-            return;
+            fallSpeed = Mathf.Clamp(fallSpeed - (resistance * (Time.deltaTime / 2)), 0, 999);
         }
     }
 

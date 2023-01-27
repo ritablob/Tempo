@@ -248,7 +248,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     public void BlendLayers() { blendLayers = true; }
-    public void ResetLayers() { anim.SetLayerWeight(0, 1); anim.SetLayerWeight(1, 0); anim.SetLayerWeight(2, 0); anim.SetTrigger("DEFAULT"); }
+    public void ResetLayers() 
+    {
+        if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit")) { BlendLayers(); return; }
+        anim.SetLayerWeight(0, 1); 
+        anim.SetLayerWeight(1, 0); 
+        anim.SetLayerWeight(2, 0); 
+        anim.SetTrigger("DEFAULT"); 
+    }
     public void AttackLayer() { anim.SetLayerWeight(0, 0); anim.SetLayerWeight(1, 1); anim.SetLayerWeight(2, 0); }
     public void MiscLayer() { anim.SetLayerWeight(0, 0); anim.SetLayerWeight(1, 0); anim.SetLayerWeight(2, 1); }
     public void LaunchPlayer(float units)
@@ -374,8 +381,9 @@ public class PlayerMovement : MonoBehaviour
                         transform.rotation = awayRot;
                 }
             }
+            return;
         }
-        else
+        if(!isGamepad)
         {
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
             {
