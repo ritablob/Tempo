@@ -6,7 +6,7 @@ public class Damage : MonoBehaviour
 {
     public PlayerMovement playerRef;
     private DynamicCamera camRef;
-    public bool isInLongCombo;
+    public bool isTwoBeatAttack;
     public bool dealtDamage;
 
     [Header("Hit Values")]
@@ -28,7 +28,7 @@ public class Damage : MonoBehaviour
     }
     private void OnEnable()
     {
-        if (isInLongCombo) { playerRef.InLongCombo(); }
+        if (isTwoBeatAttack) { playerRef.InLongCombo(); }
         dealtDamage = false;
     }
     private void OnDisable()
