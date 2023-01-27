@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 4c3b66336a852b3439ba16d495978bc6
+guid: 39ca95d992f0b3d4fa130e333d7946bd
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Headspin C2 M2
+    second: Headspin
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Headspin C2 M2
+      name: Headspin
       takeName: Take 001
       internalID: 0
       firstFrame: 0
@@ -63,21 +63,21 @@ ModelImporter:
       - time: 0.119318984
         functionName: EnableHitbox
         data: 
-        objectReferenceParameter: {fileID: 2804101594017051647, guid: 76dbd83547df7444283eb6015b25dc5a, type: 3}
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.7087967
         functionName: DisableHitbox
         data: 
-        objectReferenceParameter: {fileID: 2804101594017051647, guid: 76dbd83547df7444283eb6015b25dc5a, type: 3}
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.9565217
         functionName: EndAttack
         data: 
-        objectReferenceParameter: {fileID: 2804101594017051647, guid: 76dbd83547df7444283eb6015b25dc5a, type: 3}
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: 6800911ebbab8764aad35c60bb51a3a1, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
