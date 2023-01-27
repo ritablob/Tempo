@@ -245,7 +245,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    public void ResetLayers() { anim.SetLayerWeight(0, 1); anim.SetLayerWeight(1, 0); anim.SetLayerWeight(2, 0); }
+    public void ResetLayers() { anim.SetLayerWeight(0, 1); anim.SetLayerWeight(1, 0); anim.SetLayerWeight(2, 0); anim.SetTrigger("DEFAULT"); }
     public void AttackLayer() { anim.SetLayerWeight(0, 0); anim.SetLayerWeight(1, 1); anim.SetLayerWeight(2, 0); }
     public void MiscLayer() { anim.SetLayerWeight(0, 0); anim.SetLayerWeight(1, 0); anim.SetLayerWeight(2, 1); }
     public void LaunchPlayer(float units)
@@ -381,6 +381,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isParrying)
         {
+            speed = 2.5f;
             anim.SetTrigger("Hit");
             takeKnockBack = true;
             //SoundPlayer.PlaySound(playerIndex, "grunt");
