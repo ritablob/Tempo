@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canParry = true;
     private bool canDodge = true;
     private bool longCombo;
+    private bool blendLayers;
     private float comboTimer;
     private StatusEffects statusEffects;
     private Vector3 offset;
@@ -246,6 +247,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    public void BlendLayers() { blendLayers = true; }
     public void ResetLayers() { anim.SetLayerWeight(0, 1); anim.SetLayerWeight(1, 0); anim.SetLayerWeight(2, 0); anim.SetTrigger("DEFAULT"); }
     public void AttackLayer() { anim.SetLayerWeight(0, 0); anim.SetLayerWeight(1, 1); anim.SetLayerWeight(2, 0); }
     public void MiscLayer() { anim.SetLayerWeight(0, 0); anim.SetLayerWeight(1, 0); anim.SetLayerWeight(2, 1); }
@@ -287,6 +289,18 @@ public class PlayerMovement : MonoBehaviour
     {
         ourDeadTime -= Time.deltaTime;
         comboTimer += Time.deltaTime;
+
+        if (blendLayers)
+        {
+            anim.SetLayerWeight(0, Mathf.Clamp(anim.GetLayerWeight(0) + Time.deltaTime * 2, 0, 1));
+            anim.SetLayerWeight(1, Mathf.Clamp(anim.GetLayerWeight(1) - Time.deltaTime * 2, 0, 1)); 
+            anim.SetLayerWeight(2, Mathf.Clamp(anim.GetLayerWeight(2) - Time.deltaTime * 2, 0, 1));
+            if(anim.GetLayerWeight(0) == 1 && anim.GetLayerWeight(1) == 0 && anim.GetLayerWeight(2) == 0)
+            {
+                anim.SetTrigger("DEFAULT");
+                blendLayers = false;
+            }
+        }
 
         if (ourDeadTime < 0 && rhythmKeeper.beatTiming != "DeadZone" && triggerName != null) //If there is a buffered move, execute the move
         {
