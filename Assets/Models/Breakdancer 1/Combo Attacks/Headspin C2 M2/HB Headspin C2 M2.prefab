@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9048082896028379271}
   - component: {fileID: 8187472097945481822}
   m_Layer: 0
-  m_Name: HB Flair
+  m_Name: HB Headspin C2 M2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.75015974, y: 0.7078577, z: 0.8082177}
-  m_Center: {x: -1.3935523, y: -0.27302432, z: -0.2061167}
+  m_Size: {x: 1.3006182, y: 1.4856842, z: 1.3596755}
+  m_Center: {x: 0.20912817, y: -0.4256357, z: -0.14530939}
 --- !u!114 &8187472097945481822
 MonoBehaviour:
   m_ObjectHideFlags: 0

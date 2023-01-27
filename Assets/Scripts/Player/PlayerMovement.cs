@@ -267,6 +267,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void InLongCombo()
     {
+        Debug.Log("sDsdsd");
         longCombo = true;
         comboTimer -= 0.5f;
         ourDeadTime += 0.5f;
