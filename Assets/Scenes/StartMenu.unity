@@ -785,6 +785,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d626427fe348bd46874428404564d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonList:
+  - {fileID: 1309700752}
+  - {fileID: 724716230}
+  - {fileID: 1728407483}
+  - {fileID: 1916434111}
   settingPrefab: {fileID: 280341029}
   pointer: {fileID: 6980523457806932209, guid: 19e2650dc5b4c664ea96f8f512e881b3, type: 3}
 --- !u!4 &340608868

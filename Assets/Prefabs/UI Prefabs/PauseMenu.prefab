@@ -254,8 +254,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f3edeae6229064d961e4f045a38f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonList:
+  - {fileID: 1461719950537967750}
+  - {fileID: 5382117102953223300}
+  - {fileID: 3837802584162495224}
+  - {fileID: 7400051624875628414}
   settingPrefab: {fileID: 0}
   pointer: {fileID: 6980523457806932209, guid: 19e2650dc5b4c664ea96f8f512e881b3, type: 3}
+  mixer: {fileID: 0}
+  inGameManager: {fileID: 0}
 --- !u!1 &2159188937528346165
 GameObject:
   m_ObjectHideFlags: 0
