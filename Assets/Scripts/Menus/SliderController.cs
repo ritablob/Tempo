@@ -19,12 +19,12 @@ public class SliderController : MonoBehaviour
         if (playerOne && dyncam.player1 != null)
         {
             slider.value = dyncam.player1.GetComponent<PlayerMovement>().HP*0.01f;
-            UItext.text = $"P1 - {dyncam.player1.GetComponent<PlayerMovement>().HP}hp";
+            //UItext.text = $"P1 - {dyncam.player1.GetComponent<PlayerMovement>().HP}hp";
         }
         else if (dyncam.player2 != null)
         {
             slider.value = dyncam.player2.GetComponent<PlayerMovement>().HP*0.01f;
-            UItext.text = $"P2 - {dyncam.player1.GetComponent<PlayerMovement>().HP}hp";
+            //UItext.text = $"P2 - {dyncam.player1.GetComponent<PlayerMovement>().HP}hp";
         }
     }
 }
