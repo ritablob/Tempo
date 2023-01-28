@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class PlayerUIController : MonoBehaviour
     private DynamicCamera camera;
     private Transform[] slider2Children;
     private bool doneSettingUp;
-    private int ultimateLevel; // determines how many bars become visible
+    private float ultimateLevel; // determines how many bars become visible
     private PlayerMovement playermovement;
     private void Start()
     {
@@ -88,14 +89,17 @@ public class PlayerUIController : MonoBehaviour
     }
     void UltimateSlider(PlayerMovement pMovement) // 
     {
-        ultimateLevel = pMovement.ultimateCharge / 2;
-        if (ultimateLevel < slider2Children.Length && ultimateLevel > 0)
+
+        ultimateLevel = pMovement.ultimateCharge / pMovement.ultimateLimit; // fullness percentage (0.0 - 1.0)
+
+        int barCount = Convert.ToInt32(slider2Children.Length * Math.Round(ultimateLevel, 1));
+        if (ultimateLevel < 1 && ultimateLevel > 0)
         {
-            for (int i = 0; i < ultimateLevel; i++) 
+            for (int i = 0; i <= barCount; i++) 
             {
                 slider2Children[i].gameObject.SetActive(true);
             }
-            for (int j = ultimateLevel; j < slider2Children.Length; j++)
+            for (int j = barCount; j < slider2Children.Length; j++)
             {
                 slider2Children[j].gameObject.SetActive(false);
             }

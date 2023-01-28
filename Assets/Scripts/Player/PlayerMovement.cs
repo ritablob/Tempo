@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float controllerDeadZone = 0.1f;
     [SerializeField] Color playerColor;
     [SerializeField] int specialCharges;
+    public int ultimateLimit;
 
     [Header("Other")]
     [SerializeField] RhythmKeeper rhythmKeeper;
@@ -102,13 +103,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctx.performed) { heldDown++; }
         if (ctx.canceled) { heldDown--; }
-        if (heldDown == 2 && ultimateCharge >= 50) { Debug.Log("ULTIMATE!"); ultimateCharge = 0; }
+        if (heldDown == 2 && ultimateCharge >= ultimateLimit) { Debug.Log("ULTIMATE!"); ultimateCharge = 0; }
     }
     public void RightShoulder(InputAction.CallbackContext ctx)
     {
         if (ctx.performed) { heldDown++; }
         if (ctx.canceled) { heldDown--; }
-        if (heldDown == 2 && ultimateCharge >= 50) { Debug.Log("ULTIMATE!"); ultimateCharge = 0; }
+        if (heldDown == 2 && ultimateCharge >= ultimateLimit) { Debug.Log("ULTIMATE!"); ultimateCharge = 0; }
     }
     public void ControllerType(PlayerInput _playerInput)
     {
