@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7730705c77a34c744bb85b67a1d8be75
+guid: f94b30f515cf302448e120527d22e5d2
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
@@ -8,7 +8,7 @@ ModelImporter:
     second: Take 001
   - first:
       74: -4976350379833429960
-    second: HumanFlag C5 M4
+    second: HumanFlag ULTIMATE End
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -39,7 +39,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HumanFlag C5 M4
+      name: HumanFlag ULTIMATE End
       takeName: Take 001
       internalID: 0
       firstFrame: 0
@@ -69,13 +69,6 @@ ModelImporter:
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 3
-        messageOptions: 0
-      - time: 0.12650917
-        functionName: EnableHitbox
-        data: 
-        objectReferenceParameter: {fileID: 7144457427585212729, guid: 83b751adef043ff438ef7f9e8cce5b2a, type: 3}
-        floatParameter: 0
-        intParameter: 0
         messageOptions: 0
       - time: 0.9939288
         functionName: EndAttack
