@@ -13933,7 +13933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &554175428
 Transform:
   m_ObjectHideFlags: 0
@@ -13995,7 +13995,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 1162232717056227273, guid: 969dba774852eb24e9238e1f6dc6fa07, type: 3}
+  m_PlayerPrefab: {fileID: 1679827282492537753, guid: 4e53befae0ac9834b87920ea755929b1, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -49952,7 +49952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1971141379
 Transform:
   m_ObjectHideFlags: 0
