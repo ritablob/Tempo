@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     private Vector3 aim;
     private Vector3 launchDirection;
-    private int ultimateCharge;
+    public int ultimateCharge;
     private float hitStunRemaining = 0;
     private Camera sceneCamera;
     private PlayerControls playerControls;
