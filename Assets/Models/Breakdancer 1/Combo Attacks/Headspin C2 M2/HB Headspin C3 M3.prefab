@@ -59,9 +59,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
-  isTwoBeatAttack: 1
   dealtDamage: 0
-  baseDamage: 10
+  baseDamage: 20
   hitStun: 0.75
   knockBack: 0
   soundName: 

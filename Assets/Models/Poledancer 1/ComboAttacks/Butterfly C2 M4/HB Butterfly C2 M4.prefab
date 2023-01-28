@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
   dealtDamage: 0
-  baseDamage: 20
+  baseDamage: 15
   hitStun: 0.75
   knockBack: 0
   soundName: 

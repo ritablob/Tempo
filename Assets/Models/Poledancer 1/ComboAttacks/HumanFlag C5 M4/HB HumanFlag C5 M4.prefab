@@ -62,7 +62,7 @@ MonoBehaviour:
   dealtDamage: 0
   baseDamage: 30
   hitStun: 0.75
-  knockBack: 5
+  knockBack: 0
   soundName: 
   isTrap: 0
   exposing: 0

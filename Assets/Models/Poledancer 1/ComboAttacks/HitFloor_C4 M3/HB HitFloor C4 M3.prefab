@@ -60,11 +60,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
   dealtDamage: 0
-  baseDamage: 30
+  baseDamage: 25
   hitStun: 0.75
   knockBack: 0
+  soundName: 
   isTrap: 0
-  exposing: 0
-  stunning: 1
+  exposing: 1
+  stunning: 0
   bleeding: 0
   weaken: 0

@@ -394,7 +394,7 @@ MonoBehaviour:
   modelRenderer: {fileID: 3510153941041175127}
   matIndex: 5
   isPoleDancer: 1
-  HP: 100
+  HP: 500
   speed: 2.5
   charController: {fileID: 1162232717056227271}
   controllerDeadZone: 0.1
@@ -409,6 +409,7 @@ MonoBehaviour:
   playerIndex: 0
   lastBeatTiming: 
   lastBeatTimingPerc: 0
+  ultimateCharge: 0
   playerInput: {fileID: 0}
   isGamepad: 0
 --- !u!114 &6044556107354192595

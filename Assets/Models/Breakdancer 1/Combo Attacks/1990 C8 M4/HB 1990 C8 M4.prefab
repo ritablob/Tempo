@@ -59,11 +59,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
-  isTwoBeatAttack: 1
   dealtDamage: 0
-  baseDamage: 10
+  baseDamage: 30
   hitStun: 0.75
-  knockBack: 0
+  knockBack: 7
   soundName: 
   isTrap: 0
   exposing: 0

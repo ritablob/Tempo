@@ -60,9 +60,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
   dealtDamage: 0
-  baseDamage: 40
+  baseDamage: 25
   hitStun: 0.75
-  knockBack: 5
+  knockBack: 7
   soundName: 
   isTrap: 0
   exposing: 0
