@@ -201,19 +201,7 @@ MonoBehaviour:
     m_ActionId: ae099681-666f-4cf4-9eaa-973e34bb8b7b
     m_ActionName: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1207356900211838078}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnLook
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 6941d5ad-3da3-4b1f-9955-0958994a992a
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
@@ -236,7 +224,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1207356900211838078}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: AttackLight
+        m_MethodName: Attack_1
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -252,7 +240,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1207356900211838078}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: AttackHeavy
+        m_MethodName: Attack_2
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -400,6 +388,7 @@ MonoBehaviour:
   controllerDeadZone: 0.1
   playerColor: {r: 0, g: 0, b: 0, a: 0}
   specialCharges: 1
+  ultimateLimit: 0
   rhythmKeeper: {fileID: 0}
   sfx: {fileID: 6561815665965791646}
   gamepadRumble1: 0.5
@@ -411,7 +400,6 @@ MonoBehaviour:
   lastBeatTimingPerc: 0
   ultimateCharge: 0
   playerInput: {fileID: 0}
-  isGamepad: 0
 --- !u!114 &6044556107354192595
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -388,7 +388,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1706726582736732206}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: AttackLight
+        m_MethodName: Attack_1
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -404,7 +404,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1706726582736732206}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: AttackHeavy
+        m_MethodName: Attack_2
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -544,26 +544,24 @@ MonoBehaviour:
   normal: {fileID: 2100000, guid: 757ce8e66c93dd2409509d63e31b3de8, type: 2}
   hit: {fileID: 2100000, guid: 504cf9e84c125dd4abb0c4bca2e83231, type: 2}
   modelRenderer: {fileID: 3384344293962899280}
-  matIndex: 5
+  matIndex: 2
   isPoleDancer: 0
+  specialCharges: 1
+  ultimateLimit: 0
   HP: 450
   speed: 2.5
-  charController: {fileID: 1679827282492537751}
   controllerDeadZone: 0.1
+  charController: {fileID: 1679827282492537751}
   playerColor: {r: 0, g: 0, b: 0, a: 0}
-  specialCharges: 1
+  playerInput: {fileID: 0}
   rhythmKeeper: {fileID: 0}
   sfx: {fileID: 6664948022339237326}
-  gamepadRumble1: 0.5
-  gamepadRumble2: 0.5
   eventCommunicator: {fileID: 722291490452550018}
   heldDown: 0
   playerIndex: 0
   lastBeatTiming: 
   lastBeatTimingPerc: 0
   ultimateCharge: 0
-  playerInput: {fileID: 0}
-  isGamepad: 0
 --- !u!114 &6092373854515148419
 MonoBehaviour:
   m_ObjectHideFlags: 0

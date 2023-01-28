@@ -21,19 +21,18 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Character Stats")]
     public bool isPoleDancer = false;
+    public int specialCharges;
+    public int ultimateLimit;
     public float HP = 100;
     [SerializeField] float speed = 1f;
-    [SerializeField] CharacterController charController;
     [SerializeField] float controllerDeadZone = 0.1f;
+    [SerializeField] CharacterController charController;
     [SerializeField] Color playerColor;
-    [SerializeField] int specialCharges;
-    public int ultimateLimit;
 
     [Header("Other")]
+    public PlayerInput playerInput;
     [SerializeField] RhythmKeeper rhythmKeeper;
     [SerializeField] AudioSource sfx;
-    [SerializeField] float gamepadRumble1 = 0.5f;
-    [SerializeField] float gamepadRumble2 = 0.5f;
     [SerializeField] EventCommunicator eventCommunicator;
     HitCanvasManager hitCanvasManager;
     PlayerIngameMenu inGameMenu;
@@ -43,16 +42,19 @@ public class PlayerMovement : MonoBehaviour
     public int playerIndex;
     public string lastBeatTiming;
     public float lastBeatTimingPerc;
-
-    private Vector2 movement;
-    private Vector3 aim;
-    private Vector3 launchDirection;
     public int ultimateCharge;
-    private float hitStunRemaining = 0;
+
+    //States/local vars
+    private Vector2 movement;
+    private Vector3 launchDirection;
     private Camera sceneCamera;
     private PlayerControls playerControls;
-    public PlayerInput playerInput;
-    public bool isGamepad;
+    private StatusEffects statusEffects;
+    private string triggerName;
+    private float hitStunRemaining = 0;
+    private float comboTimer;
+    private float ourDeadTime;
+    private bool isGamepad;
     private bool takeKnockBack;
     private bool isAttacking; //Prevents the player from acting during an attack
     private bool canMove = true;
@@ -62,12 +64,6 @@ public class PlayerMovement : MonoBehaviour
     private bool canDodge = true;
     private bool longCombo;
     private bool blendLayers;
-    private float comboTimer;
-    private StatusEffects statusEffects;
-    private Vector3 offset;
-    private float ourDeadTime;
-    private string triggerName;
-    private bool isMoving;
     #endregion
 
     //Start functions
@@ -89,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
     {
         playerControls.Enable();
         inGameMenu.playerMap = playerInput.currentActionMap;
-        isMoving = true;
     }
     private void OnDisable()
     {
@@ -131,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
     {
         movement = ctx.ReadValue<Vector2>();
     }
-    public void AttackLight(InputAction.CallbackContext ctx)
+    public void Attack_1(InputAction.CallbackContext ctx)
     {
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
@@ -156,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
             lastBeatTiming = rhythmKeeper.beatTiming;
         }
     }
-    public void AttackHeavy(InputAction.CallbackContext ctx)
+    public void Attack_2(InputAction.CallbackContext ctx)
     {
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
@@ -244,7 +239,6 @@ public class PlayerMovement : MonoBehaviour
         anim.ResetTrigger("Attack_2_Released");
         anim.ResetTrigger("Special");
         ResetLayers();
-        aim.x = 0; aim.y = 0;
         if (isPoleDancer) { eventCommunicator.PickUpSpear(10); }
     }
     public void CanMove() { canMove = true; }
@@ -469,7 +463,7 @@ public class PlayerMovement : MonoBehaviour
         isAttacking = false;
         canParry = true;
     }
-    IEnumerator dodgeTiming()
+    public IEnumerator dodgeTiming()
     {
         eventCommunicator.PickUpSpear(10);
         canDodge = false;
