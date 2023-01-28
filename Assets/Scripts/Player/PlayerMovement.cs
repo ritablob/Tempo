@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     public string lastBeatTiming;
     public float lastBeatTimingPerc;
     public int ultimateCharge;
+    public bool longCombo;
 
     //States/local vars
     private Vector2 movement;
@@ -62,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isParrying;
     private bool canParry = true;
     private bool canDodge = true;
-    private bool longCombo;
     private bool blendLayers;
     #endregion
 
@@ -102,7 +102,6 @@ public class PlayerMovement : MonoBehaviour
         { 
             anim.SetTrigger("ULTIMATE"); 
             ultimateCharge = 0;
-            SoundPlayer.PlaySound(playerIndex, "light");
             StartAttack(false);
         }
     }
@@ -114,7 +113,6 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetTrigger("ULTIMATE");
             ultimateCharge = 0;
-            SoundPlayer.PlaySound(playerIndex, "light");
             StartAttack(false);
         }
     }
@@ -130,7 +128,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
-            SoundPlayer.PlaySound(playerIndex, "light");
             longCombo = false;
             anim.SetTrigger("Attack_1");
             StartAttack(false);
@@ -138,7 +135,6 @@ public class PlayerMovement : MonoBehaviour
         }
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1") && comboTimer < 0)
         {
-            SoundPlayer.PlaySound(playerIndex, "light");
             longCombo = false;
             anim.SetTrigger("Attack_1_Released");
             StartAttack(false);
@@ -155,8 +151,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
-            Debug.Log("Called");
-            SoundPlayer.PlaySound(playerIndex, "hard");
+            if (isPoleDancer) { SoundPlayer.PlaySound(1, "Pole_Swing"); }
             longCombo = false;
             anim.SetTrigger("Attack_2");
             StartAttack(false);
@@ -164,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2") && comboTimer < 0)
         {
-            SoundPlayer.PlaySound(playerIndex, "hard");
+            if (isPoleDancer) { SoundPlayer.PlaySound(1, "Pole_Swing"); }
             longCombo = false;
             anim.SetTrigger("Attack_2_Released");
             StartAttack(false);
@@ -200,7 +195,6 @@ public class PlayerMovement : MonoBehaviour
         }
         if (canParry && ctx.performed && !anim.GetBool("Running") && !isAttacking)
         {
-            SoundPlayer.PlaySound(playerIndex, "parry");
             MiscLayer();
             anim.SetTrigger("Parry");
             StartCoroutine(parryTiming());
@@ -302,6 +296,12 @@ public class PlayerMovement : MonoBehaviour
     {
         ourDeadTime -= Time.deltaTime;
         comboTimer += Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Riven"); }
+            if (!isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Nova"); }
+        }
 
         if (blendLayers)
         {
@@ -426,6 +426,11 @@ public class PlayerMovement : MonoBehaviour
             launchDir.y = 0;
             launchDir.Normalize(); //knockback determines intensity of launch
             launchDirection = launchDir * knockBack;
+        }
+        if(HP <= 0)
+        {
+            if (isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Riven"); }
+            if (!isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Nova"); }
         }
         else
         {

@@ -14,7 +14,6 @@ public class Damage : MonoBehaviour
     [SerializeField] float knockBack;
 
     [Header("Hit Effects")]
-    [SerializeField] string soundName;
     [SerializeField] bool isTrap;
     [SerializeField] bool exposing;
     [SerializeField] bool stunning;
@@ -60,14 +59,26 @@ public class Damage : MonoBehaviour
             if (bleeding) { other.GetComponent<StatusEffects>().AddBleed(); }
             if (weaken) { other.GetComponent<StatusEffects>().AddWeakness(); }
 
-            //Apply camera shake
-            float x = Random.Range(-modifier, modifier);
-            float y = Random.Range(-modifier, modifier);
-            camRef.ShakeCamera(x, y);
-
+            //Apply damage
             other.GetComponent<PlayerMovement>().TakeDamage(newDamage, hitStun, knockBack, launchPoint);
-            SoundPlayer.PlaySound(playerRef.playerIndex, soundName);
             playerRef.AddUltimateCharge(Mathf.RoundToInt(newDamage));
+
+            PlayHitSound(other, newDamage);
         }
+    }
+
+    private void PlayHitSound(Collider other, float newDamage)
+    {        
+        //Play hit sound based on attacker
+        if (playerRef.isPoleDancer) { SoundPlayer.PlaySound(playerRef.playerIndex, "Riven_Attack_Hit"); }
+        if (!playerRef.isPoleDancer && !playerRef.longCombo) { SoundPlayer.PlaySound(playerRef.playerIndex, "Nova_Attack_Hit"); }
+        if(!playerRef.isPoleDancer && playerRef.longCombo) { SoundPlayer.PlaySound(playerRef.playerIndex, "Nova_Attack_Kick"); }
+
+        //Play hit sound based on opponent
+        if (newDamage < 6 && other.GetComponent<PlayerMovement>().isPoleDancer) { SoundPlayer.PlaySound(playerRef.playerIndex, "Riven_Light"); return; }
+        if (newDamage >= 6 && other.GetComponent<PlayerMovement>().isPoleDancer) { SoundPlayer.PlaySound(playerRef.playerIndex, "Riven_Heavy"); return; }
+        if (newDamage < 6 && !other.GetComponent<PlayerMovement>().isPoleDancer) { SoundPlayer.PlaySound(playerRef.playerIndex, "Nova_Light"); return; }
+        if (newDamage >= 6 && !other.GetComponent<PlayerMovement>().isPoleDancer) { SoundPlayer.PlaySound(playerRef.playerIndex, "Nova_Heavy"); }
+
     }
 }

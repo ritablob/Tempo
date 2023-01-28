@@ -34985,9 +34985,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1295065448}
   - component: {fileID: 1295065449}
+  - component: {fileID: 1295065450}
   m_Layer: 0
   m_Name: floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -35056,6 +35057,19 @@ BoxCollider:
   m_GameObject: {fileID: 1295065447}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.7263575, y: 0.4491102, z: 5.736298}
+  m_Center: {x: -0.43566886, y: -0.27945247, z: -0.020108217}
+--- !u!65 &1295065450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295065447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7.7263575, y: 0.4491102, z: 5.736298}
@@ -42669,7 +42683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1509997996
 AudioSource:
   m_ObjectHideFlags: 0
@@ -48862,6 +48876,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 1613b839dbb943440a2d14858cf41198, type: 3}
     loop: 0
     volume: 1
+  - soundName: dead
+    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    loop: 0
+    volume: 1
   SoundEffectsBreakdancer:
   - soundName: nova trap spikes
     audioClip: {fileID: 8300000, guid: 30188c662272de643afce612f9b8e60a, type: 3}
@@ -48895,16 +48913,56 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 29705777a33ed8a45b0bf5d706fb79c7, type: 3}
     loop: 0
     volume: 1
-  - soundName: light
-    audioClip: {fileID: 8300000, guid: c0c1cc6fa3e581e4a86977075a9e1caf, type: 3}
-    loop: 0
-    volume: 1
-  - soundName: hard
-    audioClip: {fileID: 8300000, guid: 0185785457afaef4192da3d0307f6a48, type: 3}
-    loop: 0
-    volume: 1
   - soundName: stunned
     audioClip: {fileID: 8300000, guid: 3c279c80937c7834bbdc01a680a7786a, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: death_Riven
+    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: death_Nova
+    audioClip: {fileID: 8300000, guid: a38f48fd099d6174d96b72c268121536, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: Riven_Light
+    audioClip: {fileID: 8300000, guid: 4ba800a5a2f559943b1a76f9d82fcce6, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: Riven_Heavy
+    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: Nova_Light
+    audioClip: {fileID: 8300000, guid: 4ba800a5a2f559943b1a76f9d82fcce6, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: Nova_Heavy
+    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: Pole_Floor
+    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: Pole_Swing
+    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: Riven_Attack_Hit
+    audioClip: {fileID: 8300000, guid: 1613b839dbb943440a2d14858cf41198, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: Nova_Attack_Hit
+    audioClip: {fileID: 8300000, guid: 1613b839dbb943440a2d14858cf41198, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: Nova_Floor
+    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: Nova_Attack_Kick
+    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
     loop: 0
     volume: 1
   soundDestroyDelay: 0.3

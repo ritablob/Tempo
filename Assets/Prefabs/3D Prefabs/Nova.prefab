@@ -493,6 +493,7 @@ MonoBehaviour:
   lastBeatTiming: 
   lastBeatTimingPerc: 0
   ultimateCharge: 0
+  longCombo: 0
 --- !u!114 &6092373854515148419
 MonoBehaviour:
   m_ObjectHideFlags: 0
