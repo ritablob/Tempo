@@ -103,13 +103,25 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctx.performed) { heldDown++; }
         if (ctx.canceled) { heldDown--; }
-        if (heldDown == 2 && ultimateCharge >= ultimateLimit) { Debug.Log("ULTIMATE!"); ultimateCharge = 0; }
+        if (heldDown == 2 && ultimateCharge >= ultimateLimit && ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") 
+        { 
+            anim.SetTrigger("ULTIMATE"); 
+            ultimateCharge = 0;
+            SoundPlayer.PlaySound(playerIndex, "light");
+            StartAttack(false);
+        }
     }
     public void RightShoulder(InputAction.CallbackContext ctx)
     {
         if (ctx.performed) { heldDown++; }
         if (ctx.canceled) { heldDown--; }
-        if (heldDown == 2 && ultimateCharge >= ultimateLimit) { Debug.Log("ULTIMATE!"); ultimateCharge = 0; }
+        if (heldDown == 2 && ultimateCharge >= ultimateLimit && ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone")
+        {
+            anim.SetTrigger("ULTIMATE");
+            ultimateCharge = 0;
+            SoundPlayer.PlaySound(playerIndex, "light");
+            StartAttack(false);
+        }
     }
     public void ControllerType(PlayerInput _playerInput)
     {
