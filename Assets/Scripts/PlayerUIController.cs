@@ -90,7 +90,7 @@ public class PlayerUIController : MonoBehaviour
     void UltimateSlider(PlayerMovement pMovement) // 
     {
 
-        ultimateLevel = pMovement.ultimateCharge / pMovement.ultimateLimit; // fullness percentage (0.0 - 1.0)
+        ultimateLevel = pMovement.ultimateLimit > 0 ? pMovement.ultimateCharge / pMovement.ultimateLimit : 1f; // fullness percentage (0.0 - 1.0)
 
         int barCount = Convert.ToInt32(slider2Children.Length * Math.Round(ultimateLevel, 1));
         if (ultimateLevel < 1 && ultimateLevel > 0)

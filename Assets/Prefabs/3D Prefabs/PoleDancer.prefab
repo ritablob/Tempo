@@ -382,24 +382,22 @@ MonoBehaviour:
   modelRenderer: {fileID: 3510153941041175127}
   matIndex: 5
   isPoleDancer: 1
+  specialCharges: 1
+  ultimateLimit: 225
   HP: 500
   speed: 2.5
-  charController: {fileID: 1162232717056227271}
   controllerDeadZone: 0.1
+  charController: {fileID: 1162232717056227271}
   playerColor: {r: 0, g: 0, b: 0, a: 0}
-  specialCharges: 1
-  ultimateLimit: 0
+  playerInput: {fileID: 0}
   rhythmKeeper: {fileID: 0}
   sfx: {fileID: 6561815665965791646}
-  gamepadRumble1: 0.5
-  gamepadRumble2: 0.5
   eventCommunicator: {fileID: 5804063282945332091}
   heldDown: 0
   playerIndex: 0
   lastBeatTiming: 
   lastBeatTimingPerc: 0
   ultimateCharge: 0
-  playerInput: {fileID: 0}
 --- !u!114 &6044556107354192595
 MonoBehaviour:
   m_ObjectHideFlags: 0
