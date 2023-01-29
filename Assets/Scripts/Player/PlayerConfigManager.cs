@@ -44,7 +44,7 @@ public class PlayerConfigManager : MonoBehaviour
     {
         playerConfigs[index].playerObject = playerCharacers[selectedPlayer];
         playerConfigs[index].objectIndex = selectedPlayer;
-        playerConfigs[index].objectName = playerCharacers[index].name;
+        playerConfigs[index].objectName = playerCharacers[selectedPlayer].name;
     }
     public void ReadyPlayer(int index)
     {
