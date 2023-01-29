@@ -319,6 +319,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""118e1cd4-fb04-467a-a3e2-01ec5c173e14"",
+                    ""path"": ""<Joystick>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""228fc491-2608-455e-a26e-f3952ec4cef0"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
@@ -341,6 +352,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ed6e8282-0df9-4eb5-bd46-6f7db9b8b9d6"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/button5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack_1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ec386bc7-02ea-4f6f-90a3-0dee18d0bdd4"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
@@ -357,6 +379,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Attack_2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""935daa47-67ac-4f28-b3fa-af866d24380f"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Attack_2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -407,6 +440,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""2d072487-6b50-4e72-a381-5c7b74f5ee8a"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special_Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""bf9c842c-143f-44a6-bdbf-242998f126b9"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
@@ -418,11 +462,33 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fa1ceea0-012a-45ef-9962-3eb6019a1717"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/button7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate_L"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""df731fb0-4d88-4044-8865-083ba12e8365"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""Ultimate_R"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e797d6d1-50c7-4319-b6e7-2c064d21df18"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/button8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Ultimate_R"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -442,6 +508,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""fff59e75-72aa-45a6-9e1c-3c09ba626a53"",
                     ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2997bb51-ce4b-4cfd-8846-5d17a43134b1"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/button11"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -535,6 +612,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e975e9a7-3e39-4327-8f46-10963d7f15b1"",
+                    ""path"": ""<Joystick>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7df0a717-516f-4690-a3b2-50d4d2504ee0"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""2d24f137-ddf6-4e3b-9c3b-3308f22c847f"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
@@ -548,17 +647,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""ac653f95-ead0-43af-b3f2-e00b6f284882"",
                     ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f1cd9514-eef0-4d8a-86c3-bff415b79bf2"",
-                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -601,6 +689,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1a7d8e3e-028b-4247-924e-d3d9e2421221"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9d45ee7-a57c-49b3-9068-6717e5222785"",
+                    ""path"": ""<Joystick>/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""de3d1104-c811-45f1-a6d7-f073e4f1467a"",
                     ""path"": ""<Keyboard>/backspace"",
                     ""interactions"": """",
@@ -614,6 +724,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""66118407-4a21-45d2-ade0-d5348a9f2f16"",
                     ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f376f95c-27bc-4ad3-8468-218c25d1a20a"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/button5"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -772,6 +893,50 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17310032-cdeb-4a11-af06-dc8922a2cc87"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/button11"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1cd9514-eef0-4d8a-86c3-bff415b79bf2"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e54fd1be-bcfc-4164-a60e-f5aea1068dff"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f03633bd-c5cd-4a4b-9679-91796215590f"",
+                    ""path"": ""<Joystick>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
