@@ -108,7 +108,7 @@ public static class SoundPlayer
     /// <returns></returns>
     public static Sound GetSound(string soundName, string characterName)
     {
-        if (characterName == "PoleDancer(Clone)")
+        if (characterName == "DEBUG CODE --- REMOVE LATER")
         {
             foreach (Sound sound in SoundEffects.Instance.SoundEffectsPoledancer)
             {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class SparkProjectile : MonoBehaviour
 {
@@ -9,15 +10,34 @@ public class SparkProjectile : MonoBehaviour
     [SerializeField] float fallSpeed;
     [SerializeField] float travelTime;
     [SerializeField] Damage dmgScript;
+    [SerializeField] GameObject orb;
+    [SerializeField] VisualEffect sparks;
 
     private Vector3 direction;
     private bool isTrap;
+    private RhythmKeeper rhythmKeeperRef;
+
+    private void Start()
+    {
+        rhythmKeeperRef = GameObject.FindObjectOfType<RhythmKeeper>();
+    }
 
     void Update()
     {
-        if(speed < 0)
+        if(rhythmKeeperRef.beatTiming == "Perfect" && isTrap)
         {
-            GetComponent<Animator>().SetTrigger("Spark");
+            orb.SetActive(false);
+            sparks.SetFloat("Electricity Size", 4);
+            sparks.SetFloat("Electricity Size 2", 5);
+            return;
+        }
+
+        orb.SetActive(true);
+        sparks.SetFloat("Electricity Size", 0);
+        sparks.SetFloat("Electricity Size 2", 1.5f);
+
+        if (speed < 0)
+        {
             SoundPlayer.PlaySound(1, "riven_trap_stop");
             SoundPlayer.PlaySound(1, "riven_trap_activate");
             isTrap = true;
@@ -45,7 +65,6 @@ public class SparkProjectile : MonoBehaviour
     {
         if (other.gameObject != dmgScript.playerRef.gameObject && other.tag == "Player" && isTrap)
         {
-            GetComponent<Animator>().SetTrigger("Spark");
             return;
         }
         if (other.gameObject == dmgScript.playerRef.gameObject && other.tag == "Player" && isTrap)
