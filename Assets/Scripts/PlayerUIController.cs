@@ -16,73 +16,50 @@ public class PlayerUIController : MonoBehaviour
     public List<Sprite> portraitImages;
     public GameObject slider2Parent;
 
-    //private DynamicCamera camera;
+    private DynamicCamera camera;
     private Transform[] slider2Children;
     private bool doneSettingUp;
     private float ultimateLevel; // determines how many bars become visible
-    private PlayerMovement playermovement;
+    private PlayerMovement playerMovement;
+    private float ultimateCharge;
+    private float onePiece;
     private void Start()
     {
-        //camera = FindObjectOfType<DynamicCamera>();
+        camera = new DynamicCamera();
+        camera = FindObjectOfType<DynamicCamera>();
         doneSettingUp = false;
         slider2Children = slider2Parent.GetComponentsInChildren<Transform>();
+        onePiece = 1.0f / slider2Children.Length;
+        Debug.LogWarning(onePiece);
     }
     private void Update()
     {
-        var playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
-        if (playerConfigs != null)
+        if (isPlayerOneUI && camera.player1 != null)
         {
-            if (isPlayerOneUI)
+
+            if (!doneSettingUp)
             {
-                if (!doneSettingUp)
-                {
-                    playerConfigs[0].playerObject.GetComponent<PlayerMovement>();
-                    SetUpPlayerUI(playerConfigs[0].objectName);
-                    doneSettingUp = true;
-                }
-            }
-            else
-            {
-                if (!doneSettingUp)
-                {
-                    playerConfigs[1].playerObject.GetComponent<PlayerMovement>();
-                    SetUpPlayerUI(playerConfigs[1].objectName);
-                    doneSettingUp = true;
-                }
+                // CAMERA INSTEAD
+                playerMovement = camera.player1.gameObject.GetComponent<PlayerMovement>();
+                Debug.Log("player 1 " + playerMovement.gameObject.name);
+                SetUpPlayerUI(playerMovement.gameObject.name);
+                doneSettingUp = true;
             }
         }
-        //if (this.isPlayerOneUI) // P1 UI
-        //{
+        else if (camera.player2 != null)
+        {
+            if (!doneSettingUp)
+            {
+                playerMovement = camera.player2.gameObject.GetComponent<PlayerMovement>();
+                Debug.Log("player 2 " + playerMovement.gameObject.name);
+                SetUpPlayerUI(playerMovement.gameObject.name);
+                doneSettingUp = true;
+            }
+        }
 
-        //    if (camera.player1 != null)
-        //    {
-        //        if (!doneSettingUp)
-        //        {
-        //            SetUpPlayerUI();
-        //            playermovement = camera.player1.GetComponent<PlayerMovement>();
-        //            doneSettingUp = true;
-        //        }
-        //        UltimateSlider(playermovement);
-        //    }
-        //}
-        //else // P2 UI
-        //{
-        //    if (camera.player2 != null)
-        //    {
-        //        if (!doneSettingUp)
-        //        {
-        //            SetUpPlayerUI();
-        //            playermovement = camera.player2.GetComponent<PlayerMovement>();
-        //            doneSettingUp = true;
-        //        }
-        //        UltimateSlider(playermovement);
-        //    }
-        //}
-
+        UltimateSlider(playerMovement);
     }
-
     void SetUpPlayerUI(string objectName) // depending on which character player is using, UI is customized
-        // BUG: both players are based off of player 1
     {
         int no;
         if (isPlayerOneUI)
@@ -110,37 +87,24 @@ public class PlayerUIController : MonoBehaviour
             knives[1].SetActive(true);
         }
     }
-    void UltimateSlider(PlayerMovement pMovement) // 
+    void UltimateSlider(PlayerMovement pMovement)
     {
-
-        ultimateLevel = pMovement.ultimateLimit > 0 ? pMovement.ultimateCharge / pMovement.ultimateLimit : 1f; // fullness percentage (0.0 - 1.0)
-
-        int barCount = Convert.ToInt32(slider2Children.Length * Math.Round(ultimateLevel, 1));
-        if (ultimateLevel < 1 && ultimateLevel > 0)
+        int barCount = (int)(pMovement.ultimateCharge / (pMovement.ultimateLimit * onePiece));
+        if (barCount < 0)
         {
-            for (int i = 0; i <= barCount; i++) 
+            barCount = 0;
+        }
+        Debug.Log(pMovement.ultimateCharge+" "+pMovement.ultimateLimit + "Bar count for " + pMovement.gameObject.name + " " + barCount);
+        for (int i = 0; i < slider2Children.Length; i++)
+        {
+            if (i <= barCount)
             {
                 slider2Children[i].gameObject.SetActive(true);
             }
-            for (int j = barCount; j < slider2Children.Length; j++)
-            {
-                slider2Children[j].gameObject.SetActive(false);
-            }
-        }
-        else if (ultimateLevel > 0)
-        {
-            for (int i = 0; i < slider2Children.Length; i++)
-            {
-                slider2Children[i].gameObject.SetActive(true);
-            }
-        }
-        else
-        {
-            for (int i = 0; i < slider2Children.Length; i++)
+            else
             {
                 slider2Children[i].gameObject.SetActive(false);
             }
         }
-
     }
 }

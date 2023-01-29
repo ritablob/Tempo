@@ -51,13 +51,13 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 5
+      - m_Value: 1
         m_Name: Electricity Size 2
         m_Overridden: 1
       - m_Value: 50
         m_Name: Sparks Spawn Rate
         m_Overridden: 1
-      - m_Value: 4
+      - m_Value: 0
         m_Name: Electricity Size
         m_Overridden: 1
     m_Vector2f:
