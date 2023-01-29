@@ -5003,16 +5003,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367d48a43371d8c47ada0f7d429073ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text1: {fileID: 0}
-  zap1: {fileID: 0}
-  knives1: []
-  portrait1: {fileID: 0}
-  ultimateSliderParent1: {fileID: 0}
-  text2: {fileID: 0}
-  zap2: {fileID: 0}
-  knives2: []
-  portrait2: {fileID: 0}
-  ultimateSliderParent2: {fileID: 0}
+  isPlayerOneUI: 0
+  text: {fileID: 1181122092}
+  zap: {fileID: 1498743527}
+  knives:
+  - {fileID: 767552447}
+  - {fileID: 1692717563}
+  portrait: {fileID: 947535944}
+  portraitImages: []
+  slider2Parent: {fileID: 210752702}
 --- !u!1001 &183603256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5683,16 +5682,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367d48a43371d8c47ada0f7d429073ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text1: {fileID: 0}
-  zap1: {fileID: 0}
-  knives1: []
-  portrait1: {fileID: 0}
-  ultimateSliderParent1: {fileID: 0}
-  text2: {fileID: 0}
-  zap2: {fileID: 0}
-  knives2: []
-  portrait2: {fileID: 0}
-  ultimateSliderParent2: {fileID: 0}
+  isPlayerOneUI: 1
+  text: {fileID: 1069803658}
+  zap: {fileID: 1488987219}
+  knives:
+  - {fileID: 695421344}
+  - {fileID: 2068035428}
+  portrait: {fileID: 920309810}
+  portraitImages: []
+  slider2Parent: {fileID: 316829595}
 --- !u!1001 &204471519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15181,7 +15179,6 @@ MonoBehaviour:
   playerOne: 0
   dyncam: {fileID: 1250743005}
   slider: {fileID: 525707256}
-  sliderMultiplier: 0
 --- !u!114 &525707256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23591,7 +23588,6 @@ MonoBehaviour:
   playerOne: 0
   dyncam: {fileID: 1250743005}
   slider: {fileID: 878744264}
-  sliderMultiplier: 0
 --- !u!114 &878744264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51314,7 +51310,6 @@ MonoBehaviour:
   playerOne: 1
   dyncam: {fileID: 1250743005}
   slider: {fileID: 1867625749}
-  sliderMultiplier: 0
 --- !u!114 &1867625749
 MonoBehaviour:
   m_ObjectHideFlags: 0

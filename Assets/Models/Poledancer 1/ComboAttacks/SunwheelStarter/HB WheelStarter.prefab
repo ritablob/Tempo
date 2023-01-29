@@ -44,7 +44,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5485317, y: 1, z: 1.5484518}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0.06433641, y: 0, z: 0.8457166}
 --- !u!114 &1019199707084387107
 MonoBehaviour:
@@ -63,7 +63,6 @@ MonoBehaviour:
   baseDamage: 10
   hitStun: 0.75
   knockBack: 0
-  soundName: 
   isTrap: 0
   exposing: 0
   stunning: 0
