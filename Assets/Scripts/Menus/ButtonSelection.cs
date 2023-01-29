@@ -21,6 +21,7 @@ public class ButtonSelection : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void OnSelect(BaseEventData eventData)
     {
+        SoundPlayer.PlaySoundMenu("select");
         Instantiate(buttonMenu.pointer.gameObject, gameObject.transform);
     }
     

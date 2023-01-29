@@ -48965,6 +48965,26 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
     loop: 0
     volume: 1
+  - soundName: KNOCKOUT
+    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: Ult-Ready
+    audioClip: {fileID: 8300000, guid: 9a33e89763c62b5459129de73074c175, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: riven_trap_stop
+    audioClip: {fileID: 8300000, guid: 3c279c80937c7834bbdc01a680a7786a, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: riven_trap_activate
+    audioClip: {fileID: 8300000, guid: 127fe724e6317224485153f75218bc33, type: 3}
+    loop: 0
+    volume: 1
+  - soundName: audience
+    audioClip: {fileID: 8300000, guid: 63ec4feb9d1ce514ab0ada2bba1194da, type: 3}
+    loop: 0
+    volume: 1
   soundDestroyDelay: 0.3
   audioMixer: {fileID: 24300002, guid: 70ea7328e73964a44a409bbb9ad15456, type: 2}
 --- !u!4 &1735171246 stripped

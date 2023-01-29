@@ -383,7 +383,7 @@ MonoBehaviour:
   matIndex: 5
   isPoleDancer: 1
   specialCharges: 1
-  ultimateLimit: 225
+  ultimateLimit: 10
   HP: 500
   speed: 2.5
   controllerDeadZone: 0.1
@@ -398,6 +398,7 @@ MonoBehaviour:
   lastBeatTiming: 
   lastBeatTimingPerc: 0
   ultimateCharge: 0
+  longCombo: 0
 --- !u!114 &6044556107354192595
 MonoBehaviour:
   m_ObjectHideFlags: 0

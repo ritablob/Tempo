@@ -129,7 +129,6 @@ MonoBehaviour:
   baseDamage: 5
   hitStun: 0.25
   knockBack: 5
-  soundName: 
   isTrap: 0
   exposing: 1
   stunning: 1
@@ -295,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistance: 2
   speed: 2.5
-  fallSpeed: 0.7
+  fallSpeed: 0.35
   travelTime: 0.5
   dmgScript: {fileID: 3348270031377554813}
 --- !u!95 &3179908148171272066

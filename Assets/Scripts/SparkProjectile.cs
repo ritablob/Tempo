@@ -15,16 +15,20 @@ public class SparkProjectile : MonoBehaviour
 
     void Update()
     {
-        if(speed <= 0)
+        if(speed < 0)
         {
             GetComponent<Animator>().SetTrigger("Spark");
+            SoundPlayer.PlaySound(1, "riven_trap_stop");
+            SoundPlayer.PlaySound(1, "riven_trap_activate");
             isTrap = true;
+            speed = 0;
+            return;
         }
 
         if (!isTrap)
         {
             transform.position += direction * Time.deltaTime * speed;
-            transform.position = new Vector3(transform.position.x, transform.position.y - (Time.deltaTime * fallSpeed), transform.position.z);
+            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y - (Time.deltaTime * fallSpeed), 0.25f, 9), transform.position.z);
 
             if (travelTime > 0)
             {

@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
     private float hitStunRemaining = 0;
     private float comboTimer;
     private float ourDeadTime;
+    private bool ultChargePlayed;
     private bool isGamepad;
     private bool takeKnockBack;
     private bool isAttacking; //Prevents the player from acting during an attack
@@ -100,7 +101,8 @@ public class PlayerMovement : MonoBehaviour
         if (ctx.canceled) { heldDown--; }
         if (heldDown == 2 && ultimateCharge >= ultimateLimit && ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") 
         { 
-            anim.SetTrigger("ULTIMATE"); 
+            anim.SetTrigger("ULTIMATE");
+            ultChargePlayed = false;
             ultimateCharge = 0;
             StartAttack(false);
         }
@@ -112,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
         if (heldDown == 2 && ultimateCharge >= ultimateLimit && ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone")
         {
             anim.SetTrigger("ULTIMATE");
+            ultChargePlayed = false;
             ultimateCharge = 0;
             StartAttack(false);
         }
@@ -275,6 +278,12 @@ public class PlayerMovement : MonoBehaviour
     public void AddUltimateCharge(int amnt)
     {
         ultimateCharge += amnt;
+
+        if (ultimateCharge >= ultimateLimit && !ultChargePlayed)
+        {
+            SoundPlayer.PlaySound(playerIndex, "Ult-Ready");
+            ultChargePlayed = true;
+        }
     }
     public void InLongCombo()
     {
@@ -299,8 +308,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Riven"); }
-            if (!isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Nova"); }
+            if (isPoleDancer) { SoundPlayer.PlaySound(playerIndex, "death_Riven"); }
+            if (!isPoleDancer) { SoundPlayer.PlaySound(playerIndex, "death_Nova"); }
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SoundPlayer.PlaySound(1, "audience");
         }
 
         if (blendLayers)
@@ -431,6 +444,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Riven"); }
             if (!isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Nova"); }
+            SoundPlayer.PlaySound(playerIndex, $"KNOCKOUT");
         }
         else
         {
