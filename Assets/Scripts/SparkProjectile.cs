@@ -61,6 +61,10 @@ public class SparkProjectile : MonoBehaviour
                 travelTime -= Time.deltaTime;
                 return;
             }
+            else
+            {
+                speed = 0;
+            }
 
             speed -= resistance * Time.deltaTime;
             fallSpeed = Mathf.Clamp(fallSpeed - (resistance * (Time.deltaTime / 2)), 0, 999);
