@@ -16,50 +16,73 @@ public class PlayerUIController : MonoBehaviour
     public List<Sprite> portraitImages;
     public GameObject slider2Parent;
 
-    private DynamicCamera camera;
+    //private DynamicCamera camera;
     private Transform[] slider2Children;
     private bool doneSettingUp;
     private float ultimateLevel; // determines how many bars become visible
     private PlayerMovement playermovement;
     private void Start()
     {
-        camera = FindObjectOfType<DynamicCamera>();
+        //camera = FindObjectOfType<DynamicCamera>();
         doneSettingUp = false;
         slider2Children = slider2Parent.GetComponentsInChildren<Transform>();
     }
     private void Update()
     {
-        if (isPlayerOneUI) // P1 UI
+        var playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
+        if (playerConfigs != null)
         {
+            if (isPlayerOneUI)
+            {
+                if (!doneSettingUp)
+                {
+                    playerConfigs[0].playerObject.GetComponent<PlayerMovement>();
+                    SetUpPlayerUI(playerConfigs[0].objectName);
+                    doneSettingUp = true;
+                }
+            }
+            else
+            {
+                if (!doneSettingUp)
+                {
+                    playerConfigs[1].playerObject.GetComponent<PlayerMovement>();
+                    SetUpPlayerUI(playerConfigs[1].objectName);
+                    doneSettingUp = true;
+                }
+            }
+        }
+        //if (this.isPlayerOneUI) // P1 UI
+        //{
 
-            if (camera.player1 != null)
-            {
-                if (!doneSettingUp)
-                {
-                    SetUpPlayerUI();
-                    playermovement = camera.player1.GetComponent<PlayerMovement>();
-                    doneSettingUp = true;
-                }
-                UltimateSlider(playermovement);
-            }
-        }
-        else // P2 UI
-        {
-            if (camera.player2 != null)
-            {
-                if (!doneSettingUp)
-                {
-                    SetUpPlayerUI();
-                    playermovement = camera.player2.GetComponent<PlayerMovement>();
-                    doneSettingUp = true;
-                }
-                UltimateSlider(playermovement);
-            }
-        }
+        //    if (camera.player1 != null)
+        //    {
+        //        if (!doneSettingUp)
+        //        {
+        //            SetUpPlayerUI();
+        //            playermovement = camera.player1.GetComponent<PlayerMovement>();
+        //            doneSettingUp = true;
+        //        }
+        //        UltimateSlider(playermovement);
+        //    }
+        //}
+        //else // P2 UI
+        //{
+        //    if (camera.player2 != null)
+        //    {
+        //        if (!doneSettingUp)
+        //        {
+        //            SetUpPlayerUI();
+        //            playermovement = camera.player2.GetComponent<PlayerMovement>();
+        //            doneSettingUp = true;
+        //        }
+        //        UltimateSlider(playermovement);
+        //    }
+        //}
 
     }
 
-    void SetUpPlayerUI() // depending on which character player is using, UI is customized
+    void SetUpPlayerUI(string objectName) // depending on which character player is using, UI is customized
+        // BUG: both players are based off of player 1
     {
         int no;
         if (isPlayerOneUI)
@@ -70,7 +93,7 @@ public class PlayerUIController : MonoBehaviour
         {
             no = 1;
         }
-        if (camera.player1.gameObject.name == "PoleDancer(Clone)")
+        if (objectName == "PoleDancer(Clone)")
         {
             text.text = "Riven";
             //portrait.GetComponent<Image>().sprite = portraitImages[0];
