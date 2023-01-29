@@ -15,26 +15,32 @@ public class SparkProjectile : MonoBehaviour
 
     private Vector3 direction;
     private bool isTrap;
-    private RhythmKeeper rhythmKeeperRef;
+    private RhythmBlinkingLights rhythmTracker;
 
     private void Start()
     {
-        rhythmKeeperRef = GameObject.FindObjectOfType<RhythmKeeper>();
+        rhythmTracker = GameObject.FindObjectOfType<RhythmBlinkingLights>();
     }
 
     void Update()
     {
-        if(rhythmKeeperRef.beatTiming == "Perfect" && isTrap)
+
+        if (rhythmTracker.spotlightGroupOne.activeInHierarchy && isTrap && orb.transform.localScale.x != 1)
         {
-            orb.SetActive(false);
+            SoundPlayer.PlaySound(1, "riven trap swell");
+            SetOrbSize(1);
+            dmgScript.dealtDamage = false;
             sparks.SetFloat("Electricity Size", 4);
             sparks.SetFloat("Electricity Size 2", 5);
             return;
         }
-
-        orb.SetActive(true);
-        sparks.SetFloat("Electricity Size", 0);
-        sparks.SetFloat("Electricity Size 2", 1.5f);
+        if (isTrap && rhythmTracker.spotlightGroupTwo.activeInHierarchy)
+        {
+            SetOrbSize(0.5f);
+            sparks.SetFloat("Electricity Size", 0);
+            sparks.SetFloat("Electricity Size 2", 1f);
+            return;
+        }
 
         if (speed < 0)
         {
@@ -72,6 +78,11 @@ public class SparkProjectile : MonoBehaviour
             GetComponent<SoundEffectPlayer>().PlaySound("riven trap pickup");
             dmgScript.playerRef.GainSpecial(this.gameObject);
         }
+    }
+
+    private void SetOrbSize(float size)
+    {
+        orb.transform.localScale = new Vector3(size, size, size);
     }
 
     public void SetEndPosition(PlayerMovement player)
