@@ -486,7 +486,8 @@ public class PlayerMovement : MonoBehaviour
     }
     public IEnumerator dodgeTiming()
     {
-        eventCommunicator.PickUpSpear(10);
+        if (isPoleDancer)
+            eventCommunicator.PickUpSpear(10);
         canDodge = false;
         anim.SetTrigger("Dodge");
         yield return new WaitForSeconds(0.75f);

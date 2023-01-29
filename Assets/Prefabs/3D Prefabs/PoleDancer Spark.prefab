@@ -298,9 +298,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance: 2
-  speed: 2.5
-  fallSpeed: 0.35
-  travelTime: 0.5
+  speed: 3.5
+  fallSpeed: 1
+  travelTime: 0.000000015
   dmgScript: {fileID: 5565559577830061274}
   orb: {fileID: 5469404462514456808}
   sparks: {fileID: 7843497137322150272}
@@ -376,9 +376,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
   dealtDamage: 0
-  baseDamage: 5
+  baseDamage: 200
   hitStun: 0.5
-  knockBack: 2
+  knockBack: 0
   isTrap: 0
   exposing: 0
   stunning: 0
