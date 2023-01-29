@@ -411,10 +411,6 @@ MonoBehaviour:
   resistance: 2
   speed: 3.5
   fallSpeed: 1
-<<<<<<< HEAD
-=======
-  travelTime: 0.5
->>>>>>> ac519e35d3fe03aa440d5c1201bfded793ac5e30
   dmgScript: {fileID: 5565559577830061274}
   orb: {fileID: 4068401878828728926}
   shockwave: {fileID: 5469404462514456808}
