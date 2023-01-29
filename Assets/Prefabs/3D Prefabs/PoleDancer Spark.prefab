@@ -300,7 +300,7 @@ MonoBehaviour:
   resistance: 2
   speed: 3.5
   fallSpeed: 1
-  travelTime: 0.000000015
+  travelTime: 0.5
   dmgScript: {fileID: 5565559577830061274}
   orb: {fileID: 5469404462514456808}
   sparks: {fileID: 7843497137322150272}
