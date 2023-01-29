@@ -41,7 +41,7 @@ public class HitCanvasManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("miss is spawned");
+            //Debug.LogError("miss is spawned");
             hcanvas.missChild.SetActive(true);
             child = hcanvas.missChild;
 
