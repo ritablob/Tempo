@@ -383,7 +383,7 @@ MonoBehaviour:
   matIndex: 5
   isPoleDancer: 1
   specialCharges: 1
-  ultimateLimit: 10
+  ultimateLimit: 225
   HP: 500
   speed: 2.5
   controllerDeadZone: 0.1
