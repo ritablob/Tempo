@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.75015974, y: 0.7078577, z: 0.8082177}
-  m_Center: {x: -1.3935523, y: -0.27302432, z: -0.2061167}
+  m_Size: {x: 1.1, y: 0.7078577, z: 1.1}
+  m_Center: {x: -1.4416578, y: -0.27302432, z: -0.1993596}
 --- !u!114 &8187472097945481822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,12 +59,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
-  isTwoBeatAttack: 1
   dealtDamage: 0
   baseDamage: 10
   hitStun: 0.75
   knockBack: 0
-  soundName: 
   isTrap: 0
   exposing: 0
   stunning: 0
