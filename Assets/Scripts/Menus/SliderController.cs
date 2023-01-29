@@ -10,7 +10,7 @@ public class SliderController : MonoBehaviour
     public bool playerOne;
     public DynamicCamera dyncam;
     public Slider slider;
-    public float sliderMultiplier;
+    float sliderMultiplier;
     bool hasSetUp = false;
     void Update()
     {
