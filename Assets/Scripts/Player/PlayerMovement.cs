@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     //Vars
     #region
     [Header("Visuals")]
-    [SerializeField] GameObject parryShield;
     [SerializeField] GameObject shadowClone;
     [SerializeField] Transform shadowCloneSpawn;
     [SerializeField] Animator anim;
@@ -61,8 +60,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isAttacking; //Prevents the player from acting during an attack
     private bool canMove = true;
     private bool isLaunching;
-    private bool isParrying;
-    private bool canParry = true;
     private bool canDodge = true;
     private bool blendLayers;
     #endregion
@@ -99,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctx.performed) { heldDown++; }
         if (ctx.canceled) { heldDown--; }
-        if (heldDown == 2 && ultimateCharge >= ultimateLimit && ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") 
+        if (heldDown == 2 && ultimateCharge >= ultimateLimit && ourDeadTime < 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") 
         { 
             anim.SetTrigger("ULTIMATE");
             ultChargePlayed = false;
@@ -111,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctx.performed) { heldDown++; }
         if (ctx.canceled) { heldDown--; }
-        if (heldDown == 2 && ultimateCharge >= ultimateLimit && ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone")
+        if (heldDown == 2 && ultimateCharge >= ultimateLimit && ourDeadTime < 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone")
         {
             anim.SetTrigger("ULTIMATE");
             ultChargePlayed = false;
@@ -129,21 +126,22 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Attack_1(InputAction.CallbackContext ctx)
     {
-        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
+        if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit")) { return; }
+        if (ourDeadTime < 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
             longCombo = false;
             anim.SetTrigger("Attack_1");
             StartAttack(false);
             return;
         }
-        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1") && comboTimer < 0)
+        if (ourDeadTime < 0 && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1") && comboTimer < 0)
         {
             longCombo = false;
             anim.SetTrigger("Attack_1_Released");
             StartAttack(false);
             return;
         }
-        if (ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
+        if (ourDeadTime > 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
         {
             triggerName = "Attack_1";
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
@@ -152,7 +150,8 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Attack_2(InputAction.CallbackContext ctx)
     {
-        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
+        if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit")) { return; }
+        if (ourDeadTime < 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
             if (isPoleDancer) { SoundPlayer.PlaySound(1, "Pole_Swing"); }
             longCombo = false;
@@ -160,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
             StartAttack(false);
             return;
         }
-        if (ourDeadTime < 0 && !isParrying && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2") && comboTimer < 0)
+        if (ourDeadTime < 0 && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2") && comboTimer < 0)
         {
             if (isPoleDancer) { SoundPlayer.PlaySound(1, "Pole_Swing"); }
             longCombo = false;
@@ -168,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
             StartAttack(false);
             return;
         }
-        if (ourDeadTime > 0 && !isParrying && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
+        if (ourDeadTime > 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
         {
             triggerName = "Attack_2";
             lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); //Get absolute difference value
@@ -177,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Special(InputAction.CallbackContext ctx)
     {
-        if (!isAttacking && !isParrying && canDodge && ctx.performed && specialCharges > 0) //If not attacking, do attack logic
+        if (!isAttacking && canDodge && ctx.performed && specialCharges > 0) //If not attacking, do attack logic
         {
             specialCharges--;
             StartAttack(false);
@@ -192,15 +191,8 @@ public class PlayerMovement : MonoBehaviour
         {
             MiscLayer();
             anim.SetTrigger("Dodge");
-            //SoundPlayer.PlaySound(playerIndex, "dodge");
             StartCoroutine(dodgeTiming());
             return;
-        }
-        if (canParry && ctx.performed && !anim.GetBool("Running") && !isAttacking)
-        {
-            MiscLayer();
-            anim.SetTrigger("Parry");
-            StartCoroutine(parryTiming());
         }
     }
     #endregion
@@ -218,8 +210,7 @@ public class PlayerMovement : MonoBehaviour
         AttackLayer();
         ourDeadTime = 0.333f;
 
-        if(!anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit"))
-            hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
+        hitCanvasManager.SpawnHitCanvas(transform.position, lastBeatTiming);// message popup spawn
 
         if (isPoleDancer) { eventCommunicator.PickUpSpear(10); }
     }
@@ -301,32 +292,38 @@ public class PlayerMovement : MonoBehaviour
 
     //Start of update-related functions
     #region
+    private void FixedUpdate()
+    {
+        if (blendLayers)
+        {
+            anim.SetLayerWeight(0, Mathf.Clamp(anim.GetLayerWeight(0) + Time.deltaTime * 2, 0, 1));
+            anim.SetLayerWeight(1, Mathf.Clamp(anim.GetLayerWeight(1) - Time.deltaTime * 2, 0, 1));
+            anim.SetLayerWeight(2, Mathf.Clamp(anim.GetLayerWeight(2) - Time.deltaTime * 2, 0, 1));
+            if (anim.GetLayerWeight(0) == 1 && anim.GetLayerWeight(1) == 0 && anim.GetLayerWeight(2) == 0)
+            {
+                anim.SetTrigger("DEFAULT");
+                EndAttack();
+                blendLayers = false;
+            }
+        }
+
+        if ((!isAttacking && canMove) || (canMove && isAttacking)) //If the player is not attacking or parrying, run general movement check
+        {
+            HandleMovement();
+            HandleRotation();
+            return;
+        }
+        
+        if (isLaunching) //If the player needs to be launched, move them
+        {
+            charController.Move(launchDirection * Time.deltaTime);
+        }
+    }
+
     void Update()
     {
         ourDeadTime -= Time.deltaTime;
         comboTimer += Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (isPoleDancer) { SoundPlayer.PlaySound(playerIndex, "death_Riven"); }
-            if (!isPoleDancer) { SoundPlayer.PlaySound(playerIndex, "death_Nova"); }
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            SoundPlayer.PlaySound(1, "audience");
-        }
-
-        if (blendLayers)
-        {
-            anim.SetLayerWeight(0, Mathf.Clamp(anim.GetLayerWeight(0) + Time.deltaTime * 2, 0, 1));
-            anim.SetLayerWeight(1, Mathf.Clamp(anim.GetLayerWeight(1) - Time.deltaTime * 2, 0, 1)); 
-            anim.SetLayerWeight(2, Mathf.Clamp(anim.GetLayerWeight(2) - Time.deltaTime * 2, 0, 1));
-            if(anim.GetLayerWeight(0) == 1 && anim.GetLayerWeight(1) == 0 && anim.GetLayerWeight(2) == 0)
-            {
-                anim.SetTrigger("DEFAULT");
-                blendLayers = false;
-            }
-        }
 
         if (ourDeadTime < 0 && rhythmKeeper.beatTiming != "DeadZone" && triggerName != null) //If there is a buffered move, execute the move
         {
@@ -353,21 +350,6 @@ public class PlayerMovement : MonoBehaviour
             mats[matIndex] = normal;
             modelRenderer.materials = mats;
             ResetLayers();
-        }
-
-        if (!isAttacking && !isParrying && canMove) //If the player is not attacking or parrying, run general movement check
-        {
-            HandleMovement();
-            HandleRotation();
-        }
-        else if (canMove && isAttacking) //If the player is attacking but can move during the attack, do a movement checl
-        {
-            HandleMovement();
-            HandleRotation();
-        }
-        else if (isLaunching) //If the player needs to be launched, move them
-        {
-            charController.Move(launchDirection * Time.deltaTime);
         }
     }
 
@@ -423,35 +405,11 @@ public class PlayerMovement : MonoBehaviour
     #region
     public void TakeDamage(float damage, float hitStun, float knockBack, Vector3 hitBoxPos)
     {
-        if (!isParrying)
-        {
-            speed = 2.5f;
-            anim.SetTrigger("Hit");
-            takeKnockBack = true;
-            //SoundPlayer.PlaySound(playerIndex, "grunt");
-            MiscLayer();
-            isLaunching = false;
-            isAttacking = false;
-            hitStunRemaining = hitStun;
-            HP -= damage * statusEffects.exposeStacks;
-            Material[] mats = modelRenderer.materials;
-            mats[matIndex] = hit;
-            modelRenderer.materials = mats;
-            Vector3 launchDir = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z) - hitBoxPos;
-            launchDir.y = 0;
-            launchDir.Normalize(); //knockback determines intensity of launch
-            launchDirection = launchDir * knockBack;
-        }
         if(HP <= 0)
         {
             if (isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Riven"); }
             if (!isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Nova"); }
             SoundPlayer.PlaySound(playerIndex, $"KNOCKOUT");
-        }
-        else
-        {
-            canParry = true;
-            parryShield.SetActive(false);
         }
     }
     #endregion
@@ -469,21 +427,6 @@ public class PlayerMovement : MonoBehaviour
             comboTimer = -0.5f;
     }
 
-    IEnumerator parryTiming()
-    {
-        isParrying = true;
-        anim.SetTrigger("Parry");
-        parryShield.SetActive(true);
-        canParry = false;
-        yield return new WaitForSeconds(0.2f);
-        isParrying = false;
-        parryShield.SetActive(false);
-        //SoundPlayer.StopSound("parry");
-        yield return new WaitForSeconds(0.7f);
-        canMove = true;
-        isAttacking = false;
-        canParry = true;
-    }
     public IEnumerator dodgeTiming()
     {
         if (isPoleDancer)

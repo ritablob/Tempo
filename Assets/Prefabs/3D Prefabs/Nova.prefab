@@ -477,7 +477,7 @@ MonoBehaviour:
   modelRenderer: {fileID: 3384344293962899280}
   matIndex: 2
   isPoleDancer: 0
-  specialCharges: 1
+  specialCharges: 2
   ultimateLimit: 225
   HP: 450
   speed: 2.5

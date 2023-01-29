@@ -8,9 +8,9 @@ public class SparkProjectile : MonoBehaviour
     [SerializeField] float resistance;
     [SerializeField] float speed;
     [SerializeField] float fallSpeed;
-    [SerializeField] float travelTime;
     [SerializeField] Damage dmgScript;
     [SerializeField] GameObject orb;
+    [SerializeField] GameObject shockwave;
     [SerializeField] VisualEffect sparks;
 
     private Vector3 direction;
@@ -24,9 +24,9 @@ public class SparkProjectile : MonoBehaviour
 
     void Update()
     {
-
-        if (rhythmTracker.spotlightGroupOne.activeInHierarchy && isTrap && orb.transform.localScale.x != 1)
+        if (rhythmTracker.spotlightGroupOne.activeInHierarchy && isTrap && orb.transform.localScale.x != 1 && dmgScript.dealtDamage == false)
         {
+            dmgScript.gameObject.SetActive(true);
             SoundPlayer.PlaySound(1, "riven trap swell");
             SetOrbSize(1);
             dmgScript.dealtDamage = false;
@@ -36,6 +36,7 @@ public class SparkProjectile : MonoBehaviour
         }
         if (isTrap && rhythmTracker.spotlightGroupTwo.activeInHierarchy)
         {
+            dmgScript.gameObject.SetActive(false);
             SetOrbSize(0.5f);
             sparks.SetFloat("Electricity Size", 0);
             sparks.SetFloat("Electricity Size 2", 1f);
@@ -46,6 +47,9 @@ public class SparkProjectile : MonoBehaviour
         {
             SoundPlayer.PlaySound(1, "riven_trap_stop");
             SoundPlayer.PlaySound(1, "riven_trap_activate");
+            orb.SetActive(true);
+            shockwave.SetActive(false);
+            dmgScript.dealtDamage = false;
             isTrap = true;
             speed = 0;
             return;
@@ -55,16 +59,7 @@ public class SparkProjectile : MonoBehaviour
         {
             transform.position += direction * Time.deltaTime * speed;
             transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y - (Time.deltaTime * fallSpeed), 0.25f, 9), transform.position.z);
-
-            if (travelTime > 0)
-            {
-                travelTime -= Time.deltaTime;
-                return;
-            }
-            else
-            {
-                speed = 0;
-            }
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3, 3), transform.position.y, Mathf.Clamp(transform.position.z, -2, 2));
 
             speed -= resistance * Time.deltaTime;
             fallSpeed = Mathf.Clamp(fallSpeed - (resistance * (Time.deltaTime / 2)), 0, 999);

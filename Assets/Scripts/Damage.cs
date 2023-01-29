@@ -39,6 +39,19 @@ public class Damage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isTrap && other.tag == "Player" && other.gameObject.GetComponent<PlayerMovement>() != playerRef && !dealtDamage)
+        {
+            dealtDamage = true;
+
+            Vector3 launchPoint = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z);
+
+            //Apply damage
+            other.GetComponent<PlayerMovement>().TakeDamage(baseDamage, hitStun, knockBack, launchPoint);
+            other.GetComponent<PlayerMovement>().AddUltimateCharge(Mathf.RoundToInt(baseDamage / 5)); //Give enemy come-back ult charge
+
+            PlayHitSound(other, baseDamage);
+            return;
+        }
         if(other.tag == "Player" && other.gameObject.GetComponent<PlayerMovement>() != playerRef && !dealtDamage)
         {
             dealtDamage = true;
@@ -51,8 +64,6 @@ public class Damage : MonoBehaviour
             modifier += other.GetComponent<StatusEffects>().exposeStacks / 2;
             float newDamage = baseDamage * modifier;
             newDamage -= playerRef.gameObject.GetComponent<StatusEffects>().weaknessStacks;
-
-            Debug.Log($"{newDamage} --- {modifier} --- {playerRef.lastBeatTiming}");
 
             //Apply attack effects
             if (exposing) { other.GetComponent<StatusEffects>().AddExpose(); }

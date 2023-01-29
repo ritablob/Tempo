@@ -22,6 +22,7 @@ public class Projectile : MonoBehaviour
         {
             transform.localScale = new Vector3(0.7972631f, 0.7972631f, 0.7972631f);
             transform.position += direction * Time.deltaTime * speed - new Vector3(0, fallSpeed * Time.deltaTime, 0);
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3, 3), transform.position.y, Mathf.Clamp(transform.position.z, -2, 2));
             return;
         }
     }
@@ -51,8 +52,6 @@ public class Projectile : MonoBehaviour
         GetComponent<Animator>().SetTrigger("Landed");
         GetComponent<Damage>().dealtDamage = false;
         transform.eulerAngles = new Vector3(0, 0, 0);
-        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        //transform.position = new Vector3(Mathf.Round(transform.position.x / .33f) * .33f, 0, Mathf.Round(transform.position.z / .33f) * .33f);
-        //transform.position = new Vector3(transform.position.x - 0.5f, 0, transform.position.z + 0.5f);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3, 3), 0, Mathf.Clamp(transform.position.z, -2, 2));
     }
 }
