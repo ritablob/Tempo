@@ -824,7 +824,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 4ca63bc5158fc1c4e9a332ed889855ff, type: 3}
     loop: 0
     volume: 1
-  - soundName: click2
+  - soundName: select
     audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
     loop: 0
     volume: 1
