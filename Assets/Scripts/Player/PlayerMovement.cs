@@ -376,8 +376,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = Quaternion.Euler(0, sceneCamera.transform.eulerAngles.y, 0) * new Vector3(movement.x, 0, movement.y);
         move.y = -2;
         charController.Move(move * Time.deltaTime * speed);
-        if (move.x == 0 && move.z == 0) { anim.SetBool("Running", false); }
-        else { anim.SetBool("Running", true); }
+
+        if (move.x == 0 && move.z == 0) { anim.SetBool("Running", false); return; }
+
+        anim.SetBool("Running", true);
     }
 
     void HandleRotation()

@@ -47,6 +47,7 @@ public class Damage : MonoBehaviour
 
             //Apply damage modifier based on timing
             float modifier = Mathf.Clamp(1 - (playerRef.lastBeatTimingPerc * 10), 0.2f, 1);
+            float ultChargeModifier = Mathf.Clamp(1 - (playerRef.lastBeatTimingPerc * 10), 0.7f, 1);
             modifier += other.GetComponent<StatusEffects>().exposeStacks / 2;
             float newDamage = baseDamage * modifier;
             newDamage -= playerRef.gameObject.GetComponent<StatusEffects>().weaknessStacks;
@@ -61,7 +62,8 @@ public class Damage : MonoBehaviour
 
             //Apply damage
             other.GetComponent<PlayerMovement>().TakeDamage(newDamage, hitStun, knockBack, launchPoint);
-            playerRef.AddUltimateCharge(Mathf.RoundToInt(newDamage));
+            playerRef.AddUltimateCharge(Mathf.RoundToInt(baseDamage * ultChargeModifier)); //Give attacker ult charge
+            other.GetComponent<PlayerMovement>().AddUltimateCharge(Mathf.RoundToInt((baseDamage * ultChargeModifier) / 5)); //Give enemy come-back ult charge
 
             PlayHitSound(other, newDamage);
         }
