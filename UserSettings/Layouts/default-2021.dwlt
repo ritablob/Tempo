@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 820.8
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Game
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 53
+  controlID: 108
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -94,8 +94,8 @@ MonoBehaviour:
     y: 0
     width: 234.4
     height: 544.8
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 54
+  controlID: 49
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 44
+  controlID: 50
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -416,22 +416,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Models/Poledancer 1/ComboAttacks/Butterfly C7 M4
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Models/Poledancer 1/ComboAttacks/Butterfly C7 M4
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\danie\Documents\blade dancer\DisCombat
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 284.6001}
-    m_SelectedIDs: f0ea0000
-    m_LastClickedID: 60144
-    m_ExpandedIDs: 00000000aa7c0000ac7c0000ae7c0000b07c0000b27c0000b47c0000b67c0000407d000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 1204.2836}
+    m_SelectedIDs: a08d0000
+    m_LastClickedID: 36256
+    m_ExpandedIDs: 000000009a8d00009c8d00009e8d0000a08d0000a28d0000a48d0000a68d0000168e0000888e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -459,7 +459,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000aa7c0000ac7c0000ae7c0000b07c0000b27c0000b47c0000b67c0000
+    m_ExpandedIDs: 000000009a8d00009c8d00009e8d0000a08d0000a28d0000a48d0000a68d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -587,9 +587,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 268f0000
       m_LastClickedID: 0
-      m_ExpandedIDs: c867feff9e68feffbaf6ffff70f7ffff32fbffff387e0000787e0000
+      m_ExpandedIDs: a6a5fdff2acbfdffa6f2fdffd8d8ffff32fbffff9ebc0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -922,11 +922,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.040355116, y: -0.8552235, z: 0.5123071, w: -0.06732769}
     speed: 2
-    m_Value: {x: -0.040253535, y: -0.85597926, z: 0.51101667, w: -0.06738722}
+    m_Value: {x: -0.04035457, y: -0.85521185, z: 0.51230013, w: -0.06732678}
   m_Size:
     m_Target: 2.1464422
     speed: 2
-    m_Value: 2.2475834
+    m_Value: 2.1464422
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1012,7 +1012,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
