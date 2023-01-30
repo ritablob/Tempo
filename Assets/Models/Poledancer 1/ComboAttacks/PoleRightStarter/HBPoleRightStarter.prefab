@@ -61,8 +61,8 @@ MonoBehaviour:
   playerRef: {fileID: 0}
   dealtDamage: 0
   baseDamage: 10
-  hitStun: 0.75
-  knockBack: 0
+  hitStun: 0.33
+  knockBack: 0.75
   isTrap: 0
   exposing: 0
   stunning: 0

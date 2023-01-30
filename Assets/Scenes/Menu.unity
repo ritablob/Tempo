@@ -1221,14 +1221,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPlayers: 2
-  characterSelectionMenu: {fileID: 7945581404220035291, guid: d8a2dc6c064de9c439e2fe61068f995f, type: 3}
+  menuSelectIconP1: {fileID: 0}
+  menuSelectIconP2: {fileID: 0}
   playerCharacers:
   - {fileID: 1162232717056227273, guid: 969dba774852eb24e9238e1f6dc6fa07, type: 3}
   - {fileID: 1679827282492537753, guid: 4e53befae0ac9834b87920ea755929b1, type: 3}
+  playerCharacterIcons: []
+  characterNames: []
   charSelectPositions:
   - {fileID: 961128598}
   - {fileID: 1888796952}
-  playerSelectionPrefab: {fileID: 0}
   p1CharPreview: {fileID: 1522061860}
   p2CharPreview: {fileID: 572313547}
   p1Title: {fileID: 2139307799}

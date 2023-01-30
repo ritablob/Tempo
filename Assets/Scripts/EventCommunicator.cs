@@ -11,11 +11,6 @@ public class EventCommunicator : MonoBehaviour
     [SerializeField] List<GameObject> hitboxes;
     [SerializeField] GameObject[] characterSpecificObjects;
 
-    private void Start()
-    {
-
-    }
-
     //General commands
     public void EndAttack() { playerScriptRef.EndAttack(); }
     public void CanMove() { playerScriptRef.CanMove(); }

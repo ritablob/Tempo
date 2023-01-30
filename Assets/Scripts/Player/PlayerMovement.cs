@@ -209,6 +209,16 @@ public class PlayerMovement : MonoBehaviour
     #region
     public void StartAttack(bool wasBuffered)
     {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
+        {
+            if(player != this.gameObject && Vector3.Distance(gameObject.transform.position, player.transform.position) < 2)
+            {
+                Debug.Log(Vector3.Distance(gameObject.transform.position, player.transform.position));
+                SnapToOpponent();
+            }
+        }
+        SnapToOpponent();
         if (!wasBuffered) { lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); lastBeatTiming = rhythmKeeper.beatTiming; }
         eventCommunicator.DisableHitbox();
         comboTimer = -0.75f;

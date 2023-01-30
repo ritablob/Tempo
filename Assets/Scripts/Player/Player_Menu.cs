@@ -47,7 +47,7 @@ public class Player_Menu : MonoBehaviour
             manager.UnReadyPlayer(playerID);
         }
     }
-    public void Left(InputAction.CallbackContext ctx)
+    public void Left(InputAction.CallbackContext ctx) //Switch between two portraits
     {
         if(charSelected > 0 && ctx.performed && !isReady) 
         {
@@ -59,7 +59,7 @@ public class Player_Menu : MonoBehaviour
             charName.text = manager.charSelectPositions[charSelected].name;
         }
     }
-    public void Right(InputAction.CallbackContext ctx)
+    public void Right(InputAction.CallbackContext ctx) //
     {
         if (charSelected < manager.charSelectPositions.Length - 1 && ctx.performed && !isReady) 
         {

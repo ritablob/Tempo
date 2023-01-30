@@ -170,3 +170,5 @@ MonoBehaviour:
   manager: {fileID: 0}
   playerIcon: {fileID: 0}
   preview: {fileID: 0}
+  charName: {fileID: 0}
+  playerID: 0
