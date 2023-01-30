@@ -373,7 +373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21ee478cb26e3c4ea7df5677456f818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parryShield: {fileID: 1162232717270291737}
   shadowClone: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
   shadowCloneSpawn: {fileID: 462994350228096677}
   anim: {fileID: 5804240777255460063}
@@ -384,9 +383,8 @@ MonoBehaviour:
   isPoleDancer: 1
   specialCharges: 1
   ultimateLimit: 225
-  HP: 500
+  HP: 200
   speed: 2.5
-  controllerDeadZone: 0.1
   charController: {fileID: 1162232717056227271}
   playerColor: {r: 0, g: 0, b: 0, a: 0}
   playerInput: {fileID: 0}

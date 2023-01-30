@@ -8,6 +8,7 @@ public class SparkProjectile : MonoBehaviour
     [SerializeField] float resistance;
     [SerializeField] float speed;
     [SerializeField] float fallSpeed;
+    [SerializeField] float damageAsTrap;
     [SerializeField] Damage dmgScript;
     [SerializeField] GameObject orb;
     [SerializeField] GameObject shockwave;
@@ -49,6 +50,8 @@ public class SparkProjectile : MonoBehaviour
             SoundPlayer.PlaySound(1, "riven_trap_activate");
             orb.SetActive(true);
             shockwave.SetActive(false);
+            dmgScript.isTrap = true;
+            dmgScript.baseDamage = damageAsTrap;
             dmgScript.dealtDamage = false;
             isTrap = true;
             speed = 0;

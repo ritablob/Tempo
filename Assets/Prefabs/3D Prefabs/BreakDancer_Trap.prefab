@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallSpeed: 1.875
   speed: 7.5
+  damageAsTrap: 15
 --- !u!95 &3400335744590048248
 Animator:
   serializedVersion: 4
