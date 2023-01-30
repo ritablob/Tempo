@@ -126,11 +126,12 @@ MonoBehaviour:
   - {fileID: 3837802584162495224}
   - {fileID: 7400051624875628414}
   settingPrefab: {fileID: 0}
-  pointer: {fileID: 6980523457806932209, guid: 19e2650dc5b4c664ea96f8f512e881b3, type: 3}
+  pointer: {fileID: 1962832834193608550, guid: e27f578b98c85714eb0f44061dd8d2c8, type: 3}
+  clickedPointer: {fileID: 0}
   mixer: {fileID: 0}
   inGameManager: {fileID: 0}
-  inGameUI: {fileID: 0}
   playerIngameMenus: []
+  delayTime: 0.5
 --- !u!1 &3010365176686714532
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +145,7 @@ GameObject:
   - component: {fileID: 8602391705316384805}
   - component: {fileID: 7400051624875628414}
   - component: {fileID: 3987341531448844217}
+  - component: {fileID: 110124619169649812}
   m_Layer: 0
   m_Name: QuitButton
   m_TagString: Untagged
@@ -265,6 +267,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3987341531448844217}
+        m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
+        m_MethodName: PointerSpriteSwitch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3987341531448844217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +291,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671e7681447848e40b5c72b425c52fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedPointer: {fileID: 0}
+--- !u!114 &110124619169649812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3010365176686714532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 7
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &5409564530011881993
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +331,7 @@ GameObject:
   - component: {fileID: 6955912981526830689}
   - component: {fileID: 5382117102953223300}
   - component: {fileID: 4193075110188942753}
+  - component: {fileID: 3859116590693600932}
   m_Layer: 0
   m_Name: RestartButton
   m_TagString: Untagged
@@ -411,6 +453,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4193075110188942753}
+        m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
+        m_MethodName: PointerSpriteSwitch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4193075110188942753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,6 +477,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671e7681447848e40b5c72b425c52fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedPointer: {fileID: 0}
+--- !u!114 &3859116590693600932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5409564530011881993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 7
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &5557647767350558934
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +669,7 @@ GameObject:
   - component: {fileID: 134958644656805763}
   - component: {fileID: 1461719950537967750}
   - component: {fileID: 5758708101501270087}
+  - component: {fileID: 5183654265102786817}
   m_Layer: 0
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -709,6 +791,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5758708101501270087}
+        m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
+        m_MethodName: PointerSpriteSwitch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5758708101501270087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,6 +815,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671e7681447848e40b5c72b425c52fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedPointer: {fileID: 0}
+--- !u!114 &5183654265102786817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8146663674626945095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 7
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &8729151375446973726
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +855,7 @@ GameObject:
   - component: {fileID: 3874878888998438429}
   - component: {fileID: 3837802584162495224}
   - component: {fileID: 4266706718475786012}
+  - component: {fileID: 6449140090756260450}
   m_Layer: 0
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -855,6 +977,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4266706718475786012}
+        m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
+        m_MethodName: PointerSpriteSwitch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4266706718475786012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,6 +1001,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671e7681447848e40b5c72b425c52fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedPointer: {fileID: 0}
+--- !u!114 &6449140090756260450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8729151375446973726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 7
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &9055708575568105895
 GameObject:
   m_ObjectHideFlags: 0

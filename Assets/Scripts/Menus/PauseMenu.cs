@@ -10,10 +10,12 @@ public class PauseMenu : MonoBehaviour
     public List<Button> buttonList;
     public GameObject settingPrefab;
     public Pointer pointer;
+    public Sprite originalBluePointer;
     public AudioMixer mixer;
     public InGameManager inGameManager;
-    public GameObject inGameUI;
     public PlayerIngameMenu[] playerIngameMenus;
+    public float delayTime = 0.5f;
+
 
     private void Awake()
     {
@@ -32,7 +34,6 @@ public class PauseMenu : MonoBehaviour
     }
     private void OnEnable()
     {
-        inGameUI.SetActive(false);
         playerIngameMenus = FindObjectsOfType<PlayerIngameMenu>(); 
         settingPrefab.GetComponent<SettingsScript>().slider.gameObject.SetActive(false);
         settingPrefab.GetComponent<SettingsScript>().exitButton.gameObject.SetActive(false);
@@ -45,38 +46,53 @@ public class PauseMenu : MonoBehaviour
     }
     private void OnDisable()
     {
-        inGameUI.SetActive(true);
         mixer.SetFloat("EQgain", 1f);
         //Time.timeScale = 1f;
     }
     public void ResumeButton()
     {
+        StartCoroutine(DelayResume(delayTime));
+    }
+    public void RestartButton()
+    {
+        StartCoroutine(DelayRestart(delayTime));
+    }
+    public void SettingButton()
+    {
+        StartCoroutine(DelaySettings(delayTime));
+    }
+    public void QuitButton()
+    {
+        StartCoroutine(DelayQuit(delayTime));
+    }
+    IEnumerator DelayRestart(float waitTime)
+    {
         SoundPlayer.PlaySoundMenu("click");
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    IEnumerator DelayResume(float waitTime)
+    {
+        SoundPlayer.PlaySoundMenu("click");
+        yield return new WaitForSeconds(waitTime);
         for (int i = 0; i < playerIngameMenus.Length; i++) // because resuming from the button screen (instead of clicking escape again)
                                                            // doesnt set the player maps back
         {
             playerIngameMenus[i].SetPlayerMapBack();
         }
+        FindObjectOfType<Pointer>().GetComponent<Image>().sprite = originalBluePointer;
         gameObject.SetActive(false);
-    }
-    public void RestartButton()
-    {
-        SoundPlayer.PlaySoundMenu("click");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-    public void SettingButton()
-    {
-        SoundPlayer.PlaySoundMenu("click");
-        settingPrefab.SetActive(true);
-    }
-    public void QuitButton()
-    {
-        SoundPlayer.PlaySoundMenu("click");
-        StartCoroutine(WaitAndLoadMenu(1));
 
     }
-    IEnumerator WaitAndLoadMenu(float waitTime)
+    IEnumerator DelaySettings(float waitTime)
     {
+        SoundPlayer.PlaySoundMenu("click");
+        yield return new WaitForSeconds(waitTime);
+        settingPrefab.SetActive(true);
+    }
+    IEnumerator DelayQuit(float waitTime)
+    {
+        SoundPlayer.PlaySoundMenu("click");
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(0);
     }
