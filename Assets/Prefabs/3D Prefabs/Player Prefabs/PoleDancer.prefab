@@ -382,6 +382,8 @@ MonoBehaviour:
   modelRenderer: {fileID: 3510153941041175127}
   matIndex: 5
   hitParticle: {fileID: 3835236652373826150}
+  particle1: {fileID: 4920398446284079937}
+  particle2: {fileID: 5478894993872990138}
   isPoleDancer: 1
   specialCharges: 1
   ultimateLimit: 225
@@ -1608,8 +1610,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail
       objectReference: {fileID: 0}
+    - target: {fileID: 2057701097818642248, guid: e9d6bc06a7d47bd489bc2039dda3c8fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9d6bc06a7d47bd489bc2039dda3c8fe, type: 3}
+--- !u!1 &5478894993872990138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2057701097818642248, guid: e9d6bc06a7d47bd489bc2039dda3c8fe, type: 3}
+  m_PrefabInstance: {fileID: 5802498656026130674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6396985512288900105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1665,5 +1676,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail
       objectReference: {fileID: 0}
+    - target: {fileID: 2057701097818642248, guid: e9d6bc06a7d47bd489bc2039dda3c8fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9d6bc06a7d47bd489bc2039dda3c8fe, type: 3}
+--- !u!1 &4920398446284079937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2057701097818642248, guid: e9d6bc06a7d47bd489bc2039dda3c8fe, type: 3}
+  m_PrefabInstance: {fileID: 6396985512288900105}
+  m_PrefabAsset: {fileID: 0}

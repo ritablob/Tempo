@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Renderer modelRenderer;
     [SerializeField] int matIndex;
     [SerializeField] VisualEffect hitParticle;
+    [SerializeField] GameObject particle1;
+    [SerializeField] GameObject particle2;
 
     [Header("Character Stats")]
     public bool isPoleDancer = false;
@@ -98,7 +100,8 @@ public class PlayerMovement : MonoBehaviour
         if (ctx.performed) { heldDown++; }
         if (ctx.canceled) { heldDown--; }
         if (heldDown == 2 && ultimateCharge >= ultimateLimit && ourDeadTime < 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") 
-        { 
+        {
+            particle1.SetActive(true); particle2.SetActive(true);
             anim.SetTrigger("ULTIMATE");
             ultChargePlayed = false;
             ultimateCharge = 0;
@@ -111,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
         if (ctx.canceled) { heldDown--; }
         if (heldDown == 2 && ultimateCharge >= ultimateLimit && ourDeadTime < 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone")
         {
+            particle1.SetActive(true); particle2.SetActive(true);
             anim.SetTrigger("ULTIMATE");
             ultChargePlayed = false;
             ultimateCharge = 0;
@@ -265,6 +269,7 @@ public class PlayerMovement : MonoBehaviour
     public void ResetLayers() 
     {
         //if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit")) { BlendLayers(); return; }
+        particle1.SetActive(false); particle2.SetActive(false);
         anim.SetLayerWeight(0, 1); 
         anim.SetLayerWeight(1, 0); 
         anim.SetLayerWeight(2, 0);
