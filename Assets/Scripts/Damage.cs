@@ -52,6 +52,7 @@ public class Damage : MonoBehaviour
             PlayHitSound(other, baseDamage);
             return;
         }
+
         if(other.tag == "Player" && other.gameObject.GetComponent<PlayerMovement>() != playerRef && !dealtDamage)
         {
             dealtDamage = true;

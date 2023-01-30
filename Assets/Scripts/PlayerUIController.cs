@@ -94,7 +94,7 @@ public class PlayerUIController : MonoBehaviour
         {
             barCount = 0;
         }
-        Debug.Log(pMovement.ultimateCharge+" "+pMovement.ultimateLimit + "Bar count for " + pMovement.gameObject.name + " " + barCount);
+        //Debug.Log(pMovement.ultimateCharge+" "+pMovement.ultimateLimit + "Bar count for " + pMovement.gameObject.name + " " + barCount);
         for (int i = 0; i < slider2Children.Length; i++)
         {
             if (i <= barCount)
