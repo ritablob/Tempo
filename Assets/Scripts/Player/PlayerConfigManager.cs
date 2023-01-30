@@ -66,12 +66,12 @@ public class PlayerConfigManager : MonoBehaviour
         playerConfigs[index].isReady = false;
         anim.SetTrigger("UnReady");
     }
-    public void HandlePlayerJoin(PlayerInput pi)
+    public void HandlePlayerJoin(PlayerInput pi) //Spawn player's char select
     {
         if(!playerConfigs.Any(p => p.playerIndex == pi.playerIndex)) //If player not already added, add the player
         {
             pi.transform.SetParent(transform);
-            playerConfigs.Add(new PlayerConfig(pi));
+            playerConfigs.Add(new PlayerConfig(pi)); //Adds player config so we can store their input data
         }
     }
 

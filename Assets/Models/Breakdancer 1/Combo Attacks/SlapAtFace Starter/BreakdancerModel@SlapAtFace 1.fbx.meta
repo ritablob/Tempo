@@ -60,6 +60,20 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0
+        functionName: LaunchPlayer
+        data: 
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: b6c8cd065b16d3f49939be9b169f7aff, type: 3}
+        floatParameter: 2.5
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.17948714
+        functionName: EndLaunch
+        data: 
+        objectReferenceParameter: {fileID: 2804101594017051647, guid: b6c8cd065b16d3f49939be9b169f7aff, type: 3}
+        floatParameter: 2.5
+        intParameter: 0
+        messageOptions: 0
       - time: 0.24999999
         functionName: EnableHitbox
         data: 
@@ -74,7 +88,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9845037
+      - time: 1
         functionName: EndAttack
         data: 
         objectReferenceParameter: {fileID: 2804101594017051647, guid: b6c8cd065b16d3f49939be9b169f7aff, type: 3}

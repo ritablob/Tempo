@@ -5359,7 +5359,7 @@ MonoBehaviour:
   portrait: {fileID: 947535944}
   portraitImages: []
   slider2Parent: {fileID: 210752702}
-  ultimateGlow: {fileID: 0}
+  ultimateGlow: {fileID: 854032282}
   glowExpansionOnFullUltimate: 1.5
 --- !u!1001 &183603256
 PrefabInstance:
@@ -6076,7 +6076,7 @@ MonoBehaviour:
   portrait: {fileID: 920309810}
   portraitImages: []
   slider2Parent: {fileID: 316829595}
-  ultimateGlow: {fileID: 0}
+  ultimateGlow: {fileID: 328236646}
   glowExpansionOnFullUltimate: 1.5
 --- !u!1001 &204471519
 PrefabInstance:
@@ -18718,7 +18718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &661740961
 Transform:
   m_ObjectHideFlags: 0

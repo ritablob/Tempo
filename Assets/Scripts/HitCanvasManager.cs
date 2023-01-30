@@ -65,11 +65,11 @@ public class HitCanvasManager : MonoBehaviour
     }
     IEnumerator FadeOut(HitCanvas hcanvas, GameObject child, GameObject instance)
     {
-        if (child.GetComponent<TextMeshProUGUI>().color.a > 0)
+        if (child.GetComponent<SpriteRenderer>().color.a > 0)
         {
-            Color color1 = child.GetComponent<TextMeshProUGUI>().color;
+            Color color1 = child.GetComponent<SpriteRenderer>().color;
             color1.a -= fadeOutSpeed * Time.deltaTime;
-            child.GetComponent<TextMeshProUGUI>().color = color1;
+            child.GetComponent<SpriteRenderer>().color = color1;
             yield return new WaitForEndOfFrame();
             StartCoroutine(FadeOut(hcanvas, child, instance));
         }

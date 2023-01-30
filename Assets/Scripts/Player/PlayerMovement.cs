@@ -212,15 +212,17 @@ public class PlayerMovement : MonoBehaviour
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach(GameObject player in players)
         {
-            if(player != this.gameObject && Vector3.Distance(gameObject.transform.position, player.transform.position) < 2)
+            if(player != this.gameObject && Vector3.Distance(gameObject.transform.position, player.transform.position) < 1) //Auto-snap to opponent if close
             {
-                Debug.Log(Vector3.Distance(gameObject.transform.position, player.transform.position));
+                Debug.Log(Vector3.Distance(gameObject.transform.position, player.transform.position) + "DISTANCE");
                 SnapToOpponent();
             }
         }
-        SnapToOpponent();
+
         if (!wasBuffered) { lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); lastBeatTiming = rhythmKeeper.beatTiming; }
+
         eventCommunicator.DisableHitbox();
+        blendLayers = false;
         comboTimer = -0.75f;
         isAttacking = true;
         canMove = false;
@@ -262,7 +264,7 @@ public class PlayerMovement : MonoBehaviour
     public void BlendLayers() { blendLayers = true; }
     public void ResetLayers() 
     {
-        if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit")) { BlendLayers(); return; }
+        //if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit")) { BlendLayers(); return; }
         anim.SetLayerWeight(0, 1); 
         anim.SetLayerWeight(1, 0); 
         anim.SetLayerWeight(2, 0);
@@ -316,7 +318,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetLayerWeight(0, Mathf.Clamp(anim.GetLayerWeight(0) + Time.deltaTime * 2, 0, 1));
             anim.SetLayerWeight(1, Mathf.Clamp(anim.GetLayerWeight(1) - Time.deltaTime * 2, 0, 1));
             anim.SetLayerWeight(2, Mathf.Clamp(anim.GetLayerWeight(2) - Time.deltaTime * 2, 0, 1));
-            if (anim.GetLayerWeight(0) == 1 && anim.GetLayerWeight(1) == 0 && anim.GetLayerWeight(2) == 0)
+            if (blendLayers && anim.GetLayerWeight(0) == 1)
             {
                 anim.SetTrigger("DEFAULT");
                 EndAttack();

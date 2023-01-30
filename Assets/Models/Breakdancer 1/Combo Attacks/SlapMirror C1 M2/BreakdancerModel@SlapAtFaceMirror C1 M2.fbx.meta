@@ -74,7 +74,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.88923705
+      - time: 1
         functionName: EndAttack
         data: 
         objectReferenceParameter: {fileID: 2804101594017051647, guid: b6c8cd065b16d3f49939be9b169f7aff, type: 3}
