@@ -33,6 +33,7 @@ public class PlayerConfigManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(Instance);
             playerConfigs = new List<PlayerConfig>();
+            Cursor.visible = false;
         }
     }
 

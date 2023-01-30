@@ -1317,7 +1317,7 @@ MonoBehaviour:
   m_NotificationBehavior: 2
   m_MaxPlayerCount: 2
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 1
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1339,15 +1339,135 @@ MonoBehaviour:
   m_JoinAction:
     m_UseReference: 0
     m_Action:
-      m_Name: 
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 
+      m_Name: Join
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 17207028-464a-4ee9-affe-0b5df868c506
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 1ee746f3-bff1-4ca4-9aa4-77d7ce1fe3bd
+        m_Path: <Gamepad>/buttonWest
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
+      - m_Name: 
+        m_Id: fb136aa7-d0cc-4069-a7fe-ab34f72a3c64
+        m_Path: <Gamepad>/buttonNorth
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
+      - m_Name: 
+        m_Id: fc684e14-3826-47f6-b968-e9b6e5865c4a
+        m_Path: <Gamepad>/buttonEast
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
+      - m_Name: 
+        m_Id: eae4756a-3f86-4edf-a1da-80e83a2e962d
+        m_Path: <Gamepad>/buttonSouth
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 11e637ed-138f-4f89-bb75-01049862a642
+        m_Path: <Gamepad>/dpad/down
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 4636d4e1-6bfa-4e37-81d2-4cfbb3434dbf
+        m_Path: <Gamepad>/dpad/left
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 6633054d-c505-4389-8b7f-2378d671b27e
+        m_Path: <Gamepad>/dpad/right
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 40b8087e-b662-47b7-b77d-cdbde6013fe9
+        m_Path: <Gamepad>/dpad/up
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 697d78c0-8acf-4df5-abc8-7ce92d1116a5
+        m_Path: <Keyboard>/space
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
+      - m_Name: 1D Axis
+        m_Id: 8ed6fc47-2db0-4099-8c29-924c60bb60a0
+        m_Path: 1DAxis
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 4
+      - m_Name: negative
+        m_Id: 7bdd366f-ac7d-42ef-9a72-a33fa4c00905
+        m_Path: <Gamepad>/leftStick/left
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 8
+      - m_Name: positive
+        m_Id: eb68af00-43b0-4955-9e09-a930b946854c
+        m_Path: <Gamepad>/leftStick/right
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 8
+      - m_Name: 1D Axis
+        m_Id: db09dc65-a37c-471a-9202-345a35f1304d
+        m_Path: 1DAxis
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 4
+      - m_Name: negative
+        m_Id: c6b374ad-dfce-4efd-9a0b-3d16ee65685d
+        m_Path: <Gamepad>/leftStick/up
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 8
+      - m_Name: positive
+        m_Id: 1fb3f9f0-b285-45ba-a5f8-854857d2ffee
+        m_Path: <Gamepad>/leftStick/down
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 8
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_PlayerPrefab: {fileID: 8616232032638043796, guid: 8596c723fd763404abbdf328eb65be95, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0

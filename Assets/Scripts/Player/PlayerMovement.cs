@@ -376,18 +376,6 @@ public class PlayerMovement : MonoBehaviour
             Vector3 newMovement = Quaternion.Euler(0, sceneCamera.transform.eulerAngles.y, 0) * new Vector3(movement.x, 0, movement.y);
             Quaternion newRotation = Quaternion.LookRotation(-newMovement, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, 360);
-
-            //Apply auto-snap
-            foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
-            {
-                if(player != this.gameObject) 
-                {
-                    Vector3 away = gameObject.transform.position - player.transform.position;
-                    Quaternion awayRot = Quaternion.LookRotation(away);
-                    if (transform.rotation.y > awayRot.y - 0.175f && transform.rotation.y < awayRot.y + 0.175f)
-                        transform.rotation = awayRot;
-                }
-            }
             return;
         }
         if(!isGamepad)
@@ -410,7 +398,24 @@ public class PlayerMovement : MonoBehaviour
     #region
     public void TakeDamage(float damage, float hitStun, float knockBack, Vector3 hitBoxPos)
     {
-        if(HP <= 0)
+        speed = 2.5f;
+        anim.SetTrigger("Hit");
+        takeKnockBack = true;
+        //SoundPlayer.PlaySound(playerIndex, "grunt");
+        MiscLayer();
+        isLaunching = false;
+        isAttacking = false;
+        hitStunRemaining = hitStun;
+        HP -= damage * statusEffects.exposeStacks;
+        Material[] mats = modelRenderer.materials;
+        mats[matIndex] = hit;
+        modelRenderer.materials = mats;
+        Vector3 launchDir = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z) - hitBoxPos;
+        launchDir.y = 0;
+        launchDir.Normalize(); //knockback determines intensity of launch
+        launchDirection = launchDir * knockBack;
+
+        if (HP <= 0)
         {
             if (isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Riven"); }
             if (!isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Nova"); }
