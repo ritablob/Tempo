@@ -9,7 +9,7 @@ public class Damage : MonoBehaviour
     public bool dealtDamage;
 
     [Header("Hit Values")]
-    [SerializeField] float baseDamage;
+    public float baseDamage;
     [SerializeField] float hitStun;
     [SerializeField] float knockBack;
 
@@ -48,7 +48,7 @@ public class Damage : MonoBehaviour
             //Apply damage
             other.GetComponent<PlayerMovement>().TakeDamage(baseDamage, hitStun, knockBack, launchPoint);
             other.GetComponent<PlayerMovement>().AddUltimateCharge(Mathf.RoundToInt(baseDamage / 5)); //Give enemy come-back ult charge
-
+            Debug.Log(baseDamage);
             PlayHitSound(other, baseDamage);
             return;
         }
@@ -60,10 +60,11 @@ public class Damage : MonoBehaviour
             Vector3 launchPoint = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z);
 
             //Apply damage modifier based on timing
-            float modifier = Mathf.Clamp(1 - (playerRef.lastBeatTimingPerc * 10), 0.2f, 1);
-            float ultChargeModifier = Mathf.Clamp(1 - (playerRef.lastBeatTimingPerc * 10), 0.7f, 1);
+            float modifier = Mathf.Clamp(1 - (playerRef.lastBeatTimingPerc * 10), 0.5f, 1);
+            float ultChargeModifier = Mathf.Clamp(1 - (playerRef.lastBeatTimingPerc * 15), 0.7f, 1);
             modifier += other.GetComponent<StatusEffects>().exposeStacks / 2;
             float newDamage = baseDamage * modifier;
+
             newDamage -= playerRef.gameObject.GetComponent<StatusEffects>().weaknessStacks;
 
             //Apply attack effects
@@ -76,7 +77,7 @@ public class Damage : MonoBehaviour
             other.GetComponent<PlayerMovement>().TakeDamage(newDamage, hitStun, knockBack, launchPoint);
             playerRef.AddUltimateCharge(Mathf.RoundToInt(baseDamage * ultChargeModifier)); //Give attacker ult charge
             other.GetComponent<PlayerMovement>().AddUltimateCharge(Mathf.RoundToInt((baseDamage * ultChargeModifier) / 5)); //Give enemy come-back ult charge
-
+            Debug.Log(newDamage);
             PlayHitSound(other, newDamage);
         }
     }

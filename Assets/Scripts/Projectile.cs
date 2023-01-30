@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] float fallSpeed;
     [SerializeField] float speed;
+    [SerializeField] float damageAsTrap;
 
     private Vector3 direction;
     private bool isTrap;
@@ -16,6 +17,8 @@ public class Projectile : MonoBehaviour
         {
             isTrap = true;
             GetComponent<Damage>().isTrap = true;
+            GetComponent<Damage>().dealtDamage = false;
+            GetComponent<Damage>().baseDamage = damageAsTrap;
             SnapToGrid();
         }
 

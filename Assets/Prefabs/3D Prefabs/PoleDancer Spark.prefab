@@ -411,6 +411,7 @@ MonoBehaviour:
   resistance: 2
   speed: 3.5
   fallSpeed: 1
+  damageAsTrap: 15
   dmgScript: {fileID: 5565559577830061274}
   orb: {fileID: 4068401878828728926}
   shockwave: {fileID: 5469404462514456808}
@@ -490,7 +491,7 @@ MonoBehaviour:
   baseDamage: 10
   hitStun: 0.5
   knockBack: 2
-  isTrap: 1
+  isTrap: 0
   exposing: 0
   stunning: 0
   bleeding: 0
