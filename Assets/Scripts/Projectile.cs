@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
         if (transform.position.y < 0)
         {
             isTrap = true;
+            GetComponent<Damage>().isTrap = true;
             SnapToGrid();
         }
 
