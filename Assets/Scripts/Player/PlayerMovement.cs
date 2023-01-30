@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Material normal, hit;
     [SerializeField] Renderer modelRenderer;
     [SerializeField] int matIndex;
+    [SerializeField] VisualEffect hitParticle;
 
     [Header("Character Stats")]
     public bool isPoleDancer = false;
@@ -398,6 +400,7 @@ public class PlayerMovement : MonoBehaviour
     #region
     public void TakeDamage(float damage, float hitStun, float knockBack, Vector3 hitBoxPos)
     {
+        hitParticle.Play();
         speed = 2.5f;
         anim.SetTrigger("Hit");
         takeKnockBack = true;
