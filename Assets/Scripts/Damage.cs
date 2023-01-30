@@ -14,7 +14,7 @@ public class Damage : MonoBehaviour
     [SerializeField] float knockBack;
 
     [Header("Hit Effects")]
-    [SerializeField] bool isTrap;
+    public bool isTrap;
     [SerializeField] bool exposing;
     [SerializeField] bool stunning;
     [SerializeField] bool bleeding;
@@ -82,17 +82,19 @@ public class Damage : MonoBehaviour
     }
 
     private void PlayHitSound(Collider other, float newDamage)
-    {        
+    {
         //Play hit sound based on attacker
         if (playerRef.isPoleDancer) { SoundPlayer.PlaySound(playerRef.playerIndex, "Riven_Attack_Hit"); }
         if (!playerRef.isPoleDancer && !playerRef.longCombo) { SoundPlayer.PlaySound(playerRef.playerIndex, "Nova_Attack_Hit"); }
-        if(!playerRef.isPoleDancer && playerRef.longCombo) { SoundPlayer.PlaySound(playerRef.playerIndex, "Nova_Attack_Kick"); }
+        if (!playerRef.isPoleDancer && playerRef.longCombo) { SoundPlayer.PlaySound(playerRef.playerIndex, "Nova_Attack_Kick"); }
 
         //Play hit sound based on opponent
         if (newDamage < 6 && other.GetComponent<PlayerMovement>().isPoleDancer) { SoundPlayer.PlaySound(playerRef.playerIndex, "Riven_Light"); return; }
         if (newDamage >= 6 && other.GetComponent<PlayerMovement>().isPoleDancer) { SoundPlayer.PlaySound(playerRef.playerIndex, "Riven_Heavy"); return; }
         if (newDamage < 6 && !other.GetComponent<PlayerMovement>().isPoleDancer) { SoundPlayer.PlaySound(playerRef.playerIndex, "Nova_Light"); return; }
-        if (newDamage >= 6 && !other.GetComponent<PlayerMovement>().isPoleDancer) { SoundPlayer.PlaySound(playerRef.playerIndex, "Nova_Heavy"); }
-
+        if (newDamage >= 6 && !other.GetComponent<PlayerMovement>().isPoleDancer)
+        {
+            SoundPlayer.PlaySound(playerRef.playerIndex, "Nova_Heavy");
+        }
     }
 }

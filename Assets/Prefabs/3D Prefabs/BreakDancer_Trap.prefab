@@ -101,8 +101,7 @@ MonoBehaviour:
   baseDamage: 10
   hitStun: 0.5
   knockBack: 2
-  soundName: nova trap pierce
-  isTrap: 1
+  isTrap: 0
   exposing: 0
   stunning: 0
   bleeding: 0
