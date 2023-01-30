@@ -57,7 +57,8 @@ public class PlayerUIController : MonoBehaviour
             }
         }
 
-        UltimateSlider(playerMovement);
+        if (playerMovement != null)
+            UltimateSlider(playerMovement);
     }
     void SetUpPlayerUI(string objectName) // depending on which character player is using, UI is customized
     {
