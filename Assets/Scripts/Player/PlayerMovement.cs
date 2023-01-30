@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     public int ultimateLimit;
     public float HP = 100;
     [SerializeField] float speed = 1f;
-    [SerializeField] float controllerDeadZone = 0.1f;
     [SerializeField] CharacterController charController;
     [SerializeField] Color playerColor;
 
@@ -127,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
     public void Attack_1(InputAction.CallbackContext ctx)
     {
         if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit")) { return; }
+
         if (ourDeadTime < 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
             longCombo = false;
@@ -134,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
             StartAttack(false);
             return;
         }
+
         if (ourDeadTime < 0 && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_1") && comboTimer < 0)
         {
             longCombo = false;
@@ -141,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
             StartAttack(false);
             return;
         }
+
         if (ourDeadTime > 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
         {
             triggerName = "Attack_1";
@@ -151,6 +153,7 @@ public class PlayerMovement : MonoBehaviour
     public void Attack_2(InputAction.CallbackContext ctx)
     {
         if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit")) { return; }
+
         if (ourDeadTime < 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone") //If not attacking, do attack logic
         {
             if (isPoleDancer) { SoundPlayer.PlaySound(1, "Pole_Swing"); }
@@ -159,6 +162,7 @@ public class PlayerMovement : MonoBehaviour
             StartAttack(false);
             return;
         }
+
         if (ourDeadTime < 0 && canDodge && ctx.canceled && rhythmKeeper.beatTiming != "DeadZone" && isAttacking && !anim.GetBool("Attack_2") && comboTimer < 0)
         {
             if (isPoleDancer) { SoundPlayer.PlaySound(1, "Pole_Swing"); }
@@ -167,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
             StartAttack(false);
             return;
         }
+
         if (ourDeadTime > 0 && canDodge && ctx.performed && rhythmKeeper.beatTiming != "DeadZone" && triggerName == null) //If attacking, read and remember input timing for attack buffer
         {
             triggerName = "Attack_2";
@@ -203,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
     public void StartAttack(bool wasBuffered)
     {
         if (!wasBuffered) { lastBeatTimingPerc = Mathf.Abs(rhythmKeeper.validInputTimer); lastBeatTiming = rhythmKeeper.beatTiming; }
-        eventCommunicator.ResetHitboxes();
+        eventCommunicator.DisableHitbox();
         comboTimer = -0.75f;
         isAttacking = true;
         canMove = false;
@@ -217,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
     public void CanCancelAttack() { isAttacking = false; isLaunching = false; canMove = false; }
     public void EndAttack()
     {
-        eventCommunicator.ResetHitboxes();
+        eventCommunicator.DisableHitbox();
         isAttacking = false;
         isLaunching = false;
         canMove = true;
