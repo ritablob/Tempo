@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] float speed;
     [SerializeField] float damageAsTrap;
     [SerializeField] float distance;
     public GameObject knife;
     public GameObject trap;
 
     private Vector3 direction;
-    private Transform originalPos;
     private bool isTrap;
-    private float lerpHolder;
+    private float time; 
 
     void Update()
     {
-        if (transform.position.y < 0)
+        if (time >= 0.5f)
         {
+            time = 0;
             isTrap = true;
             knife.SetActive(false);
             trap.SetActive(true);
@@ -31,9 +30,8 @@ public class Projectile : MonoBehaviour
         if (!isTrap)
         {
             transform.localScale = new Vector3(0.7972631f, 0.7972631f, 0.7972631f);
-
-            lerpHolder += Time.deltaTime * speed;
-            transform.position = Vector3.Lerp(originalPos.position, direction, lerpHolder);
+            time += Time.deltaTime;
+            transform.Translate((Vector3.forward * Time.deltaTime * distance) - (new Vector3(0, Time.deltaTime / 2, 0)));
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3, 3), transform.position.y, Mathf.Clamp(transform.position.z, -2, 2));
             return;
         }
@@ -52,11 +50,8 @@ public class Projectile : MonoBehaviour
             GetComponent<Damage>().playerRef.GainSpecial(this.gameObject);
         }
     }
-
     public void SetEndPosition(PlayerMovement player) 
-    { 
-        direction = transform.forward * distance; direction.y = 0;
-        originalPos = transform;
+    {
         GetComponent<Damage>().playerRef = player;
     }
     private void SnapToGrid()

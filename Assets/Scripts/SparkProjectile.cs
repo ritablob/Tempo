@@ -6,6 +6,7 @@ using UnityEngine.VFX;
 public class SparkProjectile : MonoBehaviour
 {
     [SerializeField] float resistance;
+    [SerializeField] float distance;
     [SerializeField] float speed;
     [SerializeField] float fallSpeed;
     [SerializeField] float damageAsTrap;
@@ -19,6 +20,7 @@ public class SparkProjectile : MonoBehaviour
     private bool isTrap;
     private RhythmBlinkingLights rhythmTracker;
     private int currentBeatsUntilPulse = 0;
+    private float time;
 
     private void Start()
     {
@@ -30,7 +32,7 @@ public class SparkProjectile : MonoBehaviour
         if (rhythmTracker.spotlightGroupOne.activeInHierarchy && isTrap && orb.transform.localScale.x != 1 && dmgScript.dealtDamage == false)
         {
             dmgScript.gameObject.SetActive(true);
-            SoundPlayer.PlaySound(1, "riven trap swell");
+       
             SetOrbSize(1);
             dmgScript.dealtDamage = false;
             UpdatePulse();
@@ -44,10 +46,10 @@ public class SparkProjectile : MonoBehaviour
             return;
         }
 
-        if (speed < 0)
+        if (time >= 1)
         {
+            time = 0;
             SoundPlayer.PlaySound(1, "riven_trap_stop");
-            SoundPlayer.PlaySound(1, "riven_trap_activate");
             orb.SetActive(true);
             shockwave.SetActive(false);
             dmgScript.isTrap = true;
@@ -60,8 +62,8 @@ public class SparkProjectile : MonoBehaviour
 
         if (!isTrap)
         {
-            transform.position += direction * Time.deltaTime * speed;
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y - (Time.deltaTime * fallSpeed), 0.25f, 9), transform.position.z);
+            time += Time.deltaTime;
+            transform.Translate((Vector3.forward * Time.deltaTime * distance) - (new Vector3(0, Time.deltaTime / 4, 0)));
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3, 3), transform.position.y, Mathf.Clamp(transform.position.z, -2, 2));
 
             speed -= resistance * Time.deltaTime;
@@ -89,7 +91,6 @@ public class SparkProjectile : MonoBehaviour
 
     public void SetEndPosition(PlayerMovement player)
     {
-        direction = transform.forward; direction.y = 0;
         dmgScript.playerRef = player;
     }
 
@@ -98,12 +99,14 @@ public class SparkProjectile : MonoBehaviour
         currentBeatsUntilPulse++;
         if (currentBeatsUntilPulse >= pulseFrequency)
         {
+            SoundPlayer.PlaySound(1, "riven trap swell");
             sparks.SetFloat("Electricity Size", 4);
             sparks.SetFloat("Electricity Size 2", 5);
             currentBeatsUntilPulse = 0;
         }
         else
         {
+            SoundPlayer.PlaySound(1, "riven_trap_activate");
             sparks.SetFloat("Electricity Size", 0);
             sparks.SetFloat("Electricity Size 2", 1f);
         }

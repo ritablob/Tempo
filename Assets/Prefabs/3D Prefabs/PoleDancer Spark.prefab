@@ -255,14 +255,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5469404462514456808}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.021500964, y: 0, z: 0.0026151612}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 189229083916653753}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!2083052967 &2913200599350481519
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -409,13 +409,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance: 2
+  distance: 4
   speed: 3.5
   fallSpeed: 1
-  damageAsTrap: 15
+  damageAsTrap: 30
   dmgScript: {fileID: 5565559577830061274}
   orb: {fileID: 4068401878828728926}
   shockwave: {fileID: 5469404462514456808}
   sparks: {fileID: 7843497137322150272}
+  pulseFrequency: 8
 --- !u!114 &6868392096641424318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,11 +490,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
   dealtDamage: 0
-  baseDamage: 10
+  baseDamage: 40
   hitStun: 0.5
-  knockBack: 2
+  knockBack: 0
   isTrap: 0
-  exposing: 0
-  stunning: 0
+  exposing: 1
+  stunning: 1
   bleeding: 0
   weaken: 0
