@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21ee478cb26e3c4ea7df5677456f818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowClone: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
+  shadowClone: {fileID: 2949802590628686886, guid: 681a86cbe66927d4488c9bf57603ba45, type: 3}
   shadowCloneSpawn: {fileID: 185235618648901354}
   anim: {fileID: 8263181191563115787}
   normal: {fileID: 2100000, guid: 757ce8e66c93dd2409509d63e31b3de8, type: 2}
@@ -1385,7 +1385,7 @@ MonoBehaviour:
   characterSpecificObjects:
   - {fileID: 7370235619309667231}
   - {fileID: 7370235619309667231}
-  - {fileID: 4212309839342293483, guid: 55d622bced988f64c9d94cc974e9a0f9, type: 3}
+  - {fileID: 2949802590628686886, guid: 681a86cbe66927d4488c9bf57603ba45, type: 3}
   - {fileID: 4886354418358405758}
   - {fileID: 7370235619309667231}
 --- !u!4 &3179408312897476864 stripped

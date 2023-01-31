@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21ee478cb26e3c4ea7df5677456f818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowClone: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
+  shadowClone: {fileID: 4212309839342293483, guid: 55d622bced988f64c9d94cc974e9a0f9, type: 3}
   shadowCloneSpawn: {fileID: 462994350228096677}
   anim: {fileID: 5804240777255460063}
   normal: {fileID: 2100000, guid: 757ce8e66c93dd2409509d63e31b3de8, type: 2}

@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform shadowCloneSpawn;
     [SerializeField] Animator anim;
     [SerializeField] Material normal, hit;
-    [SerializeField] Renderer modelRenderer;
+    public Renderer modelRenderer;
     [SerializeField] int matIndex;
     [SerializeField] VisualEffect hitParticle;
     [SerializeField] GameObject particle1;
