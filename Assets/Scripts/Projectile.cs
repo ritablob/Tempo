@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] float fallSpeed;
     [SerializeField] float speed;
     [SerializeField] float damageAsTrap;
+    public GameObject knife;
+    public GameObject trap;
 
     private Vector3 direction;
     private bool isTrap;
@@ -16,6 +18,8 @@ public class Projectile : MonoBehaviour
         if (transform.position.y < 0)
         {
             isTrap = true;
+            knife.SetActive(false);
+            trap.SetActive(true);
             GetComponent<Damage>().isTrap = true;
             GetComponent<Damage>().dealtDamage = false;
             GetComponent<Damage>().baseDamage = damageAsTrap;
