@@ -29,7 +29,7 @@ public class Player_Menu : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("PLAYERCONFIGMAN").GetComponent<PlayerConfigManager>();
         manager.SpawnSelectionMenu(this);
         ignoreInputTime = Time.time + ignoreInputTime;
-        manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID);
+        manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID, characters[charSelected]);
         nameImage.sprite = characters[charSelected].nameSprite;
         portraitImage.sprite = characters[charSelected].characterImageSprite;
         playerID = GetComponent<PlayerInput>().playerIndex;
@@ -45,9 +45,10 @@ public class Player_Menu : MonoBehaviour
     {
         if(!isReady && manager.playerConfigs.Count == manager.maxPlayers)
         {
-            manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID);
+            manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID, characters[charSelected]);
             isReady = true; 
             manager.ReadyPlayer(playerID);
+
         }
     }
     public void UnReady()
@@ -64,7 +65,7 @@ public class Player_Menu : MonoBehaviour
         {
             ignoreInputTime = Time.time + ignoreInputTime;
             charSelected--;
-            manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID);
+            manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID, characters[charSelected]);
             nameImage.sprite = characters[charSelected].nameSprite;
             portraitImage.sprite = characters[charSelected].characterImageSprite;
         }
@@ -72,7 +73,7 @@ public class Player_Menu : MonoBehaviour
         {
             ignoreInputTime = Time.time + ignoreInputTime;
             charSelected = characters.Length - 1;
-            manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID);
+            manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID, characters[charSelected]);
             nameImage.sprite = characters[charSelected].nameSprite;
             portraitImage.sprite = characters[charSelected].characterImageSprite;
         }
@@ -83,7 +84,7 @@ public class Player_Menu : MonoBehaviour
         {
             ignoreInputTime = Time.time + ignoreInputTime;
             charSelected++;
-            manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID);
+            manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID, characters[charSelected]);
             nameImage.sprite = characters[charSelected].nameSprite;
             portraitImage.sprite = characters[charSelected].characterImageSprite;
         }
@@ -91,7 +92,7 @@ public class Player_Menu : MonoBehaviour
         {
             ignoreInputTime = Time.time + ignoreInputTime;
             charSelected = 0;
-            manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID);
+            manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID, characters[charSelected]);
             nameImage.sprite = characters[charSelected].nameSprite;
             portraitImage.sprite = characters[charSelected].characterImageSprite;
 

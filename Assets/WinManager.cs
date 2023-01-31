@@ -14,16 +14,17 @@ public class WinManager : MonoBehaviour
     [SerializeField] DynamicCamera camera;
     public CharacterSelection[] characters;
 
+
     public void WinScreen()
     {
         winShtufish.SetActive(true);
         if (playerIndex == 0)
         {
-            winnerText.text = "Player 1";
+            winnerText.text = "Player 2";
             for (int i = 0; i < characters.Length; i++)
             {
                 string instanceName = characters[i].characterPrefab.name + "(Clone)";
-                if (camera.player1.gameObject.name == instanceName)
+                if (camera.player2.gameObject.name == instanceName)
                 {
                     winnerImage.sprite = characters[i].characterImageSprite;
                 }
@@ -32,11 +33,11 @@ public class WinManager : MonoBehaviour
         }
         else
         {
-            winnerText.text = "Player 2";
+            winnerText.text = "Player 1";
             for (int i = 0; i < characters.Length; i++)
             {
                 string instanceName = characters[i].characterPrefab.name + "(Clone)";
-                if (camera.player2.gameObject.name == instanceName)
+                if (camera.player1.gameObject.name == instanceName)
                 {
                     winnerImage.sprite = characters[i].characterImageSprite;
                 }

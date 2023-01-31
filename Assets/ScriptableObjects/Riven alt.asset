@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e86104ec4d12741aa48e997f6ad1ac, type: 3}
   m_Name: Riven alt
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 1162232717056227273, guid: d1feef4c3ff5cb1458174c321db7055e, type: 3}
+  characterPrefab: {fileID: 1162232717056227273, guid: d631e8d236d504840b9b225ca20063de, type: 3}
   nameSprite: {fileID: 21300000, guid: 1daa5a7e744fbda41bd464bcde3cd580, type: 3}
   nameSelectedSprite: {fileID: 21300000, guid: 2d036c4ed9d9a514d8366deb6e5a7c3c, type: 3}
   characterImageSprite: {fileID: 21300000, guid: 967b20f2c8ffdef4aa0fa444cd5f31e7, type: 3}
