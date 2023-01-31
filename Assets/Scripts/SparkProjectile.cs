@@ -106,7 +106,8 @@ public class SparkProjectile : MonoBehaviour
         }
         else
         {
-            SoundPlayer.PlaySound(1, "riven_trap_activate");
+            if(currentBeatsUntilPulse%2 == 0 )
+                SoundPlayer.PlaySound(1, "riven_trap_activate");
             sparks.SetFloat("Electricity Size", 0);
             sparks.SetFloat("Electricity Size 2", 1f);
         }
