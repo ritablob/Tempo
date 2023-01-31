@@ -9,6 +9,7 @@ TagManager:
   - PoleDancer
   - HitCanvas
   - Ground
+  - PLAYERCONFIGMAN
   layers:
   - Default
   - TransparentFX

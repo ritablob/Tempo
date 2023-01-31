@@ -26,7 +26,7 @@ public class Player_Menu : MonoBehaviour
 
     private void Awake()
     {
-        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<PlayerConfigManager>();
+        manager = GameObject.FindGameObjectWithTag("PLAYERCONFIGMAN").GetComponent<PlayerConfigManager>();
         manager.SpawnSelectionMenu(this);
         ignoreInputTime = Time.time + ignoreInputTime;
         manager.SetPlayerCharacter(characters[charSelected], playerID);
@@ -34,10 +34,17 @@ public class Player_Menu : MonoBehaviour
         portraitImage.sprite = characters[charSelected].characterImageSprite;
     }
 
+    private void OnLevelWasLoaded(int level)
+    {
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(90909, 909);
+        StartCoroutine(Delay());
+    }
+
     public void Ready()
     {
-        if(!isReady) 
-        { 
+        if(!isReady)
+        {
+            manager.SetPlayerCharacter(characters[charSelected], playerID);
             isReady = true; 
             manager.ReadyPlayer(playerID);
         }
@@ -88,5 +95,11 @@ public class Player_Menu : MonoBehaviour
             portraitImage.sprite = characters[charSelected].characterImageSprite;
 
         }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 }

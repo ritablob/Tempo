@@ -11,8 +11,9 @@ public class InitializeLevel : MonoBehaviour
     void Start()
     {
         var playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
-        Destroy(GameObject.FindGameObjectWithTag("Manager"));
-        for(int i = 0; i < playerConfigs.Length; i++)
+        Destroy(GameObject.FindGameObjectWithTag("PLAYERCONFIGMAN"));
+
+        for (int i = 0; i < playerConfigs.Length; i++)
         {
             var player = PlayerInput.Instantiate(playerConfigs[i].CharacterData.characterPrefab, i, controlScheme: playerConfigs[i].Input.currentControlScheme, -1, pairWithDevice: playerConfigs[i].Device);
             player.gameObject.GetComponent<CharacterController>().enabled = false;
