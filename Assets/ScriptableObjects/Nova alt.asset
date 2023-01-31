@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e86104ec4d12741aa48e997f6ad1ac, type: 3}
   m_Name: Nova alt
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 1679827282492537753, guid: 2f7207786558e3f4bbad24218d67586e, type: 3}
+  characterPrefab: {fileID: 1679827282492537753, guid: 0b2dd25287796da45a93792fb59ebfbd, type: 3}
   nameSprite: {fileID: 21300000, guid: 66f8391a0227dea459c394b7cb81af19, type: 3}
   nameSelectedSprite: {fileID: 21300000, guid: e056757ebb22e2147a408d5613c55105, type: 3}
   characterImageSprite: {fileID: 21300000, guid: 1e826dddbb79f4541964175bfc61fa3f, type: 3}

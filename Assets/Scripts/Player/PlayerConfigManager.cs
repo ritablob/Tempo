@@ -37,10 +37,11 @@ public class PlayerConfigManager : MonoBehaviour
     {
         return playerConfigs;
     }
-    public void SetPlayerCharacter(GameObject character, int index)
+    public void SetPlayerCharacter(GameObject character, int index, CharacterSelection selection)
     {
         playerConfigs[index].character = character;
-        Debug.Log(playerConfigs[index].character.name + "     " + index);
+        //Debug.Log(playerConfigs[index].character.name + "     " + index);
+        playerConfigs[index].scriptable = selection;
     }
     public void ReadyPlayer(int index)
     {
@@ -101,4 +102,5 @@ public class PlayerConfig
     public int PlayerIndex { get; set; }
     public bool IsReady { get; set; }
     public GameObject character { get; set; }
+    public CharacterSelection scriptable { get; set; }
 }
