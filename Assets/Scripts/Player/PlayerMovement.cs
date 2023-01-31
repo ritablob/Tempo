@@ -273,8 +273,8 @@ public class PlayerMovement : MonoBehaviour
         //if (anim.GetCurrentAnimatorStateInfo(1).IsTag("Exit")) { BlendLayers(); return; }
         particle1.SetActive(false); particle2.SetActive(false);
         anim.SetLayerWeight(0, 1); 
-        anim.SetLayerWeight(1, 0); 
-        anim.SetLayerWeight(2, 0);
+        anim.SetLayerWeight(1, 0.01f); 
+        anim.SetLayerWeight(2, 0.01f);
         anim.SetTrigger("DEFAULT"); 
     }
     public void AttackLayer() { anim.SetLayerWeight(0, 0); anim.SetLayerWeight(1, 1); anim.SetLayerWeight(2, 0); }
@@ -322,9 +322,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (blendLayers)
         {
-            anim.SetLayerWeight(0, Mathf.Clamp(anim.GetLayerWeight(0) + Time.deltaTime * 2, 0, 1));
-            anim.SetLayerWeight(1, Mathf.Clamp(anim.GetLayerWeight(1) - Time.deltaTime * 2, 0, 1));
-            anim.SetLayerWeight(2, Mathf.Clamp(anim.GetLayerWeight(2) - Time.deltaTime * 2, 0, 1));
+            anim.SetLayerWeight(0, Mathf.Clamp(anim.GetLayerWeight(0) + Time.deltaTime * 2, 0.01f, 1));
+            anim.SetLayerWeight(1, Mathf.Clamp(anim.GetLayerWeight(1) - Time.deltaTime * 2, 0.01f, 1));
+            anim.SetLayerWeight(2, Mathf.Clamp(anim.GetLayerWeight(2) - Time.deltaTime * 2, 0.01f, 1));
             if (blendLayers && anim.GetLayerWeight(0) == 1)
             {
                 anim.SetTrigger("DEFAULT");
@@ -479,5 +479,15 @@ public class PlayerMovement : MonoBehaviour
         canDodge = true;
         canMove = true;
     }
+
+    //public IEnumerator UnStuckDelay() //Frees the player if they are stuck
+    //{
+    //    yield return new WaitForSeconds(0.1f);
+
+    //    if (anim.GetLayerWeight(0) == 1 && !isAttacking)
+    //        EndAttack(); Debug.Log("Called");
+
+    //    StartCoroutine(UnStuckDelay());
+    //}
     #endregion
 }
