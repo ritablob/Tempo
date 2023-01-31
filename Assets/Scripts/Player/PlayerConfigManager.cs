@@ -11,18 +11,12 @@ public class PlayerConfigManager : MonoBehaviour
     [SerializeField] private List<PlayerConfig> playerConfigs;
 
     [SerializeField] private int maxPlayers = 2;
-    [SerializeField] GameObject menuSelectIconP1, menuSelectIconP2;
-    [SerializeField] private GameObject[] playerCharacers;
-    [SerializeField] private GameObject[] playerCharacterIcons;
-    [SerializeField] private string[] characterNames;
-    public GameObject[] charSelectPositions;
+    [SerializeField] GameObject selectionScreenPrefab;
+    [SerializeField] GameObject[] spawnPositions;
+    public Image readyIcon;
+    public Sprite[] readySprites;
 
-    [SerializeField] Image p1CharPreview, p2CharPreview;
-    [SerializeField] TextMeshProUGUI p1Title, p2Title;
-    [SerializeField] Animator anim;
-    [SerializeField] LoadLevel loadScript;
-
-    private GameObject icon1, icon2;
+    private GameObject selection1, selection2;
 
     public static PlayerConfigManager Instance { get; private set; }
 
@@ -41,58 +35,46 @@ public class PlayerConfigManager : MonoBehaviour
     {
         return playerConfigs;
     }
-    public void SetPlayerCharacter(int selectedPlayer, int index)
+    public void SetPlayerCharacter(CharacterSelection character, int index)
     {
-        playerConfigs[index].playerObject = playerCharacers[selectedPlayer];
-        playerConfigs[index].objectIndex = selectedPlayer;
-        playerConfigs[index].objectName = playerCharacers[selectedPlayer].name;
+        playerConfigs[index].CharacterData = character;
     }
     public void ReadyPlayer(int index)
     {
-        playerConfigs[index].isReady = true;
-        if (playerConfigs.Count == maxPlayers && playerConfigs.All(p => p.isReady == true))
+        playerConfigs[index].IsReady = true;
+        if (playerConfigs.Count == maxPlayers && playerConfigs.All(p => p.IsReady == true))
         {
-            loadScript.char1 = playerCharacterIcons[playerConfigs[0].objectIndex];
-            loadScript.text1 = characterNames[playerConfigs[0].objectIndex];
-            loadScript.char2 = playerCharacterIcons[playerConfigs[1].objectIndex];
-            loadScript.text2 = characterNames[playerConfigs[1].objectIndex];
-            
-            anim.SetTrigger("Ready");
+            readyIcon.sprite = readySprites[1];
+            // set ready to pink
+
         }
         
     }
     public void UnReadyPlayer(int index)
     {
-        playerConfigs[index].isReady = false;
-        anim.SetTrigger("UnReady");
+        readyIcon.sprite = readySprites[0];
+        playerConfigs[index].IsReady = false;
     }
     public void HandlePlayerJoin(PlayerInput pi) //Spawn player's char select
     {
-        if(!playerConfigs.Any(p => p.playerIndex == pi.playerIndex)) //If player not already added, add the player
+        if(!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex)) //If player not already added, add the player
         {
             pi.transform.SetParent(transform);
             playerConfigs.Add(new PlayerConfig(pi)); //Adds player config so we can store their input data
         }
     }
 
-    public void SpawnPlayerIcon(Player_Menu _playerMenuObject)
+    public void SpawnSelectionMenu(Player_Menu _playerMenuObject)
     {
         if(playerConfigs.Count == 1)
         {
-            icon1 = Instantiate(menuSelectIconP1, charSelectPositions[0].transform.position, charSelectPositions[0].transform.rotation);
-            icon1.transform.SetParent(charSelectPositions[0].transform);
-            _playerMenuObject.playerIcon = icon1;
-            _playerMenuObject.preview = p1CharPreview;
-            _playerMenuObject.charName = p1Title;
+            selection1 = Instantiate(selectionScreenPrefab, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
             _playerMenuObject.playerID = 0;
+            return;
         }
-        else
+        if(playerConfigs.Count == 0)
         {
-            icon2 = Instantiate(menuSelectIconP2, charSelectPositions[0].transform.position, charSelectPositions[0].transform.rotation);
-            icon2.transform.SetParent(charSelectPositions[0].transform);
-            _playerMenuObject.playerIcon = icon2;
-            _playerMenuObject.preview = p2CharPreview;
-            _playerMenuObject.charName = p2Title;
+            selection2 = Instantiate(selectionScreenPrefab, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation);
             _playerMenuObject.playerID = 1;
         }
     }
@@ -102,16 +84,14 @@ public class PlayerConfig
 {
     public PlayerConfig(PlayerInput pi)
     {
-        playerIndex = pi.playerIndex;
-        input = pi;
-        device = input.user.pairedDevices[0];
+        PlayerIndex = pi.playerIndex;
+        Input = pi;
+        Device = Input.user.pairedDevices[0];
     }
 
-    public PlayerInput input { get; set; }
-    public InputDevice device { get; set; }
-    public int playerIndex { get; set; }
-    public bool isReady { get; set; }
-    public GameObject playerObject { get; set; }
-    public int objectIndex { get; set; }
-    public string objectName { get; set; }
+    public PlayerInput Input { get; set; }
+    public InputDevice Device { get; set; }
+    public int PlayerIndex { get; set; }
+    public bool IsReady { get; set; }
+    public CharacterSelection CharacterData { get; set; }
 }

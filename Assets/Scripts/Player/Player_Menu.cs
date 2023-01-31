@@ -8,25 +8,30 @@ using UnityEngine.SceneManagement;
 
 public class Player_Menu : MonoBehaviour
 {
+    // is attached to character selection menu
+    /*To-do:
+     * - 4 characters (nova, nova alt., riven, riven alt.)
+     * - move between scriptable objects -
+     */
     private int charSelected;
     private float ignoreInputTime = 0.33f;
     private bool isReady;
 
     public PlayerConfigManager manager;
-    public GameObject playerIcon;
-    public Image preview;
-    public TextMeshProUGUI charName;
+    public CharacterSelection[] characters;
+    public Image nameImage;
+    public Image portraitImage;
     public int playerID;
+
 
     private void Awake()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<PlayerConfigManager>();
-        manager.SpawnPlayerIcon(this);
+        manager.SpawnSelectionMenu(this);
         ignoreInputTime = Time.time + ignoreInputTime;
-        manager.SetPlayerCharacter(charSelected, playerID);
-        preview.sprite = manager.charSelectPositions[charSelected].GetComponent<Image>().sprite;
-        preview.color = new Color(255, 255, 255, 255);
-        charName.text = manager.charSelectPositions[charSelected].name;
+        manager.SetPlayerCharacter(characters[charSelected], playerID);
+        nameImage.sprite = characters[charSelected].nameSprite;
+        portraitImage.sprite = characters[charSelected].characterImageSprite;
     }
 
     public void Ready()
@@ -34,7 +39,6 @@ public class Player_Menu : MonoBehaviour
         if(!isReady) 
         { 
             isReady = true; 
-            preview.gameObject.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
             manager.ReadyPlayer(playerID);
         }
     }
@@ -43,32 +47,46 @@ public class Player_Menu : MonoBehaviour
         if(isReady) 
         { 
             isReady = false; 
-            preview.gameObject.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             manager.UnReadyPlayer(playerID);
         }
     }
-    public void Left(InputAction.CallbackContext ctx) //Switch between two portraits
+    public void Left(InputAction.CallbackContext ctx) // switch between character profiles
     {
         if(charSelected > 0 && ctx.performed && !isReady) 
         {
             ignoreInputTime = Time.time + ignoreInputTime;
             charSelected--;
-            manager.SetPlayerCharacter(charSelected, playerID);
-            playerIcon.transform.SetParent(manager.charSelectPositions[charSelected].transform);
-            preview.sprite = manager.charSelectPositions[charSelected].GetComponent<Image>().sprite;
-            charName.text = manager.charSelectPositions[charSelected].name;
+            manager.SetPlayerCharacter(characters[charSelected], playerID);
+            nameImage.sprite = characters[charSelected].nameSprite;
+            portraitImage.sprite = characters[charSelected].characterImageSprite;
+        }
+        else if (ctx.performed && !isReady)
+        {
+            ignoreInputTime = Time.time + ignoreInputTime;
+            charSelected = characters.Length - 1;
+            manager.SetPlayerCharacter(characters[charSelected], playerID);
+            nameImage.sprite = characters[charSelected].nameSprite;
+            portraitImage.sprite = characters[charSelected].characterImageSprite;
         }
     }
-    public void Right(InputAction.CallbackContext ctx) //
+    public void Right(InputAction.CallbackContext ctx) // switch between character profiles
     {
-        if (charSelected < manager.charSelectPositions.Length - 1 && ctx.performed && !isReady) 
+        if (charSelected < characters.Length - 1 && ctx.performed && !isReady) 
         {
             ignoreInputTime = Time.time + ignoreInputTime;
             charSelected++;
-            manager.SetPlayerCharacter(charSelected, playerID);
-            playerIcon.transform.SetParent(manager.charSelectPositions[charSelected].transform);
-            preview.sprite = manager.charSelectPositions[charSelected].GetComponent<Image>().sprite;
-            charName.text = manager.charSelectPositions[charSelected].name;
+            manager.SetPlayerCharacter(characters[charSelected], playerID);
+            nameImage.sprite = characters[charSelected].nameSprite;
+            portraitImage.sprite = characters[charSelected].characterImageSprite;
+        }
+        else if (ctx.performed && !isReady)
+        {
+            ignoreInputTime = Time.time + ignoreInputTime;
+            charSelected = 0;
+            manager.SetPlayerCharacter(characters[charSelected], playerID);
+            nameImage.sprite = characters[charSelected].nameSprite;
+            portraitImage.sprite = characters[charSelected].characterImageSprite;
+
         }
     }
 }
