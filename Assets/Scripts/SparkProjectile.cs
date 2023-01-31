@@ -30,7 +30,7 @@ public class SparkProjectile : MonoBehaviour
         if (rhythmTracker.spotlightGroupOne.activeInHierarchy && isTrap && orb.transform.localScale.x != 1 && dmgScript.dealtDamage == false)
         {
             dmgScript.gameObject.SetActive(true);
-            SoundPlayer.PlaySound(1, "riven trap swell");
+       
             SetOrbSize(1);
             dmgScript.dealtDamage = false;
             UpdatePulse();
@@ -47,7 +47,6 @@ public class SparkProjectile : MonoBehaviour
         if (speed < 0)
         {
             SoundPlayer.PlaySound(1, "riven_trap_stop");
-            SoundPlayer.PlaySound(1, "riven_trap_activate");
             orb.SetActive(true);
             shockwave.SetActive(false);
             dmgScript.isTrap = true;
@@ -98,12 +97,14 @@ public class SparkProjectile : MonoBehaviour
         currentBeatsUntilPulse++;
         if (currentBeatsUntilPulse >= pulseFrequency)
         {
+            SoundPlayer.PlaySound(1, "riven trap swell");
             sparks.SetFloat("Electricity Size", 4);
             sparks.SetFloat("Electricity Size 2", 5);
             currentBeatsUntilPulse = 0;
         }
         else
         {
+            SoundPlayer.PlaySound(1, "riven_trap_activate");
             sparks.SetFloat("Electricity Size", 0);
             sparks.SetFloat("Electricity Size 2", 1f);
         }

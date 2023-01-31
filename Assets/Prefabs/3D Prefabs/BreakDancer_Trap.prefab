@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e503c1572eff544a813f737312ffad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 1.875
   speed: 7.5
   damageAsTrap: 15
   distance: 3
@@ -103,14 +102,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
   dealtDamage: 0
-  baseDamage: 10
+  baseDamage: 25
   hitStun: 0.5
-  knockBack: 2
+  knockBack: 0
   isTrap: 0
   exposing: 0
   stunning: 0
-  bleeding: 0
-  weaken: 0
+  bleeding: 1
+  weaken: 1
 --- !u!114 &6278972665451299874
 MonoBehaviour:
   m_ObjectHideFlags: 0
