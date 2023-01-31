@@ -13,10 +13,10 @@ public class PlayerUIController : MonoBehaviour
     public List<GameObject> knives;
     public GameObject portrait;
     [Header("0 - PoleDancer, 1 - BreakDancer")]
-    public List<Sprite> portraitImages;
     public GameObject slider2Parent;
     public Image ultimateGlow;
     public float glowExpansionOnFullUltimate = 1.5f;
+    public WinManager winRef;
 
     private DynamicCamera camera;
     private Transform[] slider2Children;
@@ -47,6 +47,7 @@ public class PlayerUIController : MonoBehaviour
                 Debug.Log("player 1 " + playerMovement.gameObject.name);
                 SetUpPlayerUI(playerMovement.gameObject.name);
                 doneSettingUp = true;
+
             }
         }
         else if (camera.player2 != null)
@@ -65,31 +66,42 @@ public class PlayerUIController : MonoBehaviour
     }
     void SetUpPlayerUI(string objectName) // depending on which character player is using, UI is customized
     {
-        int no;
-        if (isPlayerOneUI)
-        {
-            no = 0;
-        }
-        else
-        {
-            no = 1;
-        }
         if (objectName == "PoleDancer(Clone)")
         {
-            text.text = "Riven";
-            //portrait.GetComponent<Image>().sprite = portraitImages[0];
+            //text.text = "Riven";
+            //portrait.GetComponent<Image>().sprite = winRef.characters[0].characterIconSprite;
             zap.SetActive(true);
             knives[0].SetActive(false);
             knives[1].SetActive(false);
         }
-        else
+        else if (objectName == "PoleDancer 2(Clone)")
         {
-            text.text = "Nova";
-            //portrait.GetComponent<Image>().sprite = portraitImages[1];
+            //text.text = "Riven";
+            //portrait.GetComponent<Image>().sprite = winRef.characters[1].characterIconSprite;
+            zap.SetActive(true);
+            knives[0].SetActive(false);
+            knives[1].SetActive(false);
+        }
+        else if (objectName == "Nova(Clone)")
+        {
+            //text.text = "Nova";
+            //portrait.GetComponent<Image>().sprite = winRef.characters[2].characterIconSprite;
             zap.SetActive(false);
             knives[0].SetActive(true);
             knives[1].SetActive(true);
         }
+        else
+        {
+            //text.text = "Nova";
+            //portrait.GetComponent<Image>().sprite = winRef.characters[3].characterIconSprite;
+            zap.SetActive(false);
+            knives[0].SetActive(true);
+            knives[1].SetActive(true);
+        }
+    }
+    public void ChangeIcon(Sprite icon)
+    {
+        portrait.GetComponent<Image>().sprite = icon;
     }
     void UltimateSlider(PlayerMovement pMovement)
     {
