@@ -13,10 +13,12 @@ public class SparkProjectile : MonoBehaviour
     [SerializeField] GameObject orb;
     [SerializeField] GameObject shockwave;
     [SerializeField] VisualEffect sparks;
+    [SerializeField] private int pulseFrequency = 8;
 
     private Vector3 direction;
     private bool isTrap;
     private RhythmBlinkingLights rhythmTracker;
+    private int currentBeatsUntilPulse = 0;
 
     private void Start()
     {
@@ -31,16 +33,14 @@ public class SparkProjectile : MonoBehaviour
             SoundPlayer.PlaySound(1, "riven trap swell");
             SetOrbSize(1);
             dmgScript.dealtDamage = false;
-            sparks.SetFloat("Electricity Size", 4);
-            sparks.SetFloat("Electricity Size 2", 5);
+            UpdatePulse();
             return;
         }
         if (isTrap && rhythmTracker.spotlightGroupTwo.activeInHierarchy)
         {
             dmgScript.gameObject.SetActive(false);
             SetOrbSize(0.5f);
-            sparks.SetFloat("Electricity Size", 0);
-            sparks.SetFloat("Electricity Size 2", 1f);
+            UpdatePulse();
             return;
         }
 
@@ -91,5 +91,21 @@ public class SparkProjectile : MonoBehaviour
     {
         direction = transform.forward; direction.y = 0;
         dmgScript.playerRef = player;
+    }
+
+    private void UpdatePulse()
+    {
+        currentBeatsUntilPulse++;
+        if (currentBeatsUntilPulse >= pulseFrequency)
+        {
+            sparks.SetFloat("Electricity Size", 4);
+            sparks.SetFloat("Electricity Size 2", 5);
+            currentBeatsUntilPulse = 0;
+        }
+        else
+        {
+            sparks.SetFloat("Electricity Size", 0);
+            sparks.SetFloat("Electricity Size 2", 1f);
+        }
     }
 }
