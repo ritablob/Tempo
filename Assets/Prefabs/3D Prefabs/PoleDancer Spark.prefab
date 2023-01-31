@@ -410,8 +410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance: 2
-  distance: 4
-  travelTime: 1
+  speed: 5.15
+  travelTime: 0.4
   damageAsTrap: 30
   dmgScript: {fileID: 5565559577830061274}
   orb: {fileID: 4068401878828728926}
@@ -442,7 +442,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bb080670baa78b449b850dfc7dea14ba, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.52
+  m_Volume: 0.21
   m_Pitch: 1
   Loop: 1
   Mute: 0
