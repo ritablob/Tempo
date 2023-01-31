@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isLaunching;
     private bool canDodge = true;
     private bool blendLayers;
+    private WinManager win;
     #endregion
 
     //Start functions
@@ -443,9 +444,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (HP <= 0)
         {
-            if (isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Riven"); }
-            if (!isPoleDancer) { SoundPlayer.PlaySound(playerIndex, $"death_Nova"); }
+            if (isPoleDancer) 
+            { 
+                SoundPlayer.PlaySound(playerIndex, $"death_Riven"); 
+            }
+            if (!isPoleDancer) 
+            {
+                SoundPlayer.PlaySound(playerIndex, $"death_Nova"); 
+            }
             SoundPlayer.PlaySound(playerIndex, $"KNOCKOUT");
+            win.playerIndex = playerIndex;
+            win.WinScreen();
         }
     }
     #endregion
