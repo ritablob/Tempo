@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PauseButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     PauseMenu pauseMenu;
+    WinManager winMenu;
     public Sprite clickedPointer;
     private Pointer pointer;
 
@@ -30,7 +31,16 @@ public class PauseButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void OnSelect(BaseEventData eventData)
     {
-        Instantiate(pauseMenu.pointer.gameObject, gameObject.transform);
+        if (pauseMenu != null)
+        {
+            Instantiate(pauseMenu.pointer.gameObject, gameObject.transform);
+        }
+        else
+        {
+            GameObject pointer = Instantiate(winMenu.pointer.gameObject, gameObject.transform);
+            pointer.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
+        }
+
 
     }
 }
