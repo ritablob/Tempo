@@ -22,7 +22,12 @@ public class SettingsScript : MonoBehaviour
     }
     public void ExitButton()
     {
+        StartCoroutine(WaitExit());
+    }
+    public IEnumerator WaitExit()
+    {
         SoundPlayer.PlaySoundMenu("click");
+        yield return new WaitForSeconds(0.2f);
         gameObject.SetActive(false);
     }
     private void OnEnable()

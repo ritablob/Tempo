@@ -31,6 +31,7 @@ public class PauseButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void OnSelect(BaseEventData eventData)
     {
+        Debug.Log("selected");
         if (pauseMenu != null)
         {
             Instantiate(pauseMenu.pointer.gameObject, gameObject.transform);
