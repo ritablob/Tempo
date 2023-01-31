@@ -19,12 +19,14 @@ public class PlayerIngameMenu : MonoBehaviour
         {
             //localMap.Disable();
             playerMovement.playerInput.currentActionMap = playerMovement.playerInput.actions.actionMaps[1];
+            Debug.Log("current action map = " + playerMovement.playerInput.currentActionMap);
             inGameManager.pauseMenu.SetActive(true);
         }
         else
         {
             //localMap.Enable();
             playerMovement.playerInput.currentActionMap = playerMovement.playerInput.actions.actionMaps[0];
+            Debug.Log("current action map = " + playerMovement.playerInput.currentActionMap);
             inGameManager.pauseMenu.SetActive(false);
         }
         inGameManager.settingMenu.SetActive(false);

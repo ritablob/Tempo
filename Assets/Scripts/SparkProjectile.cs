@@ -6,14 +6,14 @@ using UnityEngine.VFX;
 public class SparkProjectile : MonoBehaviour
 {
     [SerializeField] float resistance;
-    [SerializeField] float distance;
+    [SerializeField] float speed;
     [SerializeField] float travelTime;
     [SerializeField] float damageAsTrap;
     [SerializeField] Damage dmgScript;
     [SerializeField] GameObject orb;
     [SerializeField] GameObject shockwave;
     [SerializeField] VisualEffect sparks;
-    [SerializeField] private int pulseFrequency = 8;
+    [SerializeField] private int pulseFrequency = 4;
 
     private Vector3 direction;
     private bool isTrap;
@@ -62,7 +62,7 @@ public class SparkProjectile : MonoBehaviour
         if (!isTrap)
         {
             time += Time.deltaTime;
-            transform.Translate((Vector3.forward * Time.deltaTime * distance) - (new Vector3(0, Time.deltaTime / 4, 0)));
+            transform.Translate((Vector3.forward * Time.deltaTime * speed) - (new Vector3(0, Time.deltaTime / 4, 0)));
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3, 3), transform.position.y, Mathf.Clamp(transform.position.z, -2, 2));
         }
     }
