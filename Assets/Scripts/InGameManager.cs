@@ -7,4 +7,5 @@ public class InGameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject settingMenu;
+    public WinManager winScript;
 }

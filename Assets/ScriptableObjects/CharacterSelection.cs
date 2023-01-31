@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterSelection : ScriptableObject
 {
     public GameObject characterPrefab;
-
+    public string nameText;
     public Sprite nameSprite;
     public Sprite nameSelectedSprite;
 
