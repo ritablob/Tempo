@@ -9,9 +9,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerConfigManager : MonoBehaviour
 {
-    [SerializeField] private List<PlayerConfig> playerConfigs;
+    [SerializeField] public List<PlayerConfig> playerConfigs;
 
-    [SerializeField] private int maxPlayers = 2;
+    [SerializeField] public int maxPlayers = 2;
     [SerializeField] GameObject selectionScreenPrefab;
     [SerializeField] GameObject[] spawnPositions;
     public int readyPlayers = 0;
@@ -37,22 +37,22 @@ public class PlayerConfigManager : MonoBehaviour
     {
         return playerConfigs;
     }
-    public void SetPlayerCharacter(CharacterSelection character, int index)
+    public void SetPlayerCharacter(GameObject character, int index)
     {
-        playerConfigs[index].CharacterData = character;
+        playerConfigs[index].character = character;
+        Debug.Log(playerConfigs[index].character.name + "     " + index);
     }
     public void ReadyPlayer(int index)
     {
         playerConfigs[index].IsReady = true;
         readyPlayers++;
 
-        if (playerConfigs.Count == maxPlayers && readyPlayers == maxPlayers)
+        if (readyPlayers == maxPlayers)
         {
             readyIcon.sprite = readySprites[1];
             SceneManager.LoadScene("Arena", LoadSceneMode.Single);
             // set ready to pink
         }
-        
     }
     public void UnReadyPlayer(int index)
     {
@@ -62,12 +62,9 @@ public class PlayerConfigManager : MonoBehaviour
     }
     public void HandlePlayerJoin(PlayerInput pi) //Spawn player's char select
     {
-        if(!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex)) //If player not already added, add the player
-        {
-            pi.transform.SetParent(spawnPositions[pi.playerIndex].transform);
-            pi.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-            playerConfigs.Add(new PlayerConfig(pi)); //Adds player config so we can store their input data
-        }
+        pi.transform.SetParent(spawnPositions[pi.playerIndex].transform);
+        pi.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        playerConfigs.Add(new PlayerConfig(pi)); //Adds player config so we can store their input data
     }
 
     public void SpawnSelectionMenu(Player_Menu _playerMenuObject)
@@ -81,18 +78,12 @@ public class PlayerConfigManager : MonoBehaviour
         }
 
         if (!canSpawn) { return; }
+
         Vector3 empty = new Vector3(0, 0, 0);
-        if(playerConfigs.Count == 1)
-        {
-            selection1 = Instantiate(selectionScreenPrefab, empty, spawnPositions[0].transform.rotation);
-            _playerMenuObject.playerID = 0;
-            return;
-        }
-        if (playerConfigs.Count == 2)
-        {
-            selection2 = Instantiate(selectionScreenPrefab, empty, spawnPositions[1].transform.rotation);
-            _playerMenuObject.playerID = 1;
-        }
+
+        selection1 = Instantiate(selectionScreenPrefab, empty, spawnPositions[playerConfigs.Count - 1].transform.rotation);
+        _playerMenuObject.playerID = playerConfigs.Count - 1;
+        return;
     }
 }
 
@@ -109,5 +100,5 @@ public class PlayerConfig
     public InputDevice Device { get; set; }
     public int PlayerIndex { get; set; }
     public bool IsReady { get; set; }
-    public CharacterSelection CharacterData { get; set; }
+    public GameObject character { get; set; }
 }

@@ -331,12 +331,18 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if(ourDeadTime < 0 && canDodge && anim.GetLayerWeight(0) == 1 && anim.GetLayerWeight(1) == 0)
+        {
+            canMove = true;
+        }
+
         if ((!isAttacking && canMove) || (canMove && isAttacking)) //If the player is not attacking or parrying, run general movement check
         {
             HandleMovement();
             HandleRotation();
             return;
         }
+
         
         if (isLaunching) //If the player needs to be launched, move them
         {

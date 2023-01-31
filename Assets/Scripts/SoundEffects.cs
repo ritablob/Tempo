@@ -66,14 +66,14 @@ public static class SoundPlayer
         if (SoundEffects.Instance)
         {
 
-            Sound sound = GetSound(soundName, playerConfigs[playerIndex].CharacterData.characterPrefab.name);
+            Sound sound = GetSound(soundName, playerConfigs[playerIndex].character.name);
             //Debug.Log(playerConfigs[playerIndex].objectName);
             if (sound != null)
             {
                 volume = setVolume;
                 volume = 1;
                 GameObject soundObject = new GameObject(soundName); // creates sound gameobject
-                soundObject.transform.position = playerConfigs[playerIndex].CharacterData.characterPrefab.transform.position;
+                soundObject.transform.position = playerConfigs[playerIndex].character.transform.position;
                 AudioSource audioSource = soundObject.AddComponent<AudioSource>();
                 audioSource.outputAudioMixerGroup = SoundEffects.Instance.audioMixer;
 
