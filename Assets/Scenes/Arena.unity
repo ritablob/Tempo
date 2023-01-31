@@ -35200,87 +35200,87 @@ MonoBehaviour:
     volume: 1
   SoundEffectsBreakdancer:
   - soundName: nova trap spikes
-    audioClip: {fileID: 8300000, guid: 30188c662272de643afce612f9b8e60a, type: 3}
+    audioClip: {fileID: 8300000, guid: 9c91c73d1fb86664782589f56f9b615f, type: 3}
     loop: 0
     volume: 1
   - soundName: nova trap throw
-    audioClip: {fileID: 8300000, guid: a38f48fd099d6174d96b72c268121536, type: 3}
+    audioClip: {fileID: 8300000, guid: 7e9604fb8484e8e459cc2c724d8cf705, type: 3}
     loop: 0
     volume: 1
   - soundName: nova trap land
-    audioClip: {fileID: 8300000, guid: 9e9ae9682ba5f724585ac535bc12cea9, type: 3}
+    audioClip: {fileID: 8300000, guid: 58fc2987205f15c48b7ecec11e0d9dd7, type: 3}
     loop: 0
     volume: 1
   - soundName: nova trap pickup
-    audioClip: {fileID: 8300000, guid: 043cd5c556b0be2449bb7d95cdbe3d86, type: 3}
+    audioClip: {fileID: 8300000, guid: 8dd370f7ddd9e8a4b890e927f5db66ac, type: 3}
     loop: 0
     volume: 1
   - soundName: nova trap pierce
-    audioClip: {fileID: 8300000, guid: 04a3114240585c242903136dcca78f78, type: 3}
+    audioClip: {fileID: 8300000, guid: fb0b1f3233f46a74b8d714ec62e4a678, type: 3}
     loop: 0
     volume: 1
   - soundName: riven trap throw
-    audioClip: {fileID: 8300000, guid: d97f773290e04e845a0bdd0bc39325ff, type: 3}
+    audioClip: {fileID: 8300000, guid: 4aa15f30b7ccc0041a24a0e789ec7021, type: 3}
     loop: 0
     volume: 1
   - soundName: riven trap pickup
-    audioClip: {fileID: 8300000, guid: 30004df3c1d263c43b357aac67672e3b, type: 3}
+    audioClip: {fileID: 8300000, guid: 57488c98483d0c741b9b29a6df268378, type: 3}
     loop: 0
     volume: 1
   - soundName: riven trap swell
-    audioClip: {fileID: 8300000, guid: 29705777a33ed8a45b0bf5d706fb79c7, type: 3}
+    audioClip: {fileID: 8300000, guid: c5217831f0732874a96330037b836022, type: 3}
     loop: 0
     volume: 1
   - soundName: stunned
-    audioClip: {fileID: 8300000, guid: 3c279c80937c7834bbdc01a680a7786a, type: 3}
+    audioClip: {fileID: 8300000, guid: 4247574d1cda23a439fc5bbe932aeacd, type: 3}
     loop: 0
     volume: 1
   - soundName: death_Riven
-    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    audioClip: {fileID: 8300000, guid: 9393d845467a0004f914a56bd9809f48, type: 3}
     loop: 0
     volume: 1
   - soundName: death_Nova
-    audioClip: {fileID: 8300000, guid: a38f48fd099d6174d96b72c268121536, type: 3}
+    audioClip: {fileID: 8300000, guid: 9393d845467a0004f914a56bd9809f48, type: 3}
     loop: 0
     volume: 1
   - soundName: Riven_Light
-    audioClip: {fileID: 8300000, guid: 4ba800a5a2f559943b1a76f9d82fcce6, type: 3}
+    audioClip: {fileID: 8300000, guid: 150e4d88f3e61de479bd3cf4cd0e997d, type: 3}
     loop: 0
     volume: 1
   - soundName: Riven_Heavy
-    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    audioClip: {fileID: 8300000, guid: 150e4d88f3e61de479bd3cf4cd0e997d, type: 3}
     loop: 0
     volume: 1
   - soundName: Nova_Light
-    audioClip: {fileID: 8300000, guid: 4ba800a5a2f559943b1a76f9d82fcce6, type: 3}
+    audioClip: {fileID: 8300000, guid: 1f171b3bd1947b64abcc8fc095d747f1, type: 3}
     loop: 0
     volume: 1
   - soundName: Nova_Heavy
-    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    audioClip: {fileID: 8300000, guid: 39e5e69f53b265c47aa8109775492c7c, type: 3}
     loop: 0
     volume: 1
   - soundName: Pole_Floor
-    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    audioClip: {fileID: 8300000, guid: 87cb40b8a67ee0e46bcd0e00cb60e5d6, type: 3}
     loop: 0
     volume: 1
   - soundName: Pole_Swing
-    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    audioClip: {fileID: 8300000, guid: bd4add00169f2a249bd792120d7bf05f, type: 3}
     loop: 0
     volume: 1
   - soundName: Riven_Attack_Hit
-    audioClip: {fileID: 8300000, guid: 1613b839dbb943440a2d14858cf41198, type: 3}
+    audioClip: {fileID: 8300000, guid: ececa0fb3d25afe48a830a21a788a763, type: 3}
     loop: 0
     volume: 1
   - soundName: Nova_Attack_Hit
-    audioClip: {fileID: 8300000, guid: 1613b839dbb943440a2d14858cf41198, type: 3}
+    audioClip: {fileID: 8300000, guid: ececa0fb3d25afe48a830a21a788a763, type: 3}
     loop: 0
     volume: 1
   - soundName: Nova_Floor
-    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    audioClip: {fileID: 8300000, guid: 355c44501cba15e4aafead857b461782, type: 3}
     loop: 0
     volume: 1
   - soundName: Nova_Attack_Kick
-    audioClip: {fileID: 8300000, guid: 8ee1b2b13eda07143a88bdae769d7940, type: 3}
+    audioClip: {fileID: 8300000, guid: e0a27756af55ceb4188cedd158aab533, type: 3}
     loop: 0
     volume: 1
   - soundName: KNOCKOUT
@@ -35292,15 +35292,15 @@ MonoBehaviour:
     loop: 0
     volume: 1
   - soundName: riven_trap_stop
-    audioClip: {fileID: 8300000, guid: 3c279c80937c7834bbdc01a680a7786a, type: 3}
+    audioClip: {fileID: 8300000, guid: a5f88800e668c95429a299eb4651f0cb, type: 3}
     loop: 0
     volume: 1
   - soundName: riven_trap_activate
-    audioClip: {fileID: 8300000, guid: 127fe724e6317224485153f75218bc33, type: 3}
+    audioClip: {fileID: 8300000, guid: bb080670baa78b449b850dfc7dea14ba, type: 3}
     loop: 0
     volume: 1
   - soundName: audience
-    audioClip: {fileID: 8300000, guid: 63ec4feb9d1ce514ab0ada2bba1194da, type: 3}
+    audioClip: {fileID: 8300000, guid: 9708087639422dd4b8b47404e0b1bc48, type: 3}
     loop: 0
     volume: 1
   soundDestroyDelay: 0.3

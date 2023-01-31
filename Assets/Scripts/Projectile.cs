@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] float damageAsTrap;
-    [SerializeField] float distance;
+    [SerializeField] float speed;
     [SerializeField] float travelTime;
     public GameObject knife;
     public GameObject trap;
@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        if (time >= 0.5f)
+        if (time >= travelTime)
         {
             time = 0;
             isTrap = true;
@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
         {
             transform.localScale = new Vector3(0.7972631f, 0.7972631f, 0.7972631f);
             time += Time.deltaTime;
-            transform.Translate((Vector3.forward * Time.deltaTime * distance) - (new Vector3(0, Time.deltaTime / 2, 0)));
+            transform.Translate((Vector3.forward * Time.deltaTime * speed) - (new Vector3(0, Time.deltaTime / 2, 0)));
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3, 3), transform.position.y, Mathf.Clamp(transform.position.z, -2, 2));
             return;
         }

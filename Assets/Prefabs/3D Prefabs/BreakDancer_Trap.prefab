@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5456105016083905498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.1, y: 3.1, z: 3.1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1416646957796509106}
@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAsTrap: 30
-  distance: 4
-  travelTime: 0.5
+  speed: 10
+  travelTime: 0.25
   knife: {fileID: 1831609228035492792}
   trap: {fileID: 1793312585687834376}
 --- !u!95 &3400335744590048248
