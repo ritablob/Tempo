@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Nova
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 1679827282492537753, guid: 4e53befae0ac9834b87920ea755929b1, type: 3}
+  nameText: Nova
   nameSprite: {fileID: 21300000, guid: 66f8391a0227dea459c394b7cb81af19, type: 3}
   nameSelectedSprite: {fileID: 21300000, guid: e056757ebb22e2147a408d5613c55105, type: 3}
   characterImageSprite: {fileID: 21300000, guid: 141e5f26cf873aa4cbb951078bea999a, type: 3}

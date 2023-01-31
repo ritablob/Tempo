@@ -29,6 +29,13 @@ public class PlayerIngameMenu : MonoBehaviour
         }
         inGameManager.settingMenu.SetActive(false);
     }
+    public void WinSetup()
+    {
+        if (playerMap.enabled)
+        {
+            playerMovement.playerInput.currentActionMap = playerMovement.playerInput.actions.actionMaps[1];
+        }
+    }
     public void SetPlayerMapBack()
     {
         playerMovement.playerInput.currentActionMap = playerMovement.playerInput.actions.actionMaps[0];
