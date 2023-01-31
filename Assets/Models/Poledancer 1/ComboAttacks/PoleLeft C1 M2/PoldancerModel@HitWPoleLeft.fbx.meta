@@ -74,7 +74,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.24637677
+      - time: 0.2502678
         functionName: EndLaunch
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -94,6 +94,13 @@ ModelImporter:
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
+        messageOptions: 0
+      - time: 0.056241423
+        functionName: MoveToLocation
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 11
         messageOptions: 0
       transformMask: []
       maskType: 3

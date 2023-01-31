@@ -102,6 +102,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.015089169
+        functionName: MoveToLocation
+        data: 
+        objectReferenceParameter: {fileID: 7587967149990062974, guid: 61eb0042f53f3a34fba1524ed91efd1b, type: 3}
+        floatParameter: 0
+        intParameter: 6
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
