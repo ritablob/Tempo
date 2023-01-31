@@ -8,13 +8,15 @@ using UnityEngine.UI;
 public class WinManager : MonoBehaviour
 {
     public int playerIndex;
+    public GameObject winShtufish;
     public TextMeshProUGUI winnerText;
     public Image winnerImage;
     [SerializeField] DynamicCamera camera;
     public CharacterSelection[] characters;
+
     public void WinScreen()
     {
-        gameObject.SetActive(true);
+        winShtufish.SetActive(true);
         if (playerIndex == 0)
         {
             winnerText.text = "Player 1";

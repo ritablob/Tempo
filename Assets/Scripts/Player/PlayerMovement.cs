@@ -72,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
     #region
     void Awake()
     {
+        win = FindObjectOfType<WinManager>();
         EventSystem.Instance.AddEventListener("DeadTime", SetOurDeadTime);
         EventSystem.Instance.AddEventListener("New Beat", NewBeat);
         playerControls = new PlayerControls();
@@ -330,11 +331,6 @@ public class PlayerMovement : MonoBehaviour
                 EndAttack();
                 blendLayers = false;
             }
-        }
-
-        if(ourDeadTime < 0 && canDodge && anim.GetLayerWeight(0) == 1 && anim.GetLayerWeight(1) == 0)
-        {
-            canMove = true;
         }
 
         if ((!isAttacking && canMove) || (canMove && isAttacking)) //If the player is not attacking or parrying, run general movement check

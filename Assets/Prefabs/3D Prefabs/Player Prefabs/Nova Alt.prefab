@@ -591,9 +591,9 @@ MonoBehaviour:
   particle2: {fileID: 3201245135185276086}
   isPoleDancer: 0
   specialCharges: 2
-  ultimateLimit: 225
-  HP: 450
-  speed: 2.5
+  ultimateLimit: 100
+  HP: 5
+  speed: 1.8
   charController: {fileID: 1679827282492537751}
   playerColor: {r: 0, g: 0, b: 0, a: 0}
   playerInput: {fileID: 0}

@@ -4851,7 +4851,7 @@ RectTransform:
   - {fileID: 1534784616}
   - {fileID: 1578312343}
   - {fileID: 2016927396}
-  m_Father: {fileID: 1899248040}
+  m_Father: {fileID: 1172894138}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -31228,6 +31228,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.010000007, y: 0.02, z: 0.0010000007}
   m_Center: {x: -0.000000004656613, y: 0, z: -0.000000014901161}
+--- !u!1 &1172894137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1172894138}
+  m_Layer: 0
+  m_Name: WinShtuffish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1172894138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172894137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 171933577}
+  m_Father: {fileID: 1899248040}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1173450230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53192,7 +53224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1899248040
 Transform:
   m_ObjectHideFlags: 0
@@ -53205,7 +53237,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 171933577}
+  - {fileID: 1172894138}
   m_Father: {fileID: 1067861937}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -53221,6 +53253,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5349c5975b48b4da06148adf54a29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIndex: 0
+  winShtufish: {fileID: 1172894137}
+  winnerText: {fileID: 956287354}
+  winnerImage: {fileID: 1534784617}
+  camera: {fileID: 1250743005}
+  characters:
+  - {fileID: 11400000, guid: acc2518fd3a098542b20d53451ce4803, type: 2}
+  - {fileID: 11400000, guid: 4a043f374d629fd468f5678b712c464c, type: 2}
+  - {fileID: 11400000, guid: 42cd1c9cd1342ec4a8e52ef3cb754ecb, type: 2}
+  - {fileID: 11400000, guid: 97d9604220f9b3b40a33886f525405b0, type: 2}
 --- !u!1001 &1900510776
 PrefabInstance:
   m_ObjectHideFlags: 0
