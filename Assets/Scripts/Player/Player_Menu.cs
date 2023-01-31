@@ -45,6 +45,7 @@ public class Player_Menu : MonoBehaviour
     {
         if(!isReady && manager.playerConfigs.Count == manager.maxPlayers)
         {
+            gameObject.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
             manager.SetPlayerCharacter(characters[charSelected].characterPrefab, playerID, characters[charSelected]);
             isReady = true; 
             manager.ReadyPlayer(playerID);
@@ -54,7 +55,8 @@ public class Player_Menu : MonoBehaviour
     public void UnReady()
     {
         if(isReady) 
-        { 
+        {
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
             isReady = false; 
             manager.UnReadyPlayer(playerID);
         }

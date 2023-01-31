@@ -73,8 +73,6 @@ public class PlayerUIController : MonoBehaviour
                 projectiles[i].SetActive(true);
             }
         }
-
-
     }
     void SetUpPlayerUI(string objectName) // depending on which character player is using, UI is customized
     {
