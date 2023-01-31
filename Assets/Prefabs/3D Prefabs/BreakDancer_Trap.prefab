@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAsTrap: 30
   distance: 4
+  travelTime: 0.5
   knife: {fileID: 1831609228035492792}
   trap: {fileID: 1793312585687834376}
 --- !u!95 &3400335744590048248

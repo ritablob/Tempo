@@ -410,8 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistance: 2
   distance: 4
-  speed: 3.5
-  fallSpeed: 1
+  travelTime: 1
   damageAsTrap: 30
   dmgScript: {fileID: 5565559577830061274}
   orb: {fileID: 4068401878828728926}
