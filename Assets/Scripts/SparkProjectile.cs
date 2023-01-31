@@ -7,8 +7,7 @@ public class SparkProjectile : MonoBehaviour
 {
     [SerializeField] float resistance;
     [SerializeField] float distance;
-    [SerializeField] float speed;
-    [SerializeField] float fallSpeed;
+    [SerializeField] float travelTime;
     [SerializeField] float damageAsTrap;
     [SerializeField] Damage dmgScript;
     [SerializeField] GameObject orb;
@@ -46,7 +45,7 @@ public class SparkProjectile : MonoBehaviour
             return;
         }
 
-        if (time >= 1)
+        if (time >= travelTime)
         {
             time = 0;
             SoundPlayer.PlaySound(1, "riven_trap_stop");
@@ -56,7 +55,6 @@ public class SparkProjectile : MonoBehaviour
             dmgScript.baseDamage = damageAsTrap;
             dmgScript.dealtDamage = false;
             isTrap = true;
-            speed = 0;
             return;
         }
 
@@ -65,9 +63,6 @@ public class SparkProjectile : MonoBehaviour
             time += Time.deltaTime;
             transform.Translate((Vector3.forward * Time.deltaTime * distance) - (new Vector3(0, Time.deltaTime / 4, 0)));
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3, 3), transform.position.y, Mathf.Clamp(transform.position.z, -2, 2));
-
-            speed -= resistance * Time.deltaTime;
-            fallSpeed = Mathf.Clamp(fallSpeed - (resistance * (Time.deltaTime / 2)), 0, 999);
         }
     }
 

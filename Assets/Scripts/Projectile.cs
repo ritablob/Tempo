@@ -6,10 +6,10 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] float damageAsTrap;
     [SerializeField] float distance;
+    [SerializeField] float travelTime;
     public GameObject knife;
     public GameObject trap;
 
-    private Vector3 direction;
     private bool isTrap;
     private float time; 
 
