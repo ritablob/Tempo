@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
   dealtDamage: 0
-  baseDamage: 100
+  baseDamage: 75
   hitStun: 2
   knockBack: 0
   isTrap: 0
