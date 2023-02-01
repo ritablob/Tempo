@@ -333,7 +333,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if ((!isAttacking && canMove) || (canMove && isAttacking)) //If the player is not attacking or parrying, run general movement check
+        if (!isAttacking || (canMove && isAttacking)) //If the player is not attacking or parrying, run general movement check
         {
             HandleMovement();
             HandleRotation();
@@ -421,7 +421,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(float damage, float hitStun, float knockBack, Vector3 hitBoxPos)
     {
         hitParticle.Play();
-        speed = 2.5f;
+        speed = 2f;
         anim.SetTrigger("Hit");
         takeKnockBack = true;
         //SoundPlayer.PlaySound(playerIndex, "grunt");

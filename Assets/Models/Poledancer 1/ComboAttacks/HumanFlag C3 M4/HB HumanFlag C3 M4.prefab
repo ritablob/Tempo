@@ -62,7 +62,7 @@ MonoBehaviour:
   dealtDamage: 0
   baseDamage: 30
   hitStun: 0.75
-  knockBack: 7
+  knockBack: 2
   isTrap: 0
   exposing: 0
   stunning: 0
