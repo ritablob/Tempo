@@ -543,7 +543,7 @@ MonoBehaviour:
   specialCharges: 1
   ultimateLimit: 170
   HP: 380
-  speed: 2
+  speed: 1.75
   charController: {fileID: 1162232717056227271}
   playerColor: {r: 0, g: 0, b: 0, a: 0}
   playerInput: {fileID: 0}

@@ -46,8 +46,8 @@ public class Projectile : MonoBehaviour
         }
         if(other.gameObject == GetComponent<Damage>().playerRef.gameObject && other.tag == "Player" && isTrap)
         {
-            GetComponent<SoundEffectPlayer>().PlaySound("nova trap pickup");
             GetComponent<Damage>().playerRef.GainSpecial(this.gameObject);
+            GetComponent<SoundEffectPlayer>().PlaySound("nova trap pickup");
         }
     }
     public void SetEndPosition(PlayerMovement player) 

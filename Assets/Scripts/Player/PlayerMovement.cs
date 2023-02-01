@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     public bool longCombo;
 
     //States/local vars
+    private float changeableSpeed;
     private Vector2 movement;
     private Vector3 launchDirection;
     private Camera sceneCamera;
@@ -72,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
     #region
     void Awake()
     {
+        changeableSpeed = speed;
         win = FindObjectOfType<WinManager>();
         EventSystem.Instance.AddEventListener("DeadTime", SetOurDeadTime);
         EventSystem.Instance.AddEventListener("New Beat", NewBeat);
@@ -244,6 +246,7 @@ public class PlayerMovement : MonoBehaviour
     {
         eventCommunicator.DisableHitbox();
         isAttacking = false;
+        canDodge = true;
         isLaunching = false;
         canMove = true;
         anim.ResetTrigger("Attack_1");
@@ -290,7 +293,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void SetSpeed(float newSpeed)
     {
-        speed = newSpeed;
+        changeableSpeed = newSpeed;
     }
     public void AddUltimateCharge(int amnt)
     {
@@ -320,6 +323,8 @@ public class PlayerMovement : MonoBehaviour
     #region
     private void FixedUpdate()
     {
+        if(hitStunRemaining > 0) { return; }
+
         if (blendLayers)
         {
             anim.SetLayerWeight(0, Mathf.Clamp(anim.GetLayerWeight(0) + Time.deltaTime * 2, 0.01f, 1));
@@ -372,6 +377,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (modelRenderer.materials[matIndex].name != normal.name + " (Instance)")
         {
+            EndAttack();
             takeKnockBack = false;
             Material[] mats = modelRenderer.materials;
             mats[matIndex] = normal;
@@ -384,7 +390,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 move = Quaternion.Euler(0, sceneCamera.transform.eulerAngles.y, 0) * new Vector3(movement.x, 0, movement.y);
         move.y = -2;
-        charController.Move(move * Time.deltaTime * speed);
+        charController.Move(move * Time.deltaTime * changeableSpeed);
 
         if (move.x == 0 && move.z == 0) { anim.SetBool("Running", false); return; }
 
@@ -421,7 +427,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(float damage, float hitStun, float knockBack, Vector3 hitBoxPos)
     {
         hitParticle.Play();
-        speed = 2f;
+        changeableSpeed = speed;
         anim.SetTrigger("Hit");
         takeKnockBack = true;
         //SoundPlayer.PlaySound(playerIndex, "grunt");
@@ -472,6 +478,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isPoleDancer)
             eventCommunicator.PickUpSpear(10);
+
         canDodge = false;
         anim.SetTrigger("Dodge");
         yield return new WaitForSeconds(0.75f);
@@ -479,15 +486,5 @@ public class PlayerMovement : MonoBehaviour
         canDodge = true;
         canMove = true;
     }
-
-    //public IEnumerator UnStuckDelay() //Frees the player if they are stuck
-    //{
-    //    yield return new WaitForSeconds(0.1f);
-
-    //    if (anim.GetLayerWeight(0) == 1 && !isAttacking)
-    //        EndAttack(); Debug.Log("Called");
-
-    //    StartCoroutine(UnStuckDelay());
-    //}
     #endregion
 }
