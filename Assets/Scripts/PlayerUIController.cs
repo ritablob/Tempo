@@ -95,7 +95,7 @@ public class PlayerUIController : MonoBehaviour
             {
                 stunned.gameObject.SetActive(false);
             }
-            if (status.exposeStacks > 0)
+            if (status.exposeStacks > 1)
             {
                 exposed.gameObject.SetActive(true);
             }
