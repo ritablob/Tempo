@@ -17,6 +17,7 @@ public class PlayerUIController : MonoBehaviour
     public Image ultimateGlow;
     public float glowExpansionOnFullUltimate = 1.5f;
     public WinManager winRef;
+    public Image exposed, stunned, bleeding, weak;
 
     private DynamicCamera camera;
     private Transform[] slider2Children;
@@ -26,6 +27,7 @@ public class PlayerUIController : MonoBehaviour
     private float ultimateCharge;
     private float onePiece;
     float alpha;
+    private StatusEffects status;
     private void Start()
     {
         camera = new DynamicCamera();
@@ -44,8 +46,13 @@ public class PlayerUIController : MonoBehaviour
             {
                 // CAMERA INSTEAD
                 playerMovement = camera.player1.gameObject.GetComponent<PlayerMovement>();
+                status = camera.player1.gameObject.GetComponent<StatusEffects>();
                 Debug.Log("player 1 " + playerMovement.gameObject.name);
                 SetUpPlayerUI(playerMovement.gameObject.name);
+                exposed.gameObject.SetActive(false);
+                bleeding.gameObject.SetActive(false);
+                stunned.gameObject.SetActive(false);
+                weak.gameObject.SetActive(false);
                 doneSettingUp = true;
 
             }
@@ -55,8 +62,13 @@ public class PlayerUIController : MonoBehaviour
             if (!doneSettingUp)
             {
                 playerMovement = camera.player2.gameObject.GetComponent<PlayerMovement>();
+                status = camera.player2.gameObject.GetComponent<StatusEffects>();
                 Debug.Log("player 2 " + playerMovement.gameObject.name);
                 SetUpPlayerUI(playerMovement.gameObject.name);
+                exposed.gameObject.SetActive(false);
+                bleeding.gameObject.SetActive(false);
+                stunned.gameObject.SetActive(false);
+                weak.gameObject.SetActive(false);
                 doneSettingUp = true;
             }
         }
@@ -71,6 +83,41 @@ public class PlayerUIController : MonoBehaviour
             for (int i = 0; i < playerMovement.specialCharges; i++)
             {
                 projectiles[i].SetActive(true);
+            }
+        }
+        if (status != null)
+        {
+            if (status.stunStacks > 0)
+            {
+                stunned.gameObject.SetActive(true);
+            }
+            else
+            {
+                stunned.gameObject.SetActive(false);
+            }
+            if (status.exposeStacks > 0)
+            {
+                exposed.gameObject.SetActive(true);
+            }
+            else
+            {
+                exposed.gameObject.SetActive(false);
+            }
+            if (status.bleedStacks > 0)
+            {
+                bleeding.gameObject.SetActive(true);
+            }
+            else
+            {
+                bleeding.gameObject.SetActive(false);
+            }
+            if (status.weaknessStacks > 0)
+            {
+                weak.gameObject.SetActive(true);
+            }
+            else
+            {
+                weak.gameObject.SetActive(false);
             }
         }
     }
