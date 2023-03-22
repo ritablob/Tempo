@@ -1,2 +1,2 @@
-# DisCombat
-aka Life Of the Party, Death of the Party, whatever else working titles we come up with
+# Tempo
+Tempo is a local multiplayer rhythm fighting game. Beat the opponent in style and rhythm! 
